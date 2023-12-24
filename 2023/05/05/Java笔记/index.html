@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="一个想当厨子的码农">
+    
+    <title>
+        
+            Java笔记 |
+        
+        CodeCook
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/deploy-provider/logo.png">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"CodeCook","author":"一个想当厨子的码农","avatar":"/images/deploy-provider/avatar.png","logo":"/images/deploy-provider/logo.png","favicon":"/images/deploy-provider/logo.png"},"menu":{"Archives":"/archives","Tags":"/tags","Links":"/links","About":"/about"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"因为热爱，所以分享；|| 因为分享，更加热爱。","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/dettry","weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":true,"hide_header":false},"home":{"category":false,"tag":true,"announcement":null},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/deploy-provider/zpayCode.jpg","text":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"jsdelivr"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"icp":{"enable":false,"record_code":null,"url":"https://beian.miit.gov.cn"},"site_deploy":{"enable":false,"provider":"github","url":null},"shields_style":{"enable":false,"custom":[{"link_url":null,"img_url":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","version":"4.0.5"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container border-box">
+
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/deploy-provider/logo.png">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               CodeCook
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    <li class="menu-item">
+                        <a class=""
+                           href="/"
+                        >首页</a>
+                    </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >归档</a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >标签</a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >友链</a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >关于</a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            <li class="drawer-menu-item flex-center">
+                <a class=""
+                   href="/"
+                >首页</a>
+            </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags"
+                    >标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links"
+                    >友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about"
+                    >关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        Java笔记
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/deploy-provider/avatar.png">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">一个想当厨子的码农</span>
+                                
+                                    <span class="author-badge">Lv1</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
+                <span class="pc">2023-05-05 14:11:45</span>
+                <span class="mobile">2023-05-05 14:11</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="pc" data-updated="Sat Dec 23 2023 16:43:30 GMT+0800">2023-12-23 16:43:30</span>
+            </span>
+        
+
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/java/">java</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body">
+                    
+
+                    <h1 id="Java笔记"><a href="#Java笔记" class="headerlink" title="Java笔记"></a>Java笔记</h1><h2 id="基础篇"><a href="#基础篇" class="headerlink" title="基础篇"></a>基础篇</h2><p><img   src="C:\Users\85793\AppData\Roaming\Typora\typora-user-images\image-20221112111329540.png"  alt="image-20221112111329540"></p>
+<h3 id="java语言概述"><a href="#java语言概述" class="headerlink" title="java语言概述"></a>java语言概述</h3><h4 id="整体概述"><a href="#整体概述" class="headerlink" title="整体概述"></a>整体概述</h4><p><img   src="C:\Users\85793\AppData\Roaming\Typora\typora-user-images\image-20221115162358155.png"  alt="image-20221115162358155"></p>
+<h4 id="java语言的特点"><a href="#java语言的特点" class="headerlink" title="java语言的特点"></a>java语言的特点</h4><p>特点一：面向对象</p>
+<p>两概三特：类、对象；封装、继承、多态；</p>
+<p>特点二：健壮性</p>
+<p>去掉了其影响程序健壮性的部分（如指针、内存的申请与释放等）</p>
+<p>特点三：跨平台性</p>
+<p>原理：先安装一个JVM虚拟机，然后由JVM负责JAVA程序在该系统上运行。</p>
+<p>Java核心机制</p>
+<p>   Java虚拟机：对于不同的平台有不同的虚拟机；</p>
+<p>   垃圾回收机制：</p>
+<h4 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h4><p>单行和多行注释与c语言注释相同</p>
+<p>文档注释：JAVA所特有</p>
+<p>格式：&#x2F;**  *&#x2F;</p>
+<p>作用：注释的内容可以被jdk提供的工具javadoc所解析，生成网页形式的程序说明文档。</p>
+<h4 id="java-API文档"><a href="#java-API文档" class="headerlink" title="java API文档"></a>java API文档</h4><p>英文版：版本8</p>
+<p>中文版：版本6</p>
+<h3 id="Java基本语法"><a href="#Java基本语法" class="headerlink" title="Java基本语法"></a>Java基本语法</h3><h4 id="保留字"><a href="#保留字" class="headerlink" title="保留字"></a>保留字</h4><p>goto、const，java没有赋予其特殊含义，但在命名时尽量避开。</p>
+<h4 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h4><p>凡是可以自己起的名字都叫标识符。e.g：变量名、类名等等</p>
+<p>命名规范</p>
+<p>包名：多个单词组成时所有字母都小写</p>
+<p>类名、接口名：多单词组成时，所有单词首字母大写</p>
+<p>变量名、方法名：多单词组成时，第一个单词首字母小写，从第二个单词开始首字母大写。</p>
+<p>常量名：所有字母都大写，多单词时，每个单词用下划线连接。</p>
+<h4 id="变量的类型"><a href="#变量的类型" class="headerlink" title="变量的类型"></a>变量的类型</h4><p><img   src="C:\Users\85793\AppData\Roaming\Typora\typora-user-images\image-20221116165948252.png"  alt="image-20221116165948252"></p>
+<h4 id="变量运算规则的两种特殊情况"><a href="#变量运算规则的两种特殊情况" class="headerlink" title="变量运算规则的两种特殊情况"></a>变量运算规则的两种特殊情况</h4><p>定义long型变量：long len&#x3D;78899786676l&#x2F;L;</p>
+<p>定义float型变量：float len&#x3D;12.3f&#x2F;F;</p>
+<p>但现实经常使用double型变量，精度更高。</p>
+<p>整型常量默认类型：int</p>
+<p>浮点型常量默认类型：double</p>
+<h4 id="算数运算符"><a href="#算数运算符" class="headerlink" title="算数运算符"></a>算数运算符</h4><p>+、-、*、&#x2F;、++、–、%</p>
+<h4 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h4><p>&#x3D;</p>
+<p>扩展运算符:+&#x3D;、-&#x3D;、*&#x3D;、&#x2F;+、%&#x3D;</p>
+<h4 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h4><p>基本与c语言一样。</p>
+<p>instanceof:检查是否是类的对象。</p>
+<h2 id="进阶篇"><a href="#进阶篇" class="headerlink" title="进阶篇"></a>进阶篇</h2><h3 id="SpringBoot"><a href="#SpringBoot" class="headerlink" title="SpringBoot"></a>SpringBoot</h3><p><strong>开发以后所用技术：mybatis+druid+远程服务器，别使用lombok进行开发</strong>。</p>
+<h4 id="基础篇-1"><a href="#基础篇-1" class="headerlink" title="基础篇"></a>基础篇</h4><h5 id="1-parent"><a href="#1-parent" class="headerlink" title="1. parent"></a>1. parent</h5><p>将以前spring开发时所需要配置的pom 文件进行整合，方便管理。</p>
+<p><img   src="C:\Users\85793\AppData\Roaming\Typora\typora-user-images\image-20221125191759218.png"  alt="image-20221125191759218"></p>
+<p>  <strong>小结</strong></p>
+<ol>
+<li><p>开发springBoot程序要继承spring-boot-starter-parent</p>
+</li>
+<li><p>spring-boot-starter-parent中定义了若干个依赖管理（不是具体的坐标，只是把你要用的版本管理好，而没提供具体的坐标）</p>
+</li>
+<li><p>继承parent模块可以避免多个依赖使用相同技术时出现依赖版本冲突（做版本的统一化管理)</p>
+</li>
+<li><p>继承parent的形式也可以采用引入依赖的形式实现效果</p>
+</li>
+</ol>
+<h5 id="2-starter"><a href="#2-starter" class="headerlink" title="2. starter"></a>2. starter</h5><p><strong>starter</strong></p>
+<p>​		1. SpringBoot中常见项目名称，定义了当前项目使用的所有依赖坐标 ，以达到<strong>减少依赖配置</strong>的目的</p>
+<p><strong>parent</strong></p>
+<pre><code>    1. 所有SpringBoot项目要继承的项目，定义了若干个坐标版本号（依赖管理，而非依赖），以达到减少依赖冲突的目的
+    1. spring-boot-starter-parent各版本间存在着诸多坐标版本不同
+</code></pre>
+<p><strong>实际开发</strong></p>
+<ol>
+<li><p>使用任意坐标时，仅书写GAV中的G和A，V由SpringBoot提供，除非SpringBoot未提供对应版本V</p>
+</li>
+<li><p>如发生坐标错误，再指定Version（要小心版本冲突)</p>
+</li>
+</ol>
+<p><strong>小结</strong></p>
+<ol>
+<li>开发springBoot程序需要导入坐标时通常导入对应的starter</li>
+<li>每个不同的starter根据功能不同，通常包含多个依赖坐标</li>
+<li>使用starter可以实现快速配置的效果，达到简化配置的目的</li>
+</ol>
+<h5 id="3-引导类"><a href="#3-引导类" class="headerlink" title="3. 引导类"></a>3. 引导类</h5><p>下图即为引导类</p>
+<p><img   src="C:\Users\85793\AppData\Roaming\Typora\typora-user-images\image-20221126100829179.png"  alt="image-20221126100829179"></p>
+<p>无论是做spring程序还是做springmvc的程序，最后都会运行出来一个spring容器的对象。所有对象都以bean的形式交给spring容器管理。</p>
+<p>SpringBoot的引导类是Boot工程的执行入口，运行main方法就可以启动项目</p>
+<p>SpringBoot工程运行后初始化Spring容器，扫描引导类所在包加载bean</p>
+<p><strong>得到bean的方式有四种：</strong></p>
+<ol>
+<li>以类型的形式（即class）</li>
+<li></li>
+</ol>
+<h5 id="4-辅助功能"><a href="#4-辅助功能" class="headerlink" title="4. 辅助功能"></a>4. 辅助功能</h5><p><img   src="C:\Users\85793\AppData\Roaming\Typora\typora-user-images\image-20221126135325136.png"  alt="image-20221126135325136"></p>
+<blockquote>
+<p>内置服务器：</p>
+<p>tomcat(默认)</p>
+<p>jetty</p>
+<p>undertow</p>
+</blockquote>
+<p><strong>小结</strong></p>
+<ol>
+<li>内嵌Tomcat服务器是SpringBoot辅助功能之一</li>
+<li>内嵌Tomcat工作原理是将Tomcat服务器作为对象运行，并将该对象交给Spring容器管理</li>
+<li>变更内嵌服务器思想是去除现有服务器，添加全新的服务器</li>
+</ol>
+<h5 id="5-Rest风格开发入门案例"><a href="#5-Rest风格开发入门案例" class="headerlink" title="5. Rest风格开发入门案例"></a>5. Rest风格开发入门案例</h5><h6 id="1-以前的开发"><a href="#1-以前的开发" class="headerlink" title="1.以前的开发"></a>1.以前的开发</h6><p><img   src="C:\Users\85793\AppData\Roaming\Typora\typora-user-images\image-20221127170845847.png"  alt="image-20221127170845847"></p>
+<p><img   src="C:\Users\85793\AppData\Roaming\Typora\typora-user-images\image-20221127171423014.png"  alt="image-20221127171423014"></p>
+<h6 id="2-接受参数的三种方式"><a href="#2-接受参数的三种方式" class="headerlink" title="2. 接受参数的三种方式"></a>2. 接受参数的三种方式</h6><p><img   src="C:\Users\85793\AppData\Roaming\Typora\typora-user-images\image-20221127171256707.png"  alt="image-20221127171256707"></p>
+<h6 id="3-现在的开发"><a href="#3-现在的开发" class="headerlink" title="3.现在的开发"></a>3.现在的开发</h6><h5 id=""><a href="#" class="headerlink" title=""></a><img   src="C:\Users\85793\AppData\Roaming\Typora\typora-user-images\image-20221127203229053.png"  alt="image-20221127203229053"></h5><p><img   src="C:\Users\85793\AppData\Roaming\Typora\typora-user-images\image-20221127203519136.png"  alt="image-20221127203519136"></p>
+<h5 id="6-boot配置"><a href="#6-boot配置" class="headerlink" title="6. boot配置"></a>6. boot配置</h5><h6 id="6-1-准备工作"><a href="#6-1-准备工作" class="headerlink" title="6.1 准备工作"></a>6.1 准备工作</h6><p>模板的制作</p>
+<ol>
+<li>在工作空间中复制对应工程，并修改工程名称</li>
+<li>删除与Idea相关配置文件，仅保留src目录与pom. xml文件</li>
+<li>修改pom.xml文件中的artifactId与新工程&#x2F;模块名相同</li>
+<li>删除name标签（可选)</li>
+<li>保留备份工程供后期使用</li>
+</ol>
+<h6 id="6-2-属性配置"><a href="#6-2-属性配置" class="headerlink" title="6.2 属性配置"></a>6.2 属性配置</h6><p><img   src="C:\Users\85793\AppData\Roaming\Typora\typora-user-images\image-20221128170828876.png"  alt="image-20221128170828876"></p>
+<ol>
+<li><p>SpringBoot提供了3种配置文件的格式<br>properties (传统格式&#x2F;默认格式)<br>yml（主流格式)<br>yaml</p>
+</li>
+<li><p>配置文件间的加载优先级<br>properties (最高)</p>
+<p>yml（常用）</p>
+<p>yaml(最低)</p>
+</li>
+<li><p>不同配置文件中相同配置按照加载优先级相互覆盖，不同配置文件中不同配置全部保留</p>
+</li>
+</ol>
+<p>yaml或者yml自动提示功能消失解决方案</p>
+<p><img   src="C:\Users\85793\AppData\Roaming\Typora\typora-user-images\image-20221128172557083.png"  alt="image-20221128172557083"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yaml书写格式：</span><br><span class="line"></span><br><span class="line">注意属性名冒号后面与数据之间有一个空格</span><br></pre></td></tr></table></figure>
+
+<p>读取数据</p>
+<p><img   src="C:\Users\85793\AppData\Roaming\Typora\typora-user-images\image-20221128203619298.png"  alt="image-20221128203619298"></p>
+<h5 id="7-整合第三方技术"><a href="#7-整合第三方技术" class="headerlink" title="7. 整合第三方技术"></a>7. 整合第三方技术</h5><ol>
+<li><p><strong>整合junit小结</strong></p>
+<ul>
+<li><p>导入测试对应的starter(如果是自己手工创建的话)</p>
+</li>
+<li><p>测试类使用@SpringBootTest修饰</p>
+</li>
+<li><p>使用自动装配的形式添加要测试的对象</p>
+</li>
+<li><p>测试类如果存在于引导类所在包或子包中无需指定引导类</p>
+</li>
+<li><p>测试类如果不存在于引导类所在的包或子包中需要通过classes属性指定引导类</p>
+</li>
+</ul>
+</li>
+<li><p><strong>整合mybatis小结</strong></p>
+<ul>
+<li><p>勾选MyBatis技术，也就是导入MyBatis对应的starter</p>
+</li>
+<li><p>数据库连接相关信息转换成配置</p>
+</li>
+<li><p>数据库sQL映射需要添加@Mapper被容器识别到</p>
+<pre><code>  springboot的版本过低导致的问题处理
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<p>​			2.1 MySQL 8.X驱动强制要求设置时区</p>
+<p>​				修改url，添加serverTimezone设定</p>
+<p>​				修改MySQL数据库配置（略)</p>
+<p>​			2.2 驱动类过时，提醒更换为com.mysql.cj.jdbc.Driver</p>
+<blockquote>
+<p>boot整合东西分为三个部分:</p>
+<ol>
+<li>导入对应的start</li>
+<li>做相应的配置</li>
+<li>直接使用对应的技术进行开发</li>
+</ol>
+</blockquote>
+<ol start="3">
+<li><strong>整合mybatis-plus小结</strong> <img   src="C:\Users\85793\AppData\Roaming\Typora\typora-user-images\image-20221130093255881.png"  alt="image-20221130093255881"></li>
+</ol>
+<p><img   src="C:\Users\85793\AppData\Roaming\Typora\typora-user-images\image-20221130093312809.png"  alt="image-20221130093312809"></p>
+<p><img   src="C:\Users\85793\AppData\Roaming\Typora\typora-user-images\image-20221130093423735.png"  alt="image-20221130093423735"></p>
+<ol start="4">
+<li><strong>整合Druid(即数据源)</strong></li>
+</ol>
+<p>​      <img   src="C:\Users\85793\AppData\Roaming\Typora\typora-user-images\image-20230222161204003.png"  alt="image-20230222161204003"></p>
+<p><img   src="C:\Users\85793\AppData\Roaming\Typora\typora-user-images\image-20230228145538979.png"  alt="image-20230228145538979"></p>
+<p><img   src="C:\Users\85793\AppData\Roaming\Typora\typora-user-images\image-20230228145621901.png"  alt="image-20230228145621901"></p>
+<p><img   src="C:\Users\85793\AppData\Roaming\Typora\typora-user-images\image-20230228150602825.png"  alt="image-20230228150602825"></p>
+
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/java/">java</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到 QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="分享到微信"
+            data-tooltip-img-tip="微信扫一扫"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到微博"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+                    <div class="reward-author-container border-box flex-center">
+    <div class="reward-btn keep-button border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="打赏作者"
+            data-tooltip-img-url="/images/deploy-provider/zpayCode.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -8px;"
+    >
+        <i class="fa-solid fa-hand-holding-heart"></i>
+    </div>
+</div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2023/05/05/Linux%E7%AC%94%E8%AE%B0/"
+                                   title="Linux笔记"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Linux笔记</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java%E7%AC%94%E8%AE%B0"><span class="nav-text">Java笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%AF%87"><span class="nav-text">基础篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#java%E8%AF%AD%E8%A8%80%E6%A6%82%E8%BF%B0"><span class="nav-text">java语言概述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B4%E4%BD%93%E6%A6%82%E8%BF%B0"><span class="nav-text">整体概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java%E8%AF%AD%E8%A8%80%E7%9A%84%E7%89%B9%E7%82%B9"><span class="nav-text">java语言的特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B3%A8%E9%87%8A"><span class="nav-text">注释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java-API%E6%96%87%E6%A1%A3"><span class="nav-text">java API文档</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="nav-text">Java基本语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%9D%E7%95%99%E5%AD%97"><span class="nav-text">保留字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%87%E8%AF%86%E7%AC%A6"><span class="nav-text">标识符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="nav-text">变量的类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E8%BF%90%E7%AE%97%E8%A7%84%E5%88%99%E7%9A%84%E4%B8%A4%E7%A7%8D%E7%89%B9%E6%AE%8A%E6%83%85%E5%86%B5"><span class="nav-text">变量运算规则的两种特殊情况</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%97%E6%95%B0%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-text">算数运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B5%8B%E5%80%BC%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-text">赋值运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AF%94%E8%BE%83%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-text">比较运算符</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E9%98%B6%E7%AF%87"><span class="nav-text">进阶篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SpringBoot"><span class="nav-text">SpringBoot</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%AF%87-1"><span class="nav-text">基础篇</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-parent"><span class="nav-text">1. parent</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-starter"><span class="nav-text">2. starter</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-%E5%BC%95%E5%AF%BC%E7%B1%BB"><span class="nav-text">3. 引导类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-%E8%BE%85%E5%8A%A9%E5%8A%9F%E8%83%BD"><span class="nav-text">4. 辅助功能</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-Rest%E9%A3%8E%E6%A0%BC%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B"><span class="nav-text">5. Rest风格开发入门案例</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-%E4%BB%A5%E5%89%8D%E7%9A%84%E5%BC%80%E5%8F%91"><span class="nav-text">1.以前的开发</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-%E6%8E%A5%E5%8F%97%E5%8F%82%E6%95%B0%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="nav-text">2. 接受参数的三种方式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-%E7%8E%B0%E5%9C%A8%E7%9A%84%E5%BC%80%E5%8F%91"><span class="nav-text">3.现在的开发</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-text"></span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-boot%E9%85%8D%E7%BD%AE"><span class="nav-text">6. boot配置</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#6-1-%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-text">6.1 准备工作</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#6-2-%E5%B1%9E%E6%80%A7%E9%85%8D%E7%BD%AE"><span class="nav-text">6.2 属性配置</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-%E6%95%B4%E5%90%88%E7%AC%AC%E4%B8%89%E6%96%B9%E6%8A%80%E6%9C%AF"><span class="nav-text">7. 整合第三方技术</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2023
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">一个想当厨子的码农</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+
+            
+        
+
+        <div class="count-item info-item default">
+            
+
+            
+                <span class="count-box border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-box border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java%E7%AC%94%E8%AE%B0"><span class="nav-text">Java笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%AF%87"><span class="nav-text">基础篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#java%E8%AF%AD%E8%A8%80%E6%A6%82%E8%BF%B0"><span class="nav-text">java语言概述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B4%E4%BD%93%E6%A6%82%E8%BF%B0"><span class="nav-text">整体概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java%E8%AF%AD%E8%A8%80%E7%9A%84%E7%89%B9%E7%82%B9"><span class="nav-text">java语言的特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B3%A8%E9%87%8A"><span class="nav-text">注释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java-API%E6%96%87%E6%A1%A3"><span class="nav-text">java API文档</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="nav-text">Java基本语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%9D%E7%95%99%E5%AD%97"><span class="nav-text">保留字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%87%E8%AF%86%E7%AC%A6"><span class="nav-text">标识符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="nav-text">变量的类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E8%BF%90%E7%AE%97%E8%A7%84%E5%88%99%E7%9A%84%E4%B8%A4%E7%A7%8D%E7%89%B9%E6%AE%8A%E6%83%85%E5%86%B5"><span class="nav-text">变量运算规则的两种特殊情况</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%97%E6%95%B0%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-text">算数运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B5%8B%E5%80%BC%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-text">赋值运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AF%94%E8%BE%83%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-text">比较运算符</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E9%98%B6%E7%AF%87"><span class="nav-text">进阶篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SpringBoot"><span class="nav-text">SpringBoot</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%AF%87-1"><span class="nav-text">基础篇</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-parent"><span class="nav-text">1. parent</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-starter"><span class="nav-text">2. starter</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-%E5%BC%95%E5%AF%BC%E7%B1%BB"><span class="nav-text">3. 引导类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-%E8%BE%85%E5%8A%A9%E5%8A%9F%E8%83%BD"><span class="nav-text">4. 辅助功能</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-Rest%E9%A3%8E%E6%A0%BC%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B"><span class="nav-text">5. Rest风格开发入门案例</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-%E4%BB%A5%E5%89%8D%E7%9A%84%E5%BC%80%E5%8F%91"><span class="nav-text">1.以前的开发</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-%E6%8E%A5%E5%8F%97%E5%8F%82%E6%95%B0%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="nav-text">2. 接受参数的三种方式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-%E7%8E%B0%E5%9C%A8%E7%9A%84%E5%BC%80%E5%8F%91"><span class="nav-text">3.现在的开发</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-text"></span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-boot%E9%85%8D%E7%BD%AE"><span class="nav-text">6. boot配置</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#6-1-%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-text">6.1 准备工作</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#6-2-%E5%B1%9E%E6%80%A7%E9%85%8D%E7%BD%AE"><span class="nav-text">6.2 属性配置</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-%E6%95%B4%E5%90%88%E7%AC%AC%E4%B8%89%E6%96%B9%E6%8A%80%E6%9C%AF"><span class="nav-text">7. 整合第三方技术</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- category-page -->
+    
+
+    <!-- links-page -->
+    
+
+    <!-- photos-page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>
