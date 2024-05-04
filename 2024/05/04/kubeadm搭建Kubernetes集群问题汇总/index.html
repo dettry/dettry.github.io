@@ -9,7 +9,7 @@
     
     <title>
         
-            myfirst |
+            k8s集群搭建常见问题汇总 |
         
         CodeCook
     </title>
@@ -174,7 +174,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        myfirst
+                        k8s集群搭建常见问题汇总
                     </div>
                 
 
@@ -202,13 +202,13 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
-                <span class="pc">2023-12-23 16:30:45</span>
-                <span class="mobile">2023-12-23 16:30</span>
+                <span class="pc">2024-05-04 13:50:36</span>
+                <span class="mobile">2024-05-04 13:50</span>
             </span>
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="pc" data-updated="Sat Dec 23 2023 16:32:13 GMT+0800">2023-12-23 16:32:13</span>
+                <span class="pc" data-updated="Sat May 04 2024 14:29:08 GMT+0800">2024-05-04 14:29:08</span>
             </span>
         
 
@@ -219,7 +219,7 @@
                 <i class="icon fas fa-tags"></i>&nbsp;
                 <ul class="post-tag-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/java/">java</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/kubernetes/">kubernetes</a></li>
                         
                     
                 </ul>
@@ -247,7 +247,60 @@
                 <div class="post-content keep-markdown-body">
                     
 
-                    <h1 id="这是一个测试文件"><a href="#这是一个测试文件" class="headerlink" title="这是一个测试文件"></a>这是一个测试文件</h1>
+                    <h1 id="kubeadm搭建Kubernetes集群问题汇总"><a href="#kubeadm搭建Kubernetes集群问题汇总" class="headerlink" title="kubeadm搭建Kubernetes集群问题汇总"></a>kubeadm搭建Kubernetes集群问题汇总</h1><h2 id="问题一：kubeadm-init-报错-ERROR-CRI-container-runtime-is-not-running需要使用的解决方法"><a href="#问题一：kubeadm-init-报错-ERROR-CRI-container-runtime-is-not-running需要使用的解决方法" class="headerlink" title="问题一：kubeadm init 报错 [ERROR CRI]: container runtime is not running需要使用的解决方法"></a>问题一：kubeadm init 报错 [ERROR CRI]: container runtime is not running需要使用的解决方法</h2><ol>
+<li>kubernetes使用crictl命令管理CRI，查看其配置文件<code>/etc/crictl.yaml</code>。初始情况下没有这个配置文件，这里建议添加这个配置，否则kubeadm init时会报其他错。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#containered做进行时</span><br><span class="line">cat &gt; /etc/crictl.yaml &lt;&lt;EOF</span><br><span class="line">runtime-endpoint: unix:///var/run/containerd/containerd.sock</span><br><span class="line">image-endpoint: unix:///var/run/containerd/containerd.sock</span><br><span class="line">timeout: 0</span><br><span class="line">debug: false</span><br><span class="line">pull-image-on-create: false</span><br><span class="line">EOF</span><br><span class="line">#cri-docker做进行时</span><br><span class="line">cat &gt; /etc/crictl.yaml &lt;&lt;EOF</span><br><span class="line">runtime-endpoint: unix:///var/run/cri-dockerd.sock</span><br><span class="line">image-endpoint: unix:///var/run/cri-dockerd.sock</span><br><span class="line">timeout: 0</span><br><span class="line">debug: false</span><br><span class="line">pull-image-on-create: false</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">#执行crictl images list命令不报错</span><br><span class="line">crictl images list</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>查看配置文件：&#x2F;etc&#x2F;containerd&#x2F;config.toml</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">修改 disabled_plugins = [&quot;cri&quot;]为 disabled_plugins = []</span><br></pre></td></tr></table></figure>
+
+<p>重启containerd</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart containerd</span><br></pre></td></tr></table></figure>
+
+<h2 id="问题二：ERROR-FileContent–proc-sys-net-bridge-bridge-nf-call-iptables"><a href="#问题二：ERROR-FileContent–proc-sys-net-bridge-bridge-nf-call-iptables" class="headerlink" title="问题二：ERROR FileContent–proc-sys-net-bridge-bridge-nf-call-iptables"></a>问题二：ERROR FileContent–proc-sys-net-bridge-bridge-nf-call-iptables</h2><p>报错原因：网桥过滤和地址转发功能不可用</p>
+<p>解决方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cat &gt; /etc/sysctl.d/kubernetes.conf &lt;&lt; EOF</span><br><span class="line">net.bridge.bridge-nf-call-ip6tables = 1</span><br><span class="line">net.bridge.bridge-nf-call-iptables = 1</span><br><span class="line">net.ipv4.ip_forward = 1</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line"># 然后执行,生效</span><br><span class="line">sysctl --system</span><br></pre></td></tr></table></figure>
+
+<p>如果执行上述命令报&#x2F;proc&#x2F;sys&#x2F;net&#x2F;bridge&#x2F;bridge-nf-call-iptables does not exist错误是因为网桥功能未开启，执行下面的命令即可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">modprobe br_netfilter</span><br></pre></td></tr></table></figure>
+
+<h2 id="问题三：kubelet报错failed-to-run-Kubelet-running-with-swap-on-is-not-supported"><a href="#问题三：kubelet报错failed-to-run-Kubelet-running-with-swap-on-is-not-supported" class="headerlink" title="问题三：kubelet报错failed to run Kubelet: running with swap on is not supported"></a>问题三：kubelet报错failed to run Kubelet: running with swap on is not supported</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">swapoff -a</span><br></pre></td></tr></table></figure>
+
+<h2 id="问题四：kubeadm-init时报错一些配置文件已存在"><a href="#问题四：kubeadm-init时报错一些配置文件已存在" class="headerlink" title="问题四：kubeadm init时报错一些配置文件已存在"></a>问题四：kubeadm init时报错一些配置文件已存在</h2><p>解决方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubeadm reset</span><br></pre></td></tr></table></figure>
+
+<h2 id="问题五：kubeadm-init时，kubelet-报错crictl-–runtime-endpoint配置不对"><a href="#问题五：kubeadm-init时，kubelet-报错crictl-–runtime-endpoint配置不对" class="headerlink" title="问题五：kubeadm init时，kubelet 报错crictl –runtime-endpoint配置不对"></a>问题五：kubeadm init时，kubelet 报错crictl –runtime-endpoint配置不对</h2><p>从日志看出时crictl命令运行时有问题。unix:&#x2F;&#x2F;&#x2F;var&#x2F;run&#x2F;containerd&#x2F;containerd.sock不存在。运行crictl命令，发现同样报错。出现报错的原因是crictl下载镜像时使用的是默认端点<code>[unix:///var/run/dockershim.sock unix:///run/containerd/containerd.sock unix:///run/crio/crio.sock unix:///var/run/cri-dockerd.sock]</code>。这些端点废弃了，需要重新指定<code>containerd.sock</code>。后面的报错就是找不到dockershim.sock。</p>
+<p><strong>解决方法：修改crictl文件</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#containered做进行时</span><br><span class="line">cat &gt; /etc/crictl.yaml &lt;&lt;EOF</span><br><span class="line">runtime-endpoint: unix:///var/run/containerd/containerd.sock</span><br><span class="line">image-endpoint: unix:///var/run/containerd/containerd.sock</span><br><span class="line">timeout: 0</span><br><span class="line">debug: false</span><br><span class="line">pull-image-on-create: false</span><br><span class="line">EOF</span><br><span class="line">#cri-docker做进行时</span><br><span class="line">cat &gt; /etc/crictl.yaml &lt;&lt;EOF</span><br><span class="line">runtime-endpoint: unix:///var/run/cri-dockerd.sock</span><br><span class="line">image-endpoint: unix:///var/run/cri-dockerd.sock</span><br><span class="line">timeout: 0</span><br><span class="line">debug: false</span><br><span class="line">pull-image-on-create: false</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">#执行crictl images list命令不报错</span><br><span class="line">crictl images list</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="问题六：报Usage-of-CRI-endpoints-without-URL-scheme-is-deprecated-and-can-cause-kubelet-errors-in-the-future-警告"><a href="#问题六：报Usage-of-CRI-endpoints-without-URL-scheme-is-deprecated-and-can-cause-kubelet-errors-in-the-future-警告" class="headerlink" title="问题六：报Usage of CRI endpoints without URL scheme is deprecated and can cause kubelet errors in the future.警告"></a>问题六：报Usage of CRI endpoints without URL scheme is deprecated and can cause kubelet errors in the future.警告</h2><p>W0504 10:46:57.238606    6046 initconfiguration.go:120] Usage of CRI endpoints without URL scheme is deprecated and can cause kubelet errors in the future. Automatically prepending scheme “unix” to the “criSocket” with value “&#x2F;var&#x2F;run&#x2F;cri-dockerd.sock”. Please update your configuration!  </p>
+<p>如果是contained做进行时就执行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sudo crictl config \</span><br><span class="line">--set runtime-endpoint=unix:///var/run/containerd/containerd.sock \</span><br><span class="line">--set image-endpoint=unix:///var/run/containerd/containerd.sock</span><br><span class="line">#或者</span><br><span class="line">cat &gt; /etc/crictl.yaml &lt;&lt;EOF</span><br><span class="line">runtime-endpoint: unix:///var/run/containerd/containerd.sock</span><br><span class="line">image-endpoint: unix:///var/run/containerd/containerd.sock</span><br><span class="line">timeout: 0</span><br><span class="line">debug: false</span><br><span class="line">pull-image-on-create: false</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+
+<p>如果时cri-docker做进行时就执行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sudo crictl config \</span><br><span class="line">--set runtime-endpoint=unix:///var/run/cri-dockerd.sock \</span><br><span class="line">--set image-endpoint=unix:///var/run/cri-dockerd.sock</span><br><span class="line">#或者</span><br><span class="line">cat &gt; /etc/crictl.yaml &lt;&lt;EOF</span><br><span class="line">runtime-endpoint: unix:///var/run/cri-dockerd.sock</span><br><span class="line">image-endpoint: unix:///var/run/cri-dockerd.sock</span><br><span class="line">timeout: 0</span><br><span class="line">debug: false</span><br><span class="line">pull-image-on-create: false</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+
+<h2 id="问题七：报错pause镜像获取失败"><a href="#问题七：报错pause镜像获取失败" class="headerlink" title="问题七：报错pause镜像获取失败"></a>问题七：报错pause镜像获取失败</h2><p>通过log提示执行命令<code>crictl --runtime-endpoint unix:///var/run/containerd/containerd.sock ps -a</code> 发现没有容器在运行。查看containerd的日志，有如下报错：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">journalctl -fu containerd</span><br><span class="line">...</span><br><span class="line">Oct 11 08:35:16 master.k8s containerd[1903]: time=&quot;2023-10-11T08:35:16.760026536+08:00&quot; level=error msg=&quot;RunPodSandbox for &amp;PodSandboxMetadata&#123;Name:kube-apiserver-node,Uid:a5a7c15a42701ab6c9dca630e6523936,Namespace:kube-system,Attempt:0,&#125; failed, error&quot; error=&quot;failed to get sandbox image \&quot;registry.k8s.io/pause:3.6\&quot;: failed to pull image \&quot;registry.k8s.io/pause:3.6\&quot;: failed to pull and unpack image \&quot;registry.k8s.io/pause:3.6\&quot;: failed to resolve reference \&quot;registry.k8s.io/pause:3.6\&quot;: failed to do request: Head \&quot;https://asia-east1-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.6\&quot;: dial tcp 108.177.125.82:443: connect: connection refused&quot;</span><br><span class="line">Oct 11 08:35:18 master.k8s containerd[1903]: time=&quot;2023-10-11T08:35:18.606581001+08:00&quot; level=info msg=&quot;trying next host&quot; error=&quot;failed to do request: Head \&quot;https://asia-east1-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.6\&quot;: dial tcp 108.177.125.82:443: connect: connection refused&quot; host=registry.k8s.io</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>报错显示containerd拉去镜像失败。error&#x3D;”failed to get sandbox image&quot;registry.k8s.io&#x2F;pause:3.6&quot;</p>
+<p><strong>解决方法：修改containered配置</strong></p>
+<ul>
+<li>运行containerd config dump &gt; &#x2F;etc&#x2F;containerd&#x2F;config.toml 命令，将当前配置导出到文件，并修改sandbox_image配置。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">## 修改配置文件/etc/containerd/config.toml， 更改sandbox_image配置</span><br><span class="line">[plugins]</span><br><span class="line">  [plugins.&quot;io.containerd.grpc.v1.cri&quot;]</span><br><span class="line">    sandbox_image = &quot;registry.aliyuncs.com/google_containers/pause:3.9&quot;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>重启containerd</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart containerd</span><br><span class="line"></span><br><span class="line">#查看containerd当前配置，验证pause镜像是否生效</span><br><span class="line">containerd config dump | grep pause</span><br></pre></td></tr></table></figure>
+
+
                 </div>
 
                 
@@ -258,7 +311,7 @@
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/java/">java</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/kubernetes/">kubernetes</a>
                                     </li>
                                 
                             </ul>
@@ -309,31 +362,15 @@
                 
                     <div class="post-nav border-box">
                         
-                            <div class="prev-post">
-                                <a class="prev"
-                                   rel="prev"
-                                   href="/2023/12/24/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E7%AC%94%E8%AE%B0/"
-                                   title="个人博客搭建笔记"
-                                >
-                                    <span class="left arrow-icon flex-center">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">个人博客搭建笔记</span>
-                                        <span class="post-nav-item">上一篇</span>
-                                    </span>
-                                </a>
-                            </div>
-                        
                         
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/2023/12/22/hello-world/"
-                                   title="Hello World"
+                                   href="/2024/05/04/k8s%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/"
+                                   title="k8s集群搭建教程（使用cri-docker+flannel）"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">Hello World</span>
+                                        <span class="post-nav-title-item text-ellipsis">k8s集群搭建教程（使用cri-docker+flannel）</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
@@ -436,7 +473,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%99%E6%98%AF%E4%B8%80%E4%B8%AA%E6%B5%8B%E8%AF%95%E6%96%87%E4%BB%B6"><span class="nav-text">这是一个测试文件</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#kubeadm%E6%90%AD%E5%BB%BAKubernetes%E9%9B%86%E7%BE%A4%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB"><span class="nav-text">kubeadm搭建Kubernetes集群问题汇总</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E4%B8%80%EF%BC%9Akubeadm-init-%E6%8A%A5%E9%94%99-ERROR-CRI-container-runtime-is-not-running%E9%9C%80%E8%A6%81%E4%BD%BF%E7%94%A8%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-text">问题一：kubeadm init 报错 [ERROR CRI]: container runtime is not running需要使用的解决方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E4%BA%8C%EF%BC%9AERROR-FileContent%E2%80%93proc-sys-net-bridge-bridge-nf-call-iptables"><span class="nav-text">问题二：ERROR FileContent–proc-sys-net-bridge-bridge-nf-call-iptables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E4%B8%89%EF%BC%9Akubelet%E6%8A%A5%E9%94%99failed-to-run-Kubelet-running-with-swap-on-is-not-supported"><span class="nav-text">问题三：kubelet报错failed to run Kubelet: running with swap on is not supported</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%9B%9B%EF%BC%9Akubeadm-init%E6%97%B6%E6%8A%A5%E9%94%99%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%B7%B2%E5%AD%98%E5%9C%A8"><span class="nav-text">问题四：kubeadm init时报错一些配置文件已存在</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E4%BA%94%EF%BC%9Akubeadm-init%E6%97%B6%EF%BC%8Ckubelet-%E6%8A%A5%E9%94%99crictl-%E2%80%93runtime-endpoint%E9%85%8D%E7%BD%AE%E4%B8%8D%E5%AF%B9"><span class="nav-text">问题五：kubeadm init时，kubelet 报错crictl –runtime-endpoint配置不对</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%85%AD%EF%BC%9A%E6%8A%A5Usage-of-CRI-endpoints-without-URL-scheme-is-deprecated-and-can-cause-kubelet-errors-in-the-future-%E8%AD%A6%E5%91%8A"><span class="nav-text">问题六：报Usage of CRI endpoints without URL scheme is deprecated and can cause kubelet errors in the future.警告</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E4%B8%83%EF%BC%9A%E6%8A%A5%E9%94%99pause%E9%95%9C%E5%83%8F%E8%8E%B7%E5%8F%96%E5%A4%B1%E8%B4%A5"><span class="nav-text">问题七：报错pause镜像获取失败</span></a></li></ol></li></ol>
     </div>
 </div>
 
@@ -457,7 +494,7 @@
     <div class="border-box website-info-box default">
         
             <div class="copyright-info info-item default">
-                &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2023
+                &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
                 
                     &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">一个想当厨子的码农</a>
                 
@@ -634,7 +671,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%99%E6%98%AF%E4%B8%80%E4%B8%AA%E6%B5%8B%E8%AF%95%E6%96%87%E4%BB%B6"><span class="nav-text">这是一个测试文件</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#kubeadm%E6%90%AD%E5%BB%BAKubernetes%E9%9B%86%E7%BE%A4%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB"><span class="nav-text">kubeadm搭建Kubernetes集群问题汇总</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E4%B8%80%EF%BC%9Akubeadm-init-%E6%8A%A5%E9%94%99-ERROR-CRI-container-runtime-is-not-running%E9%9C%80%E8%A6%81%E4%BD%BF%E7%94%A8%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-text">问题一：kubeadm init 报错 [ERROR CRI]: container runtime is not running需要使用的解决方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E4%BA%8C%EF%BC%9AERROR-FileContent%E2%80%93proc-sys-net-bridge-bridge-nf-call-iptables"><span class="nav-text">问题二：ERROR FileContent–proc-sys-net-bridge-bridge-nf-call-iptables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E4%B8%89%EF%BC%9Akubelet%E6%8A%A5%E9%94%99failed-to-run-Kubelet-running-with-swap-on-is-not-supported"><span class="nav-text">问题三：kubelet报错failed to run Kubelet: running with swap on is not supported</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%9B%9B%EF%BC%9Akubeadm-init%E6%97%B6%E6%8A%A5%E9%94%99%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%B7%B2%E5%AD%98%E5%9C%A8"><span class="nav-text">问题四：kubeadm init时报错一些配置文件已存在</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E4%BA%94%EF%BC%9Akubeadm-init%E6%97%B6%EF%BC%8Ckubelet-%E6%8A%A5%E9%94%99crictl-%E2%80%93runtime-endpoint%E9%85%8D%E7%BD%AE%E4%B8%8D%E5%AF%B9"><span class="nav-text">问题五：kubeadm init时，kubelet 报错crictl –runtime-endpoint配置不对</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%85%AD%EF%BC%9A%E6%8A%A5Usage-of-CRI-endpoints-without-URL-scheme-is-deprecated-and-can-cause-kubelet-errors-in-the-future-%E8%AD%A6%E5%91%8A"><span class="nav-text">问题六：报Usage of CRI endpoints without URL scheme is deprecated and can cause kubelet errors in the future.警告</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E4%B8%83%EF%BC%9A%E6%8A%A5%E9%94%99pause%E9%95%9C%E5%83%8F%E8%8E%B7%E5%8F%96%E5%A4%B1%E8%B4%A5"><span class="nav-text">问题七：报错pause镜像获取失败</span></a></li></ol></li></ol>
     </div>
 </div>
 
