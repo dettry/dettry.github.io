@@ -1,4 +1,149 @@
-KEEP.initCodeBlock=()=>{if(KEEP.theme_config?.code_block?.tools?.enable===true){KEEP.utils.initCodeBlockTools=()=>{const{style:e}=KEEP.theme_config?.code_block||{};const{style:t}=KEEP.theme_config?.code_block?.tools||{};const n=(e||t||"default")==="mac";const a=n?"fas fa-chevron-left":"fas fa-chevron-right";const{copy:i,copied:f,fold:p,folded:y}=KEEP.language_code_block;const u=`<span class="tool fold tooltip" data-tooltip-content="${p}" data-tooltip-offset-y="-2px"><i class="fas fa-chevron-down"></i></span>`;document.querySelectorAll("figure.highlight").forEach(d=>{let e=d.classList.length?d.classList[1].toUpperCase():"";if(e==="PLAINTEXT"){e=""}const t=document.createElement("div");t.classList.add("highlight-container");if(n){t.classList.add("mac")}d.wrap(t);const o=`${e?'<span class="code-lang">'+e+"</span>":""}`;t.insertAdjacentHTML("afterbegin",`<div class="code-tools-box">
-        ${n?u+o:"<span>"+u+o+"</span>"}
-        <span class="tool copy tooltip" data-tooltip-content="${i}" data-tooltip-offset-y="-2px"><i class="fas fa-copy"></i></span>
-      </div>`);const r=d.parentNode.querySelector(".code-tools-box");const s=r.querySelector(".copy");const l=r.querySelector(".fold");s.addEventListener("click",e=>{const t=e.currentTarget;const o=[...d.querySelectorAll(".code .line")].map(e=>e.innerText).join("\n");const s=document.createElement("textarea");s.style.top=window.scrollY+"px";s.style.position="absolute";s.style.opacity="0";s.readOnly=true;s.value=o;document.body.append(s);const l=document.getSelection();const c=l.rangeCount>0?l.getRangeAt(0):false;s.select();s.setSelectionRange(0,o.length);s.readOnly=false;const n=document.execCommand("copy");const a=t.querySelector("i");const i=r.querySelector(".copy .tooltip-content");if(n){a.className="fas fa-check";i&&(i.innerHTML=f)}else{a.className="fas fa-times"}s.blur();t.blur();if(c){l.removeAllRanges();l.addRange(c)}document.body.removeChild(s)});s.addEventListener("mouseleave",t=>{setTimeout(()=>{t.target.querySelector("i").className="fas fa-copy";const e=r.querySelector(".copy .tooltip-content");e&&(e.innerHTML=i)},500)});let c=false;l.addEventListener("click",e=>{const t=e.currentTarget;const o=t.querySelector("i");const s=r.querySelector(".fold .tooltip-content");c=!c;if(c){o.className=a;d.classList.add("folded");r.classList.add("folded");s&&(s.innerHTML=y)}else{o.className="fas fa-chevron-down";d.classList.remove("folded");r.classList.remove("folded");s&&(s.innerHTML=p)}})})};KEEP.utils.initCodeBlockTools()}KEEP.utils.shrinkCodeBlock=()=>{const t=e=>{const t=200;const o=30;const s=e.getBoundingClientRect().height;if(s-t>50){e.style.position="relative";e.style.overflow="hidden";e.style.height=`${t}px`;const l=document.createElement("div");l.setAttribute("class","shrink-line flex-center");l.style.height=`${o}px`;l.style.top=`${t-o}px`;l.addEventListener("click",()=>{e.style.removeProperty("overflow");e.style.overflowY="hidden";e.style.overflowX="auto";e.style.height=`${s}px`;l.style.display="none"});e.appendChild(l)}};document.querySelectorAll("figure.highlight").forEach(e=>{t(e)})};KEEP.utils.shrinkCodeBlock()};
+/* global KEEP */
+
+KEEP.initCodeBlock = () => {
+  if (KEEP.theme_config?.code_block?.tools?.enable === true) {
+    KEEP.utils.initCodeBlockTools = () => {
+      const { style: codeBlockStyle } = KEEP.theme_config?.code_block || {}
+      const { style: codeBlockToolsStyle } = KEEP.theme_config?.code_block?.tools || {}
+
+      const isMac = (codeBlockStyle || codeBlockToolsStyle || 'default') === 'mac'
+      const foldedIconClassName = isMac ? 'fas fa-chevron-left' : 'fas fa-chevron-right'
+      const {
+        copy: copyLang,
+        copied: copiedLang,
+        fold: foldLang,
+        folded: foldedLang
+      } = KEEP.language_code_block
+      const foldDom = `<span class="tool fold tooltip" data-tooltip-content="${foldLang}" data-tooltip-offset-y="-2px"><i class="fas fa-chevron-down"></i></span>`
+
+      document.querySelectorAll('figure.highlight').forEach((element) => {
+        // code language
+        let codeLang = element.classList.length ? element.classList[1].toUpperCase() : ''
+        if (codeLang === 'PLAINTEXT') {
+          codeLang = ''
+        }
+        const highlightContainer = document.createElement('div')
+        highlightContainer.classList.add('highlight-container')
+        if (isMac) {
+          highlightContainer.classList.add('mac')
+        }
+        element.wrap(highlightContainer)
+
+        const codeLangDom = `${codeLang ? '<span class="code-lang">' + codeLang + '</span>' : ''}`
+
+        // code tools
+        highlightContainer.insertAdjacentHTML(
+          'afterbegin',
+          `<div class="code-tools-box">
+        ${isMac ? foldDom + codeLangDom : '<span>' + foldDom + codeLangDom + '</span>'}
+        <span class="tool copy tooltip" data-tooltip-content="${copyLang}" data-tooltip-offset-y="-2px"><i class="fas fa-copy"></i></span>
+      </div>`
+        )
+        const codeToolsBox = element.parentNode.querySelector('.code-tools-box')
+        const copyDom = codeToolsBox.querySelector('.copy')
+        const targetFoldDom = codeToolsBox.querySelector('.fold')
+
+        // copy code
+        copyDom.addEventListener('click', (event) => {
+          const target = event.currentTarget
+          const code = [...element.querySelectorAll('.code .line')]
+            .map((line) => line.innerText)
+            .join('\n')
+          const tta = document.createElement('textarea')
+          tta.style.top = window.scrollY + 'px'
+          tta.style.position = 'absolute'
+          tta.style.opacity = '0'
+          tta.readOnly = true
+          tta.value = code
+          document.body.append(tta)
+          const selection = document.getSelection()
+          const selected = selection.rangeCount > 0 ? selection.getRangeAt(0) : false
+          tta.select()
+          tta.setSelectionRange(0, code.length)
+          tta.readOnly = false
+          const result = document.execCommand('copy')
+
+          const copyIconDom = target.querySelector('i')
+          const copyTooltipDom = codeToolsBox.querySelector('.copy .tooltip-content')
+
+          if (result) {
+            copyIconDom.className = 'fas fa-check'
+            copyTooltipDom && (copyTooltipDom.innerHTML = copiedLang)
+          } else {
+            copyIconDom.className = 'fas fa-times'
+          }
+
+          tta.blur()
+          target.blur()
+          if (selected) {
+            selection.removeAllRanges()
+            selection.addRange(selected)
+          }
+          document.body.removeChild(tta)
+        })
+
+        copyDom.addEventListener('mouseleave', (event) => {
+          setTimeout(() => {
+            event.target.querySelector('i').className = 'fas fa-copy'
+            const copyTooltipDom = codeToolsBox.querySelector('.copy .tooltip-content')
+            copyTooltipDom && (copyTooltipDom.innerHTML = copyLang)
+          }, 500)
+        })
+
+        // fold code block
+        let isFold = false
+        targetFoldDom.addEventListener('click', (event) => {
+          const target = event.currentTarget
+          const icon = target.querySelector('i')
+          const foldTooltipDom = codeToolsBox.querySelector('.fold .tooltip-content')
+          isFold = !isFold
+          if (isFold) {
+            icon.className = foldedIconClassName
+            element.classList.add('folded')
+            codeToolsBox.classList.add('folded')
+            foldTooltipDom && (foldTooltipDom.innerHTML = foldedLang)
+          } else {
+            icon.className = 'fas fa-chevron-down'
+            element.classList.remove('folded')
+            codeToolsBox.classList.remove('folded')
+            foldTooltipDom && (foldTooltipDom.innerHTML = foldLang)
+          }
+        })
+      })
+    }
+    KEEP.utils.initCodeBlockTools()
+  }
+
+  KEEP.utils.shrinkCodeBlock = () => {
+    const shrinkHandle = (codeBox) => {
+      const limitHeight = 200
+      const tipNodeH = 30
+      const codeBoxHeight = codeBox.getBoundingClientRect().height
+      if (codeBoxHeight - limitHeight > 50) {
+        codeBox.style.position = 'relative'
+        codeBox.style.overflow = 'hidden'
+        codeBox.style.height = `${limitHeight}px`
+        const shrinkLineDom = document.createElement('div')
+        shrinkLineDom.setAttribute('class', 'shrink-line flex-center')
+        shrinkLineDom.style.height = `${tipNodeH}px`
+        shrinkLineDom.style.top = `${limitHeight - tipNodeH}px`
+
+        // expand all codes
+        shrinkLineDom.addEventListener('click', () => {
+          codeBox.style.removeProperty('overflow')
+          codeBox.style.overflowY = 'hidden'
+          codeBox.style.overflowX = 'auto'
+          codeBox.style.height = `${codeBoxHeight}px`
+          shrinkLineDom.style.display = 'none'
+        })
+
+        codeBox.appendChild(shrinkLineDom)
+      }
+    }
+
+    document.querySelectorAll('figure.highlight').forEach((element) => {
+      shrinkHandle(element)
+    })
+  }
+  KEEP.utils.shrinkCodeBlock()
+}

@@ -11,7 +11,7 @@
     
     <title>
         
-            k8s集群搭建常见问题汇总 |
+            hexo使用Hexo-asset-image图片无法正常显示的一些解决方案 |
         
         CodeCook
     </title>
@@ -232,7 +232,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        k8s集群搭建常见问题汇总
+                        hexo使用Hexo-asset-image图片无法正常显示的一些解决方案
                     </div>
                 
 
@@ -260,12 +260,12 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2024-05-04 13:50:36</span>
+                <span class="datetime">2024-05-09 10:28:07</span>
             </span>
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Sat May 04 2024 14:29:08 GMT+0800">2024-05-04 14:29:08</span>
+                <span class="datetime" data-updated="Thu May 09 2024 12:45:46 GMT+0800">2024-05-09 12:45:46</span>
             </span>
         
 
@@ -275,7 +275,7 @@
             <span class="post-tag meta-info-item border-box">
                 <ul class="post-tag-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/kubernetes/">kubernetes</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/hexo/">hexo</a></li>
                         
                     
                 </ul>
@@ -285,12 +285,12 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.1k 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.3k 字</span>
             </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>5 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>4 分钟</span>
             </span>
         
         
@@ -311,52 +311,67 @@
                 <div class="post-content keep-markdown-body">
                     
 
-                    <h1>kubeadm搭建Kubernetes集群问题汇总</h1>
-<h2 id="问题一：kubeadm-init-报错-ERROR-CRI-container-runtime-is-not-running需要使用的解决方法">问题一：kubeadm init 报错 [ERROR CRI]: container runtime is not running需要使用的解决方法</h2>
+                    <h1>hexo使用Hexo-asset-image图片无法正常显示的一些解决方案</h1>
+<h2 id="1-问题描述">1. 问题描述</h2>
+<p>在进行个人博客的搭建工作时，</p>
+<h2 id="2-解决方案">2. 解决方案</h2>
+<h3 id="2-1-修改hexo-asset-image的代码（未测试）">2.1 修改hexo-asset-image的代码（未测试）</h3>
+<p>详细步骤参考下面文章：</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/kurapika_030/article/details/130598712" >【Hexo】hexo-asset-image在hexo6.3.0下的使用以及与abbrlink插件的修改-CSDN博客<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="2-2-换用hexo-renderer-marked-it（测试有效）">2.2 换用hexo-renderer-marked-it（测试有效）</h3>
+<p>根据hexo官方中的描述如下</p>
+<p>如果你的Hexo项目中只有少量图片，那最简单的方法就是将它们放在 <code>source/images</code> 文件夹中。然后通过类似于 <code>![](/images/image.jpg)</code> 的方法访问它们。</p>
+<p><strong>文章资源文件夹</strong></p>
+<p>对于那些想要更有规律地提供图片和其他资源以及想要将他们的资源分布在各个文章上的人来说，Hexo也提供了更组织化的方式来管理资源。这个稍微有些复杂但是管理资源非常方便的功能可以通过将 <code>config.yml</code> 文件中的 <code>post_asset_folder</code> 选项设为 <code>true</code> 来打开。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_config.yml</span><br><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
+<p>当资源文件管理功能打开后，Hexo将会在你每一次通过 <code>hexo new [layout] &lt;title&gt;</code> 命令创建新文章时自动创建一个文件夹。这个资源文件夹将会有与这个文章文件一样的名字。将所有与你的文章有关的资源放在这个关联文件夹中之后，你可以通过相对路径来引用它们，这样你就得到了一个更简单而且方便得多的工作流。</p>
+<p><strong>相对路径引用的标签插件</strong></p>
+<p>通过常规的 markdown 语法和相对路径来引用图片和其它资源可能会导致它们在存档页或者主页上显示不正确。在Hexo 2时代，社区创建了很多插件来解决这个问题。但是，随着Hexo 3 的发布，许多新的<a class="link"   target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/tag-plugins#%E5%BC%95%E7%94%A8%E8%B5%84%E6%BA%90" >标签插件<i class="fas fa-external-link-alt"></i></a>被加入到了核心代码中。这使得你可以更简单地在文章中引用你的资源。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_path slug %&#125;</span><br><span class="line">&#123;% asset_img slug [title] %&#125;</span><br><span class="line">&#123;% asset_link slug [title] %&#125;</span><br></pre></td></tr></table></figure>
+<p>比如说：当你打开文章资源文件夹功能后，你把一个 <code>example.jpg</code> 图片放在了你的资源文件夹中，如果通过使用相对路径的常规 markdown 语法 <code>![](example.jpg)</code> ，它将 <em>不会</em> 出现在首页上。（但是它会在文章中按你期待的方式工作）</p>
+<p>正确的引用图片方式是使用下列的标签插件而不是 markdown ：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img example.jpg This is an example image %&#125;</span><br></pre></td></tr></table></figure>
+<p>通过这种方式，图片将会同时出现在文章和主页以及归档页中。</p>
+<p><strong>使用 Markdown 嵌入图片</strong></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-renderer-marked" >hexo-renderer-marked<i class="fas fa-external-link-alt"></i></a> 3.1.0 引入了一个新的选项，其允许你无需使用 <code>asset_img</code> 标签插件就可以在 markdown 中嵌入图片（进入链接后往下翻找进入hexo-renderer-marked-it）</p>
+<p>如需启用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">_config.yml</span><br><span class="line">post_asset_folder: true</span><br><span class="line">images:</span><br><span class="line">    lazyload: false</span><br><span class="line">    prepend_root: true</span><br><span class="line">    post_asset: true</span><br></pre></td></tr></table></figure>
+<p>启用后，资源图片将会被自动解析为其对应文章的路径。<br>
+例如： <code>image.jpg</code> 位置为 <code>/2020/01/02/foo/image.jpg</code> ，这表示它是 <code>/2020/01/02/foo/</code> 文章的一张资源图片， <code>![](image.jpg)</code> 将会被解析为 <code>&lt;img   src=&quot;/2020/01/02/foo/image.jpg&quot; &gt;</code> 。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">注意事项：</span><br><span class="line">如果使用![](image.jpg)这种引用格式的话在markdown编辑器中是无法看到图片的，只能在浏览器中看到</span><br><span class="line">可以使用![](your_essay_name/image.jpg)引用格式这样本地和浏览器中均可看到</span><br></pre></td></tr></table></figure>
+<p>!!!特别注意你的文章名称不能是中文，这样会导致你的图片在浏览器中无法显示。博主亲测 :joy:</p>
+<h3 id="2-3-使用图床">2.3 使用图床</h3>
+<p>如果使用图床的话，这样post_asset_folder就可以不用启用了也不用安装图片转换插件了。博主目前正在使用的就是图床，网上也有人说由于图床有时可能不稳定会导致浏览器无法访问照片，管他呢先用着再说。</p>
+<p>博主使用的图床工具是<a class="link"   target="_blank" rel="noopener" href="https://picx.xpoet.cn/" >PicX<i class="fas fa-external-link-alt"></i></a>，感觉挺好用的不用安装直接在线就可上传图片。网上也有很多别的图床工具例如PicGo等等，配置教程就不一一赘述了，大家可自行百度。</p>
+<p>PicX配置教程如下：</p>
+<h4 id="2-3-1-GitHub-OAuth-授权登录">2.3.1 GitHub OAuth 授权登录</h4>
+<p>不推荐，原因是还需要安装picX，麻烦！！！！！！！！！！！！！</p>
+<h4 id="2-3-2-填写GitHub-Token登录">2.3.2 填写GitHub Token登录</h4>
 <ol>
-<li>kubernetes使用crictl命令管理CRI，查看其配置文件<code>/etc/crictl.yaml</code>。初始情况下没有这个配置文件，这里建议添加这个配置，否则kubeadm init时会报其他错。</li>
+<li>创建一个带有 <code>repo</code> 权限的 GitHub Token点击 <a class="link"   target="_blank" rel="noopener" href="https://github.com/settings/tokens/new" >https://github.com/settings/tokens/new<i class="fas fa-external-link-alt"></i></a> 快速新建 GitHub Token</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#containered做进行时</span><br><span class="line">cat &gt; /etc/crictl.yaml &lt;&lt;EOF</span><br><span class="line">runtime-endpoint: unix:///var/run/containerd/containerd.sock</span><br><span class="line">image-endpoint: unix:///var/run/containerd/containerd.sock</span><br><span class="line">timeout: 0</span><br><span class="line">debug: false</span><br><span class="line">pull-image-on-create: false</span><br><span class="line">EOF</span><br><span class="line">#cri-docker做进行时</span><br><span class="line">cat &gt; /etc/crictl.yaml &lt;&lt;EOF</span><br><span class="line">runtime-endpoint: unix:///var/run/cri-dockerd.sock</span><br><span class="line">image-endpoint: unix:///var/run/cri-dockerd.sock</span><br><span class="line">timeout: 0</span><br><span class="line">debug: false</span><br><span class="line">pull-image-on-create: false</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">#执行crictl images list命令不报错</span><br><span class="line">crictl images list</span><br></pre></td></tr></table></figure>
+<p><img   src="https://github.com/dettry/picx-images-hosting/raw/master/hexo-asset-image-note/image-20240509121100220.1e8f2s8xy5.jpg"  alt="image-20240509121100220"></p>
 <ol start="2">
-<li>查看配置文件：/etc/containerd/config.toml</li>
+<li>
+<p>点击 <strong><code>Generate token</code></strong> 按钮，生成 GitHub Token并保存。</p>
+</li>
+<li>
+<p>图床配置</p>
+</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">修改 disabled_plugins = [&quot;cri&quot;]为 disabled_plugins = []</span><br></pre></td></tr></table></figure>
-<p>重启containerd</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart containerd</span><br></pre></td></tr></table></figure>
-<h2 id="问题二：ERROR-FileContent–proc-sys-net-bridge-bridge-nf-call-iptables">问题二：ERROR FileContent–proc-sys-net-bridge-bridge-nf-call-iptables</h2>
-<p>报错原因：网桥过滤和地址转发功能不可用</p>
-<p>解决方法</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cat &gt; /etc/sysctl.d/kubernetes.conf &lt;&lt; EOF</span><br><span class="line">net.bridge.bridge-nf-call-ip6tables = 1</span><br><span class="line">net.bridge.bridge-nf-call-iptables = 1</span><br><span class="line">net.ipv4.ip_forward = 1</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line"># 然后执行,生效</span><br><span class="line">sysctl --system</span><br></pre></td></tr></table></figure>
-<p>如果执行上述命令报/proc/sys/net/bridge/bridge-nf-call-iptables does not exist错误是因为网桥功能未开启，执行下面的命令即可</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">modprobe br_netfilter</span><br></pre></td></tr></table></figure>
-<h2 id="问题三：kubelet报错failed-to-run-Kubelet-running-with-swap-on-is-not-supported">问题三：kubelet报错failed to run Kubelet: running with swap on is not supported</h2>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">swapoff -a</span><br></pre></td></tr></table></figure>
-<h2 id="问题四：kubeadm-init时报错一些配置文件已存在">问题四：kubeadm init时报错一些配置文件已存在</h2>
-<p>解决方法：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubeadm reset</span><br></pre></td></tr></table></figure>
-<h2 id="问题五：kubeadm-init时，kubelet-报错crictl-runtime-endpoint配置不对">问题五：kubeadm init时，kubelet 报错crictl --runtime-endpoint配置不对</h2>
-<p>从日志看出时crictl命令运行时有问题。unix:///var/run/containerd/containerd.sock不存在。运行crictl命令，发现同样报错。出现报错的原因是crictl下载镜像时使用的是默认端点<code>[unix:///var/run/dockershim.sock unix:///run/containerd/containerd.sock unix:///run/crio/crio.sock unix:///var/run/cri-dockerd.sock]</code>。这些端点废弃了，需要重新指定<code>containerd.sock</code>。后面的报错就是找不到dockershim.sock。</p>
-<p><strong>解决方法：修改crictl文件</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#containered做进行时</span><br><span class="line">cat &gt; /etc/crictl.yaml &lt;&lt;EOF</span><br><span class="line">runtime-endpoint: unix:///var/run/containerd/containerd.sock</span><br><span class="line">image-endpoint: unix:///var/run/containerd/containerd.sock</span><br><span class="line">timeout: 0</span><br><span class="line">debug: false</span><br><span class="line">pull-image-on-create: false</span><br><span class="line">EOF</span><br><span class="line">#cri-docker做进行时</span><br><span class="line">cat &gt; /etc/crictl.yaml &lt;&lt;EOF</span><br><span class="line">runtime-endpoint: unix:///var/run/cri-dockerd.sock</span><br><span class="line">image-endpoint: unix:///var/run/cri-dockerd.sock</span><br><span class="line">timeout: 0</span><br><span class="line">debug: false</span><br><span class="line">pull-image-on-create: false</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">#执行crictl images list命令不报错</span><br><span class="line">crictl images list</span><br></pre></td></tr></table></figure>
-<h2 id="问题六：报Usage-of-CRI-endpoints-without-URL-scheme-is-deprecated-and-can-cause-kubelet-errors-in-the-future-警告">问题六：报Usage of CRI endpoints without URL scheme is deprecated and can cause kubelet errors in the future.警告</h2>
-<p>W0504 10:46:57.238606    6046 initconfiguration.go:120] Usage of CRI endpoints without URL scheme is deprecated and can cause kubelet errors in the future. Automatically prepending scheme “unix” to the “criSocket” with value “/var/run/cri-dockerd.sock”. Please update your configuration!</p>
-<p>如果是contained做进行时就执行：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sudo crictl config \</span><br><span class="line">--set runtime-endpoint=unix:///var/run/containerd/containerd.sock \</span><br><span class="line">--set image-endpoint=unix:///var/run/containerd/containerd.sock</span><br><span class="line">#或者</span><br><span class="line">cat &gt; /etc/crictl.yaml &lt;&lt;EOF</span><br><span class="line">runtime-endpoint: unix:///var/run/containerd/containerd.sock</span><br><span class="line">image-endpoint: unix:///var/run/containerd/containerd.sock</span><br><span class="line">timeout: 0</span><br><span class="line">debug: false</span><br><span class="line">pull-image-on-create: false</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
-<p>如果时cri-docker做进行时就执行：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sudo crictl config \</span><br><span class="line">--set runtime-endpoint=unix:///var/run/cri-dockerd.sock \</span><br><span class="line">--set image-endpoint=unix:///var/run/cri-dockerd.sock</span><br><span class="line">#或者</span><br><span class="line">cat &gt; /etc/crictl.yaml &lt;&lt;EOF</span><br><span class="line">runtime-endpoint: unix:///var/run/cri-dockerd.sock</span><br><span class="line">image-endpoint: unix:///var/run/cri-dockerd.sock</span><br><span class="line">timeout: 0</span><br><span class="line">debug: false</span><br><span class="line">pull-image-on-create: false</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
-<h2 id="问题七：报错pause镜像获取失败">问题七：报错pause镜像获取失败</h2>
-<p>通过log提示执行命令<code>crictl --runtime-endpoint unix:///var/run/containerd/containerd.sock ps -a</code> 发现没有容器在运行。查看containerd的日志，有如下报错：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">journalctl -fu containerd</span><br><span class="line">...</span><br><span class="line">Oct 11 08:35:16 master.k8s containerd[1903]: time=&quot;2023-10-11T08:35:16.760026536+08:00&quot; level=error msg=&quot;RunPodSandbox for &amp;PodSandboxMetadata&#123;Name:kube-apiserver-node,Uid:a5a7c15a42701ab6c9dca630e6523936,Namespace:kube-system,Attempt:0,&#125; failed, error&quot; error=&quot;failed to get sandbox image \&quot;registry.k8s.io/pause:3.6\&quot;: failed to pull image \&quot;registry.k8s.io/pause:3.6\&quot;: failed to pull and unpack image \&quot;registry.k8s.io/pause:3.6\&quot;: failed to resolve reference \&quot;registry.k8s.io/pause:3.6\&quot;: failed to do request: Head \&quot;https://asia-east1-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.6\&quot;: dial tcp 108.177.125.82:443: connect: connection refused&quot;</span><br><span class="line">Oct 11 08:35:18 master.k8s containerd[1903]: time=&quot;2023-10-11T08:35:18.606581001+08:00&quot; level=info msg=&quot;trying next host&quot; error=&quot;failed to do request: Head \&quot;https://asia-east1-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.6\&quot;: dial tcp 108.177.125.82:443: connect: connection refused&quot; host=registry.k8s.io</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<p>报错显示containerd拉去镜像失败。error=&quot;failed to get sandbox image&quot;registry.k8s.io/pause:3.6&quot;</p>
-<p><strong>解决方法：修改containered配置</strong></p>
 <ul>
-<li>运行containerd config dump &gt; /etc/containerd/config.toml 命令，将当前配置导出到文件，并修改sandbox_image配置。</li>
+<li>填写 GitHub Token 之后，点击 <strong><code>一键配置</code></strong> PicX 会自动创建 GitHub 仓库，完成仓库、分支和目录之间的配置，并跳转到图片上传页面。</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">## 修改配置文件/etc/containerd/config.toml， 更改sandbox_image配置</span><br><span class="line">[plugins]</span><br><span class="line">  [plugins.&quot;io.containerd.grpc.v1.cri&quot;]</span><br><span class="line">    sandbox_image = &quot;registry.aliyuncs.com/google_containers/pause:3.9&quot;</span><br></pre></td></tr></table></figure>
+<p><img   src="https://github.com/dettry/picx-images-hosting/raw/master/hexo-asset-image-note/image-20240509121829318.1seutnh8ta.jpg"  alt="image-20240509121829318"></p>
 <ul>
-<li>重启containerd</li>
+<li>
+<p>进入页面后可以选择图床配置新建目录来设置新的图片保存路径，也可以直接上传图片。</p>
+</li>
+<li>
+<p>图床设置中除了图片压缩选择图中的选项外，其余保持默认。</p>
+</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart containerd</span><br><span class="line"></span><br><span class="line">#查看containerd当前配置，验证pause镜像是否生效</span><br><span class="line">containerd config dump | grep pause</span><br></pre></td></tr></table></figure>
+<p><img   src="https://github.com/dettry/picx-images-hosting/raw/master/hexo-asset-image-note/image-20240509123525925.2a4wi93vfm.jpg"  alt="image-20240509123525925"></p>
 
                 </div>
                 
@@ -367,7 +382,7 @@
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/kubernetes/">kubernetes</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/hexo/">hexo</a>
                                     </li>
                                 
                             </ul>
@@ -421,14 +436,14 @@
                             <div class="prev-post">
                                 <a class="prev"
                                    rel="prev"
-                                   href="/2024/05/09/hexo-asset-image-note/"
-                                   title="hexo使用Hexo-asset-image图片无法正常显示的一些解决方案"
+                                   href="/2024/05/09/%E5%8C%BA%E5%9D%97%E9%93%BE/"
+                                   title="区块链环境配置教程"
                                 >
                                     <span class="left arrow-icon flex-center">
                                         <i class="fas fa-chevron-left"></i>
                                     </span>
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">hexo使用Hexo-asset-image图片无法正常显示的一些解决方案</span>
+                                        <span class="post-nav-title-item text-ellipsis">区块链环境配置教程</span>
                                         <span class="post-nav-item">上一篇</span>
                                     </span>
                                 </a>
@@ -438,11 +453,11 @@
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/2024/05/04/k8s%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/"
-                                   title="k8s集群搭建教程（使用cri-docker+flannel）"
+                                   href="/2024/05/04/kubeadm%E6%90%AD%E5%BB%BAKubernetes%E9%9B%86%E7%BE%A4%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/"
+                                   title="k8s集群搭建常见问题汇总"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">k8s集群搭建教程（使用cri-docker+flannel）</span>
+                                        <span class="post-nav-title-item text-ellipsis">k8s集群搭建常见问题汇总</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
@@ -545,7 +560,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">kubeadm搭建Kubernetes集群问题汇总</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E4%B8%80%EF%BC%9Akubeadm-init-%E6%8A%A5%E9%94%99-ERROR-CRI-container-runtime-is-not-running%E9%9C%80%E8%A6%81%E4%BD%BF%E7%94%A8%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-text">问题一：kubeadm init 报错 [ERROR CRI]: container runtime is not running需要使用的解决方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E4%BA%8C%EF%BC%9AERROR-FileContent%E2%80%93proc-sys-net-bridge-bridge-nf-call-iptables"><span class="nav-text">问题二：ERROR FileContent–proc-sys-net-bridge-bridge-nf-call-iptables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E4%B8%89%EF%BC%9Akubelet%E6%8A%A5%E9%94%99failed-to-run-Kubelet-running-with-swap-on-is-not-supported"><span class="nav-text">问题三：kubelet报错failed to run Kubelet: running with swap on is not supported</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%9B%9B%EF%BC%9Akubeadm-init%E6%97%B6%E6%8A%A5%E9%94%99%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%B7%B2%E5%AD%98%E5%9C%A8"><span class="nav-text">问题四：kubeadm init时报错一些配置文件已存在</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E4%BA%94%EF%BC%9Akubeadm-init%E6%97%B6%EF%BC%8Ckubelet-%E6%8A%A5%E9%94%99crictl-runtime-endpoint%E9%85%8D%E7%BD%AE%E4%B8%8D%E5%AF%B9"><span class="nav-text">问题五：kubeadm init时，kubelet 报错crictl --runtime-endpoint配置不对</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%85%AD%EF%BC%9A%E6%8A%A5Usage-of-CRI-endpoints-without-URL-scheme-is-deprecated-and-can-cause-kubelet-errors-in-the-future-%E8%AD%A6%E5%91%8A"><span class="nav-text">问题六：报Usage of CRI endpoints without URL scheme is deprecated and can cause kubelet errors in the future.警告</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E4%B8%83%EF%BC%9A%E6%8A%A5%E9%94%99pause%E9%95%9C%E5%83%8F%E8%8E%B7%E5%8F%96%E5%A4%B1%E8%B4%A5"><span class="nav-text">问题七：报错pause镜像获取失败</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">hexo使用Hexo-asset-image图片无法正常显示的一些解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="nav-text">1. 问题描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-text">2. 解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E4%BF%AE%E6%94%B9hexo-asset-image%E7%9A%84%E4%BB%A3%E7%A0%81%EF%BC%88%E6%9C%AA%E6%B5%8B%E8%AF%95%EF%BC%89"><span class="nav-text">2.1 修改hexo-asset-image的代码（未测试）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E6%8D%A2%E7%94%A8hexo-renderer-marked-it%EF%BC%88%E6%B5%8B%E8%AF%95%E6%9C%89%E6%95%88%EF%BC%89"><span class="nav-text">2.2 换用hexo-renderer-marked-it（测试有效）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E4%BD%BF%E7%94%A8%E5%9B%BE%E5%BA%8A"><span class="nav-text">2.3 使用图床</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-1-GitHub-OAuth-%E6%8E%88%E6%9D%83%E7%99%BB%E5%BD%95"><span class="nav-text">2.3.1 GitHub OAuth 授权登录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-2-%E5%A1%AB%E5%86%99GitHub-Token%E7%99%BB%E5%BD%95"><span class="nav-text">2.3.2 填写GitHub Token登录</span></a></li></ol></li></ol></li></ol></li></ol>
     </div>
 </div>
 
@@ -743,7 +758,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">kubeadm搭建Kubernetes集群问题汇总</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E4%B8%80%EF%BC%9Akubeadm-init-%E6%8A%A5%E9%94%99-ERROR-CRI-container-runtime-is-not-running%E9%9C%80%E8%A6%81%E4%BD%BF%E7%94%A8%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-text">问题一：kubeadm init 报错 [ERROR CRI]: container runtime is not running需要使用的解决方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E4%BA%8C%EF%BC%9AERROR-FileContent%E2%80%93proc-sys-net-bridge-bridge-nf-call-iptables"><span class="nav-text">问题二：ERROR FileContent–proc-sys-net-bridge-bridge-nf-call-iptables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E4%B8%89%EF%BC%9Akubelet%E6%8A%A5%E9%94%99failed-to-run-Kubelet-running-with-swap-on-is-not-supported"><span class="nav-text">问题三：kubelet报错failed to run Kubelet: running with swap on is not supported</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%9B%9B%EF%BC%9Akubeadm-init%E6%97%B6%E6%8A%A5%E9%94%99%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%B7%B2%E5%AD%98%E5%9C%A8"><span class="nav-text">问题四：kubeadm init时报错一些配置文件已存在</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E4%BA%94%EF%BC%9Akubeadm-init%E6%97%B6%EF%BC%8Ckubelet-%E6%8A%A5%E9%94%99crictl-runtime-endpoint%E9%85%8D%E7%BD%AE%E4%B8%8D%E5%AF%B9"><span class="nav-text">问题五：kubeadm init时，kubelet 报错crictl --runtime-endpoint配置不对</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%85%AD%EF%BC%9A%E6%8A%A5Usage-of-CRI-endpoints-without-URL-scheme-is-deprecated-and-can-cause-kubelet-errors-in-the-future-%E8%AD%A6%E5%91%8A"><span class="nav-text">问题六：报Usage of CRI endpoints without URL scheme is deprecated and can cause kubelet errors in the future.警告</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E4%B8%83%EF%BC%9A%E6%8A%A5%E9%94%99pause%E9%95%9C%E5%83%8F%E8%8E%B7%E5%8F%96%E5%A4%B1%E8%B4%A5"><span class="nav-text">问题七：报错pause镜像获取失败</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">hexo使用Hexo-asset-image图片无法正常显示的一些解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="nav-text">1. 问题描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-text">2. 解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E4%BF%AE%E6%94%B9hexo-asset-image%E7%9A%84%E4%BB%A3%E7%A0%81%EF%BC%88%E6%9C%AA%E6%B5%8B%E8%AF%95%EF%BC%89"><span class="nav-text">2.1 修改hexo-asset-image的代码（未测试）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E6%8D%A2%E7%94%A8hexo-renderer-marked-it%EF%BC%88%E6%B5%8B%E8%AF%95%E6%9C%89%E6%95%88%EF%BC%89"><span class="nav-text">2.2 换用hexo-renderer-marked-it（测试有效）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E4%BD%BF%E7%94%A8%E5%9B%BE%E5%BA%8A"><span class="nav-text">2.3 使用图床</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-1-GitHub-OAuth-%E6%8E%88%E6%9D%83%E7%99%BB%E5%BD%95"><span class="nav-text">2.3.1 GitHub OAuth 授权登录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-2-%E5%A1%AB%E5%86%99GitHub-Token%E7%99%BB%E5%BD%95"><span class="nav-text">2.3.2 填写GitHub Token登录</span></a></li></ol></li></ol></li></ol></li></ol>
     </div>
 </div>
 

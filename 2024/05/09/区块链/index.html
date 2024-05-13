@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="一个想当厨子的码农">
+    <meta name="referrer" content="no-referrer">
+
+    
+    <title>
+        
+            区块链环境配置教程 |
+        
+        CodeCook
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/deploy-provider/logo.png">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/font/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/font/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/font/css/brands.min.css">
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"CodeCook","author":"一个想当厨子的码农","avatar":"/images/deploy-provider/avatar.png","logo":"/images/deploy-provider/logo.png","favicon":"/images/deploy-provider/logo.png"},"menu":{"home":"/ || fa-solid fa-house","archives":"/archives || fa-solid fa-box-archive","tags":"/tags || fa-solid fa-tags","links":"/links || fa-solid fa-link","about":"/about || fa-solid fa-user-graduate","tools":"/tools || fa-solid fa-screwdriver-wrench"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"因为热爱，所以分享；|| 因为分享，更加热爱。","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/dettry","weixin":null,"qq":"img | images/deploy-provider/qq.png","weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":true,"hide_header":false},"home":{"category":false,"tag":true,"announcement":null,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/deploy-provider/paycode.png","text":null}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"waline","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":"https://blog-comment-eight-azure.vercel.app","reaction":true,"version":2},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":true,"icp":{"enable":false,"record_code":null,"url":"https://beian.miit.gov.cn"},"site_deploy":{"enable":true,"provider":"github","url":"https://github.com/"},"shields_style":{"enable":false,"custom":[{"link_url":null,"img_url":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{"tools":[{"category":"聊天 AI"},{"name":"ChatGPT","link":"https://chat.openai.com/","description":"OpenAI 旗下 AI 聊天对话工具","image":"/images/tools/chatgpt.svg"},{"name":"Gemini","link":"https://gemini.google.com/app","description":"Google 旗下 AI 聊天对话工具","image":"/images/tools/gemini.svg"},{"category":"图标工具"},{"name":"iconfont","link":"https://www.iconfont.cn/","description":"阿里妈妈MUX倾力打造的矢量图标管理 交流平台","image":"https://img.alicdn.com/imgextra/i4/O1CN01Z5paLz1O0zuCC7osS_!!6000000001644-55-tps-83-82.svg"},{"category":"图床工具"},{"name":"PicX","link":"https://picx.xpoet.cn/#/","description":"是一款基于 GitHub API 开发的图床工具，提供图片上传托管、生成图片链接和常用图片工具箱服务","image":"/images/tools/logo.png"},{"category":"娱乐工具"},{"name":"硬核指南","link":"https://yinghe.app/","description":"专注为你找出每一个高清影视资源网站！","image":"https://pic.rmb.bdstatic.com/bjh/user/d82efa1442b1f2b3575b48ce7fc227b9.png"},{"name":"全历史","link":"https://www.allhistory.com/","description":"以AI知识图谱为核心引擎，通过高度时空化、关联化数据的方式构造及展现数字人文内容，尤其是历史知识。让用户沉浸在纵横开阔、左图右史的（历史、人文、社科等）知识海洋中","image":"https://static.allhistory.com/online/common/img/logo-ah.5721.png"},{"name":"万箭齐发","link":"https://wangyasai.github.io/Stars-Emmision/"},{"name":"迅捷画图","link":"https://www.liuchengtu.com/?zhhxx","description":"让创作更高效，让创意更简单，是我们的使命和目标","image":"https://www.liuchengtu.com/images/logo-header.png"},{"category":"其他杂项"},{"name":"docx转markdown","link":"https://products.groupdocs.app/zh/conversion/docx-to-md#google_vignette","description":"在线转换您的 DOCX 文件。您可以从任何平台（Windows、Linux、macOS）转换您的 DOCX 文档","image":"https://cms.admin.containerize.com/templates/groupdocsapp/images/android-chrome-192x192.png"},"......","......","......"]},"version":"4.1.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.2.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/deploy-provider/logo.png">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               CodeCook
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                    <i class="menu-icon fa-solid fa-house"></i>
+                                
+                                首页
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                    <i class="menu-icon fa-solid fa-box-archive"></i>
+                                
+                                归档
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                
+                                    <i class="menu-icon fa-solid fa-tags"></i>
+                                
+                                标签
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                
+                                    <i class="menu-icon fa-solid fa-link"></i>
+                                
+                                友链
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                
+                                    <i class="menu-icon fa-solid fa-user-graduate"></i>
+                                
+                                关于
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tools"
+                            >
+                                
+                                    <i class="menu-icon fa-solid fa-screwdriver-wrench"></i>
+                                
+                                工具
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >首页</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags"
+                    >标签</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links"
+                    >友链</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about"
+                    >关于</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tools"
+                    >工具</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        区块链环境配置教程
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/deploy-provider/avatar.png">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">一个想当厨子的码农</span>
+                                
+                                    <span class="author-badge">Lv2</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-05-09 15:31:07</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Thu May 09 2024 16:29:06 GMT+0800">2024-05-09 16:29:06</span>
+            </span>
+        
+
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>3.9k 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>16 分钟</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body">
+                    
+
+                    <h1>区块链环境配置教程</h1>
+<h2 id="一、安装CentOS">一、安装CentOS</h2>
+<p>本例中采用虚拟化软件VMware Workstation安装CentOS 7.3（最小安装minimal）。实际应用中，单个服务器一般都设定为单一功能，比如Web服务器，数据库服务器，LDAP服务器等，或者多台服务器分布式部署云计算组件如Hadoop等，单个服务器只需要操作系统的基本功能，因此CentOS最小化安装符合需求，如果需要额外的功能，可以在使用过程中增加。云服务提供商（例如阿里云）提供的云服务器操作系统一般是CentOS minimal。</p>
+<p>本例CentOS安装环境如下：</p>
+<p>主机（Host Machine）：CPU 8核，内存16G，操作系统Windows 10专业版64位</p>
+<p>虚拟化软件：VMware Workstation 14 pro</p>
+<p>到 <a class="link"   target="_blank" rel="noopener" href="https://www.centos.org/" >https://www.centos.org/<i class="fas fa-external-link-alt"></i></a> 下载安装包，本例是CentOS-7-x86_64-DVD-1804.iso</p>
+<h3 id="1-1-安装前VMware设置">1.1 安装前VMware设置</h3>
+<p>1、在VMware菜单“编辑-首选项”可以设置虚拟机默认放置的目录，应选择有足够空间的硬盘分区。本例中是 D:\MyVM（根据自己喜好设置虚拟机存放的位置）</p>
+<p>2、创建虚拟机采用“自定义(高级)”配置，虚拟机名称(自己设置)。</p>
+<p>3、选择安装来源时，载入CentOS的ISO后，VMware会自动识别出操作系统类型和版本。也可以选择“稍后安装操作系统”不采用简易安装，而采用手动安装。</p>
+<p>4、为虚机分配处理器1个，内核数量2个，2G/4G（根据自己电脑内存大小）内存。本例中的这个虚机作为实验环境，将安装多种应用，因此配置较高。实验用虚机一般1核2G内存即可，可租用的轻量级云服务器一般是1核1G内存。实际应用虚机则根据需要分配资源，计算单元则对CPU要求较高，内容服务器则对内存要求较高。</p>
+<p>5、使用NAT网络（默认选项），虚机没有与主机同级的IP地址。</p>
+<p>桥接，NAT，仅主机模式，三者的简要区别如下：</p>
+<p>（1）桥接：虚机与主机在网络中地位一样，虚机拥有与主机同级的独立IP地址。</p>
+<p>（2）NAT：虚机共享主机的IP地址访问Internet，同一个主机中的各个虚机在同一网段中，可互相访问。外部无法直接访问虚机，但可通过主机的转接访问虚机。</p>
+<p>（3）仅主机模式：同一主机中的各个虚机可互相访问，虚机无法访问Internet，外部也无法访问虚机。</p>
+<p>6、I/O类型：默认LSI Logic，磁盘类型：默认SCSI，选择磁盘：创建新虚拟磁盘。</p>
+<p>7、分配20G虚拟磁盘空间，存为单独文件（非默认选项）。</p>
+<p>8、指定虚机磁盘文件，保持默认。</p>
+<p>9、开始安装时，可能会提示要更改BIOS设置以支持64位操作系统之类的，按照提示修改主机BIOS设置，再回来安装。</p>
+<p>注意：一般新的电脑无需设置自动支持64位虚拟化，有些电脑需要在BIOS里设置以支持64位虚拟化，有些更旧的电脑完全不支持64位虚拟化，则无法在VMware里安装64位的操作系统。</p>
+<p><img   src="https://dettry.github.io/picx-images-hosting/linux/image-20240509135320528.8kzwg8l089.jpg"  alt="image-20240509135320528"></p>
+<p>设置完成如上图，点击“完成”开始安装。</p>
+<h3 id="1-2-安装过程">1.2 安装过程</h3>
+<p>注意：安装过程中，鼠标点击虚机界面即可进入虚机操作，组合键ctrl + alt 可使鼠标返回主机。在VMware Workstation窗口的左下角会有提示。</p>
+<p>1、安装过程与在真实裸机上安装一样，初始界面按键“i”选择“Install CentOS”，然后回车进入安装过程。</p>
+<p>2、选择语言：保持默认 English - Englisth (United States)</p>
+<p>3、如下图所示，设置安装选项：</p>
+<p>Date &amp; Time 选到 Asian / Shanghai</p>
+<p>Language Support 可以把中文，简体中文(中国)选上</p>
+<p>Software Selection 保持Minimal Install不变</p>
+<p>Installation Destination 需要点开，默认是自动配置磁盘，不需要修改，直接点“Done”按钮返回即可，黄色的感叹号才会消失，此界面右下角“Begin Installation”按钮才会亮起。</p>
+<p>Network &amp; Hostname 点进去，如果有显示有线网络ens33之类的，打开ON</p>
+<p>KDUMP可以设置为Disabled，保持默认也可以。</p>
+<p>设置完成后，点击右下角“Begin Installation”按钮开始安装。</p>
+<p><img   src="https://dettry.github.io/picx-images-hosting/linux/image-20240509135414360.92py4tmdt3.jpg"  alt="image-20240509135414360"></p>
+<p>4、安装的过程中给root用户设置密码（4geT%not），非必需。如果密码太弱，需点击两次确定才能完成操作。</p>
+<p>新建一个用户admin（密码d00r%Key），勾选“Make this user administrator”，今后的常用登录用户。如果密码太弱，需点击两次确定才能完成操作。</p>
+<p><img   src="https://dettry.github.io/picx-images-hosting/linux/image-20240509135433610.13ll9r79t4.jpg"  alt="image-20240509135433610"></p>
+<p>安装完成，点击“Reboot”重新启动。</p>
+<p>5、系统是最小化安装，没有GUI，默认以admin登录，安装完成。</p>
+<p><img   src="https://dettry.github.io/picx-images-hosting/linux/image-20240509135445611.7awz9x387e.jpg"  alt="image-20240509135445611"></p>
+<p>非必需：虚机屏幕有时候不匹配VMware的窗口，需要拉动窗口的滚动条才能看见全部的虚机屏幕内容。从VMware菜单“电源 - 关闭客户机”，然后再开启此虚机，可解决这个问题。</p>
+<h3 id="1-3-忘记密码">1.3 忘记密码</h3>
+<p><strong>下面是CentOS 7的root密码修改</strong></p>
+<p>开机按esc</p>
+<p>选择CentOS Linux (3.10.0-693…)     按 e 键</p>
+<p><img   src="https://dettry.github.io/picx-images-hosting/linux/image-20240509135456058.7i075cpdmy.jpg"  alt="image-20240509135456058"></p>
+<p><code> </code>光标移动到 linux 16 开头的行，找到 ro 改为 rw init=sysroot/bin/sh</p>
+<p><img   src="https://dettry.github.io/picx-images-hosting/linux/image-20240509135507355.2krqbibltj.jpg"  alt="image-20240509135507355"></p>
+<p>按 Ctrl+x 执行</p>
+<p>进入后输 chroot /sysroot</p>
+<p><img   src="https://dettry.github.io/picx-images-hosting/linux/image-20240509135527785.92py4tml2w.jpg"  alt="image-20240509135527785"></p>
+<p>输入 passwd</p>
+<p>根据提示输入2次新密码</p>
+<p><img   src="https://dettry.github.io/picx-images-hosting/linux/image-20240509135545983.8z6c73tid5.jpg"  alt="image-20240509135545983"></p>
+<p>完成后输入  touch /.autorelabel  更新系统信息</p>
+<p><img   src="https://dettry.github.io/picx-images-hosting/linux/image-20240509135557209.9kfztenynv.jpg"  alt="image-20240509135557209"></p>
+<p>exit</p>
+<p>reboot 重启</p>
+<p><img   src="https://dettry.github.io/picx-images-hosting/linux/image-20240509135609834.7sn0yi4lrw.jpg"  alt="image-20240509135609834"></p>
+<p>重启过程慢，耐心等等</p>
+<p>重启后用新密码登录</p>
+<h2 id="二、基本系统设置">二、基本系统设置</h2>
+<h3 id="2-1-安装后设置">2.1 安装后设置</h3>
+<h4 id="2-1-1-关于用户">2.1.1 关于用户</h4>
+<p>目前系统里有2个用户，root是超级管理员，一般不用此账号登录；admin是常用用户，系统管理员。</p>
+<p>系统提示符为 # 表明用户为root，提示符为$ 表明用户为其他用户。</p>
+<p>每个用户都有自己的主目录，以 ~表示，root用户是 /root，其他用户是 /home/用户名。例如admin输入命令 cd ~ 则会进入其主目录 /home/admin</p>
+<p>admin需要执行root权限的命令时，可以用 sudo 临时获得权限，也可以用 su 切换身份为root。</p>
+<p>使用sudo时，需要输入admin用户自己的密码，使用 su时，需要输入root用户的密码，使用“sudo su”则可以使用admin自己的密码切换到root用户身份，在root用户没有设置密码时，这个方法很好用。</p>
+<p>1、使用sudo不需要输入密码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo visudo -f /etc/sudoers</span><br></pre></td></tr></table></figure>
+<p>如下修改内容，在 %wheel ALL=(ALL) ALL 前加注释符#，去掉 %wheel ALL=(ALL) NOPASSWD:ALL 前的注释符。保存退出就行了。</p>
+<p>这是针对wheel这个组的设置，这个组的成员都不需要输入密码就可以使用sudo，admin是wheel组的成员。</p>
+<p><img   src="https://dettry.github.io/picx-images-hosting/linux/image-20240509135652374.8s34bo7cxp.jpg"  alt="image-20240509135652374"></p>
+<p>传统修改方法是在 root ALL=(ALL) ALL 下面增加一行 admin ALL=(ALL) NOPASSWD:ALL 但在这里会被 %wheel ALL=(ALL) ALL 覆盖掉。原因是在安装过程中，创建 admin用户时使其成为管理员，便成为了 wheel组的成员。系统只允许wheel组的用户来执行“su”命令登录为root用户，而让其他组的用户即使执行“su”、输入了正确的root密码，也无法登录为root用户。</p>
+<p>用visudo编辑sudoers文件是正确的做法。有些做法是增加文件sudoers的写权限，用vi修改，再去掉其写权限。可能会出现文件权限错乱，如下恢复sudoers文件的正确属性：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo chmod 0440 /etc/sudoers</span><br></pre></td></tr></table></figure>
+<h4 id="2-2-2-连接网络，更新系统">2.2.2 连接网络，更新系统</h4>
+<p>查找配置网络文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ls /etc/sysconfig/network-scripts/</span><br></pre></td></tr></table></figure>
+<p>看到有形如 ifcfg-ens33 或 ifcfg-eth0 这样的文件，修改</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vi /etc/sysconfig/network-scripts/ifcfg-ens33</span><br></pre></td></tr></table></figure>
+<p>把 ONBOOT=no 改成 yes 即可，保存退出。</p>
+<p>重启网络服务，应用设置，就可以联网了。安装时选择的是NAT方式，因此是使用主机的IP地址连接到Internet。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl restart network.service</span><br></pre></td></tr></table></figure>
+<p>更新系统</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum update</span><br></pre></td></tr></table></figure>
+<p>首先会查询要更新哪些内容，询问是否OK，确认后开始更新。</p>
+<p>安装必备系统组件perl，gcc，kernel-devel，wget，yum-utils，net-tools</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum -y install perl gcc kernel-devel wget</span><br><span class="line"></span><br><span class="line">$ sudo yum -y install yum-utils</span><br><span class="line"></span><br><span class="line">$ sudo yum -y install net-tools</span><br><span class="line"></span><br><span class="line">yum install -y install unzip zip</span><br></pre></td></tr></table></figure>
+<p>更新完毕后，可以重新启动一下系统</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl reboot</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-网络设置">2.2 网络设置</h3>
+<p>安装net-tools包，以便后续使用ifconfig命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum -y install net-tools</span><br></pre></td></tr></table></figure>
+<h2 id="三、区块链的环境搭建">三、区块链的环境搭建</h2>
+<p>搭建Hyperledger fabric环境</p>
+<p>搭建过程</p>
+<h3 id="3-1-Go安装。（官网地址：https-golang-google-cn-dl-）">3.1 Go安装。（官网地址：<a class="link"   target="_blank" rel="noopener" href="https://golang.google.cn/dl/%20" >https://golang.google.cn/dl/ <i class="fas fa-external-link-alt"></i></a>）</h3>
+<ol>
+<li><strong>下载安装包</strong></li>
+</ol>
+<p>箭头所指地址+自己系统所对应的版本。使用wget命令。</p>
+<p><img   src="https://dettry.github.io/picx-images-hosting/linux/image-20240509140638680.8s34bo7cxs.jpg"  alt="image-20240509140638680"></p>
+<p>以我自己安装的为例，图中椭圆框中即为我所安装版本。</p>
+<p>所以下载命令为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://golang.google.cn/dl/go1.18.5.linux-amd64.tar.gz</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><strong>解压安装包到指定路径</strong></li>
+</ol>
+<p>将下载的压缩包通过下面命令进行解压，一定注意大小写（否则可能导致安装失败）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xzvf go1.18.5.linux-amd64.tar.gz -C /usr/local/</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><strong>设置环境变量</strong></li>
+</ol>
+<p>使用vi /etc/profile 编辑profile文件。</p>
+<p>添加以下内容到profile 文件中（gopath应提前创建好，或者配置完成后别忘了创建）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#go setting</span><br><span class="line"></span><br><span class="line">export GOROOT=/usr/local/go</span><br><span class="line"></span><br><span class="line">export GOPATH=/usr/local/gopath</span><br><span class="line"></span><br><span class="line">export PATH=$PATH:$GOROOT/bin</span><br></pre></td></tr></table></figure>
+<p>保存并退出。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /etc/profile 使文件立即生效。</span><br></pre></td></tr></table></figure>
+<p>在gopath路径下使用mkdir创建三个文件，即mkdir src bin pkg。</p>
+<p>其中bin存放编译后的可执行文件；pkg存放编译后的包文件；src存放项目源文件。</p>
+<p>查看是否安装成功</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go version</span><br></pre></td></tr></table></figure>
+<p>编辑hello.go文件测试.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /usr/local/gopath/src/hello.go</span><br></pre></td></tr></table></figure>
+<p>在hello.go中编写如下代码：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main </span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line"></span><br><span class="line"><span class="string">`    `</span>fmt.Println(<span class="string">&quot;Hello world!&quot;</span>)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>保存并退出。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go run hello.go</span><br></pre></td></tr></table></figure>
+<p>显示Hello world!正确执行。截止到此，安装GO语言环境完成。</p>
+<h3 id="3-2-docker安装">3.2 <a class="link"   target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=docker&amp;spm=1001.2101.3001.7020" >docker<i class="fas fa-external-link-alt"></i></a>安装</h3>
+<p>第一种方式：<strong>curl -fsSL <a class="link"   target="_blank" rel="noopener" href="https://get.docker.com/" >https://get.docker.com/<i class="fas fa-external-link-alt"></i></a> | sh 比较快捷，但是可能会因为无法访问国外的镜像而出错。如果不能安装，就是用第二种方式。</strong></p>
+<p><strong>第二种方式（推荐）：</strong></p>
+<p><strong>如果以前安装过docker，请先卸载或删除所有依赖关系。如果没装过跳过此过程。</strong></p>
+<p>yum list installed | grep docker；查看所有安装的docker程序</p>
+<p>yum -y remove+要删除程序的完整名称（如果安装的比较多，这个过程可能有点麻烦）</p>
+<p>rm -rf /var/lib/docker：删除镜像容器。</p>
+<p>输入Docker version出现如下图所示字样，表明已卸载干净。</p>
+<p><img   src="https://dettry.github.io/picx-images-hosting/linux/image-20240509141144124.4n7izka6v5.jpg"  alt="image-20240509141144124"></p>
+<p><strong>然后开始安装docker</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">yum install -y yum-utils device-mapper-persistent-data lvm2</span><br><span class="line"></span><br><span class="line">yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo #安装阿里镜像源</span><br><span class="line"></span><br><span class="line">yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin #（默认安装的是最新版的）</span><br></pre></td></tr></table></figure>
+<p>查看版本信息</p>
+<p><img   src="https://dettry.github.io/picx-images-hosting/linux/image-20240509141520528.syrgls8xu.jpg"  alt="image-20240509141520528"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl start docker #启动docker</span><br><span class="line">systemctl enable docker #将docker设置为开机自启，以便后续操作不会出错。</span><br></pre></td></tr></table></figure>
+<p>安装docker-compose</p>
+<p>1.下载docker-compose</p>
+<p>命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -SL https://github.com/docker/compose/releases/download/v2.11.2/docker-compose-linux-x86\_64 -o /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure>
+<p>也可以下载别的版本，只需将命令行中v2.11.2换成自己想装的版本即可。</p>
+<p>2. 给docker-compose文件添加可执行权限</p>
+<p>命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure>
+<p>3. 添加软连接</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose</span><br></pre></td></tr></table></figure>
+<p>4.查看版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Docker-compose version</span><br></pre></td></tr></table></figure>
+<h3 id="3-3-nodejs安装">3.3 nodejs安装</h3>
+<p>去这个网站<a class="link"   target="_blank" rel="noopener" href="https://nodejs.org/dist/" >https://nodejs.org/dist/<i class="fas fa-external-link-alt"></i></a>找到自己想安装的版本。</p>
+<p>复制整个网址，使用以下命令下载，例如我下载的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Wget https://nodejs.org/dist/v16.14.1/node-v16.14.1-linux-x64.tar.gz</span><br></pre></td></tr></table></figure>
+<p>2.解压</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tar -xzvf node-v16.14.1-linux-x64.tar.gz -C /usr/local/</span><br><span class="line"></span><br><span class="line">cd /usr/local</span><br><span class="line"></span><br><span class="line">mv node-v10.19.0-linux-x64/ nodejs</span><br></pre></td></tr></table></figure>
+<p>3.vi /etc/profile 增加环境变量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export NODE\_HOME=/usr/local/nodejs</span><br><span class="line"></span><br><span class="line">export PATH=$NODE\_HOME/bin:$PATH</span><br></pre></td></tr></table></figure>
+<p>保存并退出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /etc/profile 使文件立即生效。</span><br></pre></td></tr></table></figure>
+<p>4. 查看版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line"></span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+<p>5.设置淘宝镜像源</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config set registry https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+<p>6.which node、 whereis node   查看有无 node、npm等命令</p>
+<p><img   src="https://dettry.github.io/picx-images-hosting/linux/image-20240509141730932.73trehh2ro.jpg"  alt="image-20240509141730932"></p>
+<p>7. 安装全局 pm2</p>
+<p>npm install -g pm2</p>
+<p>8. 查看 有无 pm2命令 ， pm2 版本</p>
+<p><img   src="https://dettry.github.io/picx-images-hosting/linux/image-20240509141742607.4jnx1uh45h.jpg"  alt="image-20240509141742607"></p>
+<p><strong>下载源代码</strong><br>
+因为要用到git，所以需要先安装git。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install git</span><br></pre></td></tr></table></figure>
+<p><strong>下载相关镜像文件。</strong></p>
+<p>在想要安装<a class="link"   target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=fabric&amp;spm=1001.2101.3001.7020" >fabric<i class="fas fa-external-link-alt"></i></a>的目录下运行以下命令来下载fabric （时间可能会有点久）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/hyperledger/fabric.git</span><br></pre></td></tr></table></figure>
+<p>（git clone克隆时出现fatal: unable to access ‘<a class="link"   target="_blank" rel="noopener" href="https://github.com/%5C*%5C*%E2%80%98:" >https://github.com/\*\*‘:<i class="fas fa-external-link-alt"></i></a> TCP connection resset by peer）</p>
+<p>解决方法：</p>
+<p>##发生这种情况是git设置了代理，取消代理即可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@hya ~]# git config --global --unset http.proxy</span><br><span class="line"></span><br><span class="line">[root@hya ~]# git config --global --unset https.proxy</span><br></pre></td></tr></table></figure>
+<p>下载完成后会得到一个fabric文件夹，进入fabric/scripts目录可以看到一个bootstrap.sh脚本（注意刚开始是没有fabric-samples这个文件夹的，是执行脚本后生成的）</p>
+<p><img   src="https://dettry.github.io/picx-images-hosting/linux/image-20240509142109592.1seutrv03q.jpg"  alt="image-20240509142109592"></p>
+<p>直接执行bootstrap.sh脚本，就会自动进行fabric相关镜像的下载 （时间有点久，如果出现长时间停顿，可能需要重启虚拟机后重新执行脚本）</p>
+<p>当相关镜像全部下载完成后，会自动罗列出下载的内容</p>
+<p><img   src="https://dettry.github.io/picx-images-hosting/linux/image-20240509142120044.8ad2n35zd4.jpg"  alt="image-20240509142120044"></p>
+<p><strong>构建网络</strong></p>
+<p>Fabric 1.x.x版本的应该是进入fabric/scripts/fabric-samples/first-network/</p>
+<p>Fabric2.x.x版本的进入fabric/scripts/fabric-samples/test-network/</p>
+<p>执行以下命令，开启测试网络：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./network.sh down</span><br><span class="line"></span><br><span class="line">./network.sh up</span><br></pre></td></tr></table></figure>
+<p>创建信道</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./network.sh createChannel</span><br></pre></td></tr></table></figure>
+<p>下载go依赖</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export GO111MODULE=on</span><br><span class="line"></span><br><span class="line">go env -w GOPROXY=https://goproxy.cn,direct</span><br></pre></td></tr></table></figure>
+<p>查看是否切换成功：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go env</span><br></pre></td></tr></table></figure>
+<p>进入链码所在路径：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/go/fabric/scripts/fabric-samples/asset-transfer-basic/chaincode-go</span><br></pre></td></tr></table></figure>
+<p>下载依赖：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go mod vendor</span><br></pre></td></tr></table></figure>
+<h2 id="四、在通道上启动链码chaincode（智能合约）">四、在通道上启动链码chaincode（智能合约）</h2>
+<p>切换回 /fabric-samples/test-network 目录：</p>
+<p>./network.sh deployCC -ccn basic -ccp …/asset-transfer-basic/chaincode-go -ccl go</p>
+<p>如果出现下图所示情况：</p>
+<p><img   src="https://dettry.github.io/picx-images-hosting/linux/image-20240509142221121.4jnx1uh45l.jpg"  alt="image-20240509142221121"></p>
+<p>解决方案</p>
+<p><strong>下载并安装EPEL</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</span><br><span class="line"></span><br><span class="line">rpm -ivh epel-release-latest-7.noarch.rpm</span><br></pre></td></tr></table></figure>
+<p># 检查是否已添加至源列表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum repolist</span><br></pre></td></tr></table></figure>
+<p><strong>安装jq</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install jq</span><br></pre></td></tr></table></figure>
+<h2 id="五、与网络交互">五、与网络交互</h2>
+<p>首先确保自己位于test-network目录下。</p>
+<p>进入CLI容器，进行invoke交互，需要几行命令设置CLI的路径：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export PATH=$&#123;PWD&#125;/../bin:$PATH</span><br><span class="line">export FABRIC\_CFG\_PATH=$PWD/../config/</span><br></pre></td></tr></table></figure>
+<p>先设置为org1的环境变量进行交互：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">export CORE\_PEER\_TLS\_ENABLED=true</span><br><span class="line"></span><br><span class="line">export CORE\_PEER\_LOCALMSPID=&quot;Org1MSP&quot;</span><br><span class="line"></span><br><span class="line">export CORE\_PEER\_TLS\_ROOTCERT\_FILE=$&#123;PWD&#125;/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt</span><br><span class="line"></span><br><span class="line">export CORE\_PEER\_MSPCONFIGPATH=$&#123;PWD&#125;/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp</span><br><span class="line"></span><br><span class="line">export CORE\_PEER\_ADDRESS=localhost:7051</span><br></pre></td></tr></table></figure>
+<p>用下面的命令初始化账本：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile &quot;$&#123;PWD&#125;/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem&quot; -C mychannel -n basic --peerAddresses localhost:7051 --tlsRootCertFiles &quot;$&#123;PWD&#125;/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt&quot; --peerAddresses localhost:9051 --tlsRootCertFiles &quot;$&#123;PWD&#125;/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt&quot; -c &#x27;&#123;&quot;function&quot;:&quot;InitLedger&quot;,&quot;Args&quot;:[]&#125;&#x27;</span><br></pre></td></tr></table></figure>
+<p>使用下面的命令查找账本：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer chaincode query -C mychannel -n basic -c &#x27;&#123;&quot;Args&quot;:[&quot;GetAllAssets&quot;]&#125;&#x27;</span><br></pre></td></tr></table></figure>
+<p>通过命令改变一笔资产的所有者：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile &quot;$&#123;PWD&#125;/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem&quot; -C mychannel -n basic --peerAddresses localhost:7051 --tlsRootCertFiles &quot;$&#123;PWD&#125;/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt&quot; --peerAddresses localhost:9051 --tlsRootCertFiles &quot;$&#123;PWD&#125;/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt&quot; -c &#x27;&#123;&quot;function&quot;:&quot;TransferAsset&quot;,&quot;Args&quot;:[&quot;asset6&quot;,&quot;Christopher&quot;]&#125;&#x27;</span><br></pre></td></tr></table></figure>
+<h2 id="六、关闭测试网络">六、关闭测试网络</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./network.sh down</span><br></pre></td></tr></table></figure>
+
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到 QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="分享到微信"
+            data-tooltip-img-tip="微信扫一扫"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到微博"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+                    <div class="reward-author-container border-box flex-center">
+    <div class="reward-btn keep-button border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="打赏作者"
+            data-tooltip-img-url="/images/deploy-provider/paycode.png"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -8px;"
+    >
+        <i class="fa-solid fa-hand-holding-heart"></i>
+    </div>
+</div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2024/05/13/regular_expression_note/"
+                                   title="正则表达式"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">正则表达式</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2024/05/09/hexo-asset-image-note/"
+                                   title="hexo使用Hexo-asset-image图片无法正常显示的一些解决方案"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">hexo使用Hexo-asset-image图片无法正常显示的一些解决方案</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="waline-comment-container">
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@waline/client@v2/dist/waline.css"/>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@waline/client@v2/dist/waline-meta.css"/>
+        <div id="waline-comment"></div>
+        <script 
+                src="//cdn.jsdelivr.net/npm/@waline/client@v2/dist/waline.js"
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        ></script>
+        <script 
+                async
+        >
+          window.KeepCommentPlugin.walineOptions = JSON.parse('{}'.replace(/&#34;/g, '"'))
+
+          window.KeepCommentPlugin.initWaline = () => {
+            if (window?.Waline) {
+              window.KeepCommentPlugin.walineOptions.el = '#waline-comment'
+              window.KeepCommentPlugin.walineOptions.comment = '.post-comments-count'
+              window.KeepCommentPlugin.walineOptions.serverURL = 'https://blog-comment-eight-azure.vercel.app'
+              window.KeepCommentPlugin.walineOptions.lang = 'zh-CN' || 'zh-CN'
+              window.KeepCommentPlugin.walineOptions.reaction = 'true' === 'true'
+              window.Waline.init(window.KeepCommentPlugin.walineOptions)
+              window.KeepCommentPlugin.hideLoading()
+            } else {
+              setTimeout(() => {
+                window.KeepCommentPlugin.initWaline()
+              }, 1000)
+            }
+          }
+
+          if ('false' === 'true') {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initWaline()
+            }, 1200)
+          } else {
+            window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initWaline)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">区块链环境配置教程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%AE%89%E8%A3%85CentOS"><span class="nav-text">一、安装CentOS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E5%AE%89%E8%A3%85%E5%89%8DVMware%E8%AE%BE%E7%BD%AE"><span class="nav-text">1.1 安装前VMware设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B"><span class="nav-text">1.2 安装过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-%E5%BF%98%E8%AE%B0%E5%AF%86%E7%A0%81"><span class="nav-text">1.3 忘记密码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%9F%BA%E6%9C%AC%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AE"><span class="nav-text">二、基本系统设置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E5%AE%89%E8%A3%85%E5%90%8E%E8%AE%BE%E7%BD%AE"><span class="nav-text">2.1 安装后设置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-1-%E5%85%B3%E4%BA%8E%E7%94%A8%E6%88%B7"><span class="nav-text">2.1.1 关于用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-2-%E8%BF%9E%E6%8E%A5%E7%BD%91%E7%BB%9C%EF%BC%8C%E6%9B%B4%E6%96%B0%E7%B3%BB%E7%BB%9F"><span class="nav-text">2.2.2 连接网络，更新系统</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E7%BD%91%E7%BB%9C%E8%AE%BE%E7%BD%AE"><span class="nav-text">2.2 网络设置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="nav-text">三、区块链的环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-Go%E5%AE%89%E8%A3%85%E3%80%82%EF%BC%88%E5%AE%98%E7%BD%91%E5%9C%B0%E5%9D%80%EF%BC%9Ahttps-golang-google-cn-dl-%EF%BC%89"><span class="nav-text">3.1 Go安装。（官网地址：https:&#x2F;&#x2F;golang.google.cn&#x2F;dl&#x2F; ）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-docker%E5%AE%89%E8%A3%85"><span class="nav-text">3.2 docker安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-nodejs%E5%AE%89%E8%A3%85"><span class="nav-text">3.3 nodejs安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%9C%A8%E9%80%9A%E9%81%93%E4%B8%8A%E5%90%AF%E5%8A%A8%E9%93%BE%E7%A0%81chaincode%EF%BC%88%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6%EF%BC%89"><span class="nav-text">四、在通道上启动链码chaincode（智能合约）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E4%B8%8E%E7%BD%91%E7%BB%9C%E4%BA%A4%E4%BA%92"><span class="nav-text">五、与网络交互</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E5%85%B3%E9%97%AD%E6%B5%8B%E8%AF%95%E7%BD%91%E7%BB%9C"><span class="nav-text">六、关闭测试网络</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">一个想当厨子的码农</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+
+            
+                
+                <div class="deploy-info info-item default">
+                    
+                        <a target="_blank" rel="nofollow" href="https://github.com/">
+                    
+                        本站由 <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/brands/github.png"></span> 提供部署服务
+                    
+                        </a>
+                    
+                </div>
+            
+        
+
+        <div class="count-item info-item default">
+            
+                <span class="count-box border-box word">
+                    <span class="item-type border-box">总字数</span>
+                    <span class="item-value border-box word">22.9k</span>
+                </span>
+            
+
+            
+                <span class="count-box border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-box border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">区块链环境配置教程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%AE%89%E8%A3%85CentOS"><span class="nav-text">一、安装CentOS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E5%AE%89%E8%A3%85%E5%89%8DVMware%E8%AE%BE%E7%BD%AE"><span class="nav-text">1.1 安装前VMware设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B"><span class="nav-text">1.2 安装过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-%E5%BF%98%E8%AE%B0%E5%AF%86%E7%A0%81"><span class="nav-text">1.3 忘记密码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%9F%BA%E6%9C%AC%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AE"><span class="nav-text">二、基本系统设置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E5%AE%89%E8%A3%85%E5%90%8E%E8%AE%BE%E7%BD%AE"><span class="nav-text">2.1 安装后设置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-1-%E5%85%B3%E4%BA%8E%E7%94%A8%E6%88%B7"><span class="nav-text">2.1.1 关于用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-2-%E8%BF%9E%E6%8E%A5%E7%BD%91%E7%BB%9C%EF%BC%8C%E6%9B%B4%E6%96%B0%E7%B3%BB%E7%BB%9F"><span class="nav-text">2.2.2 连接网络，更新系统</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E7%BD%91%E7%BB%9C%E8%AE%BE%E7%BD%AE"><span class="nav-text">2.2 网络设置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="nav-text">三、区块链的环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-Go%E5%AE%89%E8%A3%85%E3%80%82%EF%BC%88%E5%AE%98%E7%BD%91%E5%9C%B0%E5%9D%80%EF%BC%9Ahttps-golang-google-cn-dl-%EF%BC%89"><span class="nav-text">3.1 Go安装。（官网地址：https:&#x2F;&#x2F;golang.google.cn&#x2F;dl&#x2F; ）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-docker%E5%AE%89%E8%A3%85"><span class="nav-text">3.2 docker安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-nodejs%E5%AE%89%E8%A3%85"><span class="nav-text">3.3 nodejs安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%9C%A8%E9%80%9A%E9%81%93%E4%B8%8A%E5%90%AF%E5%8A%A8%E9%93%BE%E7%A0%81chaincode%EF%BC%88%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6%EF%BC%89"><span class="nav-text">四、在通道上启动链码chaincode（智能合约）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E4%B8%8E%E7%BD%91%E7%BB%9C%E4%BA%A4%E4%BA%92"><span class="nav-text">五、与网络交互</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E5%85%B3%E9%97%AD%E6%B5%8B%E8%AF%95%E7%BD%91%E7%BB%9C"><span class="nav-text">六、关闭测试网络</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/header-shrink.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/back2top.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/toggle-theme.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/code-block.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/main.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/libs/anime.min.js"></script>
+
+<!-- local-search -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/local-search.min.js"></script>
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/post/post-helper.min.js"></script>
+
+        <!-- toc -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/post/toc.min.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/post/share.min.js"></script>
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

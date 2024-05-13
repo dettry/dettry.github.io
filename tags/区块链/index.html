@@ -11,7 +11,7 @@
     
     <title>
         
-            关于 |
+            标签: 区块链 |
         
         CodeCook
     </title>
@@ -99,7 +99,7 @@
                     
                         
                         <li class="menu-item">
-                            <a class=""
+                            <a class="active"
                                href="/tags"
                             >
                                 
@@ -123,7 +123,7 @@
                     
                         
                         <li class="menu-item">
-                            <a class="active"
+                            <a class=""
                                href="/about"
                             >
                                 
@@ -182,7 +182,7 @@
             
                 
                 <li class="drawer-menu-item flex-center">
-                    <a class=""
+                    <a class="active"
                        href="/tags"
                     >标签</a>
                 </li>
@@ -196,7 +196,7 @@
             
                 
                 <li class="drawer-menu-item flex-center">
-                    <a class="active"
+                    <a class=""
                        href="/about"
                     >关于</a>
                 </li>
@@ -223,114 +223,38 @@
             <div class="main-content border-box">
                 
 
-                    
-<div class="fade-in-down-animation">
-    <div class="page-template-container border-box keep-container ">
-        <!-- page top -->
-        
-
-        <!-- page bottom -->
-        <div class="page-template-bottom border-box">
-            <!-- use page template -->
+                    <div class="fade-in-down-animation">
+    <div class="tag-container border-box">
+        <div class="tag-name"><i class="fas fa-hashtag"></i>&nbsp;区块链
+        </div>
+        <div class="tag-post-list">
             
-
-            <!-- page content -->
-            <div class="page-content border-box keep-markdown-body ">
-                
-                    <h2 id="关于我">关于我</h2>
-<p>JAVA开发工程师</p>
-<h2 id="联系我">联系我</h2>
-
-                
+<div class="archive-list-container border-box">
+    
+        <section class="archive-item border-box">
+            <div class="archive-item-header border-box">
+                <span class="archive-year">2024</span>
             </div>
-
-            <!-- comment plugin -->
-            
+            <ul class="archive-item-body border-box">
                 
-
-
-    <div class="comments-container border-box">
-        <div id="comments-anchor" class="comment-area-title border-box">
-            <i class="fas fa-comments"></i>&nbsp;评论
-        </div>
-        <div class="comment-plugin-fail border-box">
-    <span class="fail-tip">评论插件加载失败</span>
-    <button class="reload keep-button">点击重新加载</button>
+                    <li class="post-item border-box">
+                        <span class="post-date border-box">05-09</span>
+                        <a class="post-title border-box text-ellipsis"
+                           href="/2024/05/09/%E5%8C%BA%E5%9D%97%E9%93%BE/"
+                        >区块链环境配置教程</a>
+                    </li>
+                
+            </ul>
+        </section>
+    
 </div>
-<div class="comment-plugin-loading flex-center border-box">
-    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
-    <span class="load-tip">正在加载评论插件</span>
-</div>
-<script data-pjax>
-  window.KeepCommentPlugin = {}
-  window.KeepCommentPlugin.hideLoading = () => {
-    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
-    cplDom.style.display = 'none'
-  }
-  window.KeepCommentPlugin.loadFailHandle = () => {
-    window.KeepCommentPlugin.hideLoading()
-    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
-    cpfDom.style.display = 'flex'
-    cpfDom.querySelector('.reload').addEventListener('click', () => {
-      window.location.reload()
-    })
-  }
-</script>
 
-        
-            
-
-    <div class="waline-comment-container">
-        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@waline/client@v2/dist/waline.css"/>
-        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@waline/client@v2/dist/waline-meta.css"/>
-        <div id="waline-comment"></div>
-        <script 
-                src="//cdn.jsdelivr.net/npm/@waline/client@v2/dist/waline.js"
-                async
-                onerror="window.KeepCommentPlugin.loadFailHandle()"
-        ></script>
-        <script 
-                async
-        >
-          window.KeepCommentPlugin.walineOptions = JSON.parse('{}'.replace(/&#34;/g, '"'))
-
-          window.KeepCommentPlugin.initWaline = () => {
-            if (window?.Waline) {
-              window.KeepCommentPlugin.walineOptions.el = '#waline-comment'
-              window.KeepCommentPlugin.walineOptions.comment = '.post-comments-count'
-              window.KeepCommentPlugin.walineOptions.serverURL = 'https://blog-comment-eight-azure.vercel.app'
-              window.KeepCommentPlugin.walineOptions.lang = 'zh-CN' || 'zh-CN'
-              window.KeepCommentPlugin.walineOptions.reaction = 'true' === 'true'
-              window.Waline.init(window.KeepCommentPlugin.walineOptions)
-              window.KeepCommentPlugin.hideLoading()
-            } else {
-              setTimeout(() => {
-                window.KeepCommentPlugin.initWaline()
-              }, 1000)
-            }
-          }
-
-          if ('false' === 'true') {
-            setTimeout(() => {
-              window.KeepCommentPlugin.initWaline()
-            }, 1200)
-          } else {
-            window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initWaline)
-          }
-        </script>
-    </div>
-
-
-        
-    </div>
-
-
-
-
-
-            
         </div>
     </div>
+    
+
+
+
 </div>
 
 
