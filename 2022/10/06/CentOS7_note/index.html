@@ -1,0 +1,2316 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="一个想当厨子的码农">
+    <meta name="referrer" content="no-referrer">
+
+    
+    <title>
+        
+            CentOS7学习笔记 |
+        
+        CodeCook
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/deploy-provider/logo.png">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/font/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/font/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/font/css/brands.min.css">
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"CodeCook","author":"一个想当厨子的码农","avatar":"/images/deploy-provider/avatar.png","logo":"/images/deploy-provider/logo.png","favicon":"/images/deploy-provider/logo.png"},"menu":{"home":"/ || fa-solid fa-house","archives":"/archives || fa-solid fa-box-archive","tags":"/tags || fa-solid fa-tags","categories":"/categories || fa-solid fa-layer-group","links":"/links || fa-solid fa-link","about":"/about || fa-solid fa-user-graduate","tools":"/tools || fa-solid fa-screwdriver-wrench"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"因为热爱，所以分享；|| 因为分享，更加热爱。","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/dettry","weixin":null,"qq":"img | images/deploy-provider/qq.png","weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":true,"hide_header":false},"home":{"category":false,"tag":true,"announcement":null,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/deploy-provider/paycode.png","text":null}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"waline","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":"https://blog-comment-eight-azure.vercel.app","reaction":true,"version":2},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":true,"icp":{"enable":false,"record_code":null,"url":"https://beian.miit.gov.cn"},"site_deploy":{"enable":true,"provider":"github","url":"https://github.com/"},"shields_style":{"enable":false,"custom":[{"link_url":null,"img_url":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{"tools":[{"category":"聊天 AI"},{"name":"ChatGPT","link":"https://chat.openai.com/","description":"OpenAI 旗下 AI 聊天对话工具","image":"/images/tools/chatgpt.svg"},{"name":"Gemini","link":"https://gemini.google.com/app","description":"Google 旗下 AI 聊天对话工具","image":"/images/tools/gemini.svg"},{"category":"图标工具"},{"name":"iconfont","link":"https://www.iconfont.cn/","description":"阿里妈妈MUX倾力打造的矢量图标管理 交流平台","image":"https://img.alicdn.com/imgextra/i4/O1CN01Z5paLz1O0zuCC7osS_!!6000000001644-55-tps-83-82.svg"},{"category":"图床工具"},{"name":"PicX","link":"https://picx.xpoet.cn/#/","description":"是一款基于 GitHub API 开发的图床工具，提供图片上传托管、生成图片链接和常用图片工具箱服务","image":"/images/tools/logo.png"},{"category":"娱乐工具"},{"name":"硬核指南","link":"https://yinghe.app/","description":"专注为你找出每一个高清影视资源网站！","image":"https://pic.rmb.bdstatic.com/bjh/user/d82efa1442b1f2b3575b48ce7fc227b9.png"},{"name":"全历史","link":"https://www.allhistory.com/","description":"以AI知识图谱为核心引擎，通过高度时空化、关联化数据的方式构造及展现数字人文内容，尤其是历史知识。让用户沉浸在纵横开阔、左图右史的（历史、人文、社科等）知识海洋中","image":"https://static.allhistory.com/online/common/img/logo-ah.5721.png"},{"name":"万箭齐发","link":"https://wangyasai.github.io/Stars-Emmision/"},{"name":"迅捷画图","link":"https://www.liuchengtu.com/?zhhxx","description":"让创作更高效，让创意更简单，是我们的使命和目标","image":"https://www.liuchengtu.com/images/logo-header.png"},{"category":"其他杂项"},{"name":"docx转markdown","link":"https://products.groupdocs.app/zh/conversion/docx-to-md#google_vignette","description":"在线转换您的 DOCX 文件。您可以从任何平台（Windows、Linux、macOS）转换您的 DOCX 文档","image":"https://cms.admin.containerize.com/templates/groupdocsapp/images/android-chrome-192x192.png"},{"name":"docx转PDF","link":"https://cdkm.com/cn/docx-to-pdf","description":"自认为最好用的word转PDF工具","image":"/images/tools/转换.svg"},"......","......","......"]},"version":"4.1.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.2.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/deploy-provider/logo.png">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               CodeCook
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                    <i class="menu-icon fa-solid fa-house"></i>
+                                
+                                首页
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                    <i class="menu-icon fa-solid fa-box-archive"></i>
+                                
+                                归档
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                
+                                    <i class="menu-icon fa-solid fa-tags"></i>
+                                
+                                标签
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                
+                                    <i class="menu-icon fa-solid fa-layer-group"></i>
+                                
+                                分类
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                
+                                    <i class="menu-icon fa-solid fa-link"></i>
+                                
+                                友链
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                
+                                    <i class="menu-icon fa-solid fa-user-graduate"></i>
+                                
+                                关于
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tools"
+                            >
+                                
+                                    <i class="menu-icon fa-solid fa-screwdriver-wrench"></i>
+                                
+                                工具
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >首页</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags"
+                    >标签</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories"
+                    >分类</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links"
+                    >友链</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about"
+                    >关于</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tools"
+                    >工具</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        CentOS7学习笔记
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/deploy-provider/avatar.png">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">一个想当厨子的码农</span>
+                                
+                                    <span class="author-badge">Lv2</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2022-10-06 18:28:07</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Tue May 21 2024 14:08:17 GMT+0800">2024-05-21 14:08:17</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/Linux%E4%B8%93%E9%A2%98/">Linux专题</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Linux/">Linux</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>24.5k 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>97 分钟</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body">
+                    
+
+                    <h1><strong>一、安装CentOS</strong></h1>
+<h1><strong>二、基本系统设置</strong></h1>
+<p>一二详细步骤参考我的另一篇文章：</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://dettry.github.io/2024/05/09/%E5%8C%BA%E5%9D%97%E9%93%BE/" >区块链环境配置教程 | CodeCook (dettry.github.io)<i class="fas fa-external-link-alt"></i></a></p>
+<h1><strong>三、远程SSH登录</strong></h1>
+<h2 id="3-1-使用账号密码登录"><strong>3.1 使用账号密码登录</strong></h2>
+<h2 id="3-2-设置SSH通过密钥登录"><strong>3.2 设置SSH通过密钥登录</strong></h2>
+<p>我们一般使用 PuTTY 等 SSH 客户端来远程管理 Linux 服务器。但是，一般的密码方式登录，容易有密码被暴力破解的问题。所以，一般我们会将 SSH 的端口设置为默认的 22 以外的端口，或者禁用 root 账户登录。其实，有一个更好的办法来保证安全，而且让你可以放心地用 root 账户从远程登录——那就是通过密钥方式登录。</p>
+<p>密钥形式登录的原理是：利用密钥生成器制作一对密钥——一只公钥和一只私钥。将公钥添加到服务器的某个账户上，然后在客户端利用私钥即可完成认证并登录。这样一来，没有私钥，任何人都无法通过 SSH 暴力破解你的密码来远程登录到系统。此外，如果将公钥复制到其他账户甚至主机，利用私钥也可以登录。</p>
+<p>下面来讲解如何在 Linux 服务器上制作密钥对，将公钥添加给账户，设置 SSH，最后通过客户端登录。</p>
+<h3 id="3-2-1-制作密钥对"><strong>3.2.1 制作密钥对</strong></h3>
+<p>首先在服务器上制作密钥对。首先用密码登录到你打算使用密钥登录的账户，然后执行以下命令：</p>
+<p>[root@host ~]$ ssh-keygen  &lt;== 建立密钥对</p>
+<p>Generating public/private rsa key pair.</p>
+<p>Enter file in which to save the key (/root/.ssh/id_rsa): &lt;== 按 Enter</p>
+<p>Created directory ‘/root/.ssh’.</p>
+<p>Enter passphrase (empty for no passphrase): &lt;== 输入密钥锁码，或直接按 Enter 留空</p>
+<p>Enter same passphrase again: &lt;== 再输入一遍密钥锁码</p>
+<p>Your identification has been saved in /root/.ssh/id_rsa. &lt;== 私钥</p>
+<p>Your public key has been saved in /root/.ssh/id_rsa.pub. &lt;== 公钥</p>
+<p>The key fingerprint is:</p>
+<p>0f:d3:e7:1a:1c:bd:5c:03:f1:19:f1:22:df:9b:cc:08 root@host</p>
+<p>密钥锁码在使用私钥时必须输入，这样就可以保护私钥不被盗用。当然，也可以留空，实现无密码登录。</p>
+<p>现在，在 root 用户的家目录中生成了一个 .ssh 的隐藏目录，内含两个密钥文件。id_rsa 为私钥，id_rsa.pub 为公钥。</p>
+<h3 id="3-2-2-在服务器上安装公钥"><strong>3.2.2 在服务器上安装公钥</strong></h3>
+<p>键入以下命令，在服务器上安装公钥：</p>
+<p>[root@host ~]$ cd .ssh</p>
+<p>[root@host .ssh]$ cat id_rsa.pub &gt;&gt; authorized_keys</p>
+<p>如此便完成了公钥的安装。为了确保连接成功，请保证以下文件权限正确：</p>
+<p>[root@host .ssh]$ chmod 600 authorized_keys</p>
+<p>[root@host .ssh]$ chmod 700 ~/.ssh</p>
+<h3 id="3-2-3-设置-SSH，打开密钥登录功能"><strong>3.2.3 设置 SSH，打开密钥登录功能</strong></h3>
+<p>编辑 /etc/ssh/sshd_config 文件，进行如下设置：</p>
+<p>RSAAuthentication yes</p>
+<p>PubkeyAuthentication yes</p>
+<p>另外，请留意 root 用户能否通过 SSH 登录：</p>
+<p>PermitRootLogin yes</p>
+<p>当你完成全部设置，并以密钥方式登录成功后，再禁用密码登录：</p>
+<p>PasswordAuthentication no</p>
+<p>最后，重启 SSH 服务：</p>
+<p>[root@host .ssh]$ service sshd restart</p>
+<h3 id="3-2-4-将私钥下载到客户端，然后转换为PuTTY能使用的格式"><strong>3.2.4 将私钥下载到客户端，然后转换为PuTTY能使用的格式</strong></h3>
+<p>使用 WinSCP、SFTP 等工具将私钥文件 id_rsa 下载到客户端机器上。然后打开 PuTTYGen，单击 Actions 中的 Load 按钮，载入你刚才下载到的私钥文件。如果你刚才设置了密钥锁码，这时则需要输入。</p>
+<p>载入成功后，PuTTYGen 会显示密钥相关的信息。在 Key comment 中键入对密钥的说明信息，然后单击 Save private key 按钮即可将私钥文件存放为 PuTTY 能使用的格式。</p>
+<p>今后，当你使用 PuTTY 登录时，可以在左侧的 Connection -&gt; SSH -&gt; Auth 中的 Private key file for authentication: 处选择你的私钥文件，然后即可登录了，过程中只需输入密钥锁码即可。</p>
+<h2 id="3-3-配置防火墙"><strong>3.3 配置防火墙</strong></h2>
+<h3 id="centos7-Firewall防火墙开启80端口"><strong>centos7 Firewall防火墙开启80端口</strong></h3>
+<p>centos7 默认是FirewallD 提供支持网络/防火墙区域(zone)定义网络链接以及接口安全等级的动态防火墙管理工具，利用FirewallD开启80端口操作如下：</p>
+<p>开启80端口</p>
+<p>$ sudo firewall-cmd --zone=public --add-port=80/tcp --permanent</p>
+<p>出现success表明添加成功</p>
+<p>命令含义：</p>
+<p>–zone #作用域</p>
+<p>–add-port=80/tcp #添加端口，格式为：端口/通讯协议</p>
+<p>–permanent #永久生效，没有此参数重启后失效</p>
+<p>重启防火墙</p>
+<p>systemctl restart firewalld.service</p>
+<p>1、运行、停止、禁用firewalld</p>
+<p>启动：# systemctl start firewalld</p>
+<p>查看状态：# systemctl status firewalld 或者 firewall-cmd –state</p>
+<p>停止：# systemctl disable firewalld</p>
+<p>禁用：# systemctl stop firewalld</p>
+<p>2、配置firewalld</p>
+<p>查看版本：$ firewall-cmd –version</p>
+<p>查看帮助：$ firewall-cmd –help</p>
+<p>查看设置：</p>
+<p>显示状态：$ firewall-cmd –state</p>
+<p>查看区域信息: $ firewall-cmd –get-active-zones</p>
+<p>查看指定接口所属区域：$ firewall-cmd –get-zone-of-interface=eth0</p>
+<p>拒绝所有包：# firewall-cmd –panic-on</p>
+<p>取消拒绝状态：# firewall-cmd –panic-off</p>
+<p>查看是否拒绝：$ firewall-cmd –query-panic</p>
+<p>更新防火墙规则：# firewall-cmd –reload</p>
+<p>firewall-cmd –complete-reload</p>
+<p>两者的区别就是第一个无需断开连接，就是firewalld特性之一动态添加规则，第二个需要断开连接，类似重启服务</p>
+<p>将接口添加到区域，默认接口都在public</p>
+<p>firewall-cmd –zone=public –add-interface=eth0</p>
+<p>永久生效再加上 –permanent 然后reload防火墙</p>
+<p>设置默认接口区域</p>
+<p>firewall-cmd –set-default-zone=public</p>
+<p>立即生效无需重启</p>
+<p>打开端口（貌似这个才最常用）</p>
+<p>查看所有打开的端口：</p>
+<p>firewall-cmd –zone=dmz –list-ports</p>
+<p>加入一个端口到区域：</p>
+<p>firewall-cmd –zone=dmz –add-port=8080/tcp</p>
+<p>若要永久生效方法同上</p>
+<p>打开一个服务，类似于将端口可视化，服务需要在配置文件中添加，/etc/firewalld 目录下有services文件夹，这个不详细说了，详情参考文档</p>
+<p>firewall-cmd –zone=work –add-service=smtp</p>
+<p>移除服务</p>
+<p>firewall-cmd –zone=work –remove-service=smtp</p>
+<p>原文链接：<a class="link"   target="_blank" rel="noopener" href="http://www.zhaokeli.com/article/6321.html" >http://www.zhaokeli.com/article/6321.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>附：systemctl命令如下 <br>
+systemctl is-enabled iptables.service <br>
+systemctl is-enabled servicename.service #查询服务是否开机启动 <br>
+systemctl enable *.service #开机运行服务 <br>
+systemctl disable *.service #取消开机运行 <br>
+systemctl start *.service #启动服务 <br>
+systemctl stop *.service #停止服务 <br>
+systemctl restart *.service #重启服务 <br>
+systemctl reload *.service #重新加载服务配置文件 <br>
+systemctl status *.service #查询服务运行状态 <br>
+systemctl –failed #显示启动失败的服务</p>
+<p>注：*代表某个服务的名字，如http的服务名为httpd</p>
+<h3 id="CentOS6防火墙开启80，3306端口"><strong>CentOS6防火墙开启80，3306端口</strong></h3>
+<p>$ sudo vi /etc/sysconfig/iptables</p>
+<p>-A INPUT -m state –state NEW -m tcp -p tcp –dport 80 -j ACCEPT（允许80端口通过防火墙）</p>
+<p>-A INPUT -m state –state NEW -m tcp -p tcp –dport 3306 -j ACCEPT（允许3306端口通过防火墙）</p>
+<p>特别提示：很多网友把这两条规则添加到防火墙配置的最后一行，导致防火墙启动失败，正确的应该是添加到默认的22端口这条规则的下面</p>
+<p>添加好之后防火墙规则如下所示：</p>
+<p>代码如下：</p>
+<h1>Firewall configuration written by system-config-firewall</h1>
+<h1>Manual customization of this file is not recommended.</h1>
+<p>*filter</p>
+<p>:INPUT ACCEPT [0:0]</p>
+<p>:FORWARD ACCEPT [0:0]</p>
+<p>:OUTPUT ACCEPT [0:0]</p>
+<p>-A INPUT -m state –state ESTABLISHED,RELATED -j ACCEPT</p>
+<p>-A INPUT -p icmp -j ACCEPT</p>
+<p>-A INPUT -i lo -j ACCEPT</p>
+<p>-A INPUT -m state –state NEW -m tcp -p tcp –dport 22 -j ACCEPT</p>
+<p>-A INPUT -m state –state NEW -m tcp -p tcp –dport 80 -j ACCEPT</p>
+<p>-A INPUT -m state –state NEW -m tcp -p tcp –dport 3306 -j ACCEPT</p>
+<p>-A INPUT -j REJECT –reject-with icmp-host-prohibited</p>
+<p>-A FORWARD -j REJECT –reject-with icmp-host-prohibited</p>
+<p>COMMIT</p>
+<p>最后重启防火墙使配置生效</p>
+<p>$ sudo /etc/init.d/iptables restart</p>
+<h1><strong>附录：Linux常用命令</strong></h1>
+<h2 id="1、用户和组"><strong>1、用户和组</strong></h2>
+<p>一、LINUX(UBUNTU/CENTOS)用户添加删除修改</p>
+<p>linux 创建用户</p>
+<p>1、建用户：</p>
+<p>adduser web                             //新建web用户</p>
+<p>useradd web    -m							#添加web 用户</p>
+<p>passwd web                               //给web用户设置密码</p>
+<p>useradd web -g admin -n -m //新建web用户并指定用户组为 admin用户组,并自动建立登录目录</p>
+<p>passwd web //给web 用户设置密码</p>
+<p>useradd(选项)(参数)</p>
+<p>-c&lt;备注&gt;：加上备注文字。备注文字会保存在passwd的备注栏位中；</p>
+<p>-d&lt;登入目录&gt;：指定用户登入时的启始目录；</p>
+<p>-D：变更预设值；</p>
+<p>-e&lt;有效期限&gt;：指定帐号的有效期限；</p>
+<p>-f&lt;缓冲天数&gt;：指定在密码过期后多少天即关闭该帐号；</p>
+<p>-g&lt;群组&gt;：指定用户所属的群组；</p>
+<p>-G&lt;群组&gt;：指定用户所属的附加群组；</p>
+<p>-m：自动建立用户的登入目录；</p>
+<p>-M：不要自动建立用户的登入目录；</p>
+<p>-n：取消建立以用户名称为名的群组；</p>
+<p>-r：建立系统帐号；</p>
+<p>-s：指定用户登入后所使用的shell；</p>
+<p>-u：指定用户id。</p>
+<p>2、给已有的用户增加工作组</p>
+<p>usermod -G admin web					#给web用户设置admin附属用户组</p>
+<p>#给用户设置添加多个用户组</p>
+<p>usermod -g web -G admin,www web					#给web用户设置主用户组web组，admin,www附属用户组</p>
+<p>gpasswd -a web admin				#给web用户设置admin用户组</p>
+<p>3、新建用户同时增加工作组</p>
+<p>useradd -g admin web                      //新建web用户并增加到admin工作组</p>
+<p>注：：-g 所属组 -d 家目录 -s 所用的SHELL</p>
+<p>4、临时关闭</p>
+<p>方法一</p>
+<p>/etc/shadow文件中属于该用户的行的第二个字段（密码）前面加上*就可以了。想恢复该用户，去掉*即可。</p>
+<p>方法二</p>
+<p>使用命令关闭用户账号：</p>
+<p>passwd web –l</p>
+<p>重新释放：</p>
+<p>passwd web –u</p>
+<p>5、永久性删除用户账号</p>
+<p>userdel web</p>
+<p>groupdel web</p>
+<p>usermod –G web web   （强制删除该用户的主目录和主目录下的所有文件和子目录）</p>
+<p>7、从组中删除用户</p>
+<p>编辑/etc/group 找到用户组admin那一行，删除用户名web</p>
+<p>或者用命令</p>
+<p>gpasswd -d A web</p>
+<p>8、显示用户信息</p>
+<p>id user</p>
+<p>cat /etc/passwd</p>
+<p>二、用户组 LINUX(UBUNTU/CENTOS) 添加删除修改</p>
+<p>1、建工作组</p>
+<p>groupadd admin                          //新建admin工作组</p>
+<p>2、修改用户组</p>
+<p>groupmod -n newadmin admin				#修改admin用户组名称改为newadmin</p>
+<p>3、删除用户组</p>
+<p>groupdel admin							#删除admin用户组</p>
+<p>4.查看用户的用户组信息</p>
+<p>groups web</p>
+<h2 id="2、目录和文件cd，ls，ll，rmdir，mkdir，pwd"><strong>2、目录和文件cd，ls，ll，rmdir，mkdir，pwd</strong></h2>
+<p>\1)        pwd命令</p>
+<p>用途：查看工作目录（PrintWorking Directory）</p>
+<p>例：</p>
+<p>[root@web03 home]# pwd</p>
+<p>/home</p>
+<p>pwd命令一般单独使用，无需特别注意命令格式；</p>
+<p>\2)        cd命令</p>
+<p>用途：切换工作目录（Change Directory）</p>
+<p>格式：cd  [目录位置]</p>
+<p>例：</p>
+<p><code>         </code>[root@localhost~]# cd /etc/httpd</p>
+<p>[root@localhost httpd]# cd conf</p>
+<p>[root@localhost conf]# cd ~benet</p>
+<p><code>      </code>目录位置（包括文件位置）可以使用绝对路径，也可以使用相对路径</p>
+<p>绝对路径：以“/”开始的路径，表示从Linux目录结构的最顶点算起</p>
+<p>相对路径：不“/”开始的路径，可以相对于当前目录、父目录、其他用户的目录等作为起始点，使用形式如下：</p>
+<p>直接使用文件名/目录名；</p>
+<p>以“.”或 “…” 开始的路径；</p>
+<p>以“~用户名”的形式开始的路径</p>
+<p><code>  </code>例：</p>
+<p><code>       </code>cd:切换目录，Change Directory</p>
+<p>cd ：不带任何参数表示切换回当前用户的家目录</p>
+<p>cd /path/to/dir ：切换到指定目录</p>
+<p>cd - ：表示在上一个目录和这个目录来回切换，类似于电视遥控器上的返回之前</p>
+<p>cd ~ ：切换回当前的家目录。</p>
+<p>cd ~student ：表示切换到别人的家目录</p>
+<p>cd … ：可以切换到当前目录的父目录</p>
+<p>cd …/… ：可以切换到当前目录父目录的父目录</p>
+<p>cd命令指定短横线“-”作为参数时，表示切换到前一次（执行cd命令前）所在的工作目录</p>
+<p>\3)        ls命令</p>
+<p>用途：用于显示某一个文件的属性，或者某一个目录旗下子目录的属性。</p>
+<p>格式：ls  [选项]…  [目录或文件名]</p>
+<p>常用命令选项</p>
+<p>-l ：以长格式显示</p>
+<p>-a：显示所有子目录和文件的信息，包括隐藏文件</p>
+<p>-d：显示目录本身的属性</p>
+<p>-A：类似于“-a”，但不显示“.”和“…”目录的信息</p>
+<p>-h：以更易读的字节单位（K、M等）显示信息</p>
+<p>Human readable</p>
+<p>-R：递归显示内容</p>
+<p>–color：以颜色区分不同类型文件</p>
+<p>例：</p>
+<p>ls /etc/inittab 直接显示这个文件</p>
+<p>ls /：直接显示根下的文件和子目录</p>
+<p>ls /etc 显示文件夹含有的目录</p>
+<p>-l :显示目录/文件内详细信息。比如 ls-l /etc 则显示etc目录的详细信息</p>
+<p>ls -l后：这里面显示的是元数据信息，他们本身不属于文件内容的部分，但是却跟文件本身息息相关，称之为属性信息，我们都将他称之为元数据信息。</p>
+<p>-h : 将文件信息中的大小变成人类易读的</p>
+<p>-a : 显示所有文件，包括隐藏文件</p>
+<p>-d : 显示的是目录自身的属性，而不是目录中文件或者子目录的属性</p>
+<p>-r : 显示目录，将以逆序的方式进行排序。从Z-A</p>
+<p>-R : 递归现实，显示目录下的每一个文件和子目录，如果目录还有子目录，则继续显示子目录下的文件和子目录，直到显示完全。</p>
+<p>Linux的文件类型：</p>
+<p>a)        普通文件：开头用“-”表示的</p>
+<p>b)        目录文件：开头用“d”表示的</p>
+<p>c)        符号链接文件（软连接文件）：开头用“l”表示</p>
+<p>d)        设备文件：</p>
+<p><code>             </code>i.             块设备，用 b 表示。按照随机存取。通常一次存取一个块。(硬盘)</p>
+<p><code>             </code>ii.             字符设备，用 c 表示，通常按照线性（有顺序）的方式进行存储，一次存取的一个单位是字节。比如键盘，鼠标显示器等。字符存储是串行的。</p>
+<p>e)        套接字文件：开头用“s”  表示 sock</p>
+<p>f)         命令管道文件：开头用“p”表示</p>
+<p>\4)        mkdir命令</p>
+<p>用途：创建新的目录（Make Directory）</p>
+<p>格式：mkdir   [-p]  [/路径/]目录名</p>
+<p>例：</p>
+<p><code>         </code>[root@localhost~]# mkdir -p mydir/level1/level2</p>
+<p>mkdir命令用于创建新的空目录，可以同时创建多个目录</p>
+<p>较常用到的选项为“-p”，该命令用于创建嵌套的多层目录结构</p>
+<p>若不使用“-p”选项，则只能在已经存在的目录中创建其他子目录</p>
+<p>\5)        du命令</p>
+<p>用途：统计目录及文件的空间占用情况（estimate file space usage）</p>
+<p>格式：du  [选项]…  [目录或文件名]</p>
+<p>常用命令选项</p>
+<p>-a：统计时包括所有的文件，而不仅仅只统计目录</p>
+<p>-h：以更易读的字节单位（K、M等）显示信息</p>
+<p>-s：</p>
+<p>例：</p>
+<p><code>      </code>[root@localhost~]# du -sh /etc/httpd/</p>
+<p>du命令的“-s”、“-h”选项通常结合在一起使用，以统计指定文件夹总占用空间的大小</p>
+<h2 id="2、文本编辑vi"><strong>2、文本编辑vi</strong></h2>
+<p>所有的 Unix Like 系统都会内建 vi 文书编辑器，其他的文书编辑器则不一定会存在。但是目前我们使用比较多的是 vim 编辑器。vim 具有程序编辑的能力，可以主动的以字体颜色辨别语法的正确性，方便程序设计。</p>
+<p><strong>1、什么是 vim？</strong></p>
+<p>Vim是从 vi 发展出来的一个文本编辑器。代码补完、编译及错误跳转等方便编程的功能特别丰富，在程序员中被广泛使用。简单的来说， vi 是老式的字处理器，不过功能已经很齐全了，但是还是有可以进步的地方。 vim 则可以说是程序开发者的一项很好用的工具。连 vim 的官方网站 (<a class="link"   target="_blank" rel="noopener" href="http://www.vim.org/" >http://www.vim.org<i class="fas fa-external-link-alt"></i></a>) 自己也说 vim 是一个程序开发工具而不是文字处理软件。vim 键盘图：</p>
+<p><strong>2、vi/vim 的使用</strong></p>
+<p>基本上 vi/vim 共分为三种模式，分别是<strong>命令模式（Command mode）</strong>，<strong>输入模式（Insert mode）<strong>和</strong>底线命令模式（Last line mode）</strong>。 这三种模式的作用分别是：</p>
+<p><strong>命令模式：</strong></p>
+<p>用户刚刚启动 vi/vim，便进入了命令模式。</p>
+<p>此状态下敲击键盘动作会被Vim识别为命令，而非输入字符。比如我们此时按下i，并不会输入一个字符，i被当作了一个命令。</p>
+<p>以下是常用的几个命令：</p>
+<ul>
+<li><strong>i</strong> 切换到输入模式，以输入字符。</li>
+<li><strong>x</strong> 删除当前光标所在处的字符。</li>
+<li><strong>:</strong> 切换到底线命令模式，以在最底一行输入命令。</li>
+</ul>
+<p>若想要编辑文本：启动Vim，进入了命令模式，按下i，切换到输入模式。</p>
+<p>命令模式只有一些最基本的命令，因此仍要依靠底线命令模式输入更多命令。</p>
+<p><strong>输入模式：</strong></p>
+<p>在命令模式下按下i就进入了输入模式。</p>
+<p>在输入模式中，可以使用以下按键：</p>
+<ul>
+<li><strong>字符按键以及Shift组合</strong>，输入字符</li>
+<li><strong>ENTER</strong>，回车键，换行</li>
+<li><strong>BACK SPACE</strong>，退格键，删除光标前一个字符</li>
+<li><strong>DEL</strong>，删除键，删除光标后一个字符</li>
+<li><strong>方向键</strong>，在文本中移动光标</li>
+<li><strong>HOME</strong>/<strong>END</strong>，移动光标到行首/行尾</li>
+<li><strong>Page Up</strong>/<strong>Page Down</strong>，上/下翻页</li>
+<li><strong>Insert</strong>，切换光标为输入/替换模式，光标将变成竖线/下划线</li>
+<li><strong>ESC</strong>，退出输入模式，切换到命令模式</li>
+</ul>
+<p><strong>底线命令模式：</strong></p>
+<p>在命令模式下按下:（英文冒号）就进入了底线命令模式。</p>
+<p>底线命令模式可以输入单个或多个字符的命令，可用的命令非常多。</p>
+<p>在底线命令模式中，基本的命令有（已经省略了冒号）：</p>
+<ul>
+<li>q 退出程序</li>
+<li>w 保存文件</li>
+</ul>
+<p>按ESC键可随时退出底线命令模式。</p>
+<p>简单的说，我们可以将这三个模式想成底下的图标来表示：</p>
+<p><strong>3、vi/vim 使用实例</strong></p>
+<p><strong>使用 vi/vim 进入一般模式</strong></p>
+<p>如果你想要使用 vi 来建立一个名为 test.txt 的文件时，你可以这样做：</p>
+<p>$ vi runoob.txt</p>
+<p>直接输入 <strong>vi 文件名</strong> 就能够进入 vi 的一般模式了。请注意，记得 vi 后面一定要加文件名，不管该文件存在与否！</p>
+<p><strong>按下 i 进入输入模式(也称为编辑模式)，开始编辑文字</strong></p>
+<p>在一般模式之中，只要按下 i, o, a 等字符就可以进入输入模式了！</p>
+<p>在编辑模式当中，你可以发现在左下角状态栏中会出现 –INSERT- 的字样，那就是可以输入任意字符的提示。</p>
+<p>这个时候，键盘上除了 <strong>Esc</strong> 这个按键之外，其他的按键都可以视作为一般的输入按钮了，所以你可以进行任何的编辑。</p>
+<p><strong>按下 ESC 按钮回到一般模式</strong></p>
+<p>好了，假设我已经按照上面的样式给他编辑完毕了，那么应该要如何退出呢？是的！没错！就是给他按下 <strong>Esc</strong> 这个按钮即可！马上你就会发现画面左下角的 – INSERT – 不见了！</p>
+<p><strong>在一般模式中按下 :wq</strong> <strong>储存后离开 vi</strong></p>
+<p>OK，我们要存档了，存盘并离开的指令很简单，输入 <strong>:wq</strong> 即可保存离开！</p>
+<p>OK! 这样我们就成功创建了一个 runoob.txt 的文件。</p>
+<p><strong>4、vi/vim 按键说明</strong></p>
+<p>除了上面简易范例的 i, Esc, :wq 之外，其实 vim 还有非常多的按键可以使用。</p>
+<p><strong>第一部份：一般模式可用的光标移动、复制粘贴、搜索替换等</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>移动光标的方法</strong></th>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>h 或 向左箭头键(←)</td>
+<td style="text-align:left">光标向左移动一个字符</td>
+</tr>
+<tr>
+<td>j 或 向下箭头键(↓)</td>
+<td style="text-align:left">光标向下移动一个字符</td>
+</tr>
+<tr>
+<td>k 或 向上箭头键(↑)</td>
+<td style="text-align:left">光标向上移动一个字符</td>
+</tr>
+<tr>
+<td>l 或 向右箭头键(→)</td>
+<td style="text-align:left">光标向右移动一个字符</td>
+</tr>
+<tr>
+<td>如果你将右手放在键盘上的话，你会发现 hjkl 是排列在一起的，因此可以使用这四个按钮来移动光标。 如果想要进行多次移动的话，例如向下移动 30 行，可以使用 “30j” 或 “30↓” 的组合按键， 亦即加上想要进行的次数(数字)后，按下动作即可！</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>[Ctrl] + [f]</td>
+<td style="text-align:left">屏幕『向下』移动一页，相当于 [Page Down]按键 (常用)</td>
+</tr>
+<tr>
+<td>[Ctrl] + [b]</td>
+<td style="text-align:left">屏幕『向上』移动一页，相当于 [Page Up] 按键 (常用)</td>
+</tr>
+<tr>
+<td>[Ctrl] + [d]</td>
+<td style="text-align:left">屏幕『向下』移动半页</td>
+</tr>
+<tr>
+<td>[Ctrl] + [u]</td>
+<td style="text-align:left">屏幕『向上』移动半页</td>
+</tr>
+<tr>
+<td>+</td>
+<td style="text-align:left">光标移动到非空格符的下一行</td>
+</tr>
+<tr>
+<td>-</td>
+<td style="text-align:left">光标移动到非空格符的上一行</td>
+</tr>
+<tr>
+<td>n<space></td>
+<td style="text-align:left">那个 n 表示『数字』，例如 20 。按下数字后再按空格键，光标会向右移动这一行的 n 个字符。例如 20<space> 则光标会向后面移动 20 个字符距离。</td>
+</tr>
+<tr>
+<td>0 或功能键[Home]</td>
+<td style="text-align:left">这是数字『 0 』：移动到这一行的最前面字符处 (常用)</td>
+</tr>
+<tr>
+<td>$ 或功能键[End]</td>
+<td style="text-align:left">移动到这一行的最后面字符处(常用)</td>
+</tr>
+<tr>
+<td>H</td>
+<td style="text-align:left">光标移动到这个屏幕的最上方那一行的第一个字符</td>
+</tr>
+<tr>
+<td>M</td>
+<td style="text-align:left">光标移动到这个屏幕的中央那一行的第一个字符</td>
+</tr>
+<tr>
+<td>L</td>
+<td style="text-align:left">光标移动到这个屏幕的最下方那一行的第一个字符</td>
+</tr>
+<tr>
+<td>G</td>
+<td style="text-align:left">移动到这个档案的最后一行(常用)</td>
+</tr>
+<tr>
+<td>nG</td>
+<td style="text-align:left">n 为数字。移动到这个档案的第 n 行。例如 20G 则会移动到这个档案的第 20 行(可配合 :set nu)</td>
+</tr>
+<tr>
+<td>gg</td>
+<td style="text-align:left">移动到这个档案的第一行，相当于 1G 啊！ (常用)</td>
+</tr>
+<tr>
+<td>n<Enter></td>
+<td style="text-align:left">n 为数字。光标向下移动 n 行(常用)</td>
+</tr>
+<tr>
+<td><strong>搜索替换</strong></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>/word</td>
+<td style="text-align:left">向光标之下寻找一个名称为 word 的字符串。例如要在档案内搜寻 vbird 这个字符串，就输入 /vbird 即可！ (常用)</td>
+</tr>
+<tr>
+<td>?word</td>
+<td style="text-align:left">向光标之上寻找一个字符串名称为 word 的字符串。</td>
+</tr>
+<tr>
+<td>n</td>
+<td style="text-align:left">这个 n 是英文按键。代表重复前一个搜寻的动作。举例来说， 如果刚刚我们执行 /vbird 去向下搜寻 vbird 这个字符串，则按下 n 后，会向下继续搜寻下一个名称为 vbird 的字符串。如果是执行 ?vbird 的话，那么按下 n 则会向上继续搜寻名称为 vbird 的字符串！</td>
+</tr>
+<tr>
+<td>N</td>
+<td style="text-align:left">这个 N 是英文按键。与 n 刚好相反，为『反向』进行前一个搜寻动作。 例如 /vbird 后，按下 N 则表示『向上』搜寻 vbird 。</td>
+</tr>
+<tr>
+<td>使用 /word 配合 n 及 N 是非常有帮助的！可以让你重复的找到一些你搜寻的关键词！</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>:n1,n2s/word1/word2/g</td>
+<td style="text-align:left">n1 与 n2 为数字。在第 n1 与 n2 行之间寻找 word1 这个字符串，并将该字符串取代为 word2 ！举例来说，在 100 到 200 行之间搜寻 vbird 并取代为 VBIRD 则：<br>『:100,200s/vbird/VBIRD/g』。(常用)</td>
+</tr>
+<tr>
+<td>:1,$s/word1/word2/g</td>
+<td style="text-align:left">从第一行到最后一行寻找 word1 字符串，并将该字符串取代为 word2 ！(常用)</td>
+</tr>
+<tr>
+<td>:1,$s/word1/word2/gc</td>
+<td style="text-align:left">从第一行到最后一行寻找 word1 字符串，并将该字符串取代为 word2 ！且在取代前显示提示字符给用户确认 (confirm) 是否需要取代！(常用)</td>
+</tr>
+<tr>
+<td><strong>删除、复制与贴上</strong></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>x, X</td>
+<td style="text-align:left">在一行字当中，x 为向后删除一个字符 (相当于 [del] 按键)， X 为向前删除一个字符(相当于 [backspace] 亦即是退格键) (常用)</td>
+</tr>
+<tr>
+<td>nx</td>
+<td style="text-align:left">n 为数字，连续向后删除 n 个字符。举例来说，我要连续删除 10 个字符， 『10x』。</td>
+</tr>
+<tr>
+<td>dd</td>
+<td style="text-align:left">删除游标所在的那一整行(常用)</td>
+</tr>
+<tr>
+<td>ndd</td>
+<td style="text-align:left">n 为数字。删除光标所在的向下 n 行，例如 20dd 则是删除 20 行 (常用)</td>
+</tr>
+<tr>
+<td>d1G</td>
+<td style="text-align:left">删除光标所在到第一行的所有数据</td>
+</tr>
+<tr>
+<td>dG</td>
+<td style="text-align:left">删除光标所在到最后一行的所有数据</td>
+</tr>
+<tr>
+<td>d$</td>
+<td style="text-align:left">删除游标所在处，到该行的最后一个字符</td>
+</tr>
+<tr>
+<td>d0</td>
+<td style="text-align:left">那个是数字的 0 ，删除游标所在处，到该行的最前面一个字符</td>
+</tr>
+<tr>
+<td>yy</td>
+<td style="text-align:left">复制游标所在的那一行(常用)</td>
+</tr>
+<tr>
+<td>nyy</td>
+<td style="text-align:left">n 为数字。复制光标所在的向下 n 行，例如 20yy 则是复制 20 行(常用)</td>
+</tr>
+<tr>
+<td>y1G</td>
+<td style="text-align:left">复制游标所在行到第一行的所有数据</td>
+</tr>
+<tr>
+<td>yG</td>
+<td style="text-align:left">复制游标所在行到最后一行的所有数据</td>
+</tr>
+<tr>
+<td>y0</td>
+<td style="text-align:left">复制光标所在的那个字符到该行行首的所有数据</td>
+</tr>
+<tr>
+<td>y$</td>
+<td style="text-align:left">复制光标所在的那个字符到该行行尾的所有数据</td>
+</tr>
+<tr>
+<td>p, P</td>
+<td style="text-align:left">p 为将已复制的数据在光标下一行贴上，P 则为贴在游标上一行！ 举例来说，我目前光标在第 20 行，且已经复制了 10 行数据。则按下 p 后， 那 10 行数据会贴在原本的 20 行之后，亦即由 21 行开始贴。但如果是按下 P 呢？ 那么原本的第 20 行会被推到变成 30 行。 (常用)</td>
+</tr>
+<tr>
+<td>J</td>
+<td style="text-align:left">将光标所在行与下一行的数据结合成同一行</td>
+</tr>
+<tr>
+<td>c</td>
+<td style="text-align:left">重复删除多个数据，例如向下删除 10 行，[ 10cj ]</td>
+</tr>
+<tr>
+<td>u</td>
+<td style="text-align:left">复原前一个动作。(常用)</td>
+</tr>
+<tr>
+<td>[Ctrl]+r</td>
+<td style="text-align:left">重做上一个动作。(常用)</td>
+</tr>
+<tr>
+<td>这个 u 与 [Ctrl]+r 是很常用的指令！一个是复原，另一个则是重做一次～ 利用这两个功能按键，你的编辑，嘿嘿！很快乐的啦！</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>.</td>
+<td style="text-align:left">不要怀疑！这就是小数点！意思是重复前一个动作的意思。 如果你想要重复删除、重复贴上等等动作，按下小数点『.』就好了！ (常用)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>第二部份：一般模式切换到编辑模式的可用的按钮说明</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>进入输入或取代的编辑模式</strong></th>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>i, I</td>
+<td style="text-align:left">进入输入模式(Insert mode)：<br>i 为『从目前光标所在处输入』， I 为『在目前所在行的第一个非空格符处开始输入』。 (常用)</td>
+</tr>
+<tr>
+<td>a, A</td>
+<td style="text-align:left">进入输入模式(Insert mode)：<br>a 为『从目前光标所在的下一个字符处开始输入』， A 为『从光标所在行的最后一个字符处开始输入』。(常用)</td>
+</tr>
+<tr>
+<td>o, O</td>
+<td style="text-align:left">进入输入模式(Insert mode)：<br>这是英文字母 o 的大小写。o 为『在目前光标所在的下一行处输入新的一行』； O 为在目前光标所在处的上一行输入新的一行！(常用)</td>
+</tr>
+<tr>
+<td>r, R</td>
+<td style="text-align:left">进入取代模式(Replace mode)：<br>r 只会取代光标所在的那一个字符一次；R会一直取代光标所在的文字，直到按下 ESC 为止；(常用)</td>
+</tr>
+<tr>
+<td>上面这些按键中，在 vi 画面的左下角处会出现『–INSERT–』或『–REPLACE–』的字样。 由名称就知道该动作了吧！！特别注意的是，我们上面也提过了，你想要在档案里面输入字符时， 一定要在左下角处看到 INSERT 或 REPLACE 才能输入喔！</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>[Esc]</td>
+<td style="text-align:left">退出编辑模式，回到一般模式中(常用)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>第三部份：一般模式切换到指令行模式的可用的按钮说明</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>指令行的储存、离开等指令</strong></th>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:w</td>
+<td style="text-align:left">将编辑的数据写入硬盘档案中(常用)</td>
+</tr>
+<tr>
+<td>:w!</td>
+<td style="text-align:left">若文件属性为『只读』时，强制写入该档案。不过，到底能不能写入， 还是跟你对该档案的档案权限有关啊！</td>
+</tr>
+<tr>
+<td>:q</td>
+<td style="text-align:left">离开 vi (常用)</td>
+</tr>
+<tr>
+<td>:q!</td>
+<td style="text-align:left">若曾修改过档案，又不想储存，使用 ! 为强制离开不储存档案。</td>
+</tr>
+<tr>
+<td>注意一下啊，那个惊叹号 (!) 在 vi 当中，常常具有『强制』的意思～</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>:wq</td>
+<td style="text-align:left">储存后离开，若为 :wq! 则为强制储存后离开 (常用)</td>
+</tr>
+<tr>
+<td>ZZ</td>
+<td style="text-align:left">这是大写的 Z 喔！若档案没有更动，则不储存离开，若档案已经被更动过，则储存后离开！</td>
+</tr>
+<tr>
+<td>:w [filename]</td>
+<td style="text-align:left">将编辑的数据储存成另一个档案（类似另存新档）</td>
+</tr>
+<tr>
+<td>:r [filename]</td>
+<td style="text-align:left">在编辑的数据中，读入另一个档案的数据。亦即将 『filename』 这个档案内容加到游标所在行后面</td>
+</tr>
+<tr>
+<td>:n1,n2 w [filename]</td>
+<td style="text-align:left">将 n1 到 n2 的内容储存成 filename 这个档案。</td>
+</tr>
+<tr>
+<td>:! command</td>
+<td style="text-align:left">暂时离开 vi 到指令行模式下执行 command 的显示结果！例如<br>『:! ls /home』即可在 vi 当中察看 /home 底下以 ls 输出的档案信息！</td>
+</tr>
+<tr>
+<td><strong>vim 环境的变更</strong></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>:set nu</td>
+<td style="text-align:left">显示行号，设定之后，会在每一行的前缀显示该行的行号</td>
+</tr>
+<tr>
+<td>:set nonu</td>
+<td style="text-align:left">与 set nu 相反，为取消行号！</td>
+</tr>
+</tbody>
+</table>
+<p>特别注意，在 vi/vim 中，数字是很有意义的！数字通常代表重复做几次的意思！ 也有可能是代表去到第几个什么什么的意思。</p>
+<p>举例来说，要删除 50 行，则是用 『50dd』 对吧！ 数字加在动作之前，如我要向下移动 20 行呢？那就是『20j』或者是『20↓』即可。</p>
+<h2 id="3、软件包安装yum和rpm"><strong>3、软件包安装yum和rpm</strong></h2>
+<p>一、源代码形式</p>
+<p>1.      绝大多数开源软件都是直接以原码形式发布的</p>
+<p>2.      源代码一般会被打成.tar.gz的归档压缩文件</p>
+<p>3.      源代码需要编译成为二进制形式之后才能够运行使用</p>
+<p>4.      源代码基本编译流程：</p>
+<p>1）.configure 检查编译环境；</p>
+<p>2）make对源代码进行编译；</p>
+<p>3）make insall 将生成的可执行文件安装到当前计算机中</p>
+<p>二、RPM</p>
+<p>1.源代码形式的特点：操作复杂、编译时间长、极易出现问题、依赖关系复杂</p>
+<p>2.为了方便，RPM（redhat package manager）</p>
+<p>3.RPM通过将代码基于特定平台系统编译为可执行文件，并保存依赖关系，来简化开源软件的安装管理。针对不同的系统设定不同的包</p>
+<p>4.常用命令规范：linuxcast-1.2.0-30.el6.1686.rpm 包名-版本号-适用平台-32/64-rpm</p>
+<p>5.使用rpm –i software.rpm(安装)；</p>
+<p>rpm -e software.rpm(卸载)；</p>
+<p>rpm –U software.rpm(升级形式安装)；</p>
+<p>rpm –ivh <a class="link"   target="_blank" rel="noopener" href="http://www.linuxcast.net/software.rpm(%E6%94%AF%E6%8C%81%E9%80%9A%E8%BF%87http%5Cftp%E5%8D%8F%E8%AE%AE%E5%BD%A2%E5%BC%8F%E5%AE%89%E8%A3%85)" >http://www.linuxcast.net/software.rpm(支持通过http\ftp协议形式安装)<i class="fas fa-external-link-alt"></i></a></p>
+<p>-v 显示详细信息；-h显示进度条</p>
+<p>查询功能：rpm –qa 列出全部已经安装的.rpm软件  rpm –qa |grep ***</p>
+<p>三：YUM</p>
+<p>1.      rpm软件包形式的管理虽然方便，但是需要手工解决软件包的依赖关系。很多时候安装一个软件安装一个软件需要安装1个或者多个其他软件，手动解决时，很复杂，yum解决这些问题。Yum是rpm的前端程序，主要目的是设计用来自动解决rpm的依赖关系，其特点：</p>
+<p>1）  自动解决依赖关系；2）可以对rpm进行分组，基于组进行安装操作；3）引入仓库概念，支持多个仓库；4）配置简单</p>
+<p>2.      yum仓库用来存放所有的现有的.rpm包，当使用yum安装一个rpm包时，需要依赖关系，会自动在仓库中查找依赖软件并安装。仓库可以是本地的，也可以是HTTP、FTP、nfs形式使用的集中地、统一的网络仓库。</p>
+<p>3.      仓库的配置文件/etc/yum.repos.d目录下</p>
+<p>4.      使用：1）yum install 安装；</p>
+<p>2)yum remove卸载；</p>
+<p>3)yum update 升级制定软件</p>
+<p>5.      安装的时候，会下载软件包.Rpm在安装，所以用国内仓库</p>
+<p>改变镜像源1）访问地址<a class="link"   target="_blank" rel="noopener" href="http://mirrors.163.com/%EF%BC%9B2%EF%BC%89%E7%82%B9centos%E4%BD%BF%E7%94%A8%E5%B8%AE%E5%8A%A9%EF%BC%9B3%EF%BC%89%E6%8C%89%E6%AD%A5%E9%AA%A4%E6%9D%A5" >http://mirrors.163.com/；2）点centos使用帮助；3）按步骤来<i class="fas fa-external-link-alt"></i></a></p>
+<p>6.      查询软件：可以使用yumsearch</p>
+<p>Yum: 即Yellowdog Update Modifier,是一种基于rpm的包管理工具</p>
+<p>yum命令使用示例</p>
+<p>显示yum仓库</p>
+<p>显示所有仓库</p>
+<p>yum repolist all</p>
+<p>显示可用的仓库</p>
+<p>repolist enabled</p>
+<p>显示可用的仓库</p>
+<p>repolist disabled</p>
+<p>显示应用程序包</p>
+<p>显示所有的程序包</p>
+<p>yum list</p>
+<p>或</p>
+<p>yum list all</p>
+<p>[vathe@localhost ~]$yum list tre?</p>
+<p>Installed Packages</p>
+<p>tree.x86_64                                         1.6.0-10.el7                                          @base</p>
+<p>还支持通配符格式的查询</p>
+<p>显示可安装的程序包</p>
+<p>yum list available</p>
+<p>[vathe@localhost ~]$yum list available php</p>
+<p>Available Packages</p>
+<p>php.x86_64                                          5.4.16-42.el7                                          base</p>
+<p>显示可更新或已安装的程序包</p>
+<p>yum list updates</p>
+<p>yum list installed</p>
+<p>显示仓库中最近增加的程序包</p>
+<p>yum list recent</p>
+<p>安装程序包</p>
+<p>#安装 tree 程序</p>
+<p>yum install tree</p>
+<p>升级程序包</p>
+<p>yum update tree</p>
+<p>卸载程序包</p>
+<p>yum remove tree</p>
+<p>或</p>
+<p>yum erase tree</p>
+<p>查看程序包信息</p>
+<p>yum info tree</p>
+<p>查看文件的来源</p>
+<p>查看某一文件来自于那个程序包</p>
+<p>[vathe@localhost ~]$yum provides /bin/mv</p>
+<p>coreutils-8.22-18.el7.x86_64 : A set of basic GNU tools commonly used in shell scripts</p>
+<p>Repo        : base</p>
+<p>Matched from:</p>
+<p>Filename    : /bin/mv</p>
+<p>#表示/bin/mv文件来自于coreutils-8.22-18.el7.x86_64程序包</p>
+<p>清理本地缓存</p>
+<p>yum clean all</p>
+<p>#清楚插件缓存</p>
+<p>yum clean plugins</p>
+<p>构建缓存</p>
+<p>yum makecache</p>
+<p>搜索</p>
+<p>[vathe@localhost ~]$yum search php</p>
+<p>============================================== N/S matched: php ===============================================</p>
+<p>graphviz-php.x86_64 : PHP extension for graphviz</p>
+<p>php.x86_64 : PHP scripting language for creating dynamic web sites</p>
+<p>php-bcmath.x86_64 : A module for PHP applications for using the bcmath library</p>
+<p>…</p>
+<p>查看指定包所依赖的capabilities</p>
+<p>[vathe@localhost ~]$yum deplist php</p>
+<p>package: php.x86_64 5.4.16-42.el7</p>
+<p><code>  </code>dependency: httpd</p>
+<p><code> </code>provider: httpd.x86_64 2.4.6-45.el7.centos</p>
+<p>…</p>
+<p>查看yum事务历史</p>
+<p>[root@localhost ~]# yum history</p>
+<p>Repository ‘base’ is missing name in configuration, using id</p>
+<p>ID     | Login user               | Date and time    | Action(s)      | Altered</p>
+<p>-------------------------------------------------------------------------------</p>
+<p><code>   </code>2 | Vathe Su <vathe>         | 2017-04-17 17:07 | Install        |    1</p>
+<p><code>   </code>1 | System <unset>           | 2017-03-23 22:19 | Install        | 1405</p>
+<p>history list</p>
+<p>包组相关的命令</p>
+<p>yum groupinstall    # 安装包组</p>
+<p>yum groupupdate     #更新包组</p>
+<p>yum grouplist       #显示包组</p>
+<p>yum groupremove     #移除包组</p>
+<p>yum groupinfo       #查看包组信息</p>
+<p>yum（全称为 Yellow dog Updater, Modified）是一个在Fedora和RedHat以及SUSE中的Shell前端软件包管理器。基於RPM包管理，能够从指定的服务器自动下载RPM包并且安装，可以自动处理依赖性关系，并且一次安装所有依赖的软体包，无须繁琐地一次次下载、安装。yum提供了查找、安装、删除某一个、一组甚至全部软件包的命令，而且命令简洁而又好记。</p>
+<p>yum的命令形式一般是如下：yum [options] [command] [package …]</p>
+<p>其中的[options]是可选的，选项包括-h（帮助），-y（当安装过程提示选择全部为&quot;yes&quot;），-q（不显示安装的过程）等等。[command]为所要进行的操作，[package …]是操作的对象。</p>
+<p>概括了部分常用的命令包括：</p>
+<p>自动搜索最快镜像插件：   yum install yum-fastestmirror</p>
+<p>安装yum图形窗口插件：    yum install yumex</p>
+<p>查看可能批量安装的列表： yum grouplist</p>
+<p>1 安装</p>
+<p>yum install 全部安装</p>
+<p>yum install package1 安装指定的安装包package1</p>
+<p>yum groupinsall group1 安装程序组group1</p>
+<p>2 更新和升级</p>
+<p>yum update 全部更新</p>
+<p>yum update package1 更新指定程序包package1</p>
+<p>yum check-update 检查可更新的程序</p>
+<p>yum upgrade package1 升级指定程序包package1</p>
+<p>yum groupupdate group1 升级程序组group1</p>
+<p>3 查找和显示</p>
+<p>yum info package1 显示安装包信息package1</p>
+<p>yum list 显示所有已经安装和可以安装的程序包</p>
+<p>yum list package1 显示指定程序包安装情况package1</p>
+<p>yum groupinfo group1 显示程序组group1信息yum search string 根据关键字string查找安装包</p>
+<p>4 删除程序</p>
+<p>yum remove | erase package1 删除程序包package1</p>
+<p>yum groupremove group1 删除程序组group1</p>
+<p>yum deplist package1 查看程序package1依赖情况</p>
+<p>5 清除缓存</p>
+<p>yum clean packages 清除缓存目录下的软件包</p>
+<p>yum clean headers 清除缓存目录下的 headers</p>
+<p>yum clean oldheaders 清除缓存目录下旧的 headers</p>
+<p>yum clean, yum clean all (= yum clean packages; yum clean oldheaders) 清除缓存目录下的软件包及旧的headers</p>
+<p>比如，要安装游戏程序组，首先进行查找：</p>
+<p>＃：yum grouplist</p>
+<p>可以发现，可安装的游戏程序包名字是”Games and Entertainment“，这样就可以进行安装：</p>
+<p>＃：yum groupinstall “Games and Entertainment”</p>
+<p>所 有的游戏程序包就自动安装了。在这里Games and Entertainment的名字必须用双引号选定，因为linux下面遇到空格会认为文件名结束了，因此必须告诉系统安装的程序包的名字是“Games and Entertainment”而不是“Games&quot;。</p>
+<p>yum，是Yellow dog Updater Modified的简称，起初是由yellow dog这一发行版的开发者Terra Soft研发，用python写成，那时还叫做yup(yellow dog updater)，后经杜克大学的Linux@Duke开发团队进行改进，遂有此名。yum的宗旨是自动化地升级，安装/移除rpm包，收集rpm包的相关信息，检查依赖性并自动提示用户解决。yum的关键之处是要有可靠的repository，顾名思义，这是软件的仓库，它可以是http或ftp站点， 也可以是本地软件池，但必须包含rpm的header， header包括了rpm包的各种信息，包括描述，功能，提供的文件，依赖性等.正是收集了这些 header并加以分析，才能自动化地完成余下的任务。</p>
+<p>1.yum的一切配置信息都储存在一个叫yum.conf的配置文件中，通常位于/etc目 录下，这是整个yum系统的重中之重，我在的F9中查看了这一文件，大家一起来看下：</p>
+<p>[hanlong@localhost F9常用文档]$ sudo more /etc/yum.conf</p>
+<p>[main]</p>
+<p>cachedir=/var/cache/yum</p>
+<p>keepcache=0</p>
+<p>debuglevel=2</p>
+<p>logfile=/var/log/yum.log</p>
+<p>exactarch=1</p>
+<p>obsoletes=1</p>
+<p>gpgcheck=1</p>
+<p>plugins=1</p>
+<p>metadata_expire=1800</p>
+<h1>PUT YOUR REPOS HERE OR IN separate files named file.repo</h1>
+<h1>in /etc/yum.repos.d</h1>
+<p>下面简单的对这一文件作简要的说明：</p>
+<p>cachedir：yum缓存的目录，yum在此存储下载的rpm包和数据库，一般是/var/cache/yum。</p>
+<p>debuglevel：除错级别，0──10,默认是2</p>
+<p>logfile：yum的日志文件，默认是/var/log/yum.log。</p>
+<p>exactarch，有两个选项1和0,代表是否只升级和你安装软件包cpu体系一致的包，如果设为1，则如你安装了一个i386的rpm，则yum不会用686的包来升级。</p>
+<p>gpgchkeck= 有1和0两个选择，分别代表是否是否进行gpg校验，如果没有这一项，默认好像也是检查的。</p>
+<p>2.好了，接下来就是yum的使用了，首先用yum来升级软件，yum的操作大都须有超级用户的权限，当然可以用sudo。</p>
+<p>yum update，这一步是必须的，yum会从服务器的header目录下载rpm的header，放在本地的缓存中，这可能会花费一定的时间，但比起yum 给我们带来方便，这些时间的花费又算的了什么呢？header下载完毕，yum会判断是否有可更新的软件包，如果有，它会询问你的意见，是否更新，还是说 y吧，把系统始终up to date总是不错的，这时yum开始下载软件包并使用调用rpm安装，这可能要一定时间，取决于要更新软件的数目和网络状况，万一网络断了，也没关系，再 进行一次就可以了。升级完毕，以后每天只要使用yum check-update检查一下有无跟新，如果有，就用yum update进行跟新，时刻保持系统为最新，堵住一切发现的漏洞。用yum update packagename 对某个单独包进行升级。</p>
+<p>现在简单的把yum软件升级的一些命令罗列一下：</p>
+<p>(更新：我在安装wine的时候是用rpm一个一个安装的，先安装以来关系，然后在安装wine的主包，但是刚刚在论坛上发现来一个好的帖子，就yum的本地安装。参数是-localinstall</p>
+<p>$yum localinstall wine-*</p>
+<p>这样的话，yum会自动安装所有的依赖关系，而不用rpm一个一个的安装了，省了好多工作。</p>
+<p>还有一个与他类似的参数：</p>
+<p>$yum localupdate wine-*</p>
+<p>如果有wine的新版本，而且你也下载到来本地，就可以这样本地更新wine了。)</p>
+<p>1.列出所有可更新的软件清单</p>
+<p>命令：yum check-update</p>
+<p>2.安装所有更新软件</p>
+<p>命令：yum update</p>
+<p>3.仅安装指定的软件</p>
+<p>命令：yum install</p>
+<p>4.仅更新指定的软件</p>
+<p>命令：yum update</p>
+<p>5.列出所有可安裝的软件清单</p>
+<p>命令：yum list</p>
+<p>3.使用yum安装和卸载软件，有个前提是yum安装的软件包都是rpm格式的。</p>
+<p>安装的命令是，yum install xxx，yum会查询数据库，有无这一软件包，如果有，则检查其依赖冲突关系，如果没有依赖冲突，那么最好，下载安装;如果有，则会给出提示，询问是否要同时安装依赖，或删除冲突的包，你可以自己作出判断</p>
+<p>删除的命令是，yum remove xxx，同安装一样，yum也会查询数据库，给出解决依赖关系的提示。</p>
+<p>1.用YUM安装软件包</p>
+<p>命令：yum install</p>
+<p>2.用YUM删除软件包</p>
+<p>命令：yum remove</p>
+<p>4.用yum查询想安装的软件</p>
+<p>我们常会碰到这样的情况，想要安装一个软件，只知道它和某方面有关，但又不能确切知道它的名字。这时yum的查询功能就起作用了。你可以用 yum search keyword这样的命令来进行搜索，比如我们要则安装一个Instant Messenger，但又不知到底有哪些，这时不妨用 yum search messenger这样的指令进行搜索，yum会搜索所有可用rpm的描述，列出所有描述中和messeger有关的rpm包，于是我们可能得到 gaim，kopete等等，并从中选择。</p>
+<p>有时我们还会碰到安装了一个包，但又不知道其用途，我们可以用yum info packagename这个指令来获取信息。</p>
+<p>1.使用YUM查找软件包</p>
+<p>命令：yum search</p>
+<p>2.列出所有可安装的软件包</p>
+<p>命令：yum list</p>
+<p>3.列出所有可更新的软件包</p>
+<p>命令：yum list updates</p>
+<p>4.列出所有已安装的软件包</p>
+<p>命令：yum list installed</p>
+<p>5.列出所有已安装但不在 Yum Repository 內的软件包</p>
+<p>命令：yum list extras</p>
+<p>6.列出所指定的软件包</p>
+<p>命令：yum list 7.使用YUM获取软件包信息</p>
+<p>命令：yum info 8.列出所有软件包的信息</p>
+<p>命令：yum info</p>
+<p>9.列出所有可更新的软件包信息</p>
+<p>命令：yum info updates</p>
+<p>10.列出所有已安裝的软件包信息</p>
+<p>命令：yum info installed</p>
+<p>11.列出所有已安裝但不在 Yum Repository 內的软件包信息</p>
+<p>命令：yum info extras</p>
+<p>12.列出软件包提供哪些文件</p>
+<p>命令：yum provides</p>
+<p>5.清除YUM缓存</p>
+<p>yum 会把下载的软件包和header存储在cache中，而不会自动删除。如果我们觉得它们占用了磁盘空间，可以使用yum clean指令进行清除，更精确的用法是yum clean headers清除header，yum clean packages清除下载的rpm包，yum clean all 清除所有</p>
+<p>1.清除缓存目录(/var/cache/yum)下的软件包</p>
+<p>命令：yum clean packages</p>
+<p>2.清除缓存目录(/var/cache/yum)下的 headers</p>
+<p>命令：yum clean headers</p>
+<p>3.清除缓存目录(/var/cache/yum)下旧的 headers</p>
+<p>命令：yum clean oldheaders</p>
+<p>4.清除缓存目录(/var/cache/yum)下的软件包及旧的headers</p>
+<p>命令：yum clean, yum clean all (= yum clean packages; yum clean oldheaders)</p>
+<p>以上所有命令参数的使用都可以用man来查看：</p>
+<p>1、安装图形版yumex：yum install yumex。</p>
+<p>2、安装额外的软件仓库：</p>
+<p><a class="link"   target="_blank" rel="noopener" href="http://rpm.livna.org" >rpm.livna.org<i class="fas fa-external-link-alt"></i></a> 的软件包仓库:</p>
+<p>rpm -ivh <a class="link"   target="_blank" rel="noopener" href="http://livna-dl.reloumirrors.net" >http://livna-dl.reloumirrors.net<i class="fas fa-external-link-alt"></i></a> … ease-7-2.noarch.rpm</p>
+<p><a class="link"   target="_blank" rel="noopener" href="http://freshrpms.net" >freshrpms.net<i class="fas fa-external-link-alt"></i></a> 的软件包仓库:</p>
+<p>rpm –ivh <a class="link"   target="_blank" rel="noopener" href="http://ftp.freshrpms.net/pub/fre" >http://ftp.freshrpms.net/pub/fre<i class="fas fa-external-link-alt"></i></a> … 1.1-1.fc.noarch.rpm</p>
+<p>3、安装最快源 yum install yum-fastestmirror</p>
+<p>资源真的是非常丰富，从Centos到Ubuntu，ISO镜像、升级包，应有尽有，上交的兄弟们真是幸福，羡慕啊。不过还好，我们好歹也算是在教育网内，凑合着也可以沾点光，下载一些。</p>
+<p>网址为：<a class="link"   href="ftp://ftp.sjtu.edu.cn/" >ftp://ftp.sjtu.edu.cn/<i class="fas fa-external-link-alt"></i></a></p>
+<p>相应的yum的repo为</p>
+<p>[updates]</p>
+<p>name=Fedora updates</p>
+<p>baseurl=<a class="link"   href="ftp://ftp.sjtu.edu.cn/fedora/linux/updates/$releasever/$basearch/" >ftp://ftp.sjtu.edu.cn/fedora/linux/updates/$releasever/$basearch/<i class="fas fa-external-link-alt"></i></a></p>
+<p>enabled=1</p>
+<p>gpgcheck=0</p>
+<p>[fedora]</p>
+<p>name=Fedora $releasever - $basearch</p>
+<p>baseurl=<a class="link"   href="ftp://ftp.sjtu.edu.cn/fedora/linux/releases/$releasever/Everything/$basearch/os/" >ftp://ftp.sjtu.edu.cn/fedora/linux/releases/$releasever/Everything/$basearch/os/<i class="fas fa-external-link-alt"></i></a></p>
+<p>enabled=1</p>
+<p>gpgcheck=1</p>
+<p>gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-fedora file:///etc/pki/rpm-gpg/RPM-GPG-KEY</p>
+<p>如果在机器上安装了apt管理器，则相应的源为</p>
+<p>repomd <a class="link"   href="ftp://ftp.sjtu.edu.cn/" >ftp://ftp.sjtu.edu.cn/<i class="fas fa-external-link-alt"></i></a> fedora/linux/updates/$(VERSION)/$(ARCH)/</p>
+<p>repomd <a class="link"   href="ftp://ftp.sjtu.edu.cn/" >ftp://ftp.sjtu.edu.cn/<i class="fas fa-external-link-alt"></i></a> fedora/linux/releases/$(VERSION)/Everything/$(ARCH)/os/</p>
+<h2 id="4、压缩解压缩tar，zip"><strong>4、压缩解压缩tar，zip</strong></h2>
+<p>本文介绍了linux下的压缩程式tar、gzip、gunzip、bzip2、bunzip2、compress 、uncompress、 zip、 unzip、rar、unrar等程式，以及如何使用它们对.tar、.gz 、.tar.gz、.tgz、.bz2、.tar.bz2、.Z、. tar.Z、.zip、.rar这10种压缩文件进行操作</p>
+<p>Linux下最常用的打包程序就是tar了，使用tar程序打出来的包我们常称为tar包，tar包文件的命令通常都是以.tar结尾的。生成tar包后，就可以用其它的程序来进行压缩了，所以首先就来讲讲tar命令的基本用法：</p>
+<p>tar命令的选项有很多(用man tar可以查看到)，但常用的就那么几个选项，下面来举例说明一下：</p>
+<p>?</p>
+<p>1</p>
+<h1>tar -cf all.tar *.jpg</h1>
+<p>这条命令是将所有.jpg的文件打成一个名为all.tar的包。-c是表示产生新的包 ，-f指定包的文件名。</p>
+<p>?</p>
+<p>1</p>
+<h1>tar -rf all.tar *.gif</h1>
+<p>这条命令是将所有.gif的文件增加到all.tar的包里面去。-r是表示增加文件的意思。</p>
+<p>?</p>
+<p>1</p>
+<h1>tar -uf all.tar logo.gif</h1>
+<p>这条命令是更新原来tar包all.tar中logo.gif文件，-u是表示更新文件的意思。</p>
+<p>?</p>
+<p>1</p>
+<h1>tar -tf all.tar</h1>
+<p>这条命令是列出all.tar包中所有文件，-t是列出文件的意思</p>
+<p>?</p>
+<p>1</p>
+<h1>tar -xf all.tar</h1>
+<p>这条命令是解出all.tar包中所有文件，-x是解开的意思</p>
+<p>以上就是tar的最基本的用法。为了方便用户在打包解包的同时可以压缩或解压文件，tar提供了一种特殊的功能。这就是tar可以在打包或解包的同时调用其它的压缩程序，比如调用gzip、bzip2等。</p>
+<p>\1) tar调用</p>
+<p>gzip是GNU组织开发的一个压缩程序，.gz结尾的文件就是gzip压缩的结果。与gzip 相对的解压程序是gunzip。tar中使用-z这个参数来调用gzip。下面来举例说明一下：</p>
+<p>?</p>
+<p>1</p>
+<h1>tar -czf all.tar.gz *.jpg</h1>
+<p>这条命令是将所有.jpg的文件打成一个tar包，并且将其用gzip压缩，生成一个gzip压缩过的包，包名为all.tar.gz</p>
+<p>?</p>
+<p>1</p>
+<h1>tar -xzf all.tar.gz</h1>
+<p>这条命令是将上面产生的包解开。</p>
+<p>\2) tar调用bzip2</p>
+<p>bzip2是一个压缩能力更强的压缩程序，.bz2结尾的文件就是bzip2压缩的结果。</p>
+<p>与bzip2相对的解压程序是bunzip2。tar中使用-j这个参数来调用gzip。下面来举例说明一下：</p>
+<p>?</p>
+<p>1</p>
+<h1>tar -cjf all.tar.bz2 *.jpg</h1>
+<p>这条命令是将所有.jpg的文件打成一个tar包，并且将其用bzip2压缩，生成一个bzip2压缩过的包，包名为all.tar.bz2</p>
+<p>?</p>
+<p>1</p>
+<h1>tar -xjf all.tar.bz2</h1>
+<p>这条命令是将上面产生的包解开。</p>
+<p>3)tar调用compress</p>
+<p>compress也是一个压缩程序，但是好象使用compress的人不如gzip和bzip2的人多。.Z结尾的文件就是bzip2压缩的结果。与 compress相对的解压程序是uncompress。tar中使用-Z这个参数来调用compress。下面来举例说明一下：</p>
+<p>?</p>
+<p>1</p>
+<h1>tar -cZf all.tar.Z *.jpg</h1>
+<p>这条命令是将所有.jpg的文件打成一个tar包，并且将其用compress压缩，生成一个uncompress压缩过的包，包名为all.tar.Z</p>
+<p>?</p>
+<p>1</p>
+<h1>tar -xZf all.tar.Z</h1>
+<p>这条命令是将上面产生的包解开</p>
+<p>有了上面的知识，你应该可以解开多种压缩文件了，下面对于tar系列的压缩文件作一个小结：</p>
+<p>1)对于.tar结尾的文件</p>
+<p>tar -xf all.tar</p>
+<p>2)对于.gz结尾的文件</p>
+<p>gzip -d all.gz</p>
+<p>gunzip all.gz</p>
+<p>3)对于.tgz或.tar.gz结尾的文件</p>
+<p>tar -xzf all.tar.gz</p>
+<p>tar -xzf all.tgz</p>
+<p>4)对于.bz2结尾的文件</p>
+<p>bzip2 -d all.bz2</p>
+<p>bunzip2 all.bz2</p>
+<p>5)对于tar.bz2结尾的文件</p>
+<p>tar -xjf all.tar.bz2</p>
+<p>6)对于.Z结尾的文件</p>
+<p>uncompress all.Z</p>
+<p>7)对于.tar.Z结尾的文件</p>
+<p>tar -xZf all.tar.z</p>
+<p>另外对于Window下的常见压缩文件.zip和.rar，Linux也有相应的方法来解压它们：</p>
+<p>1)对于.zip</p>
+<p>linux下提供了zip和unzip程序，zip是压缩程序，unzip是解压程序。它们的参数选项很多，这里只做简单介绍，依旧举例说明一下其用法：</p>
+<p>?</p>
+<p>1</p>
+<h1>zip all.zip *.jpg</h1>
+<p>这条命令是将所有.jpg的文件压缩成一个zip包</p>
+<p>?</p>
+<p>1</p>
+<h1>unzip all.zip</h1>
+<p>这条命令是将all.zip中的所有文件解压出来</p>
+<p>2)对于.rar</p>
+<p>要在linux下处理.rar文件，需要安装RAR for Linux，可以从网上下载，但要记住，RAR for Linux 不是免费的；可从<a class="link"   target="_blank" rel="noopener" href="http://www.rarsoft.com/download.htm%E4%B8%8B%E8%BD%BDRARfor" >http://www.rarsoft.com/download.htm下载RARfor<i class="fas fa-external-link-alt"></i></a> Linux 3.2.</p>
+<p>0，然后安装：</p>
+<p>?</p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<h1>tar -xzpvf rarlinux-3.2.0.tar.gz</h1>
+<h1>cd rar</h1>
+<h1>make</h1>
+<p>这样就安装好了，安装后就有了rar和unrar这两个程序，rar是压缩程序，unrar 是解压程序。它们的参数选项很多，这里只做简单介绍，依旧举例说明一下其用法：</p>
+<p>?</p>
+<p>1</p>
+<h1>rar a all *.jpg</h1>
+<p>这条命令是将所有.jpg的文件压缩成一个rar包，名为all.rar，该程序会将.rar 扩展名将自动附加到包名后。</p>
+<p>?</p>
+<p>1</p>
+<h1>unrar e all.rar</h1>
+<p>这条命令是将all.rar中的所有文件解压出来</p>
+<p>到此为至，我们已经介绍过linux下的tar、gzip、gunzip、bzip2、bunzip2、compress 、 uncompress、 zip、unzip、rar、unrar等程式，你应该已经能够使用它们对.tar 、.gz、.tar.gz、.tgz、.bz2、.tar.bz2、. Z、.tar.Z、.zip、.rar这10种压缩文</p>
+<p>件进行解压了，以后应该不需要为下载了一个软件而不知道如何在Linux下解开而烦恼了。而且以上方法对于Unix也基本有效。</p>
+<h2 id="5、用户和权限chmod，chown"><strong>5、用户和权限chmod，chown</strong></h2>
+<p>Linux下数字表示文件的操作权限(777,755,…)</p>
+<p>Linux下。查看某路径下用（ls -l）查看全部文件的具体属性列表时。会看到文件的操作权限。类似“drwxr-xr-x”的字符串。</p>
+<p>这串字符能够分成4段理解。结构为“d + 文件全部者操作权限 + 文件全部者所在组操作权限 + 其余人的操作权限”：</p>
+<p>1，第一段：样例中字母“d”，表示文件所在文件夹</p>
+<p>2，第二段：样例中字符串“rwx”，表示文件全部者对此文件的操作权限</p>
+<p>3，第三段。样例中字符串“r-x”。表示文件全部者所在组对些文件的操作权限</p>
+<p>4。第四段。样例中字符串“r-x”，表示除2、3两种外的不论什么人对此文件的操作权限</p>
+<p>通经常使用三个数字来表示文件的读取、写入、运行权限：</p>
+<p>运行：1</p>
+<p>写入：2</p>
+<p>读取：4</p>
+<p>随便写个数字：755，这个3位数分别相应前面所说的分段：7相应第二段，5相应第三段，5相应第四段。</p>
+<p>含义：</p>
+<p>7：表示文件全部者的权限，4+2+1=7，即文件全部者对该文件有生杀大权，读、写、运行随便。</p>
+<p>5：表示文件全部者所在组的权限：4+1=5。即文件全部者所在组对文件有读、运行权限。没有写权限。</p>
+<p>5：同上，其余人对该文件仅仅有读、运行权限，没有写权限。</p>
+<p>指令名称 : chmod</p>
+<p>使用权限 : 全部使用者</p>
+<p>使用方式 : chmod [-cfvR] [–help] [–version] mode file…</p>
+<p>说明 : Linux/Unix 的档案调用权限分为三级 : 档案拥有者、群组、其它。利用 chmod 能够藉以控制档案怎样被他人所调用。</p>
+<p>參数 :</p>
+<p>mode : 权限设定字串，格式例如以下 : [ugoa…][[±=][rwxX]…][,…]，当中</p>
+<p>u 表示该档案的拥有者，g 表示与该档案的拥有者属于同一个群体(group)者，o 表示其它以外的人，a 表示这三者皆是。</p>
+<p>+ 表示添加权限、- 表示取消权限、= 表示唯一设定权限。</p>
+<p>r 表示可读取。w 表示可写入，x 表示可运行。X 表示仅仅有当该档案是个子文件夹或者该档案已经被设定过为可运行。</p>
+<p>-c : 若该档案权限确实已经更改，才显示其更修改作</p>
+<p>-f : 若该档案权限无法被更改也不要显示错误讯息</p>
+<p>-v : 显示权限变更的具体资料</p>
+<p>-R : 对眼下文件夹下的全部档案与子文件夹进行同样的权限变更(即以递回的方式逐个变更)</p>
+<p>–help : 显示辅助说明</p>
+<p>–version : 显示版本号</p>
+<p>范例 :将档案 file1.txt 设为全部人皆可读取 :</p>
+<p>chmod ugo+r file1.txt</p>
+<p>将档案 file1.txt 设为全部人皆可读取 :</p>
+<p>chmod a+r file1.txt</p>
+<p>将档案 file1.txt 与 file2.txt 设为该档案拥有者，与其所属同一个群体者可写入，但其它以外的人则不可写入 :</p>
+<p>chmod ug+w,o-w file1.txt file2.txt</p>
+<p>将 <a class="link"   target="_blank" rel="noopener" href="http://ex1.py" >ex1.py<i class="fas fa-external-link-alt"></i></a> 设定为仅仅有该档案拥有者能够运行 :</p>
+<p>chmod u+x <a class="link"   target="_blank" rel="noopener" href="http://ex1.py" >ex1.py<i class="fas fa-external-link-alt"></i></a></p>
+<p>将眼下文件夹下的全部档案与子文件夹皆设为不论什么人可读取 :</p>
+<p>chmod -R a+r *</p>
+<p>此外chmod也能够用数字来表示权限如 chmod 777 file</p>
+<p>语法为：chmod abc file</p>
+<p>当中a,b,c各为一个数字，分别表示User、Group、及Other的权限。</p>
+<p>r=4，w=2，x=1</p>
+<p>若要rwx属性则4+2+1=7；</p>
+<p>若要rw-属性则4+2=6；</p>
+<p>若要r-x属性则4+1=5。</p>
+<p>范例：</p>
+<p>chmod a=rwx file</p>
+<p>和</p>
+<p>chmod 777 file</p>
+<p>效果同样</p>
+<p>chmod ug=rwx,o=x file</p>
+<p>和</p>
+<p>chmod 771 file</p>
+<p>效果同样</p>
+<p>若用chmod 4755 filename可使此程序具有root的权限.</p>
+<p>指令名称 : chown</p>
+<p>使用权限 : root</p>
+<p>使用方式 : chown [-cfhvR] [–help] [–version] user[] file…</p>
+<p>说明 : Linux/Unix 是多人多工作业系统，全部的档案皆有拥有者。利用 chown 能够将档案的拥有者加以改变。</p>
+<p>一般来说，这个指令仅仅有是由系统管理者(root)所使用。一般使用者没有权限能够改变别人的档案拥有者，也没有权限能够自己的档案拥有者改设为别人。</p>
+<p>仅仅有系统管理者(root)才有这种权限。</p>
+<p>參数 :</p>
+<p>user : 新的档案拥有者的使用者</p>
+<p>IDgroup : 新的档案拥有者的使用者群体(group)</p>
+<p>-c : 若该档案拥有者确实已经更改，才显示其更修改作</p>
+<p>-f : 若该档案拥有者无法被更改也不要显示错误讯息</p>
+<p>-h : 仅仅对于连结(link)进行变更。而非该 link 真正指向的档案</p>
+<p>-v : 显示拥有者变更的具体资料</p>
+<p>-R : 对眼下文件夹下的全部档案与子文件夹进行同样的拥有者变更(即以递回的方式逐个变更)</p>
+<p>–help : 显示辅助说明</p>
+<p>–version : 显示版本号</p>
+<p>范例 :</p>
+<p>将档案 file1.txt 的拥有者设为 users 群体的使用者 jessie :</p>
+<p>chown jessie:users file1.txt</p>
+<p>将眼下文件夹下的全部档案与子文件夹的拥有者皆设为 users 群体的使用者 lamport :</p>
+<p>chmod -R lamport:users *</p>
+<p>-rw------- (600) – 仅仅有属主有读写权限。</p>
+<p>-rw-r–r-- (644) – 仅仅有属主有读写权限；而属组用户和其它用户仅仅有读权限。</p>
+<p>-rwx------ (700) – 仅仅有属主有读、写、运行权限。</p>
+<p>-rwxr-xr-x (755) – 属主有读、写、运行权限。而属组用户和其它用户仅仅有读、运行权限。</p>
+<p>-rwx–x–x (711) – 属主有读、写、运行权限；而属组用户和其它用户仅仅有运行权限。</p>
+<p>-rw-rw-rw- (666) – 全部用户都有文件读、写权限。</p>
+<p>这样的做法不可取。</p>
+<p>-rwxrwxrwx (777) – 全部用户都有读、写、运行权限。更不可取的做法。</p>
+<p>下面是对文件夹的两个普通设定:</p>
+<p>drwx------ (700) - 仅仅有属主可在文件夹中读、写。</p>
+<p>drwxr-xr-x (755) - 全部用户可读该文件夹，但仅仅有属主才干改变文件夹中的内容。</p>
+<p>--------------------------------------------------------------------------</p>
+<p>执行 .sh 文件类型的文件：</p>
+<p>用file命令測试一下看是什么类型的</p>
+<p>file <a class="link"   target="_blank" rel="noopener" href="http://xxxx.sh" >xxxx.sh<i class="fas fa-external-link-alt"></i></a></p>
+<p>假设是Bourne-Again shell script 能够sh <a class="link"   target="_blank" rel="noopener" href="http://xxxx.sh" >xxxx.sh<i class="fas fa-external-link-alt"></i></a> 或者chmod +x <a class="link"   target="_blank" rel="noopener" href="http://xxxx.sh" >xxxx.sh<i class="fas fa-external-link-alt"></i></a> 再./xxx.sh</p>
+<p>一般 .sh 的直接加入x(可运行属性) chmod +x <a class="link"   target="_blank" rel="noopener" href="http://xxx.sh" >xxx.sh<i class="fas fa-external-link-alt"></i></a> 然后./xxx.sh就能够了</p>
+<p>chmod是一个改变用户拥有指定文件的权限的命令.r:仅仅读,w:写,x运行.也能够用数字</p>
+<h2 id="6、系统管理systemd"><strong>6、系统管理systemd</strong></h2>
+<p>Systemd 是 Linux 系统工具，用来启动守护进程，已成为大多数发行版的标准配置。历史上，Linux 的启动一直采用init进程。下面的命令用来启动服务。</p>
+<p>$ sudo /etc/init.d/apache2 start</p>
+<h1>或者</h1>
+<p>$ service apache2 start</p>
+<p>这种方法有两个缺点。一是启动时间长。init进程是串行启动，只有前一个进程启动完，才会启动下一个进程。二是启动脚本复杂。init进程只是执行启动脚本，不管其他事情。脚本需要自己处理各种情况，这往往使得脚本变得很长。</p>
+<p><strong>1、Systemd 概述</strong></p>
+<p>Systemd 就是为了解决这些问题而诞生的。它的设计目标是，为系统的启动和管理提供一套完整的解决方案。根据 Linux 惯例，字母d是守护进程（daemon）的缩写。 Systemd 这个名字的含义，就是它要守护整个系统。使用了 Systemd，就不需要再用init了。Systemd 取代了initd，成为系统的第一个进程（PID 等于 1），其他进程都是它的子进程。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ systemctl --version</span><br></pre></td></tr></table></figure>
+<p>上面的命令查看 Systemd 的版本。</p>
+<p>Systemd 的优点是功能强大，使用方便，缺点是体系庞大，非常复杂。事实上，现在还有很多人反对使用 Systemd，理由就是它过于复杂，与操作系统的其他部分强耦合，违反&quot;keep simple, keep stupid&quot;的Unix 哲学。</p>
+<p><strong>图1  Systemd 架构图</strong></p>
+<p><strong>2、系统管理</strong></p>
+<p>Systemd 并不是一个命令，而是一组命令，涉及到系统管理的方方面面。</p>
+<p><strong>2.1 systemctl</strong></p>
+<p>systemctl是 Systemd 的主命令，用于管理系统。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"># 重启系统</span><br><span class="line"></span><br><span class="line">$ sudo systemctl reboot</span><br><span class="line"></span><br><span class="line"># 关闭系统，切断电源</span><br><span class="line"></span><br><span class="line">$ sudo systemctl poweroff</span><br><span class="line"></span><br><span class="line"># CPU停止工作</span><br><span class="line"></span><br><span class="line">$ sudo systemctl halt</span><br><span class="line"></span><br><span class="line"># 暂停系统</span><br><span class="line"></span><br><span class="line">$ sudo systemctl suspend</span><br><span class="line"></span><br><span class="line"># 让系统进入冬眠状态</span><br><span class="line"></span><br><span class="line">$ sudo systemctl hibernate</span><br><span class="line"></span><br><span class="line"># 让系统进入交互式休眠状态</span><br><span class="line"></span><br><span class="line">$ sudo systemctl hybrid-sleep</span><br><span class="line"></span><br><span class="line"># 启动进入救援状态（单用户状态）</span><br><span class="line"></span><br><span class="line">$ sudo systemctl rescue</span><br></pre></td></tr></table></figure>
+<p><strong>2.2 systemd-analyze</strong></p>
+<p>systemd-analyze命令用于查看启动耗时。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># 查看启动耗时</span><br><span class="line"></span><br><span class="line">$ systemd-analyze</span><br><span class="line"></span><br><span class="line"># 查看每个服务的启动耗时</span><br><span class="line"></span><br><span class="line">$ systemd-analyze blame</span><br><span class="line"></span><br><span class="line"># 显示瀑布状的启动过程流</span><br><span class="line"></span><br><span class="line">$ systemd-analyze critical-chain</span><br><span class="line"></span><br><span class="line"># 显示指定服务的启动流</span><br><span class="line"></span><br><span class="line">$ systemd-analyze critical-chain atd.service</span><br></pre></td></tr></table></figure>
+<p><strong>2.3 hostnamectl</strong></p>
+<p>hostnamectl命令用于查看当前主机的信息。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 显示当前主机的信息</span><br><span class="line"></span><br><span class="line">$ hostnamectl</span><br><span class="line"></span><br><span class="line"># 设置主机名。</span><br><span class="line"></span><br><span class="line">$ sudo hostnamectl set-hostname rhel7</span><br></pre></td></tr></table></figure>
+<p><strong>2.4 localectl</strong></p>
+<p>localectl命令用于查看本地化设置。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 查看本地化设置</span><br><span class="line"></span><br><span class="line">$ localectl</span><br><span class="line"></span><br><span class="line"># 设置本地化参数。</span><br><span class="line"></span><br><span class="line">$ sudo localectl set-locale LANG=en\_GB.utf8</span><br><span class="line"></span><br><span class="line">$ sudo localectl set-keymap en\_GB</span><br></pre></td></tr></table></figure>
+<p><strong>2.5 timedatectl</strong></p>
+<p>timedatectl命令用于查看当前时区设置。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># 查看当前时区设置</span><br><span class="line"></span><br><span class="line">$ timedatectl</span><br><span class="line"></span><br><span class="line"># 显示所有可用的时区</span><br><span class="line"></span><br><span class="line">$ timedatectl list-timezones                                                                                   </span><br><span class="line"></span><br><span class="line"># 设置当前时区</span><br><span class="line"></span><br><span class="line">$ sudo timedatectl set-timezone America/New\_York</span><br><span class="line"></span><br><span class="line">$ sudo timedatectl set-time YYYY-MM-DD</span><br><span class="line"></span><br><span class="line">$ sudo timedatectl set-time HH:MM:SS</span><br></pre></td></tr></table></figure>
+<p><strong>2.6 loginctl</strong></p>
+<p>loginctl命令用于查看当前登录的用户。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 列出当前session</span><br><span class="line"></span><br><span class="line">$ loginctl list-sessions</span><br><span class="line"></span><br><span class="line"># 列出当前登录用户</span><br><span class="line"></span><br><span class="line">$ loginctl list-users</span><br><span class="line"></span><br><span class="line"># 列出显示指定用户的信息</span><br><span class="line"></span><br><span class="line">$ loginctl show-user ruanyf</span><br></pre></td></tr></table></figure>
+<p><strong>3、Unit</strong></p>
+<p><strong>3.1 含义</strong></p>
+<p>Systemd 可以管理所有系统资源。不同的资源统称为 Unit（单位）。</p>
+<p>Unit 一共分成12种。</p>
+<ul>
+<li>Service unit：系统服务</li>
+<li>Target unit：多个 Unit 构成的一个组</li>
+<li>Device Unit：硬件设备</li>
+<li>Mount Unit：文件系统的挂载点</li>
+<li>Automount Unit：自动挂载点</li>
+<li>Path Unit：文件或路径</li>
+<li>Scope Unit：不是由 Systemd 启动的外部进程</li>
+<li>Slice Unit：进程组</li>
+<li>Snapshot Unit：Systemd 快照，可以切回某个快照</li>
+<li>Socket Unit：进程间通信的 socket</li>
+<li>Swap Unit：swap 文件</li>
+<li>Timer Unit：定时器</li>
+</ul>
+<p>systemctl list-units命令可以查看当前系统的所有 Unit 。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># 列出正在运行的 Unit</span><br><span class="line"></span><br><span class="line">$ systemctl list-units</span><br><span class="line"></span><br><span class="line"># 列出所有Unit，包括没有找到配置文件的或者启动失败的</span><br><span class="line"></span><br><span class="line">$ systemctl list-units --all</span><br><span class="line"></span><br><span class="line"># 列出所有没有运行的 Unit</span><br><span class="line"></span><br><span class="line">$ systemctl list-units --all --state=inactive</span><br><span class="line"></span><br><span class="line"># 列出所有加载失败的 Unit</span><br><span class="line"></span><br><span class="line">$ systemctl list-units --failed</span><br><span class="line"></span><br><span class="line"># 列出所有正在运行的、类型为 service 的 Unit</span><br><span class="line"></span><br><span class="line">$ systemctl list-units --type=service</span><br></pre></td></tr></table></figure>
+<p><strong>3.2 Unit 的状态</strong></p>
+<p>systemctl status命令用于查看系统状态和单个 Unit 的状态。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"># 显示系统状态</span><br><span class="line"></span><br><span class="line">$ systemctl status</span><br><span class="line"></span><br><span class="line"># 显示单个 Unit 的状态</span><br><span class="line"></span><br><span class="line">$ sysystemctl status bluetooth.service</span><br><span class="line"></span><br><span class="line"># 显示远程主机的某个 Unit 的状态</span><br><span class="line"></span><br><span class="line">$ systemctl -H root@rhel7.example.com status httpd.service</span><br><span class="line"></span><br><span class="line">除了status命令，systemctl还提供了三个查询状态的简单方法，主要供脚本内部的判断语句使用。</span><br><span class="line"></span><br><span class="line"># 显示某个 Unit 是否正在运行</span><br><span class="line"></span><br><span class="line">$ systemctl is-active application.service</span><br><span class="line"></span><br><span class="line"># 显示某个 Unit 是否处于启动失败状态</span><br><span class="line"></span><br><span class="line">$ systemctl is-failed application.service</span><br><span class="line"></span><br><span class="line"># 显示某个 Unit 服务是否建立了启动链接</span><br><span class="line"></span><br><span class="line">$ systemctl is-enabled application.service</span><br></pre></td></tr></table></figure>
+<p><strong>3.3 Unit 管理</strong></p>
+<p>对于用户来说，最常用的是下面这些命令，用于启动和停止 Unit（主要是 service）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"># 立即启动一个服务</span><br><span class="line"></span><br><span class="line">$ sudo systemctl start apache.service</span><br><span class="line"></span><br><span class="line"># 立即停止一个服务</span><br><span class="line"></span><br><span class="line">$ sudo systemctl stop apache.service</span><br><span class="line"></span><br><span class="line"># 重启一个服务</span><br><span class="line"></span><br><span class="line">$ sudo systemctl restart apache.service</span><br><span class="line"></span><br><span class="line"># 杀死一个服务的所有子进程</span><br><span class="line"></span><br><span class="line">$ sudo systemctl kill apache.service</span><br><span class="line"></span><br><span class="line"># 重新加载一个服务的配置文件</span><br><span class="line"></span><br><span class="line">$ sudo systemctl reload apache.service</span><br><span class="line"></span><br><span class="line"># 重载所有修改过的配置文件</span><br><span class="line"></span><br><span class="line">$ sudo systemctl daemon-reload</span><br><span class="line"></span><br><span class="line"># 显示某个 Unit 的所有底层参数</span><br><span class="line"></span><br><span class="line">$ systemctl show httpd.service</span><br><span class="line"></span><br><span class="line"># 显示某个 Unit 的指定属性的值</span><br><span class="line"></span><br><span class="line">$ systemctl show -p CPUShares httpd.service</span><br><span class="line"></span><br><span class="line"># 设置某个 Unit 的指定属性</span><br><span class="line"></span><br><span class="line">$ sudo systemctl set-property httpd.service CPUShares=500</span><br></pre></td></tr></table></figure>
+<p><strong>3.4 依赖关系</strong></p>
+<p>Unit 之间存在依赖关系：A 依赖于 B，就意味着 Systemd 在启动 A 的时候，同时会去启动 B。</p>
+<p>systemctl list-dependencies命令列出一个 Unit 的所有依赖。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ systemctl list-dependencies nginx.service</span><br></pre></td></tr></table></figure>
+<p>上面命令的输出结果之中，有些依赖是 Target 类型（详见下文），默认不会展开显示。如果要展开 Target，就需要使用–all参数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ systemctl list-dependencies --all nginx.service</span><br></pre></td></tr></table></figure>
+<p><strong>4、Unit 的配置文件</strong></p>
+<p><strong>4.1 概述</strong></p>
+<p>每一个 Unit 都有一个配置文件，告诉 Systemd 怎么启动这个 Unit 。</p>
+<p>Systemd 默认从目录/etc/systemd/system/读取配置文件。但是，里面存放的大部分文件都是符号链接，指向目录/usr/lib/systemd/system/，真正的配置文件存放在那个目录。</p>
+<p>systemctl enable命令用于在上面两个目录之间，建立符号链接关系。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl enable clamd@scan.service</span><br></pre></td></tr></table></figure>
+<h1>等同于</h1>
+<p>$ sudo ln -s ‘/usr/lib/systemd/system/clamd@scan.service’ ‘/etc/systemd/system/multi-user.target.wants/clamd@scan.service’</p>
+<p>如果配置文件里面设置了开机启动，systemctl enable命令相当于激活开机启动。</p>
+<p>与之对应的，systemctl disable命令用于在两个目录之间，撤销符号链接关系，相当于撤销开机启动。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl disable clamd@scan.service</span><br></pre></td></tr></table></figure>
+<p>配置文件的后缀名，就是该 Unit 的种类，比如sshd.socket。如果省略，Systemd 默认后缀名为.service，所以sshd会被理解成sshd.service。</p>
+<p><strong>4.2 配置文件的状态</strong></p>
+<p>systemctl list-unit-files命令用于列出所有配置文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 列出所有配置文件</span><br><span class="line"></span><br><span class="line">$ systemctl list-unit-files</span><br><span class="line"></span><br><span class="line"># 列出指定类型的配置文件</span><br><span class="line"></span><br><span class="line">$ systemctl list-unit-files --type=service</span><br></pre></td></tr></table></figure>
+<p>这个命令会输出一个列表。</p>
+<p>$ systemctl list-unit-files</p>
+<p>UNIT FILE              STATE</p>
+<p>chronyd.service        enabled</p>
+<p>clamd@.service         static</p>
+<p>clamd@scan.service     disabled</p>
+<p>这个列表显示每个配置文件的状态，一共有四种。</p>
+<ul>
+<li>enabled：已建立启动链接</li>
+<li>disabled：没建立启动链接</li>
+<li>static：该配置文件没有[Install]部分（无法执行），只能作为其他配置文件的依赖</li>
+<li>masked：该配置文件被禁止建立启动链接</li>
+</ul>
+<p>注意，从配置文件的状态无法看出，该 Unit 是否正在运行。这必须执行前面提到的systemctl status命令。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ systemctl status bluetooth.service</span><br><span class="line"></span><br><span class="line">一旦修改配置文件，就要让 SystemD 重新加载配置文件，然后重新启动，否则修改不会生效。</span><br><span class="line"></span><br><span class="line">$ sudo systemctl daemon-reload</span><br><span class="line"></span><br><span class="line">$ sudo systemctl restart httpd.service</span><br></pre></td></tr></table></figure>
+<p><strong>4.3 配置文件的格式</strong></p>
+<p>配置文件就是普通的文本文件，可以用文本编辑器打开。</p>
+<p>systemctl cat命令可以查看配置文件的内容。</p>
+<p>$ systemctl cat atd.service</p>
+<p>[Unit]</p>
+<p>Description=ATD daemon</p>
+<p>[Service]</p>
+<p>Type=forking</p>
+<p>ExecStart=/usr/bin/atd</p>
+<p>[Install]</p>
+<p>WantedBy=multi-user.target</p>
+<p>从上面的输出可以看到，配置文件分成几个区块。每个区块的第一行，是用方括号表示的区别名，比如[Unit]。注意，配置文件的区块名和字段名，都是大小写敏感的。</p>
+<p>每个区块内部是一些等号连接的键值对。</p>
+<p>[Section]</p>
+<p>Directive1=value</p>
+<p>Directive2=value</p>
+<p>注意，键值对的等号两侧不能有空格。</p>
+<p><strong>4.4 配置文件的区块</strong></p>
+<p>[Unit]区块通常是配置文件的第一个区块，用来定义 Unit 的元数据，以及配置与其他 Unit 的关系。它的主要字段如下。</p>
+<ul>
+<li>Description：简短描述</li>
+<li>Documentation：文档地址</li>
+<li>Requires：当前 Unit 依赖的其他 Unit，如果它们没有运行，当前 Unit 会启动失败</li>
+<li>Wants：与当前 Unit 配合的其他 Unit，如果它们没有运行，当前 Unit 不会启动失败</li>
+<li>BindsTo：与Requires类似，它指定的 Unit 如果退出，会导致当前 Unit 停止运行</li>
+<li>Before：如果该字段指定的 Unit 也要启动，那么必须在当前 Unit 之后启动</li>
+<li>After：如果该字段指定的 Unit 也要启动，那么必须在当前 Unit 之前启动</li>
+<li>Conflicts：这里指定的 Unit 不能与当前 Unit 同时运行</li>
+<li>Condition…：当前 Unit 运行必须满足的条件，否则不会运行</li>
+<li>Assert…：当前 Unit 运行必须满足的条件，否则会报启动失败</li>
+</ul>
+<p>[Install]通常是配置文件的最后一个区块，用来定义如何启动，以及是否开机启动。它的主要字段如下。</p>
+<ul>
+<li>WantedBy：它的值是一个或多个 Target，当前 Unit 激活时（enable）符号链接会放入/etc/systemd/system目录下面以 Target 名 + .wants后缀构成的子目录中</li>
+<li>RequiredBy：它的值是一个或多个 Target，当前 Unit 激活时，符号链接会放入/etc/systemd/system目录下面以 Target 名 + .required后缀构成的子目录中</li>
+<li>Alias：当前 Unit 可用于启动的别名</li>
+<li>Also：当前 Unit 激活（enable）时，会被同时激活的其他 Unit</li>
+</ul>
+<p>[Service]区块用来 Service 的配置，只有 Service 类型的 Unit 才有这个区块。它的主要字段如下。</p>
+<ul>
+<li>Type：定义启动时的进程行为。它有以下几种值。</li>
+<li>Type=simple：默认值，执行ExecStart指定的命令，启动主进程</li>
+<li>Type=forking：以 fork 方式从父进程创建子进程，创建后父进程会立即退出</li>
+<li>Type=oneshot：一次性进程，Systemd 会等当前服务退出，再继续往下执行</li>
+<li>Type=dbus：当前服务通过D-Bus启动</li>
+<li>Type=notify：当前服务启动完毕，会通知Systemd，再继续往下执行</li>
+<li>Type=idle：若有其他任务执行完毕，当前服务才会运行</li>
+<li>ExecStart：启动当前服务的命令</li>
+<li>ExecStartPre：启动当前服务之前执行的命令</li>
+<li>ExecStartPost：启动当前服务之后执行的命令</li>
+<li>ExecReload：重启当前服务时执行的命令</li>
+<li>ExecStop：停止当前服务时执行的命令</li>
+<li>ExecStopPost：停止当其服务之后执行的命令</li>
+<li>RestartSec：自动重启当前服务间隔的秒数</li>
+<li>Restart：定义何种情况 Systemd 会自动重启当前服务，可能的值包括always（总是重启）、on-success、on-failure、on-abnormal、on-abort、on-watchdog</li>
+<li>TimeoutSec：定义 Systemd 停止当前服务之前等待的秒数</li>
+<li>Environment：指定环境变量</li>
+</ul>
+<p>Unit 配置文件的完整字段清单，请参考官方文档。</p>
+<p><strong>5、Target</strong></p>
+<p>启动计算机的时候，需要启动大量的 Unit。如果每一次启动，都要一一写明本次启动需要哪些 Unit，显然非常不方便。Systemd 的解决方案就是 Target。</p>
+<p>简单说，Target 就是一个 Unit 组，包含许多相关的 Unit 。启动某个 Target 的时候，Systemd 就会启动里面所有的 Unit。从这个意义上说，Target 这个概念类似于&quot;状态点&quot;，启动某个 Target 就好比启动到某种状态。</p>
+<p>传统的init启动模式里面，有 RunLevel 的概念，跟 Target 的作用很类似。不同的是，RunLevel 是互斥的，不可能多个 RunLevel 同时启动，但是多个 Target 可以同时启动。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"># 查看当前系统的所有 Target</span><br><span class="line"></span><br><span class="line">$ systemctl list-unit-files --type=target</span><br><span class="line"></span><br><span class="line"># 查看一个 Target 包含的所有 Unit</span><br><span class="line"></span><br><span class="line">$ systemctl list-dependencies multi-user.target</span><br><span class="line"></span><br><span class="line"># 查看启动时的默认 Target</span><br><span class="line"></span><br><span class="line">$ systemctl get-default</span><br><span class="line"></span><br><span class="line"># 设置启动时的默认 Target</span><br><span class="line"></span><br><span class="line">$ sudo systemctl set-default multi-user.target</span><br><span class="line"></span><br><span class="line"># 切换 Target 时，默认不关闭前一个 Target 启动的进程，</span><br><span class="line"></span><br><span class="line"># systemctl isolate 命令改变这种行为，</span><br><span class="line"></span><br><span class="line"># 关闭前一个 Target 里面所有不属于后一个 Target 的进程</span><br><span class="line"></span><br><span class="line">$ sudo systemctl isolate multi-user.target</span><br></pre></td></tr></table></figure>
+<p>Target 与 传统 RunLevel 的对应关系如下。</p>
+<p>Traditional runlevel      New target name     Symbolically linked to…</p>
+<p>Runlevel 0           |    runlevel0.target -&gt; poweroff.target</p>
+<p>Runlevel 1           |    runlevel1.target -&gt; rescue.target</p>
+<p>Runlevel 2           |    runlevel2.target -&gt; multi-user.target</p>
+<p>Runlevel 3           |    runlevel3.target -&gt; multi-user.target</p>
+<p>Runlevel 4           |    runlevel4.target -&gt; multi-user.target</p>
+<p>Runlevel 5           |    runlevel5.target -&gt; graphical.target</p>
+<p>Runlevel 6           |    runlevel6.target -&gt; reboot.target</p>
+<p>它与init进程的主要差别如下。</p>
+<p><strong>（1）默认的 RunLevel</strong>（在/etc/inittab文件设置）现在被默认的 Target 取代，位置是/etc/systemd/system/default.target，通常符号链接到graphical.target（图形界面）或者multi-user.target（多用户命令行）。</p>
+<p><strong>（2）启动脚本的位置</strong>，以前是/etc/init.d目录，符号链接到不同的 RunLevel 目录 （比如/etc/rc3.d、/etc/rc5.d等），现在则存放在/lib/systemd/system和/etc/systemd/system目录。</p>
+<p><strong>（3）配置文件的位置</strong>，以前init进程的配置文件是/etc/inittab，各种服务的配置文件存放在/etc/sysconfig目录。现在的配置文件主要存放在/lib/systemd目录，在/etc/systemd目录里面的修改可以覆盖原始设置。</p>
+<p><strong>6、日志管理</strong></p>
+<p>Systemd 统一管理所有 Unit 的启动日志。带来的好处就是，可以只用journalctl一个命令，查看所有日志（内核日志和应用日志）。日志的配置文件是/etc/systemd/journald.conf。</p>
+<p>journalctl功能强大，用法非常多。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br></pre></td><td class="code"><pre><span class="line"># 查看所有日志（默认情况下 ，只保存本次启动的日志）</span><br><span class="line"></span><br><span class="line">$ sudo journalctl</span><br><span class="line"></span><br><span class="line"># 查看内核日志（不显示应用日志）</span><br><span class="line"></span><br><span class="line">$ sudo journalctl -k</span><br><span class="line"></span><br><span class="line"># 查看系统本次启动的日志</span><br><span class="line"></span><br><span class="line">$ sudo journalctl -b</span><br><span class="line"></span><br><span class="line">$ sudo journalctl -b -0</span><br><span class="line"></span><br><span class="line"># 查看上一次启动的日志（需更改设置）</span><br><span class="line"></span><br><span class="line">$ sudo journalctl -b -1</span><br><span class="line"></span><br><span class="line"># 查看指定时间的日志</span><br><span class="line"></span><br><span class="line">$ sudo journalctl --since=&quot;2012-10-30 18:17:16&quot;</span><br><span class="line"></span><br><span class="line">$ sudo journalctl --since &quot;20 min ago&quot;</span><br><span class="line"></span><br><span class="line">$ sudo journalctl --since yesterday</span><br><span class="line"></span><br><span class="line">$ sudo journalctl --since &quot;2015-01-10&quot; --until &quot;2015-01-11 03:00&quot;</span><br><span class="line"></span><br><span class="line">$ sudo journalctl --since 09:00 --until &quot;1 hour ago&quot;</span><br><span class="line"></span><br><span class="line"># 显示尾部的最新10行日志</span><br><span class="line"></span><br><span class="line">$ sudo journalctl -n</span><br><span class="line"></span><br><span class="line"># 显示尾部指定行数的日志</span><br><span class="line"></span><br><span class="line">$ sudo journalctl -n 20</span><br><span class="line"></span><br><span class="line"># 实时滚动显示最新日志</span><br><span class="line"></span><br><span class="line">$ sudo journalctl -f</span><br><span class="line"></span><br><span class="line"># 查看指定服务的日志</span><br><span class="line"></span><br><span class="line">$ sudo journalctl /usr/lib/systemd/systemd</span><br><span class="line"></span><br><span class="line"># 查看指定进程的日志</span><br><span class="line"></span><br><span class="line">$ sudo journalctl \_PID=1</span><br><span class="line"></span><br><span class="line"># 查看某个路径的脚本的日志</span><br><span class="line"></span><br><span class="line">$ sudo journalctl /usr/bin/bash</span><br><span class="line"></span><br><span class="line"># 查看指定用户的日志</span><br><span class="line"></span><br><span class="line">$ sudo journalctl \_UID=33 --since today</span><br><span class="line"></span><br><span class="line"># 查看某个 Unit 的日志</span><br><span class="line"></span><br><span class="line">$ sudo journalctl -u nginx.service</span><br><span class="line"></span><br><span class="line">$ sudo journalctl -u nginx.service --since today</span><br><span class="line"></span><br><span class="line"># 实时滚动显示某个 Unit 的最新日志</span><br><span class="line"></span><br><span class="line">$ sudo journalctl -u nginx.service -f</span><br><span class="line"></span><br><span class="line"># 合并显示多个 Unit 的日志</span><br><span class="line"></span><br><span class="line">$ journalctl -u nginx.service -u php-fpm.service --since today</span><br><span class="line"></span><br><span class="line"># 查看指定优先级（及其以上级别）的日志，共有8级</span><br><span class="line"></span><br><span class="line"># 0: emerg</span><br><span class="line"></span><br><span class="line"># 1: alert</span><br><span class="line"></span><br><span class="line"># 2: crit</span><br><span class="line"></span><br><span class="line"># 3: err</span><br><span class="line"></span><br><span class="line"># 4: warning</span><br><span class="line"></span><br><span class="line"># 5: notice</span><br><span class="line"></span><br><span class="line"># 6: info</span><br><span class="line"></span><br><span class="line"># 7: debug</span><br><span class="line"></span><br><span class="line">$ sudo journalctl -p err -b</span><br><span class="line"></span><br><span class="line"># 日志默认分页输出，--no-pager 改为正常的标准输出</span><br><span class="line"></span><br><span class="line">$ sudo journalctl --no-pager</span><br><span class="line"></span><br><span class="line"># 以 JSON 格式（单行）输出</span><br><span class="line"></span><br><span class="line">$ sudo journalctl -b -u nginx.service -o json</span><br><span class="line"></span><br><span class="line"># 以 JSON 格式（多行）输出，可读性更好</span><br><span class="line"></span><br><span class="line">$ sudo journalctl -b -u nginx.serviceqq</span><br><span class="line"></span><br><span class="line">` `-o json-pretty</span><br><span class="line"></span><br><span class="line"># 显示日志占据的硬盘空间</span><br><span class="line"></span><br><span class="line">$ sudo journalctl --disk-usage</span><br><span class="line"></span><br><span class="line"># 指定日志文件占据的最大空间</span><br><span class="line"></span><br><span class="line">$ sudo journalctl --vacuum-size=1G</span><br><span class="line"></span><br><span class="line"># 指定日志文件保存多久</span><br><span class="line"></span><br><span class="line">$ sudo journalctl --vacuum-time=1years</span><br></pre></td></tr></table></figure>
+<p><strong>7、操作实例</strong></p>
+<p><strong>7.1 开机启动</strong></p>
+<p>对于那些支持 Systemd 的软件，安装的时候，会自动在/usr/lib/systemd/system目录添加一个配置文件。</p>
+<p>如果你想让该软件开机启动，就执行下面的命令（以httpd.service为例）。</p>
+<p>$ sudo systemctl enable httpd</p>
+<p>上面的命令相当于在/etc/systemd/system目录添加一个符号链接，指向/usr/lib/systemd/system里面的httpd.service文件。</p>
+<p>这是因为开机时，Systemd只执行/etc/systemd/system目录里面的配置文件。这也意味着，如果把修改后的配置文件放在该目录，就可以达到覆盖原始配置的效果。</p>
+<p><strong>7.2 启动服务</strong></p>
+<p>设置开机启动以后，软件并不会立即启动，必须等到下一次开机。如果想现在就运行该软件，那么要执行systemctl start命令。</p>
+<p>$ sudo systemctl start httpd</p>
+<p>执行上面的命令以后，有可能启动失败，因此要用systemctl status命令查看一下该服务的状态。</p>
+<p>$ sudo systemctl status httpd</p>
+<p>httpd.service - The Apache HTTP Server</p>
+<p><code> </code>Loaded: loaded (/usr/lib/systemd/system/httpd.service; enabled)</p>
+<p><code> </code>Active: active (running) since 金 2014-12-05 12:18:22 JST; 7min ago</p>
+<p><code> </code>Main PID: 4349 (httpd)</p>
+<p><code> </code>Status: “Total requests: 1; Current requests/sec: 0; Current traffic:   0 B/sec”</p>
+<p><code> </code>CGroup: /system.slice/httpd.service</p>
+<p><code>         </code>├─4349 /usr/sbin/httpd -DFOREGROUND</p>
+<p><code>         </code>├─4350 /usr/sbin/httpd -DFOREGROUND</p>
+<p><code>         </code>├─4351 /usr/sbin/httpd -DFOREGROUND</p>
+<p><code>         </code>├─4352 /usr/sbin/httpd -DFOREGROUND</p>
+<p><code>         </code>├─4353 /usr/sbin/httpd -DFOREGROUND</p>
+<p><code>         </code>└─4354 /usr/sbin/httpd -DFOREGROUND</p>
+<p>12月 05 12:18:22 localhost.localdomain systemd[1]: Starting The Apache HTTP Server</p>
+<p>12月 05 12:18:22 localhost.localdomain systemd[1]: Started The Apache HTTP Server.</p>
+<p>12月 05 12:22:40 localhost.localdomain systemd[1]: Started The Apache HTTP Server.</p>
+<p>上面的输出结果含义如下。</p>
+<ul>
+<li>Loaded行：配置文件的位置，是否设为开机启动</li>
+<li>Active行：表示正在运行</li>
+<li>Main PID行：主进程ID</li>
+<li>Status行：由应用本身（这里是 httpd ）提供的软件当前状态</li>
+<li>CGroup块：应用的所有子进程</li>
+<li>日志块：应用的日志</li>
+</ul>
+<p><strong>7.3 停止服务</strong></p>
+<p>终止正在运行的服务，需要执行systemctl stop命令。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl stop httpd.service</span><br></pre></td></tr></table></figure>
+<p>有时候，该命令可能没有响应，服务停不下来。这时候就不得不&quot;杀进程&quot;了，向正在运行的进程发出kill信号。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl kill httpd.service</span><br></pre></td></tr></table></figure>
+<p>此外，重启服务要执行systemctl restart命令。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl restart httpd.service</span><br></pre></td></tr></table></figure>
+<p><strong>7.4 读懂配置文件</strong></p>
+<p>一个服务怎么启动，完全由它的配置文件决定。下面就来看，配置文件有些什么内容。</p>
+<p>前面说过，配置文件主要放在/usr/lib/systemd/system目录，也可能在/etc/systemd/system目录。找到配置文件以后，使用文本编辑器打开即可。</p>
+<p>systemctl cat命令可以用来查看配置文件，下面以sshd.service文件为例，它的作用是启动一个 SSH 服务器，供其他用户以 SSH 方式登录。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">$ systemctl cat sshd.service</span><br><span class="line"></span><br><span class="line">[Unit]</span><br><span class="line"></span><br><span class="line">Description=OpenSSH server daemon</span><br><span class="line"></span><br><span class="line">Documentation=man:sshd(8) man:sshd\_config(5)</span><br><span class="line"></span><br><span class="line">After=network.target sshd-keygen.service</span><br><span class="line"></span><br><span class="line">Wants=sshd-keygen.service</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line"></span><br><span class="line">EnvironmentFile=/etc/sysconfig/sshd</span><br><span class="line"></span><br><span class="line">ExecStart=/usr/sbin/sshd -D $OPTIONS</span><br><span class="line"></span><br><span class="line">ExecReload=/bin/kill -HUP $MAINPID</span><br><span class="line"></span><br><span class="line">Type=simple</span><br><span class="line"></span><br><span class="line">KillMode=process</span><br><span class="line"></span><br><span class="line">Restart=on-failure</span><br><span class="line"></span><br><span class="line">RestartSec=42s</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line"></span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+<p>可以看到，配置文件分成几个区块，每个区块包含若干条键值对。</p>
+<p>下面依次解释每个区块的内容。</p>
+<p><strong>7.5 [Unit] 区块：启动顺序与依赖关系。</strong></p>
+<p>Unit区块的Description字段给出当前服务的简单描述，Documentation字段给出文档位置。</p>
+<p>接下来的设置是启动顺序和依赖关系，这个比较重要。</p>
+<p>After字段：表示如果network.target或sshd-keygen.service需要启动，那么sshd.service应该在它们之后启动。</p>
+<p>相应地，还有一个Before字段，定义sshd.service应该在哪些服务之前启动。</p>
+<p>注意，After和Before字段只涉及启动顺序，不涉及依赖关系。</p>
+<p>举例来说，某 Web 应用需要 postgresql 数据库储存数据。在配置文件中，它只定义要在 postgresql 之后启动，而没有定义依赖 postgresql 。上线后，由于某种原因，postgresql 需要重新启动，在停止服务期间，该 Web 应用就会无法建立数据库连接。</p>
+<p>设置依赖关系，需要使用Wants字段和Requires字段。</p>
+<p>Wants字段：表示sshd.service与sshd-keygen.service之间存在&quot;弱依赖&quot;关系，即如果&quot;sshd-keygen.service&quot;启动失败或停止运行，不影响sshd.service继续执行。</p>
+<p>Requires字段则表示&quot;强依赖&quot;关系，即如果该服务启动失败或异常退出，那么sshd.service也必须退出。</p>
+<p>注意，Wants字段与Requires字段只涉及依赖关系，与启动顺序无关，默认情况下是同时启动的。</p>
+<p><strong>7.6 [Service] 区块：启动行为</strong></p>
+<p>Service区块定义如何启动当前服务。</p>
+<p><strong>7.6.1 启动命令</strong></p>
+<p>许多软件都有自己的环境参数文件，该文件可以用EnvironmentFile字段读取。</p>
+<p>EnvironmentFile字段：指定当前服务的环境参数文件。该文件内部的key=value键值对，可以用$key的形式，在当前配置文件中获取。</p>
+<p>上面的例子中，sshd 的环境参数文件是/etc/sysconfig/sshd。</p>
+<p>配置文件里面最重要的字段是ExecStart。</p>
+<p>ExecStart字段：定义启动进程时执行的命令。</p>
+<p>上面的例子中，启动sshd，执行的命令是/usr/sbin/sshd -D $OPTIONS，其中的变量$OPTIONS就来自EnvironmentFile字段指定的环境参数文件。</p>
+<p>与之作用相似的，还有如下这些字段。</p>
+<ul>
+<li>ExecReload字段：重启服务时执行的命令</li>
+<li>ExecStop字段：停止服务时执行的命令</li>
+<li>ExecStartPre字段：启动服务之前执行的命令</li>
+<li>ExecStartPost字段：启动服务之后执行的命令</li>
+<li>ExecStopPost字段：停止服务之后执行的命令</li>
+</ul>
+<p>请看下面的例子。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[Service]</span><br><span class="line"></span><br><span class="line">ExecStart=/bin/echo execstart1</span><br><span class="line"></span><br><span class="line">ExecStart=</span><br><span class="line"></span><br><span class="line">ExecStart=/bin/echo execstart2</span><br><span class="line"></span><br><span class="line">ExecStartPost=/bin/echo post1</span><br><span class="line"></span><br><span class="line">ExecStartPost=/bin/echo post2</span><br></pre></td></tr></table></figure>
+<p>上面这个配置文件，第二行ExecStart设为空值，等于取消了第一行的设置，运行结果如下。</p>
+<p>execstart2</p>
+<p>post1</p>
+<p>post2</p>
+<p>所有的启动设置之前，都可以加上一个连词号（-），表示&quot;抑制错误&quot;，即发生错误的时候，不影响其他命令的执行。比如，EnvironmentFile=-/etc/sysconfig/sshd（注意等号后面的那个连词号），就表示即使/etc/sysconfig/sshd文件不存在，也不会抛出错误。</p>
+<p><strong>7.6.2 启动类型</strong></p>
+<p>Type字段定义启动类型。它可以设置的值如下。</p>
+<ul>
+<li>simple（默认值）：ExecStart字段启动的进程为主进程</li>
+<li>forking：ExecStart字段将以fork()方式启动，此时父进程将会退出，子进程将成为主进程</li>
+<li>oneshot：类似于simple，但只执行一次，Systemd 会等它执行完，才启动其他服务</li>
+<li>dbus：类似于simple，但会等待 D-Bus 信号后启动</li>
+<li>notify：类似于simple，启动结束后会发出通知信号，然后 Systemd 再启动其他服务</li>
+<li>idle：类似于simple，但是要等到其他任务都执行完，才会启动该服务。一种使用场合是为让该服务的输出，不与其他服务的输出相混合</li>
+</ul>
+<p>下面是一个oneshot的例子，笔记本电脑启动时，要把触摸板关掉，配置文件可以这样写。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line"></span><br><span class="line">Description=Switch-off Touchpad</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line"></span><br><span class="line">Type=oneshot</span><br><span class="line"></span><br><span class="line">ExecStart=/usr/bin/touchpad-off</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line"></span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+<p>上面的配置文件，启动类型设为oneshot，就表明这个服务只要运行一次就够了，不需要长期运行。</p>
+<p>如果关闭以后，将来某个时候还想打开，配置文件修改如下。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line"></span><br><span class="line">Description=Switch-off Touchpad</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line"></span><br><span class="line">Type=oneshot</span><br><span class="line"></span><br><span class="line">ExecStart=/usr/bin/touchpad-off start</span><br><span class="line"></span><br><span class="line">ExecStop=/usr/bin/touchpad-off stop</span><br><span class="line"></span><br><span class="line">RemainAfterExit=yes</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line"></span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+<p>上面配置文件中，RemainAfterExit字段设为yes，表示进程退出以后，服务仍然保持执行。这样的话，一旦使用systemctl stop命令停止服务，ExecStop指定的命令就会执行，从而重新开启触摸板。</p>
+<p><strong>7.6.3 重启行为</strong></p>
+<p>Service区块有一些字段，定义了重启行为。</p>
+<p>KillMode字段：定义 Systemd 如何停止 sshd 服务。</p>
+<p>上面这个例子中，将KillMode设为process，表示只停止主进程，不停止任何sshd 子进程，即子进程打开的 SSH session 仍然保持连接。这个设置不太常见，但对 sshd 很重要，否则你停止服务的时候，会连自己打开的 SSH session 一起杀掉。</p>
+<p>KillMode字段可以设置的值如下。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- control-group（默认值）：当前控制组里面的所有子进程，都会被杀掉</span><br><span class="line">- process：只杀主进程</span><br><span class="line">- mixed：主进程将收到 SIGTERM 信号，子进程收到 SIGKILL 信号</span><br><span class="line">- none：没有进程会被杀掉，只是执行服务的 stop 命令。</span><br></pre></td></tr></table></figure>
+<p>接下来是Restart字段。</p>
+<p>Restart字段：定义了 sshd 退出后，Systemd 的重启方式。</p>
+<p>上面的例子中，Restart设为on-failure，表示任何意外的失败，就将重启sshd。如果 sshd 正常停止（比如执行systemctl stop命令），它就不会重启。</p>
+<p>Restart字段可以设置的值如下。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- no（默认值）：退出后不会重启</span><br><span class="line">- on-success：只有正常退出时（退出状态码为0），才会重启</span><br><span class="line">- on-failure：非正常退出时（退出状态码非0），包括被信号终止和超时，才会重启</span><br><span class="line">- on-abnormal：只有被信号终止和超时，才会重启</span><br><span class="line">- on-abort：只有在收到没有捕捉到的信号终止时，才会重启</span><br><span class="line">- on-watchdog：超时退出，才会重启</span><br><span class="line">- always：不管是什么退出原因，总是重启</span><br></pre></td></tr></table></figure>
+<p>对于守护进程，推荐设为on-failure。对于那些允许发生错误退出的服务，可以设为on-abnormal。</p>
+<p>最后是RestartSec字段。</p>
+<p>RestartSec字段：表示 Systemd 重启服务之前，需要等待的秒数。上面的例子设为等待42秒。</p>
+<p><strong>7.7 [Install] 区块</strong></p>
+<p>Install区块，定义如何安装这个配置文件，即怎样做到开机启动。</p>
+<p>WantedBy字段：表示该服务所在的 Target。</p>
+<p>Target的含义是服务组，表示一组服务。WantedBy=multi-user.target指的是，sshd 所在的 Target 是multi-user.target。</p>
+<p>这个设置非常重要，因为执行systemctl enable sshd.service命令时，sshd.service的一个符号链接，就会放在/etc/systemd/system目录下面的multi-user.target.wants子目录之中。</p>
+<p>Systemd 有默认的启动 Target。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ systemctl get-default</span><br><span class="line"></span><br><span class="line">multi-user.target</span><br></pre></td></tr></table></figure>
+<p>上面的结果表示，默认的启动 Target 是multi-user.target。在这个组里的所有服务，都将开机启动。这就是为什么systemctl enable命令能设置开机启动的原因。</p>
+<p>使用 Target 的时候，systemctl list-dependencies命令和systemctl isolate命令也很有用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 查看 multi-user.target 包含的所有服务</span><br><span class="line"></span><br><span class="line">$ systemctl list-dependencies multi-user.target</span><br><span class="line"></span><br><span class="line"># 切换到另一个 target</span><br><span class="line"></span><br><span class="line"># shutdown.target 就是关机状态</span><br><span class="line"></span><br><span class="line">$ sudo systemctl isolate shutdown.target</span><br></pre></td></tr></table></figure>
+<p>一般来说，常用的 Target 有两个：一个是multi-user.target，表示多用户命令行状态；另一个是graphical.target，表示图形用户状态，它依赖于multi-user.target。官方文档有一张非常清晰的 Target 依赖关系图。</p>
+<p><strong>7.8 Target 的配置文件</strong></p>
+<p>Target 也有自己的配置文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ systemctl cat multi-user.target</span><br><span class="line"></span><br><span class="line">[Unit]</span><br><span class="line"></span><br><span class="line">Description=Multi-User System</span><br><span class="line"></span><br><span class="line">Documentation=man:systemd.special(7)</span><br><span class="line"></span><br><span class="line">Requires=basic.target</span><br><span class="line"></span><br><span class="line">Conflicts=rescue.service rescue.target</span><br><span class="line"></span><br><span class="line">After=basic.target rescue.service rescue.target</span><br><span class="line"></span><br><span class="line">AllowIsolate=yes</span><br></pre></td></tr></table></figure>
+<p>注意，Target 配置文件里面没有启动命令。</p>
+<p>上面输出结果中，主要字段含义如下。</p>
+<p>Requires字段：要求basic.target一起运行。</p>
+<p>Conflicts字段：冲突字段。如果rescue.service或rescue.target正在运行，multi-user.target就不能运行，反之亦然。</p>
+<p>After：表示multi-user.target在basic.target 、 rescue.service、 rescue.target之后启动，如果它们有启动的话。</p>
+<p>AllowIsolate：允许使用systemctl isolate命令切换到multi-user.target。</p>
+<p><strong>7.9 修改配置文件后重启</strong></p>
+<p>修改配置文件以后，需要重新加载配置文件，然后重新启动相关服务。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 重新加载配置文件</span><br><span class="line"></span><br><span class="line">$ sudo systemctl daemon-reload</span><br><span class="line"></span><br><span class="line"># 重启相关服务</span><br><span class="line"></span><br><span class="line">$ sudo systemctl restart foobar</span><br></pre></td></tr></table></figure>
+<h2 id="7、查看设置时区"><strong>7、查看设置时区</strong></h2>
+<p><strong>一、GMT、UTC、CST、DST 时间</strong></p>
+<ul>
+<li>UTC</li>
+</ul>
+<p><code> 　　</code>整个地球分为二十四时区，每个时区都有自己的本地时间。在国际无线电通信场合，为了统一起见，使用一个统一的时间，称为通用协调时(UTC, Universal Time Coordinated)。</p>
+<ul>
+<li>GMT</li>
+</ul>
+<p><code> 　　</code>格林威治标准时间 (Greenwich Mean Time)指位于英国伦敦郊区的皇家格林尼治天文台的标准时间，因为本初子午线被定义在通过那里的经线。(UTC与GMT时间基本相同，本文中不做区分)</p>
+<ul>
+<li>CST</li>
+</ul>
+<p><code> 　　</code>中国标准时间 (China Standard Time)</p>
+<table>
+<thead>
+<tr>
+<th>1</th>
+<th>GMT + 8 = UTC + 8 = CST</th>
+</tr>
+</thead>
+</table>
+<ul>
+<li>DST</li>
+</ul>
+<p><code> 　　</code>夏令时(Daylight Saving Time) 指在夏天太阳升起的比较早时，将时间拨快一小时，以提早日光的使用。（中国不使用）</p>
+<p><strong>二、硬件时间和系统时间</strong></p>
+<ul>
+<li>硬件时间</li>
+</ul>
+<p>RTC(Real-Time Clock)或CMOS时间，一般在主板上靠电池供电，服务器断电后也会继续运行。仅保存日期时间数值，无法保存时区和夏令时设置。</p>
+<ul>
+<li>系统时间</li>
+</ul>
+<p>一般在服务器启动时复制RTC时间，之后独立运行，保存了时间、时区和夏令时设置。</p>
+<p><strong>三、timedatectl 命令</strong></p>
+<p>3.1使用指南</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# timedatectl -h</span><br><span class="line">timedatectl [OPTIONS...] COMMAND ...</span><br><span class="line"> </span><br><span class="line">Query or change system time and date settings.</span><br><span class="line"> </span><br><span class="line">  -h --help                Show this help message</span><br><span class="line">     --version             Show package version</span><br><span class="line">     --no-pager            Do not pipe output into a pager</span><br><span class="line">     --no-ask-password     Do not prompt for password</span><br><span class="line">  -H --host=[USER@]HOST    Operate on remote host</span><br><span class="line">  -M --machine=CONTAINER   Operate on local container</span><br></pre></td></tr></table></figure>
+<p>3.2命令示例(查看当前系统时间)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#timedatectl</span><br><span class="line">#timedatectl status</span><br></pre></td></tr></table></figure>
+<p>3.3设置当前时间</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">timedatectl set-time &quot;YYYY-MM-DD HH:MM:SS&quot;</span><br><span class="line">timedatectl set-time &quot;YYYY-MM-DD&quot;</span><br><span class="line">timedatectl set-time &quot;HH:MM:SS&quot;</span><br></pre></td></tr></table></figure>
+<p>3.4查看所有可用的时区</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">timedatectl list-timezones</span><br><span class="line"># 亚洲</span><br><span class="line">timedatectl list-timezones |  grep  -E &quot;Asia/S.*&quot;</span><br></pre></td></tr></table></figure>
+<p>3.5设置时区</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">timedatectl set-timezone Asia/Shanghai</span><br></pre></td></tr></table></figure>
+<p>3.6设置硬件时间</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 硬件时间默认为UTC</span><br><span class="line">timedatectl set-local-rtc 1</span><br><span class="line"># hwclock --systohc --localtime</span><br><span class="line"># 两条命令效果等同</span><br></pre></td></tr></table></figure>
+<p>3.7启动自动同步时间</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">timedatectl set-ntp yes</span><br><span class="line"># yes或no; 1或0也可以</span><br></pre></td></tr></table></figure>
+<p><strong>四、Chrony 服务器</strong></p>
+<p>Chrony：是网络时间协议的 (NTP) 的另一种实现，由两个程序组成，分别是chronyd和chronyc。</p>
+<p>chronyd：是一个后台运行的守护进程，用于调整内核中运行的系统时钟和时钟服务器同步。它确定计算机增减时间的比率，并对此进行补偿。</p>
+<p>chronyc：提供了一个用户界面，用于监控性能并进行多样化的配置。它可以在chronyd实例控制的计算机上工作，也可以在一台不同的远程计算机上工作。</p>
+<p>优势：</p>
+<ul>
+<li>更快的同步只需要数分钟而非数小时时间，从而最大程度减少了时间和频率误差，这对于并非全天 24 小时运行的台式计算机或系统而言非常有用。</li>
+<li>能够更好地响应时钟频率的快速变化，这对于具备不稳定时钟的虚拟机或导致时钟频率发生变化的节能技术而言非常有用。</li>
+<li>在初始同步后，它不会停止时钟，以防对需要系统时间保持单调的应用程序造成影响。</li>
+<li>在应对临时非对称延迟时（例如，在大规模下载造成链接饱和时）提供了更好的稳定性。</li>
+<li>无需对服务器进行定期轮询，因此具备间歇性网络连接的系统仍然可以快速同步时钟。</li>
+</ul>
+<p>注意：在CentOS7下为标配的时间同步服务，当然也可以使用以前的NTP同步方式，不过要安装NTP服务。</p>
+<p>服务端</p>
+<p>4.1安装使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install chrony</span><br><span class="line">systemctl start chronyd</span><br><span class="line">systemctl enable chronyd</span><br></pre></td></tr></table></figure>
+<p>4.2配置文件修改</p>
+<p>当Chrony启动时，它会读取/etc/chrony.conf配置文件中的设置。也就是锁，如果需要更改时间同步的服务器，修改此配置文件即可。</p>
+<p>4.3客户端配置</p>
+<p>客户端的配置文件是同一个文件（/etc/chrony.conf），删掉那些没用的server xxxxxxxxxx iburst</p>
+<p>4.4常用命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- accheck 检查NTP访问是否对特定主机可用</span><br><span class="line">- activity 该命令会显示有多少NTP源在线/离线</span><br><span class="line">- add server 手动添加一台新的NTP服务器</span><br><span class="line">- clients 在客户端报告已访问到服务器</span><br><span class="line">- delete 手动移除NTP服务器或对等服务器</span><br><span class="line">- settime 手动设置守护进程时间</span><br><span class="line">- tracking 显示系统时间信息</span><br></pre></td></tr></table></figure>
+<p>4.5案例介绍</p>
+<p>查看当前时间服务器状态</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# chronyc </span><br><span class="line">chronyc&gt; activity #查看当前服务器状态，如下服务器有两个NTP源在线</span><br></pre></td></tr></table></figure>
+<p>查看时间同步的信息来源</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# chronyc  sources</span><br><span class="line">210 Number of sources = 2</span><br><span class="line">MS Name/IP address         Stratum Poll Reach LastRx Last sample   </span><br><span class="line">^* time5.aliyun.com              2   6   377    31   +267us[ +573us] +/- 3769us</span><br><span class="line">^- 203.107.6.88                  2   6   377    31  -2586us[-2586us] +/-   38ms</span><br></pre></td></tr></table></figure>
+<p><strong>五、日常使用案例</strong></p>
+<p>centos7从外网同步时间和时区设置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 安装</span><br><span class="line">yum install chrony</span><br><span class="line"># 启用</span><br><span class="line">systemctl start chronyd</span><br><span class="line">systemctl enable chronyd</span><br><span class="line"># 设置亚洲时区</span><br><span class="line">timedatectl set-timezone Asia/Shanghai</span><br><span class="line"># 启用NTP同步</span><br><span class="line">timedatectl set-ntp yes</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>也可以用NTP同步时间（不推荐）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 安装ntp服务</span><br><span class="line">yum install ntp</span><br><span class="line"># 开机启动服务</span><br><span class="line">systemctl enable ntpd</span><br><span class="line"># 启动服务</span><br><span class="line">systemctl start ntpd</span><br><span class="line"># 设置亚洲时区</span><br><span class="line">timedatectl set-timezone Asia/Shanghai</span><br><span class="line"># 启用NTP同步</span><br><span class="line">timedatectl set-ntp yes</span><br><span class="line"># 重启ntp服务</span><br><span class="line">systemctl restart ntpd</span><br><span class="line"># 手动同步时间</span><br><span class="line">ntpq -p</span><br></pre></td></tr></table></figure>
+<p>常见问题：</p>
+<p>1、#date看到上的时间和#timedatectl看到的本地时间不同，需要我们注意一样。</p>
+<p>2、(Real-Time Clock)或CMOS时间和本地时间不同，需要执行timedatectl set-local-rtc 0</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# date</span><br><span class="line">Thu Apr  5 17:22:34 CST 2018</span><br><span class="line">[root@localhost ~]# timedatectl</span><br><span class="line">      Local time: Thu 2018-04-05 17:22:38 CST</span><br><span class="line">  Universal time: Thu 2018-04-05 09:22:38 UTC</span><br><span class="line">        RTC time: Thu 2018-04-05 17:22:35</span><br><span class="line">       Time zone: Asia/Shanghai (CST, +0800)</span><br><span class="line">     NTP enabled: yes</span><br><span class="line">     NTP synchronized: yes</span><br><span class="line">     RTC in local TZ: yes</span><br><span class="line">     DST active: n/a</span><br><span class="line"> </span><br><span class="line">Warning: The system is configured to read the RTC time in the local time zone.</span><br><span class="line">         This mode can not be fully supported. It will create various problems</span><br><span class="line">         with time zone changes and daylight saving time adjustments. The RTC</span><br><span class="line">         time is never updated, it relies on external facilities to maintain it.</span><br><span class="line">         If at all possible, use RTC in UTC by calling</span><br><span class="line">         &#x27;timedatectl set-local-rtc 0&#x27;.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>参考：<a class="link"   target="_blank" rel="noopener" href="https://www.jianshu.com/p/fb32239ccf2b" >https://www.jianshu.com/p/fb32239ccf2b<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="8、-常用Linux命令"><strong>8、 常用Linux命令</strong></h2>
+<h3 id="2-1-1-命令帮助"><strong>2.1.1 命令帮助</strong></h3>
+<p>CentOS安装完成，今后的操作都是基于命令行的，后续内容只列出操作命令，不解释该命令的使用方法，可查阅相关手册。可以用下列方法了解具体命令的使用方法和参数。</p>
+<p>列出某个命令的使用手册，PgUp - PgDn翻页，q退出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ man tar</span><br></pre></td></tr></table></figure>
+<p>命令帮助，后面加上 | more或者 | less使内容分页，空格键翻页，q退出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ tar --help | more</span><br><span class="line"></span><br><span class="line">$ tar --help | less</span><br></pre></td></tr></table></figure>
+<p>一般在VMware虚机（或者阿里云这类的远程虚机）和主机之间，可以用鼠标右键进行命令行的文本粘贴。</p>
+<h3 id="2-1-2-文本编辑器vi"><strong>2.1.2 文本编辑器vi</strong></h3>
+<p>对文本文件或脚本文件的编辑，一般用vi编辑器，简要介绍如下：</p>
+<p>1、编辑某文件，如果此文件不存在，则新建一个</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vi /etc/abc.txt</span><br></pre></td></tr></table></figure>
+<p>2、打开文件后，默认为命令模式，按键“i”进入编辑模式，左下角会出现 – INSERT – 字样。在输入模式中，可以使用以下按键：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">•	字符按键以及Shift组合，输入字符</span><br><span class="line"></span><br><span class="line">•	ENTER，回车键，换行</span><br><span class="line"></span><br><span class="line">•	BACK SPACE，退格键，删除光标前一个字符</span><br><span class="line"></span><br><span class="line">•	DEL，删除键，删除光标后一个字符</span><br><span class="line"></span><br><span class="line">•	方向键，在文本中移动光标</span><br><span class="line"></span><br><span class="line">•	HOME/END，移动光标到行首/行尾</span><br><span class="line"></span><br><span class="line">•	Page Up/Page Down，上/下翻页</span><br><span class="line"></span><br><span class="line">•	Insert，切换光标为输入/替换模式，光标将变成竖线/下划线</span><br><span class="line"></span><br><span class="line">•	ESC，退出输入模式，切换到命令模式</span><br></pre></td></tr></table></figure>
+<p>3、编辑完成后ESC，退出输入模式，切换到命令模式。在命令模式下按下:（英文冒号）就进入了底线命令模式。底线命令模式可以输入单个或多个字符的命令，可用的命令非常多。</p>
+<p>常用的有 :w 保存，:wq 保存后退出，:q 直接退出。</p>
+<p>一般在VMware虚机（或者阿里云这类的远程虚机）和主机之间，可以用鼠标右键进行文本粘贴。</p>
+<h3 id="2-1-3-压缩解压缩"><strong>2.1.3 压缩解压缩</strong></h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">最常用的压缩解压缩的命令是tar</span><br><span class="line"></span><br><span class="line">#这条命令是解出all.tar包中所有文件，-x是解开的意思</span><br><span class="line"></span><br><span class="line">$ tar -xf all.tar</span><br><span class="line"></span><br><span class="line">#这条命令是将所有.jpg的文件打成一个名为all.tar的包。-c是表示产生新的包，-f指定包的文件名。</span><br><span class="line"></span><br><span class="line">$ tar -cf all.tar \*.jpg</span><br><span class="line"></span><br><span class="line">#这条命令是将所有.gif的文件增加到all.tar的包里面去</span><br><span class="line"></span><br><span class="line">$ tar -rf all.tar \*.gif</span><br><span class="line"></span><br><span class="line">#这条命令是更新原来tar包all.tar中logo.gif文件</span><br><span class="line"></span><br><span class="line">$ tar -uf all.tar logo.gif</span><br><span class="line"></span><br><span class="line">#这条命令是列出all.tar包中所有文件</span><br><span class="line"></span><br><span class="line">$ tar -tf all.tar</span><br></pre></td></tr></table></figure>
+<p>常用压缩文件的处理：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">1、\*.tar 用 tar -xvf 解压</span><br><span class="line"></span><br><span class="line">2、\*.gz 用 gzip -d或者gunzip 解压</span><br><span class="line"></span><br><span class="line">3、\*.tar.gz和\*.tgz 用 tar -xzf 解压</span><br><span class="line"></span><br><span class="line">4、\*.bz2 用 bzip2 -d或者用bunzip2 解压</span><br><span class="line"></span><br><span class="line">5、\*.tar.bz2用tar -xjf 解压</span><br><span class="line"></span><br><span class="line">6、\*.Z 用 uncompress 解压</span><br><span class="line"></span><br><span class="line">7、\*.tar.Z 用tar -xZf 解压</span><br><span class="line"></span><br><span class="line">8、\*.rar 用 unrar e解压</span><br><span class="line"></span><br><span class="line">9、\*.zip 用 unzip 解压</span><br></pre></td></tr></table></figure>
+<h3 id="2-1-4-软件包安装"><strong>2.1.4 软件包安装</strong></h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">yum和rpm是紧密相关的安装命令。</span><br><span class="line"></span><br><span class="line">#查询perl包安装了没有</span><br><span class="line"></span><br><span class="line">$ rpm -q perl</span><br><span class="line"></span><br><span class="line">#查询含perl关键词的包安装了没有</span><br><span class="line"></span><br><span class="line">$ rpm -qa | grep perl</span><br><span class="line"></span><br><span class="line">#安装abc.rpm包</span><br><span class="line"></span><br><span class="line">$ rpm -ivh abc.rpm</span><br><span class="line"></span><br><span class="line">#升级abc.rpm包</span><br><span class="line"></span><br><span class="line">$ rpm -Uvh abc.rpm</span><br><span class="line"></span><br><span class="line">$ yum install perl gcc kernel-devel wget</span><br></pre></td></tr></table></figure>
+<h2 id="9、系统命令"><strong>9、系统命令</strong></h2>
+<p>命令信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">winver 检查windows版本</span><br><span class="line"></span><br><span class="line">arch 显示机器的处理器架构(1)</span><br><span class="line"></span><br><span class="line">uname -m 显示机器的处理器架构(2)</span><br><span class="line"></span><br><span class="line">uname -r 显示正在使用的内核版本</span><br><span class="line"></span><br><span class="line">dmidecode -q 显示硬件系统部件 - (SMBIOS / DMI)</span><br><span class="line"></span><br><span class="line">hdparm -i /dev/hda 罗列一个磁盘的架构特性</span><br><span class="line"></span><br><span class="line">hdparm -tT /dev/sda 在磁盘上执行测试性读取操作</span><br><span class="line"></span><br><span class="line">cat /proc/cpuinfo 显示CPU info的信息</span><br><span class="line"></span><br><span class="line">cat /proc/interrupts 显示中断</span><br><span class="line"></span><br><span class="line">cat /proc/meminfo 校验内存使用</span><br><span class="line"></span><br><span class="line">cat /proc/swaps 显示哪些swap被使用</span><br><span class="line"></span><br><span class="line">cat /proc/version 显示内核的版本</span><br><span class="line"></span><br><span class="line">cat /proc/net/dev 显示网络适配器及统计</span><br><span class="line"></span><br><span class="line">cat /proc/mounts 显示已加载的文件系统</span><br><span class="line"></span><br><span class="line">lspci -tv 罗列 PCI 设备</span><br><span class="line"></span><br><span class="line">lsusb -tv 显示 USB 设备</span><br><span class="line"></span><br><span class="line">date 显示系统日期</span><br><span class="line"></span><br><span class="line">cal 2007 显示2007年的日历表</span><br><span class="line"></span><br><span class="line">date 041217002007.00 设置日期和时间 - 月日时分年.秒</span><br><span class="line"></span><br><span class="line">clock -w 将时间修改保存到 BIOS</span><br></pre></td></tr></table></figure>
+<p>关机</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">shutdown -h now 关闭系统(1)</span><br><span class="line"></span><br><span class="line">init 0 关闭系统(2)</span><br><span class="line"></span><br><span class="line">telinit 0 关闭系统(3)</span><br><span class="line"></span><br><span class="line">shutdown -h hours:minutes &amp; 按预定时间关闭系统</span><br><span class="line"></span><br><span class="line">shutdown -c 取消按预定时间关闭系统</span><br><span class="line"></span><br><span class="line">shutdown -r now 重启(1)</span><br><span class="line"></span><br><span class="line">reboot 重启(2)</span><br><span class="line"></span><br><span class="line">logout 注销</span><br></pre></td></tr></table></figure>
+<p>文件目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">cd /home 进入 &#x27;/ home&#x27; 目录&#x27;</span><br><span class="line"></span><br><span class="line">cd .. 返回上一级目录</span><br><span class="line"></span><br><span class="line">cd ../.. 返回上两级目录</span><br><span class="line"></span><br><span class="line">cd 进入个人的主目录</span><br><span class="line"></span><br><span class="line">cd ~user1 进入个人的主目录</span><br><span class="line"></span><br><span class="line">cd - 返回上次所在的目录</span><br><span class="line"></span><br><span class="line">pwd 显示工作路径</span><br><span class="line"></span><br><span class="line">ls 查看目录中的文件</span><br><span class="line"></span><br><span class="line">ls -F 查看目录中的文件</span><br><span class="line"></span><br><span class="line">ls -l 显示文件和目录的详细资料</span><br><span class="line"></span><br><span class="line">ls -a 显示隐藏文件</span><br><span class="line"></span><br><span class="line">ls -R 显示目录结构和目录内文件</span><br><span class="line"></span><br><span class="line">ls \*[0-9]\* 显示包含数字的文件名和目录名</span><br><span class="line"></span><br><span class="line">tree 显示文件和目录由根目录开始的树形结构(1)</span><br><span class="line"></span><br><span class="line">lstree 显示文件和目录由根目录开始的树形结构(2)</span><br><span class="line"></span><br><span class="line">mkdir dir1 创建一个叫做 &#x27;dir1&#x27; 的目录&#x27;</span><br><span class="line"></span><br><span class="line">mkdir dir1 dir2 同时创建两个目录</span><br><span class="line"></span><br><span class="line">mkdir -p /tmp/dir1/dir2 创建一个目录树</span><br><span class="line"></span><br><span class="line">rm -f file1 删除一个叫做 &#x27;file1&#x27; 的文件&#x27;</span><br><span class="line"></span><br><span class="line">rmdir dir1 删除一个叫做 &#x27;dir1&#x27; 的目录&#x27;</span><br><span class="line"></span><br><span class="line">rm -rf dir1 删除一个叫做 &#x27;dir1&#x27; 的目录并同时删除其内容</span><br><span class="line"></span><br><span class="line">rm -rf dir1 dir2 同时删除两个目录及它们的内容</span><br><span class="line"></span><br><span class="line">mv dir1 new\_dir 重命名/移动 一个目录</span><br><span class="line"></span><br><span class="line">cp file1 file2 复制一个文件</span><br><span class="line"></span><br><span class="line">cp dir/\* . 复制一个目录下的所有文件到当前工作目录</span><br><span class="line"></span><br><span class="line">cp -a /tmp/dir1 . 复制一个目录到当前工作目录</span><br><span class="line"></span><br><span class="line">cp -a dir1 dir2 复制一个目录</span><br><span class="line"></span><br><span class="line">ln -s file1 lnk1 创建一个指向文件或目录的软链接</span><br><span class="line"></span><br><span class="line">ln file1 lnk1 创建一个指向文件或目录的物理链接</span><br><span class="line"></span><br><span class="line">touch -t 0712250000 file1 修改一个文件或目录的时间戳 - (YYMMDDhhmm)</span><br></pre></td></tr></table></figure>
+<p>文件搜索</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">find / -name file1 从 &#x27;/&#x27; 开始进入根文件系统搜索文件和目录</span><br><span class="line"></span><br><span class="line">find / -user user1 搜索属于用户 &#x27;user1&#x27; 的文件和目录</span><br><span class="line"></span><br><span class="line">find /home/user1 -name \\*.bin 在目录 &#x27;/ home/user1&#x27; 中搜索带有&#x27;.bin&#x27; 结尾的文件</span><br><span class="line"></span><br><span class="line">find /usr/bin -type f -atime +100 搜索在过去100天内未被使用过的执行文件</span><br><span class="line"></span><br><span class="line">find /usr/bin -type f -mtime -10 搜索在10天内被创建或者修改过的文件</span><br><span class="line">find / -name \\*.rpm -exec chmod 755 &#x27;&#123;&#125;&#x27; \; 搜索以 &#x27;.rpm&#x27; 结尾的文件并定义其权限</span><br><span class="line"></span><br><span class="line">find / -xdev -name \\*.rpm 搜索以 &#x27;.rpm&#x27; 结尾的文件，忽略光驱、捷盘等可移动设备</span><br><span class="line">locate \\*.ps 寻找以 &#x27;.ps&#x27; 结尾的文件 - 先运行 &#x27;updatedb&#x27; 命令</span><br><span class="line">whereis halt 显示一个二进制文件、源码或man的位置</span><br><span class="line">which halt 显示一个二进制文件或可执行文件的完整路径</span><br></pre></td></tr></table></figure>
+<p>文件系统</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mount /dev/hda2 /mnt/hda2 挂载一个叫做hda2的盘 - 确定目录 &#x27;/ mnt/hda2&#x27; 已经存在</span><br><span class="line">umount /dev/hda2 卸载一个叫做hda2的盘 - 先从挂载点 &#x27;/ mnt/hda2&#x27; 退出</span><br><span class="line">fuser -km /mnt/hda2 当设备繁忙时强制卸载</span><br><span class="line">umount -n /mnt/hda2 运行卸载操作而不写入 /etc/mtab 文件- 当文件为只读或当磁盘写满时非常有用</span><br><span class="line">mount /dev/fd0 /mnt/floppy 挂载一个软盘</span><br><span class="line">mount /dev/cdrom /mnt/cdrom 挂载一个cdrom或dvdrom</span><br><span class="line">mount /dev/hdc /mnt/cdrecorder 挂载一个cdrw或dvdrom</span><br><span class="line">mount -o loop file.iso /mnt/cdrom 挂载一个文件或ISO镜像文件</span><br><span class="line">mount -t vfat /dev/hda5 /mnt/hda5 挂载一个Windows FAT32文件系统</span><br><span class="line">mount /dev/sda1 /mnt/usbdisk 挂载一个usb 捷盘或闪存设备</span><br><span class="line">mount -t smbfs -o username=user,password=pass //WinClient/share /mnt/share 挂载一个网络共享</span><br></pre></td></tr></table></figure>
+<p>磁盘空间</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">df -h 显示已经挂载的分区列表</span><br><span class="line"></span><br><span class="line">ls -lSr |more 以尺寸大小排列文件和目录</span><br><span class="line"></span><br><span class="line">du -sh dir1 估算目录 &#x27;dir1&#x27; 已经使用的磁盘空间&#x27;</span><br><span class="line"></span><br><span class="line">du -sk \* | sort -rn 以容量大小为依据依次显示文件和目录的大小</span><br><span class="line"></span><br><span class="line">rpm -q -a --qf &#x27;%10&#123;SIZE&#125;t%&#123;NAME&#125;n&#x27; | sort -k1,1n 以大小为依据依次显示已安装的rpm包所使用的空间 (fedora, redhat类系统)</span><br><span class="line">dpkg-query -W -f=&#x27;$&#123;Installed-Size;10&#125;t$&#123;Package&#125;n&#x27; | sort -k1,1n 以大小为依据显示已安装的deb包所使用的 空间 (ubuntu, debian类系统)</span><br></pre></td></tr></table></figure>
+
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Linux/">Linux</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到 QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="分享到微信"
+            data-tooltip-img-tip="微信扫一扫"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到微博"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+                    <div class="reward-author-container border-box flex-center">
+    <div class="reward-btn keep-button border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="打赏作者"
+            data-tooltip-img-url="/images/deploy-provider/paycode.png"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -8px;"
+    >
+        <i class="fa-solid fa-hand-holding-heart"></i>
+    </div>
+</div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2022/11/28/SpringBoot_learning/"
+                                   title="SpringBoot学习笔记"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">SpringBoot学习笔记</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="waline-comment-container">
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@waline/client@v2/dist/waline.css"/>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@waline/client@v2/dist/waline-meta.css"/>
+        <div id="waline-comment"></div>
+        <script 
+                src="//cdn.jsdelivr.net/npm/@waline/client@v2/dist/waline.js"
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        ></script>
+        <script 
+                async
+        >
+          window.KeepCommentPlugin.walineOptions = JSON.parse('{}'.replace(/&#34;/g, '"'))
+
+          window.KeepCommentPlugin.initWaline = () => {
+            if (window?.Waline) {
+              window.KeepCommentPlugin.walineOptions.el = '#waline-comment'
+              window.KeepCommentPlugin.walineOptions.comment = '.post-comments-count'
+              window.KeepCommentPlugin.walineOptions.serverURL = 'https://blog-comment-eight-azure.vercel.app'
+              window.KeepCommentPlugin.walineOptions.lang = 'zh-CN' || 'zh-CN'
+              window.KeepCommentPlugin.walineOptions.reaction = 'true' === 'true'
+              window.Waline.init(window.KeepCommentPlugin.walineOptions)
+              window.KeepCommentPlugin.hideLoading()
+            } else {
+              setTimeout(() => {
+                window.KeepCommentPlugin.initWaline()
+              }, 1000)
+            }
+          }
+
+          if ('false' === 'true') {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initWaline()
+            }, 1200)
+          } else {
+            window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initWaline)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">一、安装CentOS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">二、基本系统设置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">三、远程SSH登录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-%E4%BD%BF%E7%94%A8%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95"><span class="nav-text">3.1 使用账号密码登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-%E8%AE%BE%E7%BD%AESSH%E9%80%9A%E8%BF%87%E5%AF%86%E9%92%A5%E7%99%BB%E5%BD%95"><span class="nav-text">3.2 设置SSH通过密钥登录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-1-%E5%88%B6%E4%BD%9C%E5%AF%86%E9%92%A5%E5%AF%B9"><span class="nav-text">3.2.1 制作密钥对</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-2-%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E5%AE%89%E8%A3%85%E5%85%AC%E9%92%A5"><span class="nav-text">3.2.2 在服务器上安装公钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-3-%E8%AE%BE%E7%BD%AE-SSH%EF%BC%8C%E6%89%93%E5%BC%80%E5%AF%86%E9%92%A5%E7%99%BB%E5%BD%95%E5%8A%9F%E8%83%BD"><span class="nav-text">3.2.3 设置 SSH，打开密钥登录功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-4-%E5%B0%86%E7%A7%81%E9%92%A5%E4%B8%8B%E8%BD%BD%E5%88%B0%E5%AE%A2%E6%88%B7%E7%AB%AF%EF%BC%8C%E7%84%B6%E5%90%8E%E8%BD%AC%E6%8D%A2%E4%B8%BAPuTTY%E8%83%BD%E4%BD%BF%E7%94%A8%E7%9A%84%E6%A0%BC%E5%BC%8F"><span class="nav-text">3.2.4 将私钥下载到客户端，然后转换为PuTTY能使用的格式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-%E9%85%8D%E7%BD%AE%E9%98%B2%E7%81%AB%E5%A2%99"><span class="nav-text">3.3 配置防火墙</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#centos7-Firewall%E9%98%B2%E7%81%AB%E5%A2%99%E5%BC%80%E5%90%AF80%E7%AB%AF%E5%8F%A3"><span class="nav-text">centos7 Firewall防火墙开启80端口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CentOS6%E9%98%B2%E7%81%AB%E5%A2%99%E5%BC%80%E5%90%AF80%EF%BC%8C3306%E7%AB%AF%E5%8F%A3"><span class="nav-text">CentOS6防火墙开启80，3306端口</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">Firewall configuration written by system-config-firewall</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">Manual customization of this file is not recommended.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">附录：Linux常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E7%94%A8%E6%88%B7%E5%92%8C%E7%BB%84"><span class="nav-text">1、用户和组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E7%9B%AE%E5%BD%95%E5%92%8C%E6%96%87%E4%BB%B6cd%EF%BC%8Cls%EF%BC%8Cll%EF%BC%8Crmdir%EF%BC%8Cmkdir%EF%BC%8Cpwd"><span class="nav-text">2、目录和文件cd，ls，ll，rmdir，mkdir，pwd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91vi"><span class="nav-text">2、文本编辑vi</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81%E8%BD%AF%E4%BB%B6%E5%8C%85%E5%AE%89%E8%A3%85yum%E5%92%8Crpm"><span class="nav-text">3、软件包安装yum和rpm</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">PUT YOUR REPOS HERE OR IN separate files named file.repo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">in &#x2F;etc&#x2F;yum.repos.d</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4%E3%80%81%E5%8E%8B%E7%BC%A9%E8%A7%A3%E5%8E%8B%E7%BC%A9tar%EF%BC%8Czip"><span class="nav-text">4、压缩解压缩tar，zip</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">tar -cf all.tar *.jpg</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">tar -rf all.tar *.gif</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">tar -uf all.tar logo.gif</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">tar -tf all.tar</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">tar -xf all.tar</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">tar -czf all.tar.gz *.jpg</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">tar -xzf all.tar.gz</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">tar -cjf all.tar.bz2 *.jpg</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">tar -xjf all.tar.bz2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">tar -cZf all.tar.Z *.jpg</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">tar -xZf all.tar.Z</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">zip all.zip *.jpg</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">unzip all.zip</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">tar -xzpvf rarlinux-3.2.0.tar.gz</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">cd rar</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">make</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">rar a all *.jpg</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">unrar e all.rar</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5%E3%80%81%E7%94%A8%E6%88%B7%E5%92%8C%E6%9D%83%E9%99%90chmod%EF%BC%8Cchown"><span class="nav-text">5、用户和权限chmod，chown</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6%E3%80%81%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86systemd"><span class="nav-text">6、系统管理systemd</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">或者</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">等同于</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#7%E3%80%81%E6%9F%A5%E7%9C%8B%E8%AE%BE%E7%BD%AE%E6%97%B6%E5%8C%BA"><span class="nav-text">7、查看设置时区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8%E3%80%81-%E5%B8%B8%E7%94%A8Linux%E5%91%BD%E4%BB%A4"><span class="nav-text">8、 常用Linux命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-1-%E5%91%BD%E4%BB%A4%E5%B8%AE%E5%8A%A9"><span class="nav-text">2.1.1 命令帮助</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-2-%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8vi"><span class="nav-text">2.1.2 文本编辑器vi</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-3-%E5%8E%8B%E7%BC%A9%E8%A7%A3%E5%8E%8B%E7%BC%A9"><span class="nav-text">2.1.3 压缩解压缩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-4-%E8%BD%AF%E4%BB%B6%E5%8C%85%E5%AE%89%E8%A3%85"><span class="nav-text">2.1.4 软件包安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9%E3%80%81%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4"><span class="nav-text">9、系统命令</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">一个想当厨子的码农</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+
+            
+                
+                <div class="deploy-info info-item default">
+                    
+                        <a target="_blank" rel="nofollow" href="https://github.com/">
+                    
+                        本站由 <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/brands/github.png"></span> 提供部署服务
+                    
+                        </a>
+                    
+                </div>
+            
+        
+
+        <div class="count-item info-item default">
+            
+                <span class="count-box border-box word">
+                    <span class="item-type border-box">总字数</span>
+                    <span class="item-value border-box word">79.4k</span>
+                </span>
+            
+
+            
+                <span class="count-box border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-box border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">一、安装CentOS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">二、基本系统设置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">三、远程SSH登录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-%E4%BD%BF%E7%94%A8%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95"><span class="nav-text">3.1 使用账号密码登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-%E8%AE%BE%E7%BD%AESSH%E9%80%9A%E8%BF%87%E5%AF%86%E9%92%A5%E7%99%BB%E5%BD%95"><span class="nav-text">3.2 设置SSH通过密钥登录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-1-%E5%88%B6%E4%BD%9C%E5%AF%86%E9%92%A5%E5%AF%B9"><span class="nav-text">3.2.1 制作密钥对</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-2-%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E5%AE%89%E8%A3%85%E5%85%AC%E9%92%A5"><span class="nav-text">3.2.2 在服务器上安装公钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-3-%E8%AE%BE%E7%BD%AE-SSH%EF%BC%8C%E6%89%93%E5%BC%80%E5%AF%86%E9%92%A5%E7%99%BB%E5%BD%95%E5%8A%9F%E8%83%BD"><span class="nav-text">3.2.3 设置 SSH，打开密钥登录功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-4-%E5%B0%86%E7%A7%81%E9%92%A5%E4%B8%8B%E8%BD%BD%E5%88%B0%E5%AE%A2%E6%88%B7%E7%AB%AF%EF%BC%8C%E7%84%B6%E5%90%8E%E8%BD%AC%E6%8D%A2%E4%B8%BAPuTTY%E8%83%BD%E4%BD%BF%E7%94%A8%E7%9A%84%E6%A0%BC%E5%BC%8F"><span class="nav-text">3.2.4 将私钥下载到客户端，然后转换为PuTTY能使用的格式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-%E9%85%8D%E7%BD%AE%E9%98%B2%E7%81%AB%E5%A2%99"><span class="nav-text">3.3 配置防火墙</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#centos7-Firewall%E9%98%B2%E7%81%AB%E5%A2%99%E5%BC%80%E5%90%AF80%E7%AB%AF%E5%8F%A3"><span class="nav-text">centos7 Firewall防火墙开启80端口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CentOS6%E9%98%B2%E7%81%AB%E5%A2%99%E5%BC%80%E5%90%AF80%EF%BC%8C3306%E7%AB%AF%E5%8F%A3"><span class="nav-text">CentOS6防火墙开启80，3306端口</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">Firewall configuration written by system-config-firewall</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">Manual customization of this file is not recommended.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">附录：Linux常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E7%94%A8%E6%88%B7%E5%92%8C%E7%BB%84"><span class="nav-text">1、用户和组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E7%9B%AE%E5%BD%95%E5%92%8C%E6%96%87%E4%BB%B6cd%EF%BC%8Cls%EF%BC%8Cll%EF%BC%8Crmdir%EF%BC%8Cmkdir%EF%BC%8Cpwd"><span class="nav-text">2、目录和文件cd，ls，ll，rmdir，mkdir，pwd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91vi"><span class="nav-text">2、文本编辑vi</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81%E8%BD%AF%E4%BB%B6%E5%8C%85%E5%AE%89%E8%A3%85yum%E5%92%8Crpm"><span class="nav-text">3、软件包安装yum和rpm</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">PUT YOUR REPOS HERE OR IN separate files named file.repo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">in &#x2F;etc&#x2F;yum.repos.d</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4%E3%80%81%E5%8E%8B%E7%BC%A9%E8%A7%A3%E5%8E%8B%E7%BC%A9tar%EF%BC%8Czip"><span class="nav-text">4、压缩解压缩tar，zip</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">tar -cf all.tar *.jpg</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">tar -rf all.tar *.gif</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">tar -uf all.tar logo.gif</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">tar -tf all.tar</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">tar -xf all.tar</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">tar -czf all.tar.gz *.jpg</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">tar -xzf all.tar.gz</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">tar -cjf all.tar.bz2 *.jpg</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">tar -xjf all.tar.bz2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">tar -cZf all.tar.Z *.jpg</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">tar -xZf all.tar.Z</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">zip all.zip *.jpg</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">unzip all.zip</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">tar -xzpvf rarlinux-3.2.0.tar.gz</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">cd rar</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">make</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">rar a all *.jpg</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">unrar e all.rar</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5%E3%80%81%E7%94%A8%E6%88%B7%E5%92%8C%E6%9D%83%E9%99%90chmod%EF%BC%8Cchown"><span class="nav-text">5、用户和权限chmod，chown</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6%E3%80%81%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86systemd"><span class="nav-text">6、系统管理systemd</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">或者</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">等同于</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#7%E3%80%81%E6%9F%A5%E7%9C%8B%E8%AE%BE%E7%BD%AE%E6%97%B6%E5%8C%BA"><span class="nav-text">7、查看设置时区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8%E3%80%81-%E5%B8%B8%E7%94%A8Linux%E5%91%BD%E4%BB%A4"><span class="nav-text">8、 常用Linux命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-1-%E5%91%BD%E4%BB%A4%E5%B8%AE%E5%8A%A9"><span class="nav-text">2.1.1 命令帮助</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-2-%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8vi"><span class="nav-text">2.1.2 文本编辑器vi</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-3-%E5%8E%8B%E7%BC%A9%E8%A7%A3%E5%8E%8B%E7%BC%A9"><span class="nav-text">2.1.3 压缩解压缩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-4-%E8%BD%AF%E4%BB%B6%E5%8C%85%E5%AE%89%E8%A3%85"><span class="nav-text">2.1.4 软件包安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9%E3%80%81%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4"><span class="nav-text">9、系统命令</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/header-shrink.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/back2top.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/toggle-theme.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/code-block.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/main.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/libs/anime.min.js"></script>
+
+<!-- local-search -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/local-search.min.js"></script>
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/post/post-helper.min.js"></script>
+
+        <!-- toc -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/post/toc.min.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/post/share.min.js"></script>
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

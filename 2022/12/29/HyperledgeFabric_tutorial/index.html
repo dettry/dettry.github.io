@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="一个想当厨子的码农">
+    <meta name="referrer" content="no-referrer">
+
+    
+    <title>
+        
+            Debian11安装HyperledgeFabric |
+        
+        CodeCook
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/deploy-provider/logo.png">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/font/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/font/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/font/css/brands.min.css">
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"CodeCook","author":"一个想当厨子的码农","avatar":"/images/deploy-provider/avatar.png","logo":"/images/deploy-provider/logo.png","favicon":"/images/deploy-provider/logo.png"},"menu":{"home":"/ || fa-solid fa-house","archives":"/archives || fa-solid fa-box-archive","tags":"/tags || fa-solid fa-tags","categories":"/categories || fa-solid fa-layer-group","links":"/links || fa-solid fa-link","about":"/about || fa-solid fa-user-graduate","tools":"/tools || fa-solid fa-screwdriver-wrench"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"因为热爱，所以分享；|| 因为分享，更加热爱。","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/dettry","weixin":null,"qq":"img | images/deploy-provider/qq.png","weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":true,"hide_header":false},"home":{"category":false,"tag":true,"announcement":null,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/deploy-provider/paycode.png","text":null}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"waline","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":"https://blog-comment-eight-azure.vercel.app","reaction":true,"version":2},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":true,"icp":{"enable":false,"record_code":null,"url":"https://beian.miit.gov.cn"},"site_deploy":{"enable":true,"provider":"github","url":"https://github.com/"},"shields_style":{"enable":false,"custom":[{"link_url":null,"img_url":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{"tools":[{"category":"聊天 AI"},{"name":"ChatGPT","link":"https://chat.openai.com/","description":"OpenAI 旗下 AI 聊天对话工具","image":"/images/tools/chatgpt.svg"},{"name":"Gemini","link":"https://gemini.google.com/app","description":"Google 旗下 AI 聊天对话工具","image":"/images/tools/gemini.svg"},{"category":"图标工具"},{"name":"iconfont","link":"https://www.iconfont.cn/","description":"阿里妈妈MUX倾力打造的矢量图标管理 交流平台","image":"https://img.alicdn.com/imgextra/i4/O1CN01Z5paLz1O0zuCC7osS_!!6000000001644-55-tps-83-82.svg"},{"category":"图床工具"},{"name":"PicX","link":"https://picx.xpoet.cn/#/","description":"是一款基于 GitHub API 开发的图床工具，提供图片上传托管、生成图片链接和常用图片工具箱服务","image":"/images/tools/logo.png"},{"category":"娱乐工具"},{"name":"硬核指南","link":"https://yinghe.app/","description":"专注为你找出每一个高清影视资源网站！","image":"https://pic.rmb.bdstatic.com/bjh/user/d82efa1442b1f2b3575b48ce7fc227b9.png"},{"name":"全历史","link":"https://www.allhistory.com/","description":"以AI知识图谱为核心引擎，通过高度时空化、关联化数据的方式构造及展现数字人文内容，尤其是历史知识。让用户沉浸在纵横开阔、左图右史的（历史、人文、社科等）知识海洋中","image":"https://static.allhistory.com/online/common/img/logo-ah.5721.png"},{"name":"万箭齐发","link":"https://wangyasai.github.io/Stars-Emmision/"},{"name":"迅捷画图","link":"https://www.liuchengtu.com/?zhhxx","description":"让创作更高效，让创意更简单，是我们的使命和目标","image":"https://www.liuchengtu.com/images/logo-header.png"},{"category":"其他杂项"},{"name":"docx转markdown","link":"https://products.groupdocs.app/zh/conversion/docx-to-md#google_vignette","description":"在线转换您的 DOCX 文件。您可以从任何平台（Windows、Linux、macOS）转换您的 DOCX 文档","image":"https://cms.admin.containerize.com/templates/groupdocsapp/images/android-chrome-192x192.png"},{"name":"docx转PDF","link":"https://cdkm.com/cn/docx-to-pdf","description":"自认为最好用的word转PDF工具","image":"/images/tools/转换.svg"},"......","......","......"]},"version":"4.1.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.2.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/deploy-provider/logo.png">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               CodeCook
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                    <i class="menu-icon fa-solid fa-house"></i>
+                                
+                                首页
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                    <i class="menu-icon fa-solid fa-box-archive"></i>
+                                
+                                归档
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                
+                                    <i class="menu-icon fa-solid fa-tags"></i>
+                                
+                                标签
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                
+                                    <i class="menu-icon fa-solid fa-layer-group"></i>
+                                
+                                分类
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                
+                                    <i class="menu-icon fa-solid fa-link"></i>
+                                
+                                友链
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                
+                                    <i class="menu-icon fa-solid fa-user-graduate"></i>
+                                
+                                关于
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tools"
+                            >
+                                
+                                    <i class="menu-icon fa-solid fa-screwdriver-wrench"></i>
+                                
+                                工具
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >首页</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags"
+                    >标签</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories"
+                    >分类</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links"
+                    >友链</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about"
+                    >关于</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tools"
+                    >工具</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        Debian11安装HyperledgeFabric
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/deploy-provider/avatar.png">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">一个想当厨子的码农</span>
+                                
+                                    <span class="author-badge">Lv2</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2022-12-29 09:23:07</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Tue May 21 2024 14:05:09 GMT+0800">2024-05-21 14:05:09</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/Linux%E4%B8%93%E9%A2%98/">Linux专题</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/HyperledgeFabric/">HyperledgeFabric</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>7.4k 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>33 分钟</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body">
+                    
+
+                    <p>与我的另一篇文章结合着使用</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://dettry.github.io/2024/05/09/%E5%8C%BA%E5%9D%97%E9%93%BE/" >区块链环境配置教程 | CodeCook (dettry.github.io)<i class="fas fa-external-link-alt"></i></a></p>
+<h1><strong>一、准备</strong></h1>
+<p>在Vmware里有一个干净的Debian 11系统的虚机</p>
+<ul>
+<li>虚机名：deb-hlf  2核，4G内存，已安装JDK8，<strong>没有防火墙</strong></li>
+<li>静态IP：192.168.138.31，网关、DNS：192.168.138.2</li>
+<li>Vmware主机IP：192.168.138.1</li>
+<li>虚机通过主机网关访问外网OK，主机和同网段其他虚机通过IP访问本虚机OK</li>
+<li>主机可通过Putty密码，密钥方式远程连接虚机</li>
+<li>用户<strong>root / 4geT%not</strong>，zadmin / d00r%Key 是sudo组成员</li>
+<li>软件源：清华大学，华为，中科大</li>
+</ul>
+<p>安装Hyperledge Fabric过程参考：<a class="link"   target="_blank" rel="noopener" href="https://hyperledger-fabric.readthedocs.io/en/latest/getting_started.html" >https://hyperledger-fabric.readthedocs.io/en/latest/getting_started.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>说明：</p>
+<h2 id="1-1-关于操作系统"><strong>1.1 关于操作系统</strong></h2>
+<p>1. 硬件</p>
+<p>本例中原来分配给虚机的硬件配置是1核2G</p>
+<p>实际运行中发现速度比较快，内存使用率从来没超过60%，但最终还是把硬件配置调成了2核4G，以防万一。</p>
+<p>2. Debian</p>
+<p>本例使用了Debian 11，基础安装，没有GUI，这也是硬件开销非常小的原因。</p>
+<p>CentOS除了安装软件源apt和yum的区别外，其他的linux命令与Debian基本一样。所以后面的内容基于CentOS实现应该没有任何问题。Debian默认没有安装防火墙，如果使用CentOS需要关闭防火墙。</p>
+<p>采用Debian的原因，首先是因为Hyperledge官网的教程是基于Debian的。其次CentOS从版本8之后已经丧失了开源Linux服务器的领导地位，Debian被认为是最好的继任者，其稳定性不弱于CentOS。再次，Debian的基础系统比CentOS最小化安装更节省硬件资源。</p>
+<p>Debian的默认文本编辑器是nano，比vi更容易上手。如果习惯用vi或vim的话，在Debian里需要先删除系统里的vi tiny版，安装完整版。</p>
+<p>apt remove vim-common -y</p>
+<p>apt install vim -y</p>
+<p>最后，Debian里操作软件源，软件安装，建议使用apt而不是apt-get或dpkg</p>
+<h2 id="1-2-关于远程连接虚机"><strong>1.2 关于远程连接虚机</strong></h2>
+<p>建议用Putty远程连接虚机，配置好root密钥连接。</p>
+<p>1. Debian控制台的字体太小，难看，Putty连接的控制台字体看的舒服得多。且Putty终端控制台窗口可以调整大小。Putty控制台窗口可以在命令行输入中文。</p>
+<p>2. Putty控制台有滚动条，大段的输出可以翻看。从Putty控制台鼠标选中大段文字，自动复制到剪贴板，然后可以粘贴到Word或其他Windows编辑工具中。从Word或网页复制的内容，在Putty控制台里点鼠标右键可自动粘贴到光标处，或粘贴到nano里。</p>
+<p>3. Putty可以开启多个root终端连接到同一个虚机。后面的步骤里除了主终端窗口外，还需要开启另一个终端窗口，观察docker运行日志。</p>
+<h1><strong>二、安装前置软件</strong></h1>
+<p>1. 安装Git</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install git -y</span><br></pre></td></tr></table></figure>
+<p>2. 安装curl</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install curl -y</span><br></pre></td></tr></table></figure>
+<p>3. 安装Docker</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install docker-compose -y</span><br></pre></td></tr></table></figure>
+<p>安装完毕后，确认Docker和Docker Compose的版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">docker --version</span><br><span class="line"></span><br><span class="line">docker-compose --version</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">启动docker服务：systemctl start docker</span><br><span class="line"></span><br><span class="line">设置docker服务开机启动：systemctl enable docker</span><br><span class="line"></span><br><span class="line">将用户加入docker组：usermod -a -G docker root</span><br><span class="line"></span><br><span class="line">将另一管理员用户加入docker组：usermod -a -G docker zadmin</span><br></pre></td></tr></table></figure>
+<p>建议重启一下，虽然不需要</p>
+<p>4. 安装Go</p>
+<p>5. 安装JQ</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install jq</span><br></pre></td></tr></table></figure>
+<h1><strong>三、安装Fabric</strong></h1>
+<p>参考：<a class="link"   target="_blank" rel="noopener" href="https://hyperledger-fabric.readthedocs.io/en/latest/install.html" >https://hyperledger-fabric.readthedocs.io/en/latest/install.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>1. 准备工作目录</p>
+<p>mkdir -p <strong>/opt/go/src/github.com/zlz8x8</strong></p>
+<p>cd /opt/go/src/github.com/zlz8x8</p>
+<p>目录创建在 /opt 下，这里一般是空的。zlz8x8 是我在github 的用户名</p>
+<p>2. 下载安装脚本</p>
+<p>curl -sSLO <a class="link"   target="_blank" rel="noopener" href="https://raw.githubusercontent.com/hyperledger/fabric/main/scripts/install-fabric.sh" >https://raw.githubusercontent.com/hyperledger/fabric/main/scripts/install-fabric.sh<i class="fas fa-external-link-alt"></i></a> &amp;&amp; chmod +x <a class="link"   target="_blank" rel="noopener" href="http://install-fabric.sh" >install-fabric.sh<i class="fas fa-external-link-alt"></i></a></p>
+<p>3. 执行安装脚本</p>
+<p>./install-fabric.sh</p>
+<p>没有参数，表示默认 docker binary samples，正是我们要的</p>
+<p><strong>主机全程开VPN</strong>，否则无法连接github，大概500M内容，VPN如果有15~30分钟稳定即可完成安装。</p>
+<p>中间如果VPN不稳定，<strong>失败后重新执行脚本</strong>，下载过的内容会跳过，下载没有完成的会继续完成。</p>
+<h1><strong>四、使用Fabric test network</strong></h1>
+<h2 id="4-1-开始之前"><strong>4.1 开始之前</strong></h2>
+<p>参考：<a class="link"   target="_blank" rel="noopener" href="https://hyperledger-fabric.readthedocs.io/en/latest/test_network.html" >https://hyperledger-fabric.readthedocs.io/en/latest/test_network.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>使用Fabric test network，包括：</p>
+<ul>
+<li>两个peer orgnazation和一个ordering organization</li>
+<li>为简单化，配置了一个单独节点Raft ordering service</li>
+<li>为简单化，没有部署TLS CA，所有证书由root CA颁发</li>
+<li>这个sample network用Docker Compose部署了一个Fabric网络。因为在Docker Compose network里的所有节点是隔离开（孤立）的，test network没有配置连接其他运行中的Fabric节点。</li>
+</ul>
+<h2 id="4-2-启动test-network"><strong>4.2 启动test network</strong></h2>
+<p>1. 启动test network</p>
+<p>工作目录 /opt/go/src/github.com/zlz8x8</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd fabric-samples/test-network</span><br><span class="line">./network.sh up</span><br></pre></td></tr></table></figure>
+<p>就启动了，下面的命令关闭</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./network.sh down</span><br></pre></td></tr></table></figure>
+<p>2. 检查test network各组件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a</span><br></pre></td></tr></table></figure>
+<p>输出可以看到fabric-tools，fabric-peer，fabric-orderer，fabric-peer和各自使用的端口。</p>
+<p>peer是Fabric网络的基本组件，peer保存区块链账本并在交易transaction提交到账本前进行验证。peer运行智能合约smart contract（里面包含了商业逻辑business logic），用来管理区块链上的资产asset。</p>
+<p>每个peer必须属于一个organization。在test network里，每个organization只有一个peer。从上面图可看出，<a class="link"   target="_blank" rel="noopener" href="http://xn--organizationorg1-c39yddu776c.example.xn--comorg2-bs4l.example.com" >两个organization是org1.example.com和org2.example.com<i class="fas fa-external-link-alt"></i></a>，<a class="link"   target="_blank" rel="noopener" href="http://xn--peerpeer0-4i6n8b201e0naj74i4fikw5as91d.org1.example.xn--compeer0-1c2n.org2.example.com" >对应的两个peer分别是peer0.org1.example.com和peer0.org2.example.com<i class="fas fa-external-link-alt"></i></a>。</p>
+<p>每个Fabric网络包括一个排序服务ordering service，…</p>
+<p>这个sample network使用了单个节点Raft ordering service，由排序节点orderer的组织来操作，就是上面的 <a class="link"   target="_blank" rel="noopener" href="http://orderer.example.com" >orderer.example.com<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="4-3-创建通道"><strong>4.3 创建通道</strong></h2>
+<p>创建三个通道：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">./network.sh createChannel</span><br><span class="line"></span><br><span class="line">./network.sh createChannel -c channel1</span><br><span class="line"></span><br><span class="line">./network.sh createChannel -c channel2</span><br></pre></td></tr></table></figure>
+<p>第一个通道没有指定名字，默认创建了mychannel，后面用到的。</p>
+<p>上面的命令指定了两个通道的名字。命名规则：ASCII小写字母数字，.，-，小于250字符，开头为字母。如果不指定名字./network.sh createChannel，会自动生成一个名字。</p>
+<p>这三个通道都是org1和org2之间的，并且org1和org2的peer都被邀请进了通道，<strong>每个通道有分开的区块链账本</strong>。</p>
+<h2 id="4-4-在channel中执行chaincode"><strong>4.4 在channel中执行chaincode</strong></h2>
+<p>代码是go代码，执行过程中要下载相关依赖，<strong>要开VPN</strong></p>
+<p>先关机poweroff，做个快照，以防万一</p>
+<p>当前目录：<strong>/opt/go/src/github.com/zlz8x8/fabric-samples/test-network</strong></p>
+<p>经测试发现，当./network.sh down关闭网络之后，再./network.sh up，所有的channel就都没有了。这次起网络和创建channel同时进行 <strong>./network.sh up createChannel</strong></p>
+<p>然后执行chaincode，需要<strong>主机开启VPN，执行过程中要从github和golan.org下载，大概也就5分钟不到</strong>。</p>
+<p>./network.sh deployCC -ccn basic -ccp …/asset-transfer-basic/chaincode-go -ccl go</p>
+<p>从输出看，chaincode在通道上提交了，并在peer0.org1和peer0.org2上都成功</p>
+<h2 id="4-5-与网络交互"><strong>4.5 与网络交互</strong></h2>
+<p>在网络起来后，可以用pear CLI（命令行界面）与网络进行交互。peer CLI可以调用已部署的智能合约，更新通道，或安装并部署新的智能合约。</p>
+<p>工作路径：/opt/go/src/github.com/zlz8x8</p>
+<p>test network路径：<strong>/opt/go/src/github.com/zlz8x8/fabric-samples/test-network</strong></p>
+<p>将此路径定义为 $HLF_TEST_PATH，以下路径以此为基准。</p>
+<p>CLI路径为 $HLF_TEST_PATH/…/bin，这个路径需要放到 $PATH里</p>
+<p>配置文件core.yaml所在路径 $FABRIC_CFG_PATH=$HLF_TEST/…/config/ 需要定义在 /etc/profile 里。</p>
+<p>nano /etc/profile 在文件最后添加如下内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">export HLF\_TEST\_PATH=/opt/go/src/github.com/zlz8x8/fabric-samples/test-network</span><br><span class="line"></span><br><span class="line">export PATH=$HLF\_TEST\_PATH/../bin:$PATH</span><br><span class="line"></span><br><span class="line">export FABRIC\_CFG\_PATH=$HLF\_TEST\_PATH/../config/</span><br></pre></td></tr></table></figure>
+<p>保存后，更新系统变量 source /etc/profile，然后 echo $HLF_TEST_PATH看看系统变量生效没有。</p>
+<p><strong>以下默认在 /opt/go/src/github.com/zlz8x8/fabric-samples/test-network 路径工作，以下的命令都以此路径为基准，下文中出现的 ${PWD} 代表的就是这个路径。</strong></p>
+<p><strong>命令行输入如下命令，设置系统变量，后面的peer命令就是在Org1上运行的了</strong></p>
+<p>这些系统变量没有写在 /etc/profile 里面，是临时的，系统关闭或重启就没有了。可以在该目录下新建一个文件setOrgEnv1，把下面的命令放在里面，需要执行这些命令的时候只需要执行source setOrgEnv1就可以了。</p>
+<p>因此，此时执行 source setOrgEnv1 即可，或执行下面命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">export CORE\_PEER\_TLS\_ENABLED=true</span><br><span class="line"></span><br><span class="line">export CORE\_PEER\_LOCALMSPID=&quot;Org1MSP&quot;</span><br><span class="line"></span><br><span class="line">export CORE\_PEER\_TLS\_ROOTCERT\_FILE=$&#123;PWD&#125;/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt</span><br><span class="line"></span><br><span class="line">export CORE\_PEER\_MSPCONFIGPATH=$&#123;PWD&#125;/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp</span><br><span class="line"></span><br><span class="line">export CORE\_PEER\_ADDRESS=localhost:7051</span><br></pre></td></tr></table></figure>
+<p>输入下面命令初始化资产的账本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile &quot;$*&#123;PWD&#125;*/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem&quot; -C mychannel -n basic --peerAddresses localhost:7051 --tlsRootCertFiles &quot;$*&#123;PWD&#125;*/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt&quot; --peerAddresses localhost:9051 --tlsRootCertFiles &quot;$*&#123;PWD&#125;*/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt&quot; -c &#x27;&#123;&quot;function&quot;:&quot;InitLedger&quot;,&quot;Args&quot;:[]&#125;&#x27;</span><br></pre></td></tr></table></figure>
+<p>命令虽然很长，执行很快，不到1秒，看到输出 status:200 说明成功了</p>
+<p>现在可以通过CLI查询账本，运行下面命令查询添加到通道账本的资产</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer chaincode query -C mychannel -n basic -c &#x27;&#123;&quot;Args&quot;:[&quot;GetAllAssets&quot;]&#125;&#x27;</span><br></pre></td></tr></table></figure>
+<p>执行成功，查询结果输出如下：注意asset6的owner是Michel</p>
+<p>当一个网络成员希望转移或更改账本中的某项资产，就可以调用链码chaincode</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile &quot;$*&#123;PWD&#125;*/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem&quot; -C mychannel -n basic --peerAddresses localhost:7051 --tlsRootCertFiles &quot;$*&#123;PWD&#125;*/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt&quot; --peerAddresses localhost:9051 --tlsRootCertFiles &quot;$*&#123;PWD&#125;*/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt&quot; -c &#x27;&#123;&quot;function&quot;:&quot;TransferAsset&quot;,&quot;Args&quot;:[&quot;asset6&quot;,&quot;Christopher&quot;]&#125;&#x27;</span><br></pre></td></tr></table></figure>
+<p>执行成功，输出如下 status:200</p>
+<p>因为背书endorsement策略，资产转移 asset-tranfer (basic) 链码需要Org1和Org2的签名，因此链码调用需要用 --peerAddresses 标签指向 <a class="link"   target="_blank" rel="noopener" href="http://peer0.org1.example.com" >peer0.org1.example.com<i class="fas fa-external-link-alt"></i></a> 和 <a class="link"   target="_blank" rel="noopener" href="http://peer0.org2.example.com" >peer0.org2.example.com<i class="fas fa-external-link-alt"></i></a> 。另外，网络使用了TLS连接，命令需要用 --tlsRootCertFiles 引用TLS证书。</p>
+<p>在上述链码执行后，我们可以用另一个查询取看看这次调用如何改变了账本里的资产。已经使用org1进行了查询，下面使用org2 peer进行查询。</p>
+<p><strong>命令行输入如下命令，设置系统变量，后面的peer命令就是在Org2上运行的了</strong></p>
+<p>可以在该目录下新建一个文件setOrgEnv2，把下面的命令放在里面，需要执行这些命令的时候只需要执行source setOrgEnv2就可以了。</p>
+<p>执行 source setOrgEnv2 即可，或执行下面命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">export CORE\_PEER\_TLS\_ENABLED=true</span><br><span class="line"></span><br><span class="line">export CORE\_PEER\_LOCALMSPID=&quot;Org2MSP&quot;</span><br><span class="line"></span><br><span class="line">export CORE\_PEER\_TLS\_ROOTCERT\_FILE=$&#123;PWD&#125;/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt</span><br><span class="line"></span><br><span class="line">export CORE\_PEER\_MSPCONFIGPATH=$&#123;PWD&#125;/organizations/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp</span><br><span class="line"></span><br><span class="line">export CORE\_PEER\_ADDRESS=localhost:9051</span><br></pre></td></tr></table></figure>
+<p>相同的系统变量名，不同的值，会覆盖之前的Org1设置。</p>
+<p>然后执行下面命令查询资产转移（跑在peer0.org2.example.com上的basic链码）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer chaincode query -C mychannel -n basic -c &#x27;&#123;&quot;Args&quot;:[&quot;ReadAsset&quot;,&quot;asset6&quot;]&#125;&#x27;</span><br></pre></td></tr></table></figure>
+<p>执行成功，可以看到asset6的owner已经变成了Christopher</p>
+<h2 id="4-6-关闭网络"><strong>4.6 关闭网络</strong></h2>
+<p>使用下面命令关闭网络。这将停止并移除node和chaincode的容器，删除organization的加密内容，移除链码在Docker Registry里的镜像image，移除之前运行的通道和docker volume。</p>
+<p>./network.sh down</p>
+<h2 id="4-7-启动有CA的网络"><strong>4.7 启动有CA的网络</strong></h2>
+<p>Hyperledge Fabric使用PKI（Public key infrastructure，公钥基础设施）验证所有的网络参与者。每个节点node，网络管理员和用户提交交易都必须提供公钥和私钥进行身份验证。这些证书由CA颁发。</p>
+<p>默认情况下，前面运行的 ./network.sh up 提供了加密工具cryptogen，供开发和测试。观察 ./network.sh up 的输出日志，可以看到加密工具为Org1，Org2和Orderer Org创建了证书和密钥。</p>
+<p>test network也提供了选项在启动网络时使用CA（Certificate Authority，证书中心）。在生产网络production network，每个organization都运行一个CA（称为 中间CA）为其组织颁发证书。这些CA共享一个根信任root trust。虽然使用CA比使用cryptogen花费更多的时间，但分布式生产网络需要CA部署。CA还可以添加新的客户端身份认证和为应用程序创建证书和私钥。</p>
+<p>下面命令启动带CA的网络，第二个命令同时创建通道，第三个命令把执行命令的输出写到文件out.log中，方便查看，加参数 -a 表示末尾添加模式而不是删除重写模式。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./network.sh up -ca</span><br><span class="line"></span><br><span class="line">./network.sh up createChannel -ca</span><br></pre></td></tr></table></figure>
+<p>如果是用Putty连接虚机，执行命令后可以看到完整输出（窗口有滚动条）。可以看到创建网络后第一件是就是创建了3个CA。</p>
+<p>用下面命令查看Org1的MSP（Membership service provider）文件夹。<strong>执行发现没有tree命令，安装 apt install tree</strong>，然后执行下面命令。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tree organizations/peerOrganizations/org1.example.com/users/Admin**@org1**.example.com/</span><br></pre></td></tr></table></figure>
+<p>可以看到 *.pem 就是密钥文件，keystore里保存的也是密钥。</p>
+<h1><strong>五、向通道部署智能合约</strong></h1>
+<p>首先进入工作路径，启动网络：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /opt/go/src/github.com/zlz8x8/fabric-samples/test-network</span><br><span class="line"></span><br><span class="line">./network.sh up createChannel</span><br></pre></td></tr></table></figure>
+<p>设置Logspout，可选。</p>
+<p>如果是直接系统登录情况下是无法打开第二个终端窗口的。用Putty连接虚机，进行工作操作，然后再打开一个Putty连接到同一个虚机，就有两个终端窗口了。从第二个终端窗口进入工作目录，开启logspout</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /opt/go/src/github.com/zlz8x8/fabric-samples/test-network</span><br><span class="line"></span><br><span class="line">./monitordocker.sh fabric\_test</span><br></pre></td></tr></table></figure>
+<p>如果是第一次运行，需要拉取相应的image，似乎不需要VPN，很快</p>
+<p><strong>然后光标就停在一长串数字下面了，这是正常的，等待输出</strong>。</p>
+<p>从第一个窗口工作路径下运行 docker stop logspout 就可以停止第二个窗口的等待状态，进入光标。从第二个窗口再次运行 ./monitordocker.sh fabric_test 就再次监视docker的状态，等待输出。</p>
+<h2 id="5-1-打包智能合约"><strong>5.1 打包智能合约</strong></h2>
+<p>本例中的智能合约有三种语言go，javascript，typescript写的代码。go语言的包被用在后面的步骤“向通道安装智能合约”中，javascript语言的包被用在后面的步骤“升级智能合约”中，typescript的包没有使用，要用的话步骤和go和javascript是一样的。</p>
+<h3 id="5-1-1-Go"><strong>5.1.1 Go</strong></h3>
+<p>在工作路径：/opt/go/src/github.com/zlz8x8/fabric-samples/test-network</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ../asset-transfer-basic/chaincode-go</span><br></pre></td></tr></table></figure>
+<p>可以看一下这个目录下 go.mod 的内容，智能合约的部分是如何写的。</p>
+<p>GO111MODULE=on go mod vendor</p>
+<p>开始下载依赖包，编译，<strong>应该需要VPN</strong>，大概1秒钟，生成的模块在vendor目录下。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd ../../test-network</span><br><span class="line"></span><br><span class="line">peer version</span><br><span class="line"></span><br><span class="line">peer lifecycle chaincode package basic.tar.gz --path ../asset-transfer-basic/chaincode-go/ --lang golang --label basic\_1.0</span><br></pre></td></tr></table></figure>
+<p>在工作路径 /opt/go/src/github.com/zlz8x8/fabric-samples/test-network 下就生成了一个basic.tar.gz包。打包go完成。</p>
+<h3 id="5-1-2-Javascript"><strong>5.1.2 Javascript</strong></h3>
+<p>安装nodejs和npm，大概下载500M，设置了清华源，很快</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install nodejs npm</span><br></pre></td></tr></table></figure>
+<p>设置npm代理，否则运行时会卡死</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm config set registry https://registry.npm.taobao.org</span><br><span class="line"></span><br><span class="line">npm config get registry</span><br></pre></td></tr></table></figure>
+<p>在工作路径：/opt/go/src/github.com/zlz8x8/fabric-samples/test-network</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ../asset-transfer-basic/chaincode-javascript</span><br></pre></td></tr></table></figure>
+<p>可以看一下 lib/assetTransfer.js 的内容，智能合约的部分是如何写的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<p>会新生成一个node_modules目录，生成的模块在此目录下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ../../test-network</span><br></pre></td></tr></table></figure>
+<p>不执行打包命令，后面会执行打包命令为升级包2.0。要执行的话，把go的打包命令中的–path …/asset-transfer-basic/chaincode-javascript/ 换了，–lang node 换了，并且要更改包名，否则会覆盖前面生成的 basic.tar.gz</p>
+<h3 id="5-1-3-Typescript"><strong>5.1.3 Typescript</strong></h3>
+<p>在工作路径：/opt/go/src/github.com/zlz8x8/fabric-samples/test-network</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ../asset-transfer-basic/chaincode-typescript</span><br></pre></td></tr></table></figure>
+<p>可以看一下 src/assetTransfer.ts 的内容，智能合约部分是如何写的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<p>会新生成一个node_modules目录，生成的模块在此目录下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ../../test-network</span><br></pre></td></tr></table></figure>
+<p>不执行打包命令，要执行的话，把go的打包命令中的–path …/asset-transfer-basic/chaincode-typescript/ 换了，–lang node 换了，并且要更改包名，否则会覆盖前面生成的 basic.tar.gz</p>
+<h2 id="5-2-安装链码包"><strong>5.2 安装链码包</strong></h2>
+<p>在工作路径：/opt/go/src/github.com/zlz8x8/fabric-samples/test-network</p>
+<p>确认目录下有 basic.tar.gz，就是之前打包的go链码。<strong>关闭网络后，这个文件就被删除了</strong>，需要重新执行打包步骤。可以 cp basic.tar.gz basic.tar.gz.bak 留个备份。下次启动网络，可以跳过打包步骤，从备份拷贝回来cp basic.tar.gz.bak basic.tar.gz</p>
+<p>确认网络已启动，管道已创建</p>
+<p>确认有两个命令行窗口，一个是主窗口，另一个运行了./monitordocker.sh fabric_test 在等待输出。</p>
+<p>首先在org1 peer上安装链码，设置系统org1参数。执行 source setOrgEnv1 即可，或执行下面命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">export CORE\_PEER\_TLS\_ENABLED=true</span><br><span class="line"></span><br><span class="line">export CORE\_PEER\_LOCALMSPID=&quot;Org1MSP&quot;</span><br><span class="line"></span><br><span class="line">export CORE\_PEER\_TLS\_ROOTCERT\_FILE=$&#123;PWD&#125;/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt</span><br><span class="line"></span><br><span class="line">export CORE\_PEER\_MSPCONFIGPATH=$&#123;PWD&#125;/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp</span><br><span class="line"></span><br><span class="line">export CORE\_PEER\_ADDRESS=localhost:7051</span><br></pre></td></tr></table></figure>
+<p>执行下面命令。可以看到监视窗口有大量输出，可以看到安装链码的是 peer0.org1</p>
+<p>peer lifecycle chaincode install basic.tar.gz</p>
+<p>主窗口只输出结果，和监视窗口最后的输出是一样的。Putty窗口鼠标选中的内容就自动复制到剪贴板了，到这里粘贴如下：</p>
+<p>2022-12-10 21:34:34.245 CST 0001 INFO [cli.lifecycle.chaincode] submitInstallProposal -&gt; Installed remotely:  response:&lt;status:200 payload:“\nJbasic_1.0:56069c8c46fe01a7837a218a6e2ab49a2b6c4a715c95ab2ab321a863b642d021\022\tbasic_1.0” &gt;</p>
+<p>2022-12-10 21:34:34.260 CST 0002 INFO [cli.lifecycle.chaincode] submitInstallProposal -&gt; Chaincode code package identifier: basic_1.0:56069c8c46fe01a7837a218a6e2ab49a2b6c4a715c95ab2ab321a863b642d021</p>
+<p>然后设置org2系统变量，在org2 peer上安装链码。执行 source setOrgEnv2 即可，或执行下面命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">export CORE\_PEER\_LOCALMSPID=&quot;Org2MSP&quot;</span><br><span class="line"></span><br><span class="line">export CORE\_PEER\_TLS\_ROOTCERT\_FILE=$&#123;PWD&#125;/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt</span><br><span class="line"></span><br><span class="line">export CORE\_PEER\_MSPCONFIGPATH=$&#123;PWD&#125;/organizations/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp</span><br><span class="line"></span><br><span class="line">export CORE\_PEER\_ADDRESS=localhost:9051</span><br></pre></td></tr></table></figure>
+<p>执行下面命令。可以看到监视窗口有大量输出，主窗口输出和上面一样，安装成功。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer lifecycle chaincode install basic.tar.gz</span><br></pre></td></tr></table></figure>
+<h2 id="5-3-确认链码定义"><strong>5.3 确认链码定义</strong></h2>
+<p>紧跟上面步骤，现在身份是org2，首先查询已安装的链码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer lifecycle chaincode queryinstalled</span><br></pre></td></tr></table></figure>
+<p>输出如下：</p>
+<p>Installed chaincodes on peer:</p>
+<p>Package ID: basic_1.0:56069c8c46fe01a7837a218a6e2ab49a2b6c4a715c95ab2ab321a863b642d021, Label: basic_1.0</p>
+<p>这里的Package ID在确认链码的时候要用，我们用它设置一个系统变量：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export CC\_PACKAGE\_ID=basic\_1.0:56069c8c46fe01a7837a218a6e2ab49a2b6c4a715c95ab2ab321a863b642d021</span><br></pre></td></tr></table></figure>
+<p>设置了这个系统参数，后面org1确认链码的时候也可以用，所以org1在确认的时候就省略这一步了。</p>
+<p>确认链码定义：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer lifecycle chaincode approveformyorg -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --channelID mychannel --name basic --version 1.0 --package-id $CC\_PACKAGE\_ID --sequence 1 --tls --cafile &quot;$&#123;PWD&#125;/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem&quot;</span><br></pre></td></tr></table></figure>
+<p>输出如下：</p>
+<p>2022-12-11 17:04:26.913 CST 0001 INFO [chaincodeCmd] ClientWait -&gt; txid [700a4f809b4baa7b7ae2debf5ffd20626c4a035436b3e7e7e6430c76d27ba4be] committed with status (VALID) at localhost:9051</p>
+<p>上面步骤的解释（未翻译）：</p>
+<p>The command above uses the --package-id flag to include the package identifier in the chaincode definition. The --sequence parameter is an integer that keeps track of the number of times a chaincode has been defined or updated. Because the chaincode is being deployed to the channel for the first time, the sequence number is 1. When the asset-transfer (basic) chaincode is upgraded, the sequence number will be incremented to 2. If you are using the low level APIs provided by the Fabric Chaincode Shim API, you could pass the --init-required flag to the command above to request the execution of the Init function to initialize the chaincode. The first invoke of the chaincode would need to target the Init function and include the --isInit flag before you could use the other functions in the chaincode to interact with the ledger.</p>
+<p>We could have provided a --signature-policy or --channel-config-policy argument to the approveformyorg command to specify a chaincode endorsement policy. The endorsement policy specifies how many peers belonging to different channel members need to validate a transaction against a given chaincode. Because we did not set a policy, the definition of asset-transfer (basic) will use the default endorsement policy, which requires that a transaction be endorsed by a majority of channel members present when the transaction is submitted. This implies that if new organizations are added or removed from the channel, the endorsement policy is updated automatically to require more or fewer endorsements. In this tutorial, the default policy will require a majority of 2 out of 2 and transactions will need to be endorsed by a peer from Org1 and Org2.</p>
+<p>下面用org1来确认链码，执行 source setOrgEnv1 即可，或执行下面命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">export CORE\_PEER\_LOCALMSPID=&quot;Org1MSP&quot;</span><br><span class="line"></span><br><span class="line">export CORE\_PEER\_MSPCONFIGPATH=$&#123;PWD&#125;/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp</span><br><span class="line"></span><br><span class="line">export CORE\_PEER\_TLS\_ROOTCERT\_FILE=$&#123;PWD&#125;/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt</span><br><span class="line"></span><br><span class="line">export CORE\_PEER\_ADDRESS=localhost:7051</span><br></pre></td></tr></table></figure>
+<p>然后用org1确认链码定义：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer lifecycle chaincode approveformyorg -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --channelID mychannel --name basic --version 1.0 --package-id $CC\_PACKAGE\_ID --sequence 1 --tls --cafile &quot;$&#123;PWD&#125;/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem&quot;</span><br></pre></td></tr></table></figure>
+<p>输出如下，跟org2的输出比较一下，最后的端口号不一样了。</p>
+<p>2022-12-11 17:48:34.122 CST 0001 INFO [chaincodeCmd] ClientWait -&gt; txid [f6cd1365d631880f7753a7e4e91d1de34444e17659b6d5dc11869d5a7815e670] committed with status (VALID) at localhost:7051</p>
+<h2 id="5-4-向通道提交链码定义"><strong>5.4 向通道提交链码定义</strong></h2>
+<p>紧跟上述步骤，现在peer身份是org1</p>
+<p>下面命令查询有哪些成员确认了链码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer lifecycle chaincode checkcommitreadiness --channelID mychannel --name basic --version 1.0 --sequence 1 --tls --cafile &quot;$*&#123;PWD&#125;*/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem&quot; --output json</span><br></pre></td></tr></table></figure>
+<p>输出如下，说明org1和org2已经确认了链码：</p>
+<p>{</p>
+<p><code>      </code>“approvals”: {</p>
+<p><code>              </code>“Org1MSP”: true,</p>
+<p><code>              </code>“Org2MSP”: true</p>
+<p><code>      </code>}</p>
+<p>}</p>
+<p>网络里只有org1和org2，都已经确认，现在链码定义已经可以提交到通道，用下面的命令提交链码定义：从下面的命令可以看出，以org1和org2身份提交了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer lifecycle chaincode commit -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --channelID mychannel --name basic --version 1.0 --sequence 1 --tls --cafile &quot;$*&#123;PWD&#125;*/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem&quot; --peerAddresses localhost:7051 --tlsRootCertFiles &quot;$*&#123;PWD&#125;*/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt&quot; --peerAddresses localhost:9051 --tlsRootCertFiles &quot;$*&#123;PWD&#125;*/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt&quot;</span><br></pre></td></tr></table></figure>
+<p>输出如下，说明org1和org2都提交了链码：</p>
+<p>2022-12-11 17:55:17.072 CST 0001 INFO [chaincodeCmd] ClientWait -&gt; txid [2950340b01b19046b2ed345900c6b50a32a947ff529263e728c53eea7247d718] committed with status (VALID) at localhost:9051</p>
+<p>2022-12-11 17:55:17.088 CST 0002 INFO [chaincodeCmd] ClientWait -&gt; txid [2950340b01b19046b2ed345900c6b50a32a947ff529263e728c53eea7247d718] committed with status (VALID) at localhost:7051</p>
+<p>用下面的命令查询已提交的链码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer lifecycle chaincode querycommitted --channelID mychannel --name basic --cafile &quot;$*&#123;PWD&#125;*/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem&quot;</span><br></pre></td></tr></table></figure>
+<p>输出如下，包含了已提交的链码的信息：</p>
+<p>Committed chaincode definition for chaincode ‘basic’ on channel ‘mychannel’:</p>
+<p>Version: 1.0, Sequence: 1, Endorsement Plugin: escc, Validation Plugin: vscc, Approvals: [Org1MSP: true, Org2MSP: true]</p>
+<h2 id="5-5-调用链码"><strong>5.5 调用链码</strong></h2>
+<p>链码已经提交到通道，可以被client application调用，并且链码会在各个加入的peer（org1和org2）上运行。</p>
+<p>执行下面命令调用链码，在账本创建一个初始化的资产集。注意调用命令要标的（target）足够多的peer以满足背书策略，现在只有org1和org2。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile &quot;$*&#123;PWD&#125;*/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem&quot; -C mychannel -n basic --peerAddresses localhost:7051 --tlsRootCertFiles &quot;$*&#123;PWD&#125;*/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt&quot; --peerAddresses localhost:9051 --tlsRootCertFiles &quot;$*&#123;PWD&#125;*/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt&quot; -c &#x27;&#123;&quot;function&quot;:&quot;InitLedger&quot;,&quot;Args&quot;:[]&#125;&#x27;</span><br></pre></td></tr></table></figure>
+<p>输出如下，执行成功：</p>
+<p>2022-12-11 18:07:14.083 CST 0001 INFO [chaincodeCmd] chaincodeInvokeOrQuery -&gt; Chaincode invoke successful. result: status:200</p>
+<p>用下面的命令查询刚才创建的资产（cars）集：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer chaincode query -C mychannel -n basic -c &#x27;&#123;&quot;Args&quot;:[&quot;GetAllAssets&quot;]&#125;&#x27;</span><br></pre></td></tr></table></figure>
+<p>输出如下：</p>
+<p>[{“AppraisedValue”:300,“Color”:“blue”,“ID”:“asset1”,“Owner”:“Tomoko”,“Size”:5},{“AppraisedValue”:400,“Color”:“red”,“ID”:“asset2”,“Owner”:“Brad”,“Size”:5},{“AppraisedValue”:500,“Color”:“green”,“ID”:“asset3”,“Owner”:“Jin Soo”,“Size”:10},{“AppraisedValue”:600,“Color”:“yellow”,“ID”:“asset4”,“Owner”:“Max”,“Size”:10},{“AppraisedValue”:700,“Color”:“black”,“ID”:“asset5”,“Owner”:“Adriana”,“Size”:15},{“AppraisedValue”:800,“Color”:“white”,“ID”:“asset6”,“Owner”:“Michel”,“Size”:15}]</p>
+<h2 id="5-6-升级智能合约"><strong>5.6 升级智能合约</strong></h2>
+<p>前面步骤已经安装、提交、调用了go链码。下面打包javascript链码并安装，对智能合约进行升级。</p>
+<h3 id="5-6-1-打包链码"><strong>5.6.1 打包链码</strong></h3>
+<p>前面没有执行javascript链码打包，现在执行打包命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd ../asset-transfer-basic/chaincode-javascript</span><br><span class="line"></span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<p>回到工作路径</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ../../test-network</span><br></pre></td></tr></table></figure>
+<p>执行系统参数设置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">export PATH=$&#123;PWD&#125;/../bin:$PATH</span><br><span class="line"></span><br><span class="line">export FABRIC\_CFG\_PATH=$PWD/../config/</span><br><span class="line"></span><br><span class="line">export CORE\_PEER\_MSPCONFIGPATH=$&#123;PWD&#125;/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp</span><br></pre></td></tr></table></figure>
+<p>注意：<strong>前两项设置已经在“4.5 与网络交互”写在 /etc/profile 里了，开机已经有了，这里只需要执行第三行</strong>。</p>
+<p>执行打包命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer lifecycle chaincode package basic\_2.tar.gz --path ../asset-transfer-basic/chaincode-javascript/ --lang node --label basic\_2.0</span><br></pre></td></tr></table></figure>
+<p>工作目录下会多一个basic_2.tar.gz，网络关闭后，这个文件会被删除，我们备份一下cp basic_2.tar.gz basic_2.tar.gz.bak，下次重启网络，可以跳过打包步骤，把备份的文件恢复回来就行了cp basic_2.tar.gz.bak basic_2.tar.gz</p>
+<h3 id="5-6-2-安装链码"><strong>5.6.2 安装链码</strong></h3>
+<p>下面用org1来安装链码，执行 source setOrgEnv1 即可，或执行下面命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">export CORE\_PEER\_TLS\_ENABLED=true</span><br><span class="line"></span><br><span class="line">export CORE\_PEER\_LOCALMSPID=&quot;Org1MSP&quot;</span><br><span class="line"></span><br><span class="line">export CORE\_PEER\_TLS\_ROOTCERT\_FILE=$&#123;PWD&#125;/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt</span><br><span class="line"></span><br><span class="line">export CORE\_PEER\_MSPCONFIGPATH=$&#123;PWD&#125;/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp</span><br><span class="line"></span><br><span class="line">export CORE\_PEER\_ADDRESS=localhost:7051</span><br></pre></td></tr></table></figure>
+<p>安装链码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer lifecycle chaincode install basic\_2.tar.gz</span><br></pre></td></tr></table></figure>
+<p>查询已安装的链码：</p>
+<p>peer lifecycle chaincode queryinstalled</p>
+<p>输出如下，可以看到已安装了两个链码：</p>
+<p>Installed chaincodes on peer:</p>
+<p>Package ID: basic_2.0:a496470e6e35a564619781f41bc17eef4db685c222aa0b89ed3dfb4b668206f5, Label: basic_2.0</p>
+<p>Package ID: basic_1.0:56069c8c46fe01a7837a218a6e2ab49a2b6c4a715c95ab2ab321a863b642d021, Label: basic_1.0</p>
+<h3 id="5-6-3-确认链码"><strong>5.6.3 确认链码</strong></h3>
+<p>用上面的链码ID设置一个系统变量，<strong>注意这里的ID要和你的查询输出里的一致</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export NEW\_CC\_PACKAGE\_ID=basic\_2.0:a496470e6e35a564619781f41bc17eef4db685c222aa0b89ed3dfb4b668206f5</span><br></pre></td></tr></table></figure>
+<p>现在以org1确认链码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer lifecycle chaincode approveformyorg -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --channelID mychannel --name basic --version 2.0 --package-id $NEW\_CC\_PACKAGE\_ID --sequence 2 --tls --cafile &quot;$&#123;PWD&#125;/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem&quot;</span><br></pre></td></tr></table></figure>
+<p><strong>下面用org2来安装、确认链码</strong>，执行 source setOrgEnv2 即可，或执行下面命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">export CORE\_PEER\_LOCALMSPID=&quot;Org2MSP&quot;</span><br><span class="line"></span><br><span class="line">export CORE\_PEER\_TLS\_ROOTCERT\_FILE=$&#123;PWD&#125;/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt</span><br><span class="line"></span><br><span class="line">export CORE\_PEER\_MSPCONFIGPATH=$&#123;PWD&#125;/organizations/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp</span><br><span class="line"></span><br><span class="line">export CORE\_PEER\_ADDRESS=localhost:9051</span><br></pre></td></tr></table></figure>
+<p>安装链码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer lifecycle chaincode install basic\_2.tar.gz</span><br></pre></td></tr></table></figure>
+<p>确认链码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer lifecycle chaincode approveformyorg -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --channelID mychannel --name basic --version 2.0 --package-id $NEW\_CC\_PACKAGE\_ID --sequence 2 --tls --cafile &quot;$&#123;PWD&#125;/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem&quot;</span><br></pre></td></tr></table></figure>
+<p>org1和org2都安装，确认了链码。检查一下basic_2是否已准备好提交了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer lifecycle chaincode checkcommitreadiness --channelID mychannel --name basic --version 2.0 --sequence 2 --tls --cafile &quot;$*&#123;PWD&#125;*/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem&quot; --output json</span><br></pre></td></tr></table></figure>
+<p>从输出来看，org1和org2都确认了，可以提交：</p>
+<p>{</p>
+<p><code>      </code>“approvals”: {</p>
+<p><code>              </code>“Org1MSP”: true,</p>
+<p><code>              </code>“Org2MSP”: true</p>
+<p><code>      </code>}</p>
+<p>}</p>
+<h3 id="5-6-4-提交链码"><strong>5.6.4 提交链码</strong></h3>
+<p>提交新的链码，从前面的步骤可知，下面的命令是以org1或org2的身份执行的，都会以两者的身份提交。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer lifecycle chaincode commit -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --channelID mychannel --name basic --version 2.0 --sequence 2 --tls --cafile &quot;$*&#123;PWD&#125;*/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem&quot; --peerAddresses localhost:7051 --tlsRootCertFiles &quot;$*&#123;PWD&#125;*/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt&quot; --peerAddresses localhost:9051 --tlsRootCertFiles &quot;$*&#123;PWD&#125;*/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt&quot;</span><br></pre></td></tr></table></figure>
+<p>验证一下新的链码已经在各个peer上运行了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
+<p>下面输出（部分），可看到，basic_2.0在org1和org2上都有：</p>
+<p>7c2ad4f2b66d   dev-peer0.org2.example.com-basic_2.0-a496470e6e35a564619781f41bc17eef4db685c222aa0b89ed3dfb4b668206f5-a394028e6792b45700d3e09782af3f93d9c18f9bfb8be6f4f761730f94faad53   “docker-entrypoint.s…”   54 seconds ago      Up 53 seconds                                                                               dev-peer0.org2.example.com-basic_2.0-a496470e6e35a564619781f41bc17eef4db685c222aa0b89ed3dfb4b668206f5</p>
+<p>298b812c2dee   dev-peer0.org1.example.com-basic_2.0-a496470e6e35a564619781f41bc17eef4db685c222aa0b89ed3dfb4b668206f5-5113a692e1e282cd0168c26a4ec379486b6a8dfb8fe03e6043a805669c5b2696   “docker-entrypoint.s…”   54 seconds ago      Up 53 seconds                                                                               dev-peer0.org1.example.com-basic_2.0-a496470e6e35a564619781f41bc17eef4db685c222aa0b89ed3dfb4b668206f5</p>
+<h3 id="5-6-5-调用链码"><strong>5.6.5 调用链码</strong></h3>
+<p>如果使用了 --init-required 参数，则需要在使用链码前调用 Init 方法。本例中不需要执行 Init，下面测试创建一个新 car</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile &quot;$*&#123;PWD&#125;*/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem&quot; -C mychannel -n basic --peerAddresses localhost:7051 --tlsRootCertFiles &quot;$*&#123;PWD&#125;*/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt&quot; --peerAddresses localhost:9051 --tlsRootCertFiles &quot;$*&#123;PWD&#125;*/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt&quot; -c &#x27;&#123;&quot;function&quot;:&quot;CreateAsset&quot;,&quot;Args&quot;:[&quot;asset8&quot;,&quot;blue&quot;,&quot;16&quot;,&quot;Kelley&quot;,&quot;750&quot;]&#125;&#x27;</span><br></pre></td></tr></table></figure>
+<p>输出返回值 status:200 成功了。</p>
+<p>用下面的命令查询资产（cars）集：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer chaincode query -C mychannel -n basic -c &#x27;&#123;&quot;Args&quot;:[&quot;GetAllAssets&quot;]&#125;&#x27;</span><br></pre></td></tr></table></figure>
+<p>输出如下，可以看到比“5.5 调用链码”里的输出多了一个asset8</p>
+<p>[{“AppraisedValue”:300,“Color”:“blue”,“ID”:“asset1”,“Owner”:“Tomoko”,“Size”:5},{“AppraisedValue”:400,“Color”:“red”,“ID”:“asset2”,“Owner”:“Brad”,“Size”:5},{“AppraisedValue”:500,“Color”:“green”,“ID”:“asset3”,“Owner”:“Jin Soo”,“Size”:10},{“AppraisedValue”:600,“Color”:“yellow”,“ID”:“asset4”,“Owner”:“Max”,“Size”:10},{“AppraisedValue”:700,“Color”:“black”,“ID”:“asset5”,“Owner”:“Adriana”,“Size”:15},{“AppraisedValue”:800,“Color”:“white”,“ID”:“asset6”,“Owner”:“Michel”,“Size”:15},{“AppraisedValue”:“750”,“Color”:“blue”,“ID”:“asset8”,“Owner”:“Kelley”,“Size”:“16”}]</p>
+<h3 id="5-6-6-清理并关闭网络"><strong>5.6.6 清理并关闭网络</strong></h3>
+<p>如果开了监视窗口，监视窗口无法输入，<strong>在主窗口执行下面命令</strong>停止监视：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker stop logspout</span><br><span class="line"></span><br><span class="line">docker rm logspout</span><br></pre></td></tr></table></figure>
+<p>关闭网络：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./network.sh down</span><br></pre></td></tr></table></figure>
+<p><strong>建议这里把虚拟机拍个快照</strong>。虽然关闭网络把前面在网络里做的事情都清除了，但快照可以保留：tree，nodejs，npm的安装，自己写的文档 setOrgEnv1，setOrgEnv2，链码包的备份，写在 /etc/profile 里长期生效的系统变量。</p>
+<h1><strong>六、运行一个Fabric Application</strong></h1>
+<h1><strong>七、运行外部链码编译器</strong></h1>
+<h1><strong>八、在Fabric里使用私有数据</strong></h1>
+<h1><strong>九、在Fabric里保障资产转移的安全</strong></h1>
+<h1><strong>十、使用CouchDB</strong></h1>
+<h1><strong>十一、创建一个通道</strong></h1>
+<h1><strong>十二、向通道加入Org</strong></h1>
+<h1><strong>十三、更新一个通道的配置</strong></h1>
+<h1><strong>十四、编写第一个链码</strong></h1>
+<h1><strong>十五、在开发模式运行链码</strong></h1>
+
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/HyperledgeFabric/">HyperledgeFabric</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到 QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="分享到微信"
+            data-tooltip-img-tip="微信扫一扫"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到微博"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+                    <div class="reward-author-container border-box flex-center">
+    <div class="reward-btn keep-button border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="打赏作者"
+            data-tooltip-img-url="/images/deploy-provider/paycode.png"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -8px;"
+    >
+        <i class="fa-solid fa-hand-holding-heart"></i>
+    </div>
+</div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2022/12/29/Vmware_install_Debian11/"
+                                   title="Vmware安装Debian 11"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Vmware安装Debian 11</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2022/11/28/SpringBoot_learning/"
+                                   title="SpringBoot学习笔记"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">SpringBoot学习笔记</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="waline-comment-container">
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@waline/client@v2/dist/waline.css"/>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@waline/client@v2/dist/waline-meta.css"/>
+        <div id="waline-comment"></div>
+        <script 
+                src="//cdn.jsdelivr.net/npm/@waline/client@v2/dist/waline.js"
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        ></script>
+        <script 
+                async
+        >
+          window.KeepCommentPlugin.walineOptions = JSON.parse('{}'.replace(/&#34;/g, '"'))
+
+          window.KeepCommentPlugin.initWaline = () => {
+            if (window?.Waline) {
+              window.KeepCommentPlugin.walineOptions.el = '#waline-comment'
+              window.KeepCommentPlugin.walineOptions.comment = '.post-comments-count'
+              window.KeepCommentPlugin.walineOptions.serverURL = 'https://blog-comment-eight-azure.vercel.app'
+              window.KeepCommentPlugin.walineOptions.lang = 'zh-CN' || 'zh-CN'
+              window.KeepCommentPlugin.walineOptions.reaction = 'true' === 'true'
+              window.Waline.init(window.KeepCommentPlugin.walineOptions)
+              window.KeepCommentPlugin.hideLoading()
+            } else {
+              setTimeout(() => {
+                window.KeepCommentPlugin.initWaline()
+              }, 1000)
+            }
+          }
+
+          if ('false' === 'true') {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initWaline()
+            }, 1200)
+          } else {
+            window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initWaline)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">一、准备</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-%E5%85%B3%E4%BA%8E%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="nav-text">1.1 关于操作系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-%E5%85%B3%E4%BA%8E%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%9C%BA"><span class="nav-text">1.2 关于远程连接虚机</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">二、安装前置软件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">三、安装Fabric</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">四、使用Fabric test network</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-%E5%BC%80%E5%A7%8B%E4%B9%8B%E5%89%8D"><span class="nav-text">4.1 开始之前</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-%E5%90%AF%E5%8A%A8test-network"><span class="nav-text">4.2 启动test network</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-%E5%88%9B%E5%BB%BA%E9%80%9A%E9%81%93"><span class="nav-text">4.3 创建通道</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-4-%E5%9C%A8channel%E4%B8%AD%E6%89%A7%E8%A1%8Cchaincode"><span class="nav-text">4.4 在channel中执行chaincode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-5-%E4%B8%8E%E7%BD%91%E7%BB%9C%E4%BA%A4%E4%BA%92"><span class="nav-text">4.5 与网络交互</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-6-%E5%85%B3%E9%97%AD%E7%BD%91%E7%BB%9C"><span class="nav-text">4.6 关闭网络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-7-%E5%90%AF%E5%8A%A8%E6%9C%89CA%E7%9A%84%E7%BD%91%E7%BB%9C"><span class="nav-text">4.7 启动有CA的网络</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">五、向通道部署智能合约</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-%E6%89%93%E5%8C%85%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6"><span class="nav-text">5.1 打包智能合约</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-1-Go"><span class="nav-text">5.1.1 Go</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-2-Javascript"><span class="nav-text">5.1.2 Javascript</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-3-Typescript"><span class="nav-text">5.1.3 Typescript</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-%E5%AE%89%E8%A3%85%E9%93%BE%E7%A0%81%E5%8C%85"><span class="nav-text">5.2 安装链码包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-3-%E7%A1%AE%E8%AE%A4%E9%93%BE%E7%A0%81%E5%AE%9A%E4%B9%89"><span class="nav-text">5.3 确认链码定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-4-%E5%90%91%E9%80%9A%E9%81%93%E6%8F%90%E4%BA%A4%E9%93%BE%E7%A0%81%E5%AE%9A%E4%B9%89"><span class="nav-text">5.4 向通道提交链码定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-5-%E8%B0%83%E7%94%A8%E9%93%BE%E7%A0%81"><span class="nav-text">5.5 调用链码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-6-%E5%8D%87%E7%BA%A7%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6"><span class="nav-text">5.6 升级智能合约</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-6-1-%E6%89%93%E5%8C%85%E9%93%BE%E7%A0%81"><span class="nav-text">5.6.1 打包链码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-6-2-%E5%AE%89%E8%A3%85%E9%93%BE%E7%A0%81"><span class="nav-text">5.6.2 安装链码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-6-3-%E7%A1%AE%E8%AE%A4%E9%93%BE%E7%A0%81"><span class="nav-text">5.6.3 确认链码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-6-4-%E6%8F%90%E4%BA%A4%E9%93%BE%E7%A0%81"><span class="nav-text">5.6.4 提交链码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-6-5-%E8%B0%83%E7%94%A8%E9%93%BE%E7%A0%81"><span class="nav-text">5.6.5 调用链码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-6-6-%E6%B8%85%E7%90%86%E5%B9%B6%E5%85%B3%E9%97%AD%E7%BD%91%E7%BB%9C"><span class="nav-text">5.6.6 清理并关闭网络</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">六、运行一个Fabric Application</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">七、运行外部链码编译器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">八、在Fabric里使用私有数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">九、在Fabric里保障资产转移的安全</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">十、使用CouchDB</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">十一、创建一个通道</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">十二、向通道加入Org</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">十三、更新一个通道的配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">十四、编写第一个链码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">十五、在开发模式运行链码</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">一个想当厨子的码农</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+
+            
+                
+                <div class="deploy-info info-item default">
+                    
+                        <a target="_blank" rel="nofollow" href="https://github.com/">
+                    
+                        本站由 <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/brands/github.png"></span> 提供部署服务
+                    
+                        </a>
+                    
+                </div>
+            
+        
+
+        <div class="count-item info-item default">
+            
+                <span class="count-box border-box word">
+                    <span class="item-type border-box">总字数</span>
+                    <span class="item-value border-box word">79.4k</span>
+                </span>
+            
+
+            
+                <span class="count-box border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-box border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">一、准备</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-%E5%85%B3%E4%BA%8E%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="nav-text">1.1 关于操作系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-%E5%85%B3%E4%BA%8E%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%9C%BA"><span class="nav-text">1.2 关于远程连接虚机</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">二、安装前置软件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">三、安装Fabric</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">四、使用Fabric test network</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-%E5%BC%80%E5%A7%8B%E4%B9%8B%E5%89%8D"><span class="nav-text">4.1 开始之前</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-%E5%90%AF%E5%8A%A8test-network"><span class="nav-text">4.2 启动test network</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-%E5%88%9B%E5%BB%BA%E9%80%9A%E9%81%93"><span class="nav-text">4.3 创建通道</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-4-%E5%9C%A8channel%E4%B8%AD%E6%89%A7%E8%A1%8Cchaincode"><span class="nav-text">4.4 在channel中执行chaincode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-5-%E4%B8%8E%E7%BD%91%E7%BB%9C%E4%BA%A4%E4%BA%92"><span class="nav-text">4.5 与网络交互</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-6-%E5%85%B3%E9%97%AD%E7%BD%91%E7%BB%9C"><span class="nav-text">4.6 关闭网络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-7-%E5%90%AF%E5%8A%A8%E6%9C%89CA%E7%9A%84%E7%BD%91%E7%BB%9C"><span class="nav-text">4.7 启动有CA的网络</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">五、向通道部署智能合约</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-%E6%89%93%E5%8C%85%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6"><span class="nav-text">5.1 打包智能合约</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-1-Go"><span class="nav-text">5.1.1 Go</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-2-Javascript"><span class="nav-text">5.1.2 Javascript</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-3-Typescript"><span class="nav-text">5.1.3 Typescript</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-%E5%AE%89%E8%A3%85%E9%93%BE%E7%A0%81%E5%8C%85"><span class="nav-text">5.2 安装链码包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-3-%E7%A1%AE%E8%AE%A4%E9%93%BE%E7%A0%81%E5%AE%9A%E4%B9%89"><span class="nav-text">5.3 确认链码定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-4-%E5%90%91%E9%80%9A%E9%81%93%E6%8F%90%E4%BA%A4%E9%93%BE%E7%A0%81%E5%AE%9A%E4%B9%89"><span class="nav-text">5.4 向通道提交链码定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-5-%E8%B0%83%E7%94%A8%E9%93%BE%E7%A0%81"><span class="nav-text">5.5 调用链码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-6-%E5%8D%87%E7%BA%A7%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6"><span class="nav-text">5.6 升级智能合约</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-6-1-%E6%89%93%E5%8C%85%E9%93%BE%E7%A0%81"><span class="nav-text">5.6.1 打包链码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-6-2-%E5%AE%89%E8%A3%85%E9%93%BE%E7%A0%81"><span class="nav-text">5.6.2 安装链码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-6-3-%E7%A1%AE%E8%AE%A4%E9%93%BE%E7%A0%81"><span class="nav-text">5.6.3 确认链码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-6-4-%E6%8F%90%E4%BA%A4%E9%93%BE%E7%A0%81"><span class="nav-text">5.6.4 提交链码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-6-5-%E8%B0%83%E7%94%A8%E9%93%BE%E7%A0%81"><span class="nav-text">5.6.5 调用链码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-6-6-%E6%B8%85%E7%90%86%E5%B9%B6%E5%85%B3%E9%97%AD%E7%BD%91%E7%BB%9C"><span class="nav-text">5.6.6 清理并关闭网络</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">六、运行一个Fabric Application</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">七、运行外部链码编译器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">八、在Fabric里使用私有数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">九、在Fabric里保障资产转移的安全</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">十、使用CouchDB</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">十一、创建一个通道</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">十二、向通道加入Org</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">十三、更新一个通道的配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">十四、编写第一个链码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">十五、在开发模式运行链码</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/header-shrink.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/back2top.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/toggle-theme.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/code-block.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/main.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/libs/anime.min.js"></script>
+
+<!-- local-search -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/local-search.min.js"></script>
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/post/post-helper.min.js"></script>
+
+        <!-- toc -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/post/toc.min.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/post/share.min.js"></script>
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

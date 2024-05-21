@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="一个想当厨子的码农">
+    <meta name="referrer" content="no-referrer">
+
+    
+    <title>
+        
+            Vmware安装Debian 11 |
+        
+        CodeCook
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/deploy-provider/logo.png">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/font/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/font/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/font/css/brands.min.css">
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"CodeCook","author":"一个想当厨子的码农","avatar":"/images/deploy-provider/avatar.png","logo":"/images/deploy-provider/logo.png","favicon":"/images/deploy-provider/logo.png"},"menu":{"home":"/ || fa-solid fa-house","archives":"/archives || fa-solid fa-box-archive","tags":"/tags || fa-solid fa-tags","categories":"/categories || fa-solid fa-layer-group","links":"/links || fa-solid fa-link","about":"/about || fa-solid fa-user-graduate","tools":"/tools || fa-solid fa-screwdriver-wrench"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"因为热爱，所以分享；|| 因为分享，更加热爱。","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/dettry","weixin":null,"qq":"img | images/deploy-provider/qq.png","weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":true,"hide_header":false},"home":{"category":false,"tag":true,"announcement":null,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/deploy-provider/paycode.png","text":null}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"waline","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":"https://blog-comment-eight-azure.vercel.app","reaction":true,"version":2},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":true,"icp":{"enable":false,"record_code":null,"url":"https://beian.miit.gov.cn"},"site_deploy":{"enable":true,"provider":"github","url":"https://github.com/"},"shields_style":{"enable":false,"custom":[{"link_url":null,"img_url":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{"tools":[{"category":"聊天 AI"},{"name":"ChatGPT","link":"https://chat.openai.com/","description":"OpenAI 旗下 AI 聊天对话工具","image":"/images/tools/chatgpt.svg"},{"name":"Gemini","link":"https://gemini.google.com/app","description":"Google 旗下 AI 聊天对话工具","image":"/images/tools/gemini.svg"},{"category":"图标工具"},{"name":"iconfont","link":"https://www.iconfont.cn/","description":"阿里妈妈MUX倾力打造的矢量图标管理 交流平台","image":"https://img.alicdn.com/imgextra/i4/O1CN01Z5paLz1O0zuCC7osS_!!6000000001644-55-tps-83-82.svg"},{"category":"图床工具"},{"name":"PicX","link":"https://picx.xpoet.cn/#/","description":"是一款基于 GitHub API 开发的图床工具，提供图片上传托管、生成图片链接和常用图片工具箱服务","image":"/images/tools/logo.png"},{"category":"娱乐工具"},{"name":"硬核指南","link":"https://yinghe.app/","description":"专注为你找出每一个高清影视资源网站！","image":"https://pic.rmb.bdstatic.com/bjh/user/d82efa1442b1f2b3575b48ce7fc227b9.png"},{"name":"全历史","link":"https://www.allhistory.com/","description":"以AI知识图谱为核心引擎，通过高度时空化、关联化数据的方式构造及展现数字人文内容，尤其是历史知识。让用户沉浸在纵横开阔、左图右史的（历史、人文、社科等）知识海洋中","image":"https://static.allhistory.com/online/common/img/logo-ah.5721.png"},{"name":"万箭齐发","link":"https://wangyasai.github.io/Stars-Emmision/"},{"name":"迅捷画图","link":"https://www.liuchengtu.com/?zhhxx","description":"让创作更高效，让创意更简单，是我们的使命和目标","image":"https://www.liuchengtu.com/images/logo-header.png"},{"category":"其他杂项"},{"name":"docx转markdown","link":"https://products.groupdocs.app/zh/conversion/docx-to-md#google_vignette","description":"在线转换您的 DOCX 文件。您可以从任何平台（Windows、Linux、macOS）转换您的 DOCX 文档","image":"https://cms.admin.containerize.com/templates/groupdocsapp/images/android-chrome-192x192.png"},{"name":"docx转PDF","link":"https://cdkm.com/cn/docx-to-pdf","description":"自认为最好用的word转PDF工具","image":"/images/tools/转换.svg"},"......","......","......"]},"version":"4.1.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.2.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/deploy-provider/logo.png">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               CodeCook
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                    <i class="menu-icon fa-solid fa-house"></i>
+                                
+                                首页
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                    <i class="menu-icon fa-solid fa-box-archive"></i>
+                                
+                                归档
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                
+                                    <i class="menu-icon fa-solid fa-tags"></i>
+                                
+                                标签
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                
+                                    <i class="menu-icon fa-solid fa-layer-group"></i>
+                                
+                                分类
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                
+                                    <i class="menu-icon fa-solid fa-link"></i>
+                                
+                                友链
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                
+                                    <i class="menu-icon fa-solid fa-user-graduate"></i>
+                                
+                                关于
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tools"
+                            >
+                                
+                                    <i class="menu-icon fa-solid fa-screwdriver-wrench"></i>
+                                
+                                工具
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >首页</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags"
+                    >标签</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories"
+                    >分类</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links"
+                    >友链</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about"
+                    >关于</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tools"
+                    >工具</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        Vmware安装Debian 11
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/deploy-provider/avatar.png">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">一个想当厨子的码农</span>
+                                
+                                    <span class="author-badge">Lv2</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2022-12-29 09:24:07</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Tue May 21 2024 14:08:26 GMT+0800">2024-05-21 14:08:26</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/Linux%E4%B8%93%E9%A2%98/">Linux专题</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Linux/">Linux</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>9.6k 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>38 分钟</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body">
+                    
+
+                    <h1>一、Vmware安装Debian 11</h1>
+<p>本例中采用虚拟化软件VMware Workstation安装Debian 11.5.0（base system安装）。实际应用中，单个服务器一般都设定为单一功能，比如Web服务器，数据库服务器，LDAP服务器等，或者多台服务器分布式部署云计算组件如Hadoop等，单个服务器只需要操作系统的基本功能，因此Debian最小化安装符合需求，如果需要额外的功能，可以在使用过程中增加。</p>
+<p>本例Debian安装环境如下：</p>
+<p>主机（Host Machine）：CPU 20核，内存32G，操作系统Windows 11家庭版64位</p>
+<p>虚拟化软件：VMware Workstation 16 pro</p>
+<p>到 <a class="link"   target="_blank" rel="noopener" href="https://www.debian.org/" >https://www.debian.org/<i class="fas fa-external-link-alt"></i></a> 下载安装包，本例是debian-11.5.0-amd64-DVD-1.iso</p>
+<h2 id="1-1-安装前Vmware设置"><strong>1.1 安装前Vmware设置</strong></h2>
+<p>1、在VMware菜单“编辑-首选项”可以设置虚拟机默认放置的目录，应选择有足够空间的硬盘分区。本例中是 D:\MyVM</p>
+<p>2、创建虚拟机采用“自定义(高级)”配置，选择安装来源时，载入Debian的ISO后，Vmware无法识别版本，其识别的版本最高是Debian 10.x。<strong>选择“稍后安装操作系统”不采用简易安装，而采用手动安装</strong>。后面“客户机操作系统”选择Linux，下拉框选择Debian 10.x 64位。</p>
+<p>3、虚拟机名称 deb-min，选择 D:\MyVM\deb-min作为存储位置</p>
+<p>4、为虚机分配处理器1个，内核数量1个，2G内存。本例中这个虚拟机实例是作为干净基准系统，具体的应用虚拟机可以克隆这个虚拟机，不用重新安装。分配的CPU核数，内存数在克隆后可以在Vmware里修改。实验用虚机一般1核2G内存即可，可租用的轻量级云服务器一般是1核1G内存。实际虚机则根据需要分配资源，计算单元则对CPU要求较高，内容服务器则对内存要求较高。</p>
+<p>5、使用NAT网络（默认选项），虚机没有与主机同级的IP地址。</p>
+<p>桥接，NAT，仅主机模式，三者的简要区别如下：</p>
+<p>（1）桥接：虚机与主机在网络中地位一样，虚机拥有与主机同级的独立IP地址。</p>
+<p>（2）<strong>NAT：虚机共享主机的IP地址访问Internet，同一个主机中的各个虚机在同一网段中，可互相访问。外部无法直接访问虚机，但可通过主机的转接访问虚机</strong>。</p>
+<p>（3）仅主机模式：同一主机中的各个虚机可互相访问，虚机无法访问Internet，外部也无法访问虚机。</p>
+<p>6、I/O类型：默认LSI Logic，磁盘类型：默认SCSI，选择磁盘：创建新虚拟磁盘。</p>
+<p>7、分配20G虚拟磁盘空间，存为多个文件（默认选项）。没有勾选“立即分配所有磁盘空间”，会稍微影响虚机的速度。</p>
+<p>8、指定虚机磁盘文件，保持默认（拆分成多个文件）。方便虚拟机的拷贝。</p>
+<p>9、开始安装时，可能会提示要更改BIOS设置以支持64位操作系统之类的，按照提示修改主机BIOS设置，再回来安装。</p>
+<p>注意：一般新的电脑无需设置自动支持64位虚拟化，有些电脑需要在BIOS里设置以支持64位虚拟化，有些更旧的电脑完全不支持64位虚拟化，则无法在VMware里安装64位的操作系统。</p>
+<p>如上完成新建虚拟机设置。会出现该虚拟机配置画面，点击“编辑虚拟机设置”，打开对话框，核对硬件配置。如果CD/DVD是自动检测，则选择“使用ISO印象文件”，并选中Debian的安装镜像文件。</p>
+<p>然后点击上图中的“开启此虚拟机”，开始安装。</p>
+<p>开始安装后，窗口下面会出现“我已完成安装”，不要点，等安装完了再点。</p>
+<h2 id="1-2-安装过程"><strong>1.2 安装过程</strong></h2>
+<p>注意：安装过程中，鼠标点击虚机界面即可进入虚机操作，组合键ctrl + alt 可使鼠标返回主机。在VMware Workstation窗口的左下角会有提示。</p>
+<p>1、安装过程与在真实裸机上安装一样，初始界面选择**“Advanced options” - “Graphical expert Install”，非常重要！！！**，然后回车进入安装过程。选择图形expert模式可以设置静态IP地址，最重要的是可以跳过更新，否则要等很长时间，甚至安装失败。</p>
+<p>2、选择安装过程中的语言（也是安装后系统的默认语言）：选择English (English)，下一步，Location选other - Asia - China，然后locales选“en_US.UTF-8”，下一步Additional locales，勾上zh_CN.UTF-8，下一步System locale保持默认en_US.UTF-8</p>
+<p>3、然后blind person，speech synthesizer跳过，进入keyboard，保持默认American Englis，下一步</p>
+<p>4、进入Detect and mount installation media，保持默认勾选usb-storage，下一步，提示找到了，下一步，Installer components，列在这里的都是可选非必须的，直接下一步，</p>
+<p>5、进入Detect network hardware，下一步Configure the network，是否自动配置网络，<strong>选No</strong>，下一步，IP address填192.168.138.9，下一步，Netmask保持默认255.255.255.0，下一步，Gateway修改为192.168.138.2，下一步，Nameserver，默认和网关一样，确认192.168.138.2，下一步，列出所有网络配置，检查确认Yes，下一步，默认3次，下一步。<strong>注意：先到Vmware“虚拟网络编辑器”里看一下IP段，确认是192.168.x.x之后再设置IP地址，包括掩码（一般都是255.255.255.0）</strong>。</p>
+<p>6、配置Hostname：localhost，下一步，Domain name 填localdomain，下一步</p>
+<p>7、设置用户和密码，下一步，Yes - Enable shadow password，Yes - Allow login as root，下一步，设置root密码：4geT%not，下一步</p>
+<p>8、创建新用户：Yes，下一步，全名zadmin，下一步，用户名zadmin，下一步，设置密码d00r%Key，下一步</p>
+<p>9、设置时钟：Yes - Set the clock using NTP，下一步，保持默认，下一步，保持默认Asia/Shanghai，下一步</p>
+<p>10、检测磁盘 - 磁盘分区，默认Guided - use entire disk，下一步，保持默认，下一步，保持默认All files in one partition，下一步，完成分区并写入，下一步，Yes确认写入，下一步</p>
+<p>11、Install the base system，下一步，Kernel to install 保持默认，下一步，默认generic: include all available drivers，下一步，</p>
+<p>12、Configure the package manager，下一步，默认No - scan extra media，下一步， Yes - use a network mirror，下一步，选择https，下一步，默认manually，下一步</p>
+<p>mirror <a class="link"   target="_blank" rel="noopener" href="http://xn--hostnamemirrors-f870a.tuna.tsinghua.edu.cn" >hostname填mirrors.tuna.tsinghua.edu.cn<i class="fas fa-external-link-alt"></i></a></p>
+<p>mirror directory保存默认/debian/，下一步</p>
+<p>HTTP proxy默认留空，下一步，yes - use non-free，下一步，默认Yes - Enable source … in APT，下一步，<strong>默认两项更新勾去掉，啥都不选（非常重要！！！）</strong>，下一步</p>
+<p>13、Select and install software，下一步，默认No automatic updates，下一步，默认No - survey，下一步，只留SSH server和standard system utilities其他都不要，下一步</p>
+<p>14、Install GRUB boot loader，下一步，默认Yes - GRUB to primary drive，下一步，不要选第一项手工输入，选第二项/dev/sda，下一步，默认No - Force GRUB installation to the EFI removable media path，下一步</p>
+<p>15、Finish the installation，下一步，默认Yes - Is the system clock set to UTC，下一步，安装完成，提示移除光盘，下一步</p>
+<p>16、系统没有安装GUI，以root登录，安装完成。</p>
+<p><strong>关闭虚拟机后，可以编辑虚拟机设置。把CD/DVD 改回为自动检测。</strong></p>
+<p><strong>关闭虚机后，可以编辑虚机设置，修改CPU核数，硬盘大小，内存等。</strong></p>
+<p>小技巧：虚机屏幕有时候不匹配VMware的窗口，需要拉动窗口的滚动条才能看见全部的虚机屏幕内容。或者，虚机屏幕太小，Vmware经常自动改变窗口大小去适应虚机。从VMware菜单“编辑 - 首选项 - 显示”，把“自动适应窗口”前的勾去掉（自动适应下面的两个选项都不勾）。然后再开启此虚机，可解决这个问题。</p>
+<h2 id="1-3-安装后设置"><strong>1.3 安装后设置</strong></h2>
+<h3 id="1-3-1-更新数据源"><strong>1.3.1 更新数据源</strong></h3>
+<p>Debian的<strong>编辑器推荐nano</strong>，进入后编辑习惯比较像Windows记事本，下面提示了快捷键，Ctrl + o保存，下面提示保存的文件名，回车即可；Ctrl + x退出。</p>
+<p>1. 首先编辑数据源 nano /etc/apt/sources.list，把第一行 deb cdrom 注释掉，然后加入清华大学的数据源。安装的时候已经指定了清华大学的数据源，所以有两行，删除，将下面的内容复制进去。<strong>复制了文本内容后，在nano界面，从Vmware菜单“编辑”-“粘贴”可以直接将主机中复制的文本粘贴到虚机nano中</strong>。</p>
+<p>deb <a class="link"   target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/debian/" >https://mirrors.tuna.tsinghua.edu.cn/debian/<i class="fas fa-external-link-alt"></i></a> bullseye main contrib non-free</p>
+<p>deb-src <a class="link"   target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/debian/" >https://mirrors.tuna.tsinghua.edu.cn/debian/<i class="fas fa-external-link-alt"></i></a> bullseye main contrib non-free</p>
+<p>deb <a class="link"   target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/debian/" >https://mirrors.tuna.tsinghua.edu.cn/debian/<i class="fas fa-external-link-alt"></i></a> bullseye-updates main contrib non-free</p>
+<p>deb-src <a class="link"   target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/debian/" >https://mirrors.tuna.tsinghua.edu.cn/debian/<i class="fas fa-external-link-alt"></i></a> bullseye-updates main contrib non-free</p>
+<p>deb <a class="link"   target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/debian/" >https://mirrors.tuna.tsinghua.edu.cn/debian/<i class="fas fa-external-link-alt"></i></a> bullseye-backports main contrib non-free</p>
+<p>deb-src <a class="link"   target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/debian/" >https://mirrors.tuna.tsinghua.edu.cn/debian/<i class="fas fa-external-link-alt"></i></a> bullseye-backports main contrib non-free</p>
+<p>deb <a class="link"   target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/debian-security" >https://mirrors.tuna.tsinghua.edu.cn/debian-security<i class="fas fa-external-link-alt"></i></a> bullseye-security main contrib non-free</p>
+<p>deb-src <a class="link"   target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/debian-security" >https://mirrors.tuna.tsinghua.edu.cn/debian-security<i class="fas fa-external-link-alt"></i></a> bullseye-security main contrib non-free</p>
+<p>2. 要增加更多的镜像，可以在/etc/apt/sources.list.d/目录下建立 *.list 文件</p>
+<p>nano /etc/apt/sources.list.d/huawei.list</p>
+<p>deb <a class="link"   target="_blank" rel="noopener" href="https://mirrors.huaweicloud.com/debian/" >https://mirrors.huaweicloud.com/debian/<i class="fas fa-external-link-alt"></i></a> bullseye main non-free contrib</p>
+<p>deb-src <a class="link"   target="_blank" rel="noopener" href="https://mirrors.huaweicloud.com/debian/" >https://mirrors.huaweicloud.com/debian/<i class="fas fa-external-link-alt"></i></a> bullseye main non-free contrib</p>
+<p>deb <a class="link"   target="_blank" rel="noopener" href="https://mirrors.huaweicloud.com/debian-security/" >https://mirrors.huaweicloud.com/debian-security/<i class="fas fa-external-link-alt"></i></a> bullseye-security main</p>
+<p>deb-src <a class="link"   target="_blank" rel="noopener" href="https://mirrors.huaweicloud.com/debian-security/" >https://mirrors.huaweicloud.com/debian-security/<i class="fas fa-external-link-alt"></i></a> bullseye-security main</p>
+<p>deb <a class="link"   target="_blank" rel="noopener" href="https://mirrors.huaweicloud.com/debian/" >https://mirrors.huaweicloud.com/debian/<i class="fas fa-external-link-alt"></i></a> bullseye-updates main non-free contrib</p>
+<p>deb-src <a class="link"   target="_blank" rel="noopener" href="https://mirrors.huaweicloud.com/debian/" >https://mirrors.huaweicloud.com/debian/<i class="fas fa-external-link-alt"></i></a> bullseye-updates main non-free contrib</p>
+<p>deb <a class="link"   target="_blank" rel="noopener" href="https://mirrors.huaweicloud.com/debian/" >https://mirrors.huaweicloud.com/debian/<i class="fas fa-external-link-alt"></i></a> bullseye-backports main non-free contrib</p>
+<p>deb-src <a class="link"   target="_blank" rel="noopener" href="https://mirrors.huaweicloud.com/debian/" >https://mirrors.huaweicloud.com/debian/<i class="fas fa-external-link-alt"></i></a> bullseye-backports main non-free contrib</p>
+<p>nano /etc/apt/sources.list.d/ustc.list</p>
+<p>deb <a class="link"   target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/debian/" >https://mirrors.ustc.edu.cn/debian/<i class="fas fa-external-link-alt"></i></a> bullseye main contrib non-free</p>
+<p>deb-src <a class="link"   target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/debian/" >https://mirrors.ustc.edu.cn/debian/<i class="fas fa-external-link-alt"></i></a> bullseye main contrib non-free</p>
+<p>deb <a class="link"   target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/debian/" >https://mirrors.ustc.edu.cn/debian/<i class="fas fa-external-link-alt"></i></a> bullseye-updates main contrib non-free</p>
+<p>deb-src <a class="link"   target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/debian/" >https://mirrors.ustc.edu.cn/debian/<i class="fas fa-external-link-alt"></i></a> bullseye-updates main contrib non-free</p>
+<p>deb <a class="link"   target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/debian/" >https://mirrors.ustc.edu.cn/debian/<i class="fas fa-external-link-alt"></i></a> bullseye-backports main contrib non-free</p>
+<p>deb-src <a class="link"   target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/debian/" >https://mirrors.ustc.edu.cn/debian/<i class="fas fa-external-link-alt"></i></a> bullseye-backports main contrib non-free</p>
+<p>deb <a class="link"   target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/debian-security/" >https://mirrors.ustc.edu.cn/debian-security/<i class="fas fa-external-link-alt"></i></a> bullseye-security main contrib non-free</p>
+<p>deb-src <a class="link"   target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/debian-security/" >https://mirrors.ustc.edu.cn/debian-security/<i class="fas fa-external-link-alt"></i></a> bullseye-security main contrib non-free</p>
+<p>3. 如上添加了清华，华为，中科大三个镜像，更新数据源apt update，提示有若干可升级，升级apt upgrade</p>
+<p>4. apt与apt-get的区别</p>
+<p>尽快适应并使用apt，广大Linux发行商都在推荐。</p>
+<table>
+<thead>
+<tr>
+<th><strong>apt 命令</strong></th>
+<th><strong>取代的命令</strong></th>
+<th><strong>命令的功能</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>apt install</td>
+<td>apt-get install</td>
+<td>安装软件包</td>
+</tr>
+<tr>
+<td>apt remove</td>
+<td>apt-get remove</td>
+<td>移除软件包</td>
+</tr>
+<tr>
+<td>apt purge</td>
+<td>apt-get purge</td>
+<td>移除软件包及配置文件</td>
+</tr>
+<tr>
+<td>apt update</td>
+<td>apt-get update</td>
+<td>刷新存储库索引</td>
+</tr>
+<tr>
+<td>apt upgrade</td>
+<td>apt-get upgrade</td>
+<td>升级所有可升级的软件包</td>
+</tr>
+<tr>
+<td>apt autoremove</td>
+<td>apt-get autoremove</td>
+<td>自动删除不需要的包</td>
+</tr>
+<tr>
+<td>apt full-upgrade</td>
+<td>apt-get dist-upgrade</td>
+<td>在升级软件包时自动处理依赖关系</td>
+</tr>
+<tr>
+<td>apt search</td>
+<td>apt-cache search</td>
+<td>搜索应用程序</td>
+</tr>
+<tr>
+<td>apt show</td>
+<td>apt-cache show</td>
+<td>显示安装细节</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>新的apt命令</strong></th>
+<th><strong>命令的功能</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>apt list</td>
+<td>列出包含条件的包（已安装，可升级等）</td>
+</tr>
+<tr>
+<td>apt edit-sources</td>
+<td>编辑源列表</td>
+</tr>
+</tbody>
+</table>
+<p>从这里可以看出，刚才nano /etc/apt/sources.list命令可以用apt edit-sources命令替代，同样是打开nano编辑sources.list文件。</p>
+<h3 id="1-3-2-关于用户"><strong>1.3.2 关于用户</strong></h3>
+<p>目前系统里有2个用户，root是超级管理员；zadmin是系统管理员。</p>
+<p>系统提示符为 # 表明用户为root，提示符为$ 表明用户为其他用户。</p>
+<p>每个用户都有自己的主目录，以 ~表示，root用户是 /root，其他用户是 /home/用户名。例如zadmin输入命令 cd ~ 则会进入其主目录 /home/zadmin</p>
+<p>zadmin需要执行root权限的命令时，可以用 sudo 临时获得权限，也可以用 su 切换身份为root。</p>
+<p>使用sudo时，需要输入admin用户自己的密码，使用 su时，需要输入root用户的密码，使用“sudo su”则可以使用admin自己的密码切换到root用户身份，在root用户没有设置密码时，这个方法很好用。</p>
+<p>1. Debian默认没有安装sudo，安装apt install sudo</p>
+<p>2. 一般修改/etc/sudoers来增加zadmin，使其可以用sudo，打开此文件，首先提示此文件必须！！！由root用visudo命令打开；第二行推荐在/etc/sudoers.d/目录下添加文件的方式代替修改此文件；最后一行显示其包含了/etc/sudoers.d目录；最下面红色提示此文件为只读。可见，用nano修改此文件是不对的，也不要试图修改其只读属性再修改。</p>
+<p>方法1是在/etc/sudoers.d目录下新建一个zadmin的文件，内容为：</p>
+<p>zadmin ALL=(ALL)ALL</p>
+<p>方法2是<strong>将用户加入sudo组</strong>，本例用第2中方法。usermod是修改用户，参数-a是将用户添加到某个组，并且不删除此用户其他组身份，参数-G指定用户的组。</p>
+<p>usermod -aG sudo zadmin</p>
+<p>然后命令cat /etc/group查看各组情况，可以看到sudo组里已经有zadmin了，如果输出太多，一屏放不下，可以用more /etc/group翻页查看，空格显示下一页，或者less。</p>
+<p>然后切换身份su zadmin看看是否可用sudo</p>
+<h3 id="1-3-3-配置静态IP地址"><strong>1.3.3 配置静态IP地址</strong></h3>
+<p><strong>第一步：确认Vmware网络配置</strong></p>
+<p>菜单“编辑”-“虚拟网络编辑器”，这个界面，有很多网络文章说要修改，其实不用。选中列表里的Vmnet8（NAT模式），只需要看一下子网IP 192.168.138.0 及 子网掩码 255.255.255.0 记住就行了。<strong>“使用本地DHCP服务将IP地址分配给虚拟机”前面的勾不用去掉</strong>。</p>
+<p>然后确认一下虚拟机的网络适配器是否是NAT，安装的时候默认就是这项。如果不是，就在虚拟机关机状态下，编辑虚拟机设置，改为NAT。</p>
+<p><strong>在Vmware里只需要确认上述配置就行了，不用做任何修改！</strong></p>
+<p><strong>第二步：在虚拟机设置静态IP</strong></p>
+<p>本例在安装时已经配置了静态IP，下面确认一下配置，以后要修改的时候就知道去哪里修改。nano /etc/network/interfaces</p>
+<p>第一行source /etc/network/interfaces.d/*说明先执行这个目录下的脚本，文件名无所谓，特殊配置就放在这个目录下。</p>
+<p><strong>auto ens33 这一行是新加的，说明随系统启动ens33网卡</strong></p>
+<p>iface ens33 inet static 这里的static说明是静态地址，否则dhcp表示动态分配</p>
+<p>address 192.168.138.9/24 表示IP地址和掩码，24表示前3个8字节都为1，就是255.255.255.0的意思，同理8则表示255.0.0.0</p>
+<p><strong>gateway 192.168.138.2 网关，Vmware下网关一定是 .2 而不是 .1</strong></p>
+<p><strong>dns-nameservers 192.168.138.2 与网关相同，也是 .2</strong></p>
+<p>从上面的注释来看，dns的设置是从resolvconf来的，nano /etc/resolv.conf</p>
+<p>如果要修改dns的话就在这里改，或者增加新的dns。在Vmware局域网情况下，配置dns与网关一样即可，不需要添加任何其他dns，除非有特殊要求。</p>
+<p><strong>第三步：重启网络服务</strong></p>
+<p>本例中做了修改，则重启网络使配置生效</p>
+<p>service networking restart</p>
+<p>第二步里如果没有加auto ens33这一行，就会发现网络起不来（大坑）</p>
+<p>从虚机ping <a class="link"   target="_blank" rel="noopener" href="http://www.baidu.com" >www.baidu.com<i class="fas fa-external-link-alt"></i></a>，消息滚动可以Ctrl + C 中断</p>
+<p>从主机ping 192.168.138.9 都OK说明网络配置一切正常。</p>
+<h3 id="1-3-4-安装常用工具"><strong>1.3.4 安装常用工具</strong></h3>
+<p>前提是网络连接没有问题。</p>
+<p>更新数据源：apt update 执行完会提示有多少软件包要更新，如果没有，则不需要执行更新系统的命令。</p>
+<p>更新系统所有软件包：apt upgrade</p>
+<p>**Debian默认没有防火墙！！！**如果要使用的话，可安装ufw，如何使用ufw设置防火墙可以参考：<a class="link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/130943659" >https://zhuanlan.zhihu.com/p/130943659<i class="fas fa-external-link-alt"></i></a></p>
+<p>因为是最小化安装，很多工具没有，dpkg -l packagename  可以查询软件包是否已安装，查询发现net-tools，perl，wget已经安装了。其他的安装一下：</p>
+<p>apt install gcc zip unzip</p>
+<p>安装了上面的net-tools以后，就有ifconfig命令了，试一下</p>
+<p>ifconfig</p>
+<p>可以看到自己的静态IP地址</p>
+<p>更新完毕后，可以重新启动一下系统 reboot</p>
+<h3 id="1-3-5-使用vi的问题"><strong>1.3.5 使用vi的问题</strong></h3>
+<p><strong>现象</strong>：在 Debian 下，初次使用 vi 的时候会有点问题，在编辑模式下使用方向键并不会使光标移动，而是在命令行中出现[A [B [C [D之类的字母，而且编辑错误的话也无法使用退格键，只能用 Delete 键来删除。</p>
+<p><strong>原因</strong>：由于 Debian 预安装的是 tiny 版本，会导致我们在使用上产生上述的不便。</p>
+<p><strong>解决方法</strong>：安装了 vim 的 full 版本之后，键盘的所有键在 vi 下就很正常了。</p>
+<p>apt remove vim-common -y</p>
+<p>apt install vim -y</p>
+<h3 id="1-3-6-彩色显示文件夹"><strong>1.3.6 彩色显示文件夹</strong></h3>
+<p>使用ls列出文件夹和文件时，都是同一种颜色，无法区分</p>
+<p>对于某一用户来说，其 ~/.bashrc 里是只针对这个用户的环境变量设置。</p>
+<p>以root用户身份，nano ~/.bashrc</p>
+<p>有提示：如果希望ls有颜色，就将下面的注释去掉</p>
+<p>除了可以让ls有颜色外，还使命令ll表示ls -l，命令l表示ls -lA</p>
+<p>编辑完成，保存退出。然后exit退出系统再登录，就可以看到ls列表有颜色了。灰色表示文件（不同类型文件有不同颜色），深蓝表示目录，浅蓝表示链接目录。</p>
+<h2 id="1-4-用Putty连接虚拟机上传下载文件"><strong>1.4 用Putty连接虚拟机上传下载文件</strong></h2>
+<p><strong>第一步：虚机允许root远程登录</strong></p>
+<p>命令nano /etc/ssh/sshd_config，修改如下，增加了一行PermitRootLogin yes，允许root用户远程登录；然后<strong>顺便把PubkeyAuthentication yes前的注释去掉了</strong>，允许使用密钥的方式远程登录，后面用得到。重启SSH服务service sshd restart</p>
+<p><strong>第二步：下载安装Putty并连接</strong></p>
+<p>到Putty官网<a class="link"   target="_blank" rel="noopener" href="https://putty.org/" >https://putty.org/<i class="fas fa-external-link-alt"></i></a>，选第一个Download PuTTY，下面是第三方项目。</p>
+<p>下载64-bit x86版本，形如putty-64bit-0.77-installer.msi的安装文件。</p>
+<p>安装完成后，有多个程序，首先运行Putty，输入IP地址，点open就可以连接。</p>
+<p>连接后以root身份登录，可以看到显示的主机IP是192.168.138.1，命令exit可以退出登录，断开连接。</p>
+<p>然后运行PSFTP，窗口中输入open 192.168.138.11 进行连接，以root登录，可以看到提示当前工作路径是 /root，命令exit可以退出登录，断开连接。</p>
+<p>以后可以在虚拟机开机状态下，关闭Vmware，选择让虚拟机后台运行，然后用Putty连接进行操作，上传下载文件。</p>
+<p>需要在虚拟机里安装JDK，安装文件为主机 D:\software\ jdk-8u341-linux-x64.tar.gz，这个文件是事先从Oracle网站下载来的。打开PSFTP连接，root登录。使用put命令将文件上传到虚拟机 /root 目录下。注意路径分隔符使用 / 而不是Windows风格的 \，然后ls命令查看虚拟机上是否有这个文件了。exit退出，断开连接。</p>
+<h2 id="1-6-密钥方式连接虚机"><strong>1.6 密钥方式连接虚机</strong></h2>
+<p>密钥形式登录的原理是：利用密钥生成器制作一对密钥——一只公钥和一只私钥。将公钥添加到服务器的某个账户上，然后在客户端利用私钥即可完成认证并登录。这样一来，没有私钥，任何人都无法通过 SSH 暴力破解你的密码来远程登录到系统。此外，如果将公钥复制到其他账户甚至主机，利用私钥也可以登录。</p>
+<p><strong>第一步：制作密钥对</strong></p>
+<p>在虚机上制作密钥对。首先用root登录，然后执行以下命令：</p>
+<p>ssh-keygen  &lt;== 建立密钥对</p>
+<p>Generating public/private rsa key pair.</p>
+<p>Enter file in which to save the key (/root/.ssh/id_rsa): &lt;== 回车</p>
+<p>Created directory ‘/root/.ssh’.</p>
+<p>Enter passphrase (empty for no passphrase): &lt;== 输入密钥锁码，或<strong>回车</strong></p>
+<p>Enter same passphrase again: &lt;== 再输入一遍密钥锁码，<strong>回车</strong></p>
+<p>Your identification has been saved in /root/.ssh/id_rsa. &lt;== 私钥</p>
+<p>Your public key has been saved in /root/.ssh/id_rsa.pub. &lt;== 公钥</p>
+<p>The key fingerprint is:</p>
+<p>…</p>
+<p>The key’s randomart image is:</p>
+<p>…</p>
+<p>现在，在 /root 生成了一个 .ssh 的隐藏目录，内含两个密钥文件，id_rsa 为私钥，id_rsa.pub 为公钥。</p>
+<p>密钥锁码在使用私钥时必须输入，这样就可以保护私钥不被盗用。本例中没有密钥锁码，方便使用。</p>
+<p><strong>第二步：在虚机上安装公钥</strong></p>
+<p>键入以下命令，在服务器上安装公钥：</p>
+<p>cd .ssh</p>
+<p>cat id_rsa.pub &gt;&gt; authorized_keys</p>
+<p>如此便完成了公钥的安装。为了确保连接成功，请保证以下文件权限正确：</p>
+<p>chmod 600 authorized_keys</p>
+<p>chmod 700 ~/.ssh</p>
+<p><strong>第三步：虚机开启密钥登录</strong></p>
+<p>在“<a href="#_1.4_%E7%94%A8putty%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E4%BC%A0%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6">1.4用Putty连接虚拟机上传下载文件</a>”中第一步已经开启了密钥登录。</p>
+<p><strong>第三步：用PSFTP下载私钥到主机</strong></p>
+<p>用PSFTP密码登录方式连接虚机，下载id.rsa到本地重命名192.168.138.9.rsa</p>
+<p><strong>第四步：将密钥导入到Putty</strong></p>
+<p>首先打开PuttyGen，点Load按钮，选择文件对话框里的文件类型默认是*.ppk，改为*.*，找到刚才的192.168.138.9.rsa，就导入成功了，提示是旧的pem格式。</p>
+<p>然后点击Save private key，保存为192.168.138.9.ppk，与刚才的文件最好在同一文件夹下，询问是否要个锁码，不理他。</p>
+<p>关闭PuttyGen，打开Putty，左侧选择Session，右边填写Host Name为root@192.168.138.9，这里指定了登录用户为root，如果为其他用户则改为其他用户名。然后下面Saved Sessions空格里填上一个名字deb-192.168.138.9，点右侧Save就保存了。</p>
+<p>然后左侧Connection - SSH - Auth，直接点Auth不用展开，右边Browse找到刚才保存的192.168.138.9.ppk</p>
+<p>回到上一张图的Session，选中deb-192.168.138.9的情况下，点Save，一定要保存，否则下次又要找密钥。然后点下面的Open就连接成功了，不需要输入密码，直接root登录成功。</p>
+<p>今后要连接的时候，打开Putty，选中保存的deb-192.168.138.9，点Load，然后点下面的Open就可以连接上了。</p>
+<p><strong>主机运行Putty组件Pageant，会在Windows右下角出现一个常驻的代理，从中可以快速连接已经保存的session或者进行一些密钥操作</strong>。</p>
+<h2 id="1-7-安装JDK8"><strong>1.7 安装JDK8</strong></h2>
+<p>前面“<a href="#_1.5_%E7%94%A8putty%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E4%BC%A0%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6">1.4 用Putty连接虚拟机上传下载文件</a>”已经把JDK安装文件上传到 /root目录下了。创建目录 /usr/java ：mkdir /usr/java</p>
+<p>进入/root：cd /root</p>
+<p>解压文件到 /usr/java：tar -zxvf jdk-8u341-linux-x64.tar.gz -C /usr/java</p>
+<p>cd /usr/java</p>
+<p>看到已经有了一个文件夹jdk1.8.0_341，创建一个软链接，使访问简便。并且有多个版本的jdk存在时，切换只修改修改default的链接就行了，不需要再修改/etc/profile</p>
+<p>ln -s jdk1.8.0_341 default</p>
+<p>在/usr/java/下就生成了文件夹default，实际是jdk1.8.0_341的链接，访问default就和访问jdk1.8.0_341一样。</p>
+<p>修改/etc/profile：nano /etc/profile</p>
+<p>在文件最后添加</p>
+<p>export JAVA_HOME=/usr/java/default</p>
+<p>export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</p>
+<p>export PATH=$PATH:$JAVA_HOME/bin</p>
+<p>注意CLASSPATH=后面是个英文句号，这样设置可以解决很多命令行下运行java程序找不到类的问题。</p>
+<p>保存，退出，更新：source /etc/profile</p>
+<p>执行下面命令验证各变量正确：</p>
+<p>echo $JAVA_HOME</p>
+<p>echo $CLASSPATH</p>
+<p>java -version</p>
+<h1><strong>二、Debian11安装MySQL</strong></h1>
+<h2 id="2-1-克隆虚机"><strong>2.1 克隆虚机</strong></h2>
+<p>上一章已经创建了一个虚机deb-min，更新了系统，安装了常用工具，设置了密钥连接，安装了JDK8，为此虚机创建一个快照。菜单“虚拟机 - 快照 - 拍摄快照”，输入名字和描述就行了。</p>
+<p>菜单“虚拟机 - 管理 - 克隆”，克隆源选择“现有快照”，找到刚才拍摄的快照。</p>
+<p>克隆类型选择“创建完整克隆”</p>
+<p>输入虚机名称deb-mysql，确认保存位置，完成。</p>
+<h2 id="2-2-设置虚机"><strong>2.2 设置虚机</strong></h2>
+<p>开启新的虚机deb-mysql，以root登录，<strong>首先要修改的是静态IP地址</strong>。</p>
+<p>nano /etc/network/interfaces</p>
+<p>将静态IP地址改为192.168.138.21就行了，其他的不用动。</p>
+<p>nano /etc/hosts</p>
+<p>将IP地址改为192.168.138.21就行了，其他的不用动。</p>
+<p>重启网络服务service networking restart</p>
+<p>虚机ping <a class="link"   target="_blank" rel="noopener" href="http://www.baidu.com" >www.baidu.com<i class="fas fa-external-link-alt"></i></a>，主机ping 192.168.138.21都OK</p>
+<p>参照“<a href="#_1.6_%E5%AF%86%E9%92%A5%E6%96%B9%E5%BC%8F%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%9C%BA">1.6密钥方式连接虚机</a>”，打开Putty，在Session里新建保存一个名称为mysql-192.168.138.21，连接地址为root@192.168.138.21，左侧Connection - SSH - Auth，直接点Auth不用展开，右边Browse找到刚才保存的192.168.138.9.ppk（<strong>就是这个旧的密钥</strong>，不需要到虚机上创建新的密钥对了，因为是克隆的，所有信息都一样）</p>
+<p>Save，Open 连接成功。</p>
+<p>一般安全起见，新的虚机要创建新的密钥对。本例直接使用了旧的密钥，简便。</p>
+<h2 id="2-3-安装MySQL"><strong>2.3 安装MySQL</strong></h2>
+<h3 id="2-3-1-安装MySQL8"><strong>2.3.1 安装MySQL8</strong></h3>
+<p>到MySQL官网，下载MySQL APT Repository，操作系统是Debian 11，要安装的MySQL8.0，因此下载到的对应版本是mysql-apt-config_0.8.24-1_all.deb</p>
+<p>下载需要登录。注册一个免费的MySQL或Oracle账号即可，以后用得着。</p>
+<p>用PSFTP将文件上传到虚机 /root 目录下。</p>
+<p>参考<a class="link"   target="_blank" rel="noopener" href="https://dev.mysql.com/doc/mysql-apt-repo-quick-guide/en/" >https://dev.mysql.com/doc/mysql-apt-repo-quick-guide/en/<i class="fas fa-external-link-alt"></i></a>官网步骤</p>
+<p>先把这个文件换个地方：mv mysql-apt-config_0.8.24-1_all.deb /opt/</p>
+<p>然后进/opt安装，因为有一次报错说_apt用户进不了/root因为权限不够</p>
+<p>安装APT库：apt install ./mysql-apt-config_0.8.24-1_all.deb</p>
+<p>有错误提示，也不管了 …</p>
+<p>升级软件源apt update</p>
+<p>安装MySQL：apt install mysql-server</p>
+<p>中间设置root密码，输入sql=R00T两次，然后关于加密选项，保持默认回车即可。然后居然就安装完了，没有报错。</p>
+<p>查询mysql的状态systemctl status mysql.service，居然是active</p>
+<p>如果是inactive（active是绿色的）则启动之systemctl start mysql.service</p>
+<p>启动完毕再查询状态systemctl status mysql.service，正常</p>
+<p>用安装过程中设置的密码sql=R00T登录mysql，如下命令</p>
+<p>mysql -u root -p</p>
+<p>进入MySQL后，show databases; 正常。命令quit或exit退出MySQL</p>
+<p>Debian没有防火墙，不用管开启3306端口的事。</p>
+<p>重启虚机reboot，查询mysqld的状态systemctl status mysql.service</p>
+<p>发现是active的，说明MySQL服务是随系统启动而启动的，一切正常。</p>
+<p>到此，MySQL安装完毕，初始化配置root密码完毕。关闭虚机，拍摄快照，启动虚机，以后没事就不再安装MySQL了。</p>
+<p>（1）此虚机将作为数据库服务器长期保持运行，关闭Vmware界面时让其后台运行。今后操作MySQL以远程为主，比如用IDEA里的database navigator</p>
+<p>（2）MySQL有其备份方式，定期备份保障数据安全。另外，此虚机也可定期拍摄快照，如遇系统级故障，可以用快照恢复。</p>
+<h3 id="2-3-2-特殊故障"><strong>2.3.2 特殊故障</strong></h3>
+<p>MySQL一段时间不操作则服务停掉。有时几天，有时十几天。</p>
+<p>参考解决方法：<a class="link"   target="_blank" rel="noopener" href="https://124654439.iteye.com/blog/2174953" >https://124654439.iteye.com/blog/2174953<i class="fas fa-external-link-alt"></i></a></p>
+<p>注意该文章的后半部分，否则就白看了。关键点是修改参数要带 global</p>
+<p>以root身份连接登录进mysql</p>
+<p>mysql&gt; show global variables like ‘wait_timeout’;</p>
+<p>mysql&gt; set global interactive_timeout= 31536000;</p>
+<p>mysql&gt; set global wait_timeout=31536000;</p>
+<p>在MySQL8.1的版本有这个问题，此方法可以解决。</p>
+<p>如果没这个问题，则略过。</p>
+<h3 id="2-3-3-建立数据库、用户、表、数据"><strong>2.3.3 建立数据库、用户、表、数据</strong></h3>
+<p>数据库服务器建好后，一般远程操作。这里仅展示在服务器上的基本操作。</p>
+<p>本例中建立的库、用户、表、数据是为了配合前面的Spring Boot案例。</p>
+<p>用root登录MySQL，建立一个数据库ssm_db，建立一个用户ssmaster，然后把数据库ssm_db的所有权限赋予ssmaster</p>
+<p>mysql -u root -p</p>
+<p>输入root的密码登录，下面的命令都是MySQL里了（<strong>在MySQL命令行，也可以通过Vmware菜单“编辑”-“粘贴”进行文本粘贴，不需要输入。快捷键Ctrl + v也可以用，注意此时光标不要在虚机输入界面</strong>）</p>
+<p>mysql&gt; create database ssm_db DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;</p>
+<p>mysql&gt; create user ssmaster@‘%’ identified by ‘1gE=M!ka’;</p>
+<p>mysql&gt; create user ssmaster@localhost identified by ‘1gE=M!ka’;</p>
+<p>mysql&gt; grant all on ssm_db.* to ssmaster@‘%’;</p>
+<p>mysql&gt; grant all on ssm_db.* to ssmaster@localhost;</p>
+<p>mysql&gt; quit;</p>
+<p>库和用户都建好了，然后用ssmaster登录MySQL</p>
+<p>mysql -u ssmaster -p</p>
+<p>输入用户ssmaster的密码，下面的命令都是MySQL里了</p>
+<p>mysql&gt; use ssm_db;</p>
+<p>mysql&gt; CREATE TABLE IF NOT EXISTS tbl_book(id INT UNSIGNED AUTO_INCREMENT,type VARCHAR(100) NOT NULL,name VARCHAR(100) NOT NULL,description VARCHAR(200),PRIMARY KEY (id))DEFAULT CHARSET=utf8;</p>
+<p>mysql&gt; INSERT INTO tbl_book(type,name,description) VALUES (‘novel’,’Learning Spring Boot’,’How to coding with Spring Boot.’);</p>
+<p>mysql&gt; select * from tbl_book;</p>
+<p>可以看到表建好了，并且插入了一条数据。id是自增的，不需要输入。</p>
+<p>mysql&gt; quit;</p>
+<h3 id="2-3-4-远程操作数据库"><strong>2.3.4 远程操作数据库</strong></h3>
+<p>IDEA社区版安装Database Navigator插件就可以远程操作数据库了。</p>
+<p>一般工具栏在左侧，点开后，点绿色 + 号新建一个MySQL连接如下。输入Name不一定要与数据库名一致，Description可以留空，Host填写IP地址，确认端口号是3306，Database填上面创建的库ssm_db，下面的用户名密码填上面创建的用户名密码，Driver用内置库。可以先点Test Connection按钮测试一下连接，显示成功。然后点最下面的OK，这个数据库连接就完成了。</p>
+<p>连接建好后，就可以看到ssm_db的整个结构，并可以进行建表，修改数据等操作。</p>
+<p>一般对数据库进行操作，是通过SQL方式。点击Open SQL console按钮打开SQL的控制台，在控制台输入如下，插入一条数据</p>
+<p>insert into tbl_book(type,name,description) VALUES (‘技术’,’大学物理’,’全国通用大学物理教程’);</p>
+<p>点Execute Statement就可以执行这条SQL语句。执行完毕，就生效了，另外两个按钮Commit和Rollback还亮着，说明这条SQL语句还没有正式提交数据库，可以回滚。点击Commit按钮正式提交，然后Commit和Rollback两个按钮就灰了。</p>
+<p>再输入select * from tbl_book; 执行，就可以看到查询出的数据。</p>
+<h2 id="2-4-MySQL-Workbench"><strong>2.4 MySQL Workbench</strong></h2>
+<p>MySQL数据库安装在Linux服务器上，直接在服务器上操作不方便。主流的操作方式是使用客户端进行可视化的远程操作。</p>
+<p>MySQL自己的客户端工具MySQL Workbench是免费的，功能强大。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.mysql.com/products/workbench/" >https://www.mysql.com/products/workbench/<i class="fas fa-external-link-alt"></i></a>去下载，选择Windows 64位操作系统，下载到的msi安装文件形如mysql-workbench-community-8.0.31-winx64.msi</p>
+<p>安装之后，打开的首页按“+”创建一个连接。填上连接的名字，IP地址，确认端口3306，username填root，下面password点开对话框填入root（MySQL的root用户）的密码，然后点test connection，<strong>发现拒绝连接</strong>。</p>
+<p>拒绝连接的原因，“<a href="#_2.3.1_%E5%AE%89%E8%A3%85mysql8">2.3.1 安装MySQL8</a>”的时候只有一个用户 root@localhost，远程连接来自localhost以外的域会认为不是这个用户，就会被拒绝。创建一个新用户root@%并赋予其全部权限即可。注意root@%与root@localhost密码一样，以免混淆。</p>
+<p>解决方法：以root登录服务器CentOS，以MySQL的root用户登录MySQL</p>
+<p>增加用户 create user ‘root’@’%’ identified by ‘sql=R00T’;</p>
+<p>赋予最高权限 grant all on *.* to ‘root’@’%’;</p>
+<p>quit; 退出MySQL</p>
+<p>再打开MySQL workbench就可以正常连接了。左侧窗口选择下面的标签Schemas就可以看到数据库列表，展开ssm_db就可以看到各个表，选中tbl_book，在右侧就能看到这个表里的数据，可以直接修改表数据，修改完后点Apply按钮，就会弹出一个对应你操作的SQL语句，确认OK，修改就生效了。</p>
+<p>SQL Workbench一般用在项目的中后期，运维期等。可以很方便可视化的增删改查数据，如果用户身份是root或者是对应库的管理员，则可以很方便的对库、表、字段、视图、触发器、函数进行可视化的调整，备份或导入数据库，非常方便。</p>
+<h1><strong>附录一、Debian常用命令</strong></h1>
+<h2 id="1-1-apt"><strong>1.1 apt</strong></h2>
+<p>列出所有可更新的软件清单命令：<strong>sudo apt update</strong></p>
+<p>升级软件包：<strong>sudo apt upgrade</strong></p>
+<p>列出可更新的软件包及版本信息：<strong>apt list --upgradeable</strong></p>
+<p>升级软件包，升级前先删除需要更新软件包：<strong>sudo apt full-upgrade</strong></p>
+<p>安装指定的软件命令：<strong>sudo apt install &lt;package_name&gt;</strong></p>
+<p>安装多个软件包：<strong>sudo apt install &lt;package_1&gt; &lt;package_2&gt; &lt;package_3&gt;</strong></p>
+<p>更新指定的软件命令：<strong>sudo apt update &lt;package_name&gt;</strong></p>
+<p>显示软件包具体信息,例如：版本号，安装大小，依赖关系等等：<strong>sudo apt show &lt;package_name&gt;</strong></p>
+<p>删除软件包命令：<strong>sudo apt remove &lt;package_name&gt;</strong></p>
+<p>清理不再使用的依赖和库文件：<strong>sudo apt autoremove</strong></p>
+<p>移除软件包及配置文件：<strong>sudo apt purge &lt;package_name&gt;</strong></p>
+<p>查找软件包命令：<strong>sudo apt search <keyword></strong></p>
+<p>列出所有已安装的包：<strong>apt list --installed</strong></p>
+<p>列出所有已安装的包的版本信息：<strong>apt list --all-versions</strong></p>
+<h2 id="1-2-systemctl"><strong>1.2 systemctl</strong></h2>
+<h3 id="1-2-1-Systemd初体验和Systemctl基础"><strong>1.2.1 Systemd初体验和Systemctl基础</strong></h3>
+<p>1. 首先检查你的系统中是否安装有systemd并确定当前安装的版本</p>
+<p># systemctl --version</p>
+<p>2. 检查systemd和systemctl的二进制文件和库文件的安装位置</p>
+<p># whereis systemd</p>
+<p># whereis systemctl</p>
+<p>3. 检查systemd是否运行</p>
+<p># ps -eaf | grep [s]ystemd</p>
+<p><strong>注意</strong>：systemd是作为父进程（PID=1）运行的。在上面带（-e）参数的ps命令输出中，选择所有进程，（-a）选择除会话前导外的所有进程，并使用（-f）参数输出完整格式列表（即 -eaf）。</p>
+<p>也请注意上例中后随的方括号和例子中剩余部分。方括号表达式是grep的字符类表达式的一部分。</p>
+<p>4. 分析systemd启动进程</p>
+<p># systemd-analyze</p>
+<p>5. 分析启动时各个进程花费的时间</p>
+<p># systemd-analyze blame</p>
+<p>6. 分析启动时的关键链</p>
+<p># systemd-analyze critical-chain</p>
+<p><strong>重要</strong>：Systemctl接受服务（.service），挂载点（.mount），套接口（.socket）和设备（.device）作为单元。</p>
+<p>7. 列出所有可用单元</p>
+<p># systemctl list-unit-files</p>
+<p>8. 列出所有运行中单元</p>
+<p># systemctl list-units</p>
+<p>9. 列出所有失败单元</p>
+<p># systemctl --failed</p>
+<p>10. 检查某个单元（如 cron.service）是否启用</p>
+<p># systemctl is-enabled crond.service</p>
+<p>11. 检查某个单元或服务是否运行</p>
+<p># systemctl status firewalld.service</p>
+<h3 id="1-2-2-使用Systemctl控制并管理服务"><strong>1.2.2 使用Systemctl控制并管理服务</strong></h3>
+<p>12. 列出所有服务（包括启用的和禁用的）</p>
+<p># systemctl list-unit-files --type=service</p>
+<p>13. Linux中如何启动、重启、停止、重载服务以及检查服务（如 httpd.service）状态</p>
+<p># systemctl start httpd.service</p>
+<p># systemctl restart httpd.service</p>
+<p># systemctl stop httpd.service</p>
+<p># systemctl reload httpd.service</p>
+<p># systemctl status httpd.service</p>
+<p><strong>注意</strong>：当我们使用systemctl的start，restart，stop和reload命令时，我们不会从终端获取到任何输出内容，只有status命令可以打印输出。</p>
+<p>14. 如何激活服务并在启动时启用或禁用服务（即系统启动时自动启动服务）</p>
+<p># systemctl is-active httpd.service</p>
+<p># systemctl enable httpd.service</p>
+<p># systemctl disable httpd.service</p>
+<p>15. 如何屏蔽（让它不能启动）或显示服务（如 httpd.service）</p>
+<p># systemctl mask httpd.service</p>
+<p># systemctl unmask httpd.service</p>
+<p>16. 使用systemctl命令杀死服务</p>
+<p># systemctl kill httpd</p>
+<p># systemctl status httpd</p>
+<h3 id="1-2-3-使用Systemctl控制并管理挂载点"><strong>1.2.3 使用Systemctl控制并管理挂载点</strong></h3>
+<p>17. 列出所有系统挂载点</p>
+<p># systemctl list-unit-files --type=mount</p>
+<p>18. 挂载、卸载、重新挂载、重载系统挂载点并检查系统中挂载点状态</p>
+<p># systemctl start tmp.mount</p>
+<p># systemctl stop tmp.mount</p>
+<p># systemctl restart tmp.mount</p>
+<p># systemctl reload tmp.mount</p>
+<p># systemctl status tmp.mount</p>
+<p>19. 在启动时激活、启用或禁用挂载点（系统启动时自动挂载）</p>
+<p># systemctl is-active tmp.mount</p>
+<p># systemctl enable tmp.mount</p>
+<p># systemctl disable  tmp.mount</p>
+<p>20. 在Linux中屏蔽（让它不能启用）或可见挂载点</p>
+<p># systemctl mask tmp.mount</p>
+<p># systemctl unmask tmp.mount</p>
+<h3 id="1-2-4-使用Systemctl控制并管理套接口"><strong>1.2.4 使用Systemctl控制并管理套接口</strong></h3>
+<p>21. 列出所有可用系统套接口</p>
+<p># systemctl list-unit-files --type=socket</p>
+<p>22. 在Linux中启动、重启、停止、重载套接口并检查其状态</p>
+<p># systemctl start cups.socket</p>
+<p># systemctl restart cups.socket</p>
+<p># systemctl stop cups.socket</p>
+<p># systemctl reload cups.socket</p>
+<p># systemctl status cups.socket</p>
+<p>23. 在启动时激活套接口，并启用或禁用它（系统启动时自启动）</p>
+<p># systemctl is-active cups.socket</p>
+<p># systemctl enable cups.socket</p>
+<p># systemctl disable cups.socket</p>
+<p>24. 屏蔽（使它不能启动）或显示套接口</p>
+<p># systemctl mask cups.socket</p>
+<p># systemctl unmask cups.socket</p>
+<h3 id="1-2-5-服务的CPU利用率（分配额）"><strong>1.2.5 服务的CPU利用率（分配额）</strong></h3>
+<p>25. 获取当前某个服务的CPU分配额（如httpd）</p>
+<p># systemctl show -p CPUShares httpd.service</p>
+<p><strong>注意</strong>：各个服务的默认CPU分配份额=1024，你可以增加/减少某个进程的CPU分配份额。</p>
+<p>26. 将某个服务（httpd.service）的CPU分配份额限制为2000 CPUShares/</p>
+<p># systemctl set-property httpd.service CPUShares=2000</p>
+<p># systemctl show -p CPUShares httpd.service</p>
+<p><strong>注意</strong>：当你为某个服务设置CPUShares，会自动创建一个以服务名命名的目录（如 httpd.service），里面包含了一个名为90-CPUShares.conf的文件，该文件含有CPUShare限制信息，你可以通过以下方式查看该文件：</p>
+<p>27. 检查某个服务的所有配置细节</p>
+<p># systemctl show httpd</p>
+<p>28. 分析某个服务（httpd）的关键链</p>
+<p># systemd-analyze critical-chain httpd.service</p>
+<p>29. 获取某个服务（httpd）的依赖性列表</p>
+<p># systemctl list-dependencies httpd.service</p>
+<p>30. 按等级列出控制组</p>
+<p># systemd-cgls</p>
+<p>31. 按CPU、内存、输入和输出列出控制组</p>
+<p># systemd-cgtop</p>
+<h3 id="1-2-6-控制系统运行等级"><strong>1.2.6 控制系统运行等级</strong></h3>
+<p>32. 启动系统救援模式</p>
+<p># systemctl rescue</p>
+<p>33. 进入紧急模式</p>
+<p># systemctl emergency</p>
+<p>34. 列出当前使用的运行等级</p>
+<p># systemctl get-default</p>
+<p>35. 启动运行等级3，即多用户模式（命令行）</p>
+<p># systemctl isolate runlevel3.target</p>
+<p># systemctl isolate multiuser.target</p>
+<p>36. 设置多用户模式或图形模式为默认运行等级</p>
+<p># systemctl set-default runlevel3.target</p>
+<p># systemctl set-default runlevel5.target</p>
+<p>37. 重启、停止、挂起、休眠系统或使系统进入混合睡眠</p>
+<p># systemctl reboot</p>
+<p># systemctl halt</p>
+<p># systemctl suspend</p>
+<p># systemctl hibernate</p>
+<p># systemctl hybrid-sleep</p>
+<p>对于不知运行等级为何物的人，说明如下。</p>
+<ul>
+<li>Runlevel 0 : 关闭系统</li>
+<li>Runlevel 1 : 救援？维护模式</li>
+<li>Runlevel 3 : 多用户，无图形系统</li>
+<li>Runlevel 4 : 多用户，无图形系统</li>
+<li>Runlevel 5 : 多用户，图形化系统</li>
+<li>Runlevel 6 : 关闭并重启机器</li>
+</ul>
+
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Linux/">Linux</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到 QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="分享到微信"
+            data-tooltip-img-tip="微信扫一扫"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到微博"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+                    <div class="reward-author-container border-box flex-center">
+    <div class="reward-btn keep-button border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="打赏作者"
+            data-tooltip-img-url="/images/deploy-provider/paycode.png"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -8px;"
+    >
+        <i class="fa-solid fa-hand-holding-heart"></i>
+    </div>
+</div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2023/05/05/Java_note/"
+                                   title="Java笔记"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Java笔记</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2022/12/29/HyperledgeFabric_tutorial/"
+                                   title="Debian11安装HyperledgeFabric"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Debian11安装HyperledgeFabric</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="waline-comment-container">
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@waline/client@v2/dist/waline.css"/>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@waline/client@v2/dist/waline-meta.css"/>
+        <div id="waline-comment"></div>
+        <script 
+                src="//cdn.jsdelivr.net/npm/@waline/client@v2/dist/waline.js"
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        ></script>
+        <script 
+                async
+        >
+          window.KeepCommentPlugin.walineOptions = JSON.parse('{}'.replace(/&#34;/g, '"'))
+
+          window.KeepCommentPlugin.initWaline = () => {
+            if (window?.Waline) {
+              window.KeepCommentPlugin.walineOptions.el = '#waline-comment'
+              window.KeepCommentPlugin.walineOptions.comment = '.post-comments-count'
+              window.KeepCommentPlugin.walineOptions.serverURL = 'https://blog-comment-eight-azure.vercel.app'
+              window.KeepCommentPlugin.walineOptions.lang = 'zh-CN' || 'zh-CN'
+              window.KeepCommentPlugin.walineOptions.reaction = 'true' === 'true'
+              window.Waline.init(window.KeepCommentPlugin.walineOptions)
+              window.KeepCommentPlugin.hideLoading()
+            } else {
+              setTimeout(() => {
+                window.KeepCommentPlugin.initWaline()
+              }, 1000)
+            }
+          }
+
+          if ('false' === 'true') {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initWaline()
+            }, 1200)
+          } else {
+            window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initWaline)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">一、Vmware安装Debian 11</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-%E5%AE%89%E8%A3%85%E5%89%8DVmware%E8%AE%BE%E7%BD%AE"><span class="nav-text">1.1 安装前Vmware设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B"><span class="nav-text">1.2 安装过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-%E5%AE%89%E8%A3%85%E5%90%8E%E8%AE%BE%E7%BD%AE"><span class="nav-text">1.3 安装后设置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-1-%E6%9B%B4%E6%96%B0%E6%95%B0%E6%8D%AE%E6%BA%90"><span class="nav-text">1.3.1 更新数据源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-2-%E5%85%B3%E4%BA%8E%E7%94%A8%E6%88%B7"><span class="nav-text">1.3.2 关于用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-3-%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81IP%E5%9C%B0%E5%9D%80"><span class="nav-text">1.3.3 配置静态IP地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-4-%E5%AE%89%E8%A3%85%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7"><span class="nav-text">1.3.4 安装常用工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-5-%E4%BD%BF%E7%94%A8vi%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-text">1.3.5 使用vi的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-6-%E5%BD%A9%E8%89%B2%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="nav-text">1.3.6 彩色显示文件夹</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-%E7%94%A8Putty%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E4%BC%A0%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6"><span class="nav-text">1.4 用Putty连接虚拟机上传下载文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-6-%E5%AF%86%E9%92%A5%E6%96%B9%E5%BC%8F%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%9C%BA"><span class="nav-text">1.6 密钥方式连接虚机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-7-%E5%AE%89%E8%A3%85JDK8"><span class="nav-text">1.7 安装JDK8</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">二、Debian11安装MySQL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-%E5%85%8B%E9%9A%86%E8%99%9A%E6%9C%BA"><span class="nav-text">2.1 克隆虚机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-%E8%AE%BE%E7%BD%AE%E8%99%9A%E6%9C%BA"><span class="nav-text">2.2 设置虚机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-%E5%AE%89%E8%A3%85MySQL"><span class="nav-text">2.3 安装MySQL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-1-%E5%AE%89%E8%A3%85MySQL8"><span class="nav-text">2.3.1 安装MySQL8</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-2-%E7%89%B9%E6%AE%8A%E6%95%85%E9%9A%9C"><span class="nav-text">2.3.2 特殊故障</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-3-%E5%BB%BA%E7%AB%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E3%80%81%E7%94%A8%E6%88%B7%E3%80%81%E8%A1%A8%E3%80%81%E6%95%B0%E6%8D%AE"><span class="nav-text">2.3.3 建立数据库、用户、表、数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-4-%E8%BF%9C%E7%A8%8B%E6%93%8D%E4%BD%9C%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-text">2.3.4 远程操作数据库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-MySQL-Workbench"><span class="nav-text">2.4 MySQL Workbench</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">附录一、Debian常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-apt"><span class="nav-text">1.1 apt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-systemctl"><span class="nav-text">1.2 systemctl</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1-Systemd%E5%88%9D%E4%BD%93%E9%AA%8C%E5%92%8CSystemctl%E5%9F%BA%E7%A1%80"><span class="nav-text">1.2.1 Systemd初体验和Systemctl基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-2-%E4%BD%BF%E7%94%A8Systemctl%E6%8E%A7%E5%88%B6%E5%B9%B6%E7%AE%A1%E7%90%86%E6%9C%8D%E5%8A%A1"><span class="nav-text">1.2.2 使用Systemctl控制并管理服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-3-%E4%BD%BF%E7%94%A8Systemctl%E6%8E%A7%E5%88%B6%E5%B9%B6%E7%AE%A1%E7%90%86%E6%8C%82%E8%BD%BD%E7%82%B9"><span class="nav-text">1.2.3 使用Systemctl控制并管理挂载点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-4-%E4%BD%BF%E7%94%A8Systemctl%E6%8E%A7%E5%88%B6%E5%B9%B6%E7%AE%A1%E7%90%86%E5%A5%97%E6%8E%A5%E5%8F%A3"><span class="nav-text">1.2.4 使用Systemctl控制并管理套接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-5-%E6%9C%8D%E5%8A%A1%E7%9A%84CPU%E5%88%A9%E7%94%A8%E7%8E%87%EF%BC%88%E5%88%86%E9%85%8D%E9%A2%9D%EF%BC%89"><span class="nav-text">1.2.5 服务的CPU利用率（分配额）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-6-%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E8%BF%90%E8%A1%8C%E7%AD%89%E7%BA%A7"><span class="nav-text">1.2.6 控制系统运行等级</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">一个想当厨子的码农</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+
+            
+                
+                <div class="deploy-info info-item default">
+                    
+                        <a target="_blank" rel="nofollow" href="https://github.com/">
+                    
+                        本站由 <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/brands/github.png"></span> 提供部署服务
+                    
+                        </a>
+                    
+                </div>
+            
+        
+
+        <div class="count-item info-item default">
+            
+                <span class="count-box border-box word">
+                    <span class="item-type border-box">总字数</span>
+                    <span class="item-value border-box word">79.4k</span>
+                </span>
+            
+
+            
+                <span class="count-box border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-box border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">一、Vmware安装Debian 11</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-%E5%AE%89%E8%A3%85%E5%89%8DVmware%E8%AE%BE%E7%BD%AE"><span class="nav-text">1.1 安装前Vmware设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B"><span class="nav-text">1.2 安装过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-%E5%AE%89%E8%A3%85%E5%90%8E%E8%AE%BE%E7%BD%AE"><span class="nav-text">1.3 安装后设置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-1-%E6%9B%B4%E6%96%B0%E6%95%B0%E6%8D%AE%E6%BA%90"><span class="nav-text">1.3.1 更新数据源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-2-%E5%85%B3%E4%BA%8E%E7%94%A8%E6%88%B7"><span class="nav-text">1.3.2 关于用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-3-%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81IP%E5%9C%B0%E5%9D%80"><span class="nav-text">1.3.3 配置静态IP地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-4-%E5%AE%89%E8%A3%85%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7"><span class="nav-text">1.3.4 安装常用工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-5-%E4%BD%BF%E7%94%A8vi%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-text">1.3.5 使用vi的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-6-%E5%BD%A9%E8%89%B2%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="nav-text">1.3.6 彩色显示文件夹</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-%E7%94%A8Putty%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E4%BC%A0%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6"><span class="nav-text">1.4 用Putty连接虚拟机上传下载文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-6-%E5%AF%86%E9%92%A5%E6%96%B9%E5%BC%8F%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%9C%BA"><span class="nav-text">1.6 密钥方式连接虚机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-7-%E5%AE%89%E8%A3%85JDK8"><span class="nav-text">1.7 安装JDK8</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">二、Debian11安装MySQL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-%E5%85%8B%E9%9A%86%E8%99%9A%E6%9C%BA"><span class="nav-text">2.1 克隆虚机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-%E8%AE%BE%E7%BD%AE%E8%99%9A%E6%9C%BA"><span class="nav-text">2.2 设置虚机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-%E5%AE%89%E8%A3%85MySQL"><span class="nav-text">2.3 安装MySQL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-1-%E5%AE%89%E8%A3%85MySQL8"><span class="nav-text">2.3.1 安装MySQL8</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-2-%E7%89%B9%E6%AE%8A%E6%95%85%E9%9A%9C"><span class="nav-text">2.3.2 特殊故障</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-3-%E5%BB%BA%E7%AB%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E3%80%81%E7%94%A8%E6%88%B7%E3%80%81%E8%A1%A8%E3%80%81%E6%95%B0%E6%8D%AE"><span class="nav-text">2.3.3 建立数据库、用户、表、数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-4-%E8%BF%9C%E7%A8%8B%E6%93%8D%E4%BD%9C%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-text">2.3.4 远程操作数据库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-MySQL-Workbench"><span class="nav-text">2.4 MySQL Workbench</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">附录一、Debian常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-apt"><span class="nav-text">1.1 apt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-systemctl"><span class="nav-text">1.2 systemctl</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1-Systemd%E5%88%9D%E4%BD%93%E9%AA%8C%E5%92%8CSystemctl%E5%9F%BA%E7%A1%80"><span class="nav-text">1.2.1 Systemd初体验和Systemctl基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-2-%E4%BD%BF%E7%94%A8Systemctl%E6%8E%A7%E5%88%B6%E5%B9%B6%E7%AE%A1%E7%90%86%E6%9C%8D%E5%8A%A1"><span class="nav-text">1.2.2 使用Systemctl控制并管理服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-3-%E4%BD%BF%E7%94%A8Systemctl%E6%8E%A7%E5%88%B6%E5%B9%B6%E7%AE%A1%E7%90%86%E6%8C%82%E8%BD%BD%E7%82%B9"><span class="nav-text">1.2.3 使用Systemctl控制并管理挂载点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-4-%E4%BD%BF%E7%94%A8Systemctl%E6%8E%A7%E5%88%B6%E5%B9%B6%E7%AE%A1%E7%90%86%E5%A5%97%E6%8E%A5%E5%8F%A3"><span class="nav-text">1.2.4 使用Systemctl控制并管理套接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-5-%E6%9C%8D%E5%8A%A1%E7%9A%84CPU%E5%88%A9%E7%94%A8%E7%8E%87%EF%BC%88%E5%88%86%E9%85%8D%E9%A2%9D%EF%BC%89"><span class="nav-text">1.2.5 服务的CPU利用率（分配额）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-6-%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E8%BF%90%E8%A1%8C%E7%AD%89%E7%BA%A7"><span class="nav-text">1.2.6 控制系统运行等级</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/header-shrink.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/back2top.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/toggle-theme.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/code-block.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/main.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/libs/anime.min.js"></script>
+
+<!-- local-search -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/local-search.min.js"></script>
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/post/post-helper.min.js"></script>
+
+        <!-- toc -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/post/toc.min.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/post/share.min.js"></script>
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>
