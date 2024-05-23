@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2024-05-21T05:45:28.847Z</updated>
+  <updated>2024-05-23T04:34:21.209Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>如何设计一个网络？</title>
+    <link href="http://example.com/2024/05/23/how_to_design_network/"/>
+    <id>http://example.com/2024/05/23/how_to_design_network/</id>
+    <published>2024-05-23T04:31:09.000Z</published>
+    <updated>2024-05-23T04:34:21.209Z</updated>
+    
+    <content type="html"><![CDATA[<h1>如何设计一个网络？</h1><h2 id="1-小型组网结构">1. 小型组网结构</h2><p><img   src="https://dettry.github.io/picx-images-hosting/compute_network/image-20240523122343298.92pyopgp34.jpg"  alt="image-20240523122343298"></p><p>特点：</p><ul><li>用户接入数量较少：小型网络应用于接入用户数量较少的场景，一般支持几个至几十个用户；</li><li>网络覆盖范围小：网络覆盖范围一般也是一个地点；</li><li>网络无层次结构；</li></ul><p>业务功能</p><p>这样的小型网络一般是为了满足内部资源（打印机、文件）共享及互联网接入。</p><ul><li>一般直接使用路由器或防火墙连接互联网，并采用地址转换（NAT）方式提供上网服务。</li><li>一般直接使用Fat AP设备提供无线接入，采用WEP、WPA等密码验证方式。</li></ul><p><img   src="https://dettry.github.io/picx-images-hosting/compute_network/image-20240523122427892.32hsjz73ep.jpg"  alt="image-20240523122427892"></p><p>NAT设备一般就是路由器或防火墙，如果想仔细了解网络中的各个设备是如何部署的，可以查看下面这位博主的相关文章，个人认为写的非常好。</p><p><a class="link"   href="https://zhuanlan.zhihu.com/p/30593991" >路由器与防火墙 谁应该部署在最外面 ？ - 知乎 (zhihu.com)<i class="fas fa-external-link-alt"></i></a></p><p><strong>第一小结</strong></p><p>什么是AP？</p><p>AP（Access Point）即无线接入点，主要负责将有线网络信号转换为无线信号，使得无线设备如智能手机、笔记本电脑等能够连接到网络中。AP可以是独立设备，也可以内置于无线路由器中。</p><p>AP又有胖AP（FAT AP）和瘦AP（FIT AP）</p><p>例如家里使用的无线路由器就相当于胖AP，然后再通过光猫将电信号转换成光信号。</p><p>瘦AP功能单一，只进行有线/无线信号转换和无线信号收发。需要配合AC（无线控制接入器）才能实现网络互联。</p><h2 id="2-中型组网架构">2. 中型组网架构</h2><p><img   src="https://dettry.github.io/picx-images-hosting/compute_network/image-20240523122500714.8hgb2em8sj.jpg"  alt="image-20240523122500714"></p><p>特点：</p><ul><li>规模中等：中型网络一般能够支撑几百至上千用户的接入。</li><li>层次化设计：中型网络架构分为两层，接入层和核心层，提升网络的可扩展性。</li></ul><p><img   src="https://dettry.github.io/picx-images-hosting/compute_network/image-20240523122754271.1aotp2nqin.jpg"  alt="image-20240523122754271"></p><ul><li>模块化设计：中型网络根据业务功能进行模块化设计，本次的拓扑中分为市场部，开发部，服务部，服务器区，每个分区都是一个模块。</li></ul><h2 id="3-大型组网架构">3. 大型组网架构</h2><p><img   src="https://dettry.github.io/picx-images-hosting/compute_network/image-20240523122533599.6m3q9s9t6l.jpg"  alt="image-20240523122533599"></p><p>网络拓扑：</p><ol><li><p>大型型网络中采用了分层设计，分为接入层、汇聚层、核心层；</p></li><li><p>大型型网络中采用了模块化设计，可以分为园区有线接入模块、无线接入模块、骨干网络、数据中心、出口网络、管理网络、广域网、其它园区网络等；</p><ul><li><p><strong>园区有线接入模块</strong>：用于终端设备的有线接入，提供业务的接入服务；</p></li><li><p><strong>无线接入模块</strong>：用于终端设备的无线接入，提供无线WIFI接入服务；</p></li><li><p>**骨干网络:**是整个网络的核心，需要具有强大的路由交换功能；提供路由转发能力；</p></li><li><p>**出口网络:**是整个网络的出口，用于和运营商的网络对接，大型网络一般会对接多家运营商，出口网络需要对进出的流量进行安全防护；提供出口服务能力和安全服务能力；</p></li><li><p>**管理网络:**是整个园区的管理网络，用于对园区的设备进行管理；提供网络管理能力，方便网络管理员管理网络；</p></li><li><p>**广域网:**用于和异地的其它园区进行连接；提供园区间的数据连接服务；</p></li></ul></li></ol><p>特点：</p><ul><li>覆盖范围广：大型网络可以是覆盖一个园区的网络，也可以是覆盖多个园区的网络，甚至可以覆盖全国的网络。</li><li>用户数量多：可以支持几千几万甚至更多的人员接入，大型网络具有很强的可扩展性，能够随用户数量的变化进行扩展；</li><li>需求复杂：大型网络支撑多种类型的业务，包括实时业务、非实时业务、语音业务、视频业务等等。</li><li>功能模块全：可以分为园区有线接入模块、无线接入模块、骨干网络、数据中心、出口网络、管理网络、广域网、其它园区网络等；</li><li>层次化设计：大型型网络架构分为三层，接入层、汇聚层、核心层，提升网络扩展能力；</li></ul><p><img   src="https://dettry.github.io/picx-images-hosting/compute_network/image-20240523122603375.lwir5r7i.jpg"  alt="image-20240523122603375"></p><h2 id="4-总结">4. 总结</h2><p>如何设计一个网络：</p><ul><li>首先需要了解网络传输中每一层设备所具有的功能，以及它们所支持的协议栈。</li><li>其次需要知道每层设备的部署原理，以及为什么要这么部署。</li><li>最后就是要考虑如何部署才能使得成本最低，效益最好。</li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1&gt;如何设计一个网络？&lt;/h1&gt;
+&lt;h2 id=&quot;1-小型组网结构&quot;&gt;1. 小型组网结构&lt;/h2&gt;
+&lt;p&gt;&lt;img   src=&quot;https://dettry.github.io/picx-images-hosting/compute_network/image-202405</summary>
+      
+    
+    
+    
+    <category term="计算机网络专题" scheme="http://example.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B8%93%E9%A2%98/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>正则表达式</title>

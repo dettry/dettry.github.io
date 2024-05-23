@@ -11,7 +11,7 @@
     
     <title>
         
-            404 |
+            如何设计一个网络？ |
         
         CodeCook
     </title>
@@ -242,15 +242,346 @@
             <div class="main-content border-box">
                 
 
-                    <div class="fade-in-down-animation">
-    <div class="error-404-container border-box">
-        <div class="text-1 border-box flex-center">404</div>
-        <div class="text-2 border-box flex-center">
-            页面找不到
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        如何设计一个网络？
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/deploy-provider/avatar.png">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">一个想当厨子的码农</span>
+                                
+                                    <span class="author-badge">Lv2</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-05-23 12:31:09</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Thu May 23 2024 12:34:21 GMT+0800">2024-05-23 12:34:21</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B8%93%E9%A2%98/">计算机网络专题</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.2k 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>4 分钟</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body">
+                    
+
+                    <h1>如何设计一个网络？</h1>
+<h2 id="1-小型组网结构">1. 小型组网结构</h2>
+<p><img   src="https://dettry.github.io/picx-images-hosting/compute_network/image-20240523122343298.92pyopgp34.jpg"  alt="image-20240523122343298"></p>
+<p>特点：</p>
+<ul>
+<li>用户接入数量较少：小型网络应用于接入用户数量较少的场景，一般支持几个至几十个用户；</li>
+<li>网络覆盖范围小：网络覆盖范围一般也是一个地点；</li>
+<li>网络无层次结构；</li>
+</ul>
+<p>业务功能</p>
+<p>这样的小型网络一般是为了满足内部资源（打印机、文件）共享及互联网接入。</p>
+<ul>
+<li>一般直接使用路由器或防火墙连接互联网，并采用地址转换（NAT）方式提供上网服务。</li>
+<li>一般直接使用Fat AP设备提供无线接入，采用WEP、WPA等密码验证方式。</li>
+</ul>
+<p><img   src="https://dettry.github.io/picx-images-hosting/compute_network/image-20240523122427892.32hsjz73ep.jpg"  alt="image-20240523122427892"></p>
+<p>NAT设备一般就是路由器或防火墙，如果想仔细了解网络中的各个设备是如何部署的，可以查看下面这位博主的相关文章，个人认为写的非常好。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/30593991" >路由器与防火墙 谁应该部署在最外面 ？ - 知乎 (zhihu.com)<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong>第一小结</strong></p>
+<p>什么是AP？</p>
+<p>AP（Access Point）即无线接入点，主要负责将有线网络信号转换为无线信号，使得无线设备如智能手机、笔记本电脑等能够连接到网络中。AP可以是独立设备，也可以内置于无线路由器中。</p>
+<p>AP又有胖AP（FAT AP）和瘦AP（FIT AP）</p>
+<p>例如家里使用的无线路由器就相当于胖AP，然后再通过光猫将电信号转换成光信号。</p>
+<p>瘦AP功能单一，只进行有线/无线信号转换和无线信号收发。需要配合AC（无线控制接入器）才能实现网络互联。</p>
+<h2 id="2-中型组网架构">2. 中型组网架构</h2>
+<p><img   src="https://dettry.github.io/picx-images-hosting/compute_network/image-20240523122500714.8hgb2em8sj.jpg"  alt="image-20240523122500714"></p>
+<p>特点：</p>
+<ul>
+<li>规模中等：中型网络一般能够支撑几百至上千用户的接入。</li>
+<li>层次化设计：中型网络架构分为两层，接入层和核心层，提升网络的可扩展性。</li>
+</ul>
+<p><img   src="https://dettry.github.io/picx-images-hosting/compute_network/image-20240523122754271.1aotp2nqin.jpg"  alt="image-20240523122754271"></p>
+<ul>
+<li>模块化设计：中型网络根据业务功能进行模块化设计，本次的拓扑中分为市场部，开发部，服务部，服务器区，每个分区都是一个模块。</li>
+</ul>
+<h2 id="3-大型组网架构">3. 大型组网架构</h2>
+<p><img   src="https://dettry.github.io/picx-images-hosting/compute_network/image-20240523122533599.6m3q9s9t6l.jpg"  alt="image-20240523122533599"></p>
+<p>网络拓扑：</p>
+<ol>
+<li>
+<p>大型型网络中采用了分层设计，分为接入层、汇聚层、核心层；</p>
+</li>
+<li>
+<p>大型型网络中采用了模块化设计，可以分为园区有线接入模块、无线接入模块、骨干网络、数据中心、出口网络、管理网络、广域网、其它园区网络等；</p>
+<ul>
+<li>
+<p><strong>园区有线接入模块</strong>：用于终端设备的有线接入，提供业务的接入服务；</p>
+</li>
+<li>
+<p><strong>无线接入模块</strong>：用于终端设备的无线接入，提供无线WIFI接入服务；</p>
+</li>
+<li>
+<p>**骨干网络:**是整个网络的核心，需要具有强大的路由交换功能；提供路由转发能力；</p>
+</li>
+<li>
+<p>**出口网络:**是整个网络的出口，用于和运营商的网络对接，大型网络一般会对接多家运营商，出口网络需要对进出的流量进行安全防护；提供出口服务能力和安全服务能力；</p>
+</li>
+<li>
+<p>**管理网络:**是整个园区的管理网络，用于对园区的设备进行管理；提供网络管理能力，方便网络管理员管理网络；</p>
+</li>
+<li>
+<p>**广域网:**用于和异地的其它园区进行连接；提供园区间的数据连接服务；</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>特点：</p>
+<ul>
+<li>覆盖范围广：大型网络可以是覆盖一个园区的网络，也可以是覆盖多个园区的网络，甚至可以覆盖全国的网络。</li>
+<li>用户数量多：可以支持几千几万甚至更多的人员接入，大型网络具有很强的可扩展性，能够随用户数量的变化进行扩展；</li>
+<li>需求复杂：大型网络支撑多种类型的业务，包括实时业务、非实时业务、语音业务、视频业务等等。</li>
+<li>功能模块全：可以分为园区有线接入模块、无线接入模块、骨干网络、数据中心、出口网络、管理网络、广域网、其它园区网络等；</li>
+<li>层次化设计：大型型网络架构分为三层，接入层、汇聚层、核心层，提升网络扩展能力；</li>
+</ul>
+<p><img   src="https://dettry.github.io/picx-images-hosting/compute_network/image-20240523122603375.lwir5r7i.jpg"  alt="image-20240523122603375"></p>
+<h2 id="4-总结">4. 总结</h2>
+<p>如何设计一个网络：</p>
+<ul>
+<li>首先需要了解网络传输中每一层设备所具有的功能，以及它们所支持的协议栈。</li>
+<li>其次需要知道每层设备的部署原理，以及为什么要这么部署。</li>
+<li>最后就是要考虑如何部署才能使得成本最低，效益最好。</li>
+</ul>
+
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到 QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="分享到微信"
+            data-tooltip-img-tip="微信扫一扫"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到微博"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+                    <div class="reward-author-container border-box flex-center">
+    <div class="reward-btn keep-button border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="打赏作者"
+            data-tooltip-img-url="/images/deploy-provider/paycode.png"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -8px;"
+    >
+        <i class="fa-solid fa-hand-holding-heart"></i>
+    </div>
+</div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2024/05/13/regular_expression_note/"
+                                   title="正则表达式"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">正则表达式</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
         </div>
-        <div class="text-3 border-box flex-center">
-            <a class="go-home" href="/">前往首页</a>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="waline-comment-container">
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@waline/client@v2/dist/waline.css"/>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@waline/client@v2/dist/waline-meta.css"/>
+        <div id="waline-comment"></div>
+        <script 
+                src="//cdn.jsdelivr.net/npm/@waline/client@v2/dist/waline.js"
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        ></script>
+        <script 
+                async
+        >
+          window.KeepCommentPlugin.walineOptions = JSON.parse('{}'.replace(/&#34;/g, '"'))
+
+          window.KeepCommentPlugin.initWaline = () => {
+            if (window?.Waline) {
+              window.KeepCommentPlugin.walineOptions.el = '#waline-comment'
+              window.KeepCommentPlugin.walineOptions.comment = '.post-comments-count'
+              window.KeepCommentPlugin.walineOptions.serverURL = 'https://blog-comment-eight-azure.vercel.app'
+              window.KeepCommentPlugin.walineOptions.lang = 'zh-CN' || 'zh-CN'
+              window.KeepCommentPlugin.walineOptions.reaction = 'true' === 'true'
+              window.Waline.init(window.KeepCommentPlugin.walineOptions)
+              window.KeepCommentPlugin.hideLoading()
+            } else {
+              setTimeout(() => {
+                window.KeepCommentPlugin.initWaline()
+              }, 1000)
+            }
+          }
+
+          if ('false' === 'true') {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initWaline()
+            }, 1200)
+          } else {
+            window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initWaline)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
         </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">如何设计一个网络？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%B0%8F%E5%9E%8B%E7%BB%84%E7%BD%91%E7%BB%93%E6%9E%84"><span class="nav-text">1. 小型组网结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E4%B8%AD%E5%9E%8B%E7%BB%84%E7%BD%91%E6%9E%B6%E6%9E%84"><span class="nav-text">2. 中型组网架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%A4%A7%E5%9E%8B%E7%BB%84%E7%BD%91%E6%9E%B6%E6%9E%84"><span class="nav-text">3. 大型组网架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%80%BB%E7%BB%93"><span class="nav-text">4. 总结</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
     </div>
 </div>
 
@@ -321,6 +652,33 @@
 
     <!-- post tools -->
     
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
 
     <!-- side tools -->
     <div class="side-tools">
@@ -348,7 +706,15 @@
 
     <ul class="exposed-tools-list border-box">
         
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
 
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
         
 
         <li class="tools-item tool-toggle-show flex-center">
@@ -404,6 +770,17 @@
 
     <!-- tablet toc -->
     
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">如何设计一个网络？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%B0%8F%E5%9E%8B%E7%BB%84%E7%BD%91%E7%BB%93%E6%9E%84"><span class="nav-text">1. 小型组网结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E4%B8%AD%E5%9E%8B%E7%BB%84%E7%BD%91%E6%9E%B6%E6%9E%84"><span class="nav-text">2. 中型组网架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%A4%A7%E5%9E%8B%E7%BB%84%E7%BD%91%E6%9E%B6%E6%9E%84"><span class="nav-text">3. 大型组网架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%80%BB%E7%BB%93"><span class="nav-text">4. 总结</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
 </main>
 
 
@@ -420,6 +797,22 @@
 
 
 <div class="">
+    
+        <!-- post-helper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/post/post-helper.min.js"></script>
+
+        <!-- toc -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/post/toc.min.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/post/share.min.js"></script>
+        
     
 
     <!-- categories page -->
